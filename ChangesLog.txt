@@ -1,0 +1,300 @@
+22 July 2009
+   released version 1.1.1199 of PandoraPanic
+
+     Change log:
+        -Cleaned: Some image functions moved from the Image class to the GFX object since they are more general purpose functions than specific to Image itself.
+
+22 July 2009
+   released version 1.1.1199 of PandoraPanic
+
+     Change log:
+        -Updated: CollisionMap object. It should now be usable
+
+15 July 2009
+   released version 1.1.1143 of PandoraPanic
+
+     Change log:
+        -Added: Count Job minigame
+
+08 July 2009
+   released version 1.1.1120 of PandoraPanic
+
+     Change log:
+        -Fixed: Rectangle class in SDL now render correctly.
+        -Fixed: Animations in OpenGL
+        -Added: ClearColour to the GFX::clearScreen() function
+
+04 July 2009
+   released version 1.1.1071 of PandoraPanic
+
+     Change log:
+        -Added: Joystick nubs to Pandora builds default mapping.
+        -Updated: Optimisations made to LUT
+        -Added: Major rewrite to Penjin #defines for GFX target selection
+        -Added: SnatchABeer minigame
+
+20 May 2009
+   released version 0.7.436 of PandoraPanic
+
+     Change log:
+        -Fixed: Segfault when checking if an unplayed sound is playing
+        -Added: Global volume adjustment to Sound class
+
+20 May 2009
+   released version 0.7.427 of PandoraPanic
+
+     Change log:
+        -Added: Sounds by Dragons_Slayer
+
+18 May 2009
+   released version 0.7.424 of PandoraPanic
+
+     Change log:
+        -Fixed: Pandora Sound init bug 
+        -New: Sound (de)init only occurs in Sound class and NOT Music class.
+        -New: Resolution Defaults for Engine for PLATFORM_PANDORA
+        -Added: Better default placeholder mapping for Pandora
+        -Fixed: Music and Sound classes return PENJIN_ERRORS instead of ints
+
+16 May 2009
+   released version 0.7.406 of PandoraPanic
+
+     Change log:
+        -Added: Stars in background of Plander
+
+13 May 2009
+   released version 0.6.389 of PandoraPanic
+
+     Change log:
+        -Fixed: problem with commandline infinite loop
+
+07 May 2009
+   released version 0.6.376 of PandoraPanic
+
+     Change log:
+        -Removed: Walls in Plander
+        -Added: Screen Warpping for Rocket in Plander
+        -Added: Preview update when difficulty level is changed.
+        -Added: Difficulties for Plander
+
+07 May 2009
+   released version 0.6.345 of PandoraPanic
+
+     Change log:
+        -Fixed: Major leak which surfaced with the new Pixel class.
+
+02 May 2009
+   released version 0.5.272 of PandoraPanic
+
+     Change log:
+        -Fixed: Flickering on level select for PanicAttack and SpaceInvaders
+        -Added: 2D classes for Vector2df, 2di and 2dx
+        -Added: Vector3df type
+        -Added: new forced float types for when compiling in PENJIN_FIXED mode FLOAT and CRFLOAT
+
+01 May 2009
+   released version 0.5.211 of PandoraPanic
+
+     Change log:
+        -Added: Vector2df class, expands on TRenki's functions and allows C++ style access
+
+01 May 2009
+   released version 0.4.171 of PandoraPanic
+
+     Change log:
+        -Cleaned: many warnings in code
+        -New: Moved location of BaseClasses to PenjinBase instead of Penjin3D Base
+        -Added: Pixel class
+        -Updated: Particles to use Pixel class.
+        -Fixed: Pixel class allows particles to be clipped, so positioning hack is uneeded.
+
+29 April 2009
+   released version 0.4.131 of PandoraPanic
+
+     Change log:
+        -Added: fuel meter to Plander
+        -Removed: Press Select to win in Plander
+        -Added: failure if you land outside of the landing zone with no fuel
+
+25 April 2009
+   released version 0.3.99 of PandoraPanic
+
+     Change log:
+        -Fixed: Flickering when a minigame preview is generated
+        -Added: Sound effects to Rotating Turret
+        -Fixed: Plander can now Pland on the Planding pad.
+
+23 April 2009
+   released version 0.3.88 of PandoraPanic
+
+     Change log:
+        -Added: Preview pane for level selection
+
+08 February 2009
+   released version 0.3.36 of PandoraPanic
+
+     Change log:
+        -Fixed: STATE ordering so that mini games launch the correct game from selection box
+        -Fixed: possibly the empty box character on linux builds
+
+29 January 2009
+   released version 0.3.35 of PandoraPanic
+
+     Change log:
+        -Added: Particles can update but stop the spawning of new particles.
+        -Fixed: ParticleMirrors now function as intended.
+
+23 January 2009
+   released version 0.3.34 of PandoraPanic
+
+     Change log:
+        -Fixed: fixed thrust firection (forgot radians)
+
+22 January 2009
+   released version 0.3.33 of PandoraPanic
+
+     Change log:
+        -Updated: RocketEscape now has a taking off rocket... and not much else. Definitely early days ;)
+
+22 January 2009
+   released version 0.3.32 of PandoraPanic
+
+     Change log:
+        -Added: Prelim RocketEscape game
+
+21 January 2009
+   released version 0.3.31 of PandoraPanic
+
+     Change log:
+        -Fixed: more credits listing
+        -Added: Get Ready screen
+
+20 January 2009
+   released version 0.3.30 of PandoraPanic
+
+     Change log:
+        -Updated: NumberUtility converted to a namespace
+
+20 January 2009
+   released version 0.3.29 of PandoraPanic
+
+     Change log:
+        -Updated: StringUtility now a namespace rather than a class
+
+20 January 2009
+   released version 0.3.28 of PandoraPanic
+
+     Change log:
+        -Added: Tap to confirm on high score tables
+        -Added: Curser for PC version
+
+14 January 2009
+   released version 0.3.27 of PandoraPanic
+
+     Change log:
+        -Fixed: Some StateTitle scaling issues with the logo (still some issues with scaling x and y with differing values.)
+        -Fixed: some issues with fireworks on StateCredits
+        -Updated: credits listing (Still needs finalising)
+
+12 January 2009
+   released version 0.3.26 of PandoraPanic
+
+     Change log:
+        -Added: Emitter advanceUpdate advances the particles by N cycles.
+
+08 January 2009
+   released version 0.3.25 of PandoraPanic
+
+     Change log:
+        -Added: Mouse/Touch support in SimpleJoy
+        -Added: isAny function to test if any pad buttons have been pressed.
+
+07 January 2009
+   released version 0.3.24 of PandoraPanic
+
+     Change log:
+        -Added: check in DoubleNubTrouble to prevent running if no joy is detected on PC platform
+
+07 January 2009
+   released version 0.3.23 of PandoraPanic
+
+     Change log:
+        -New: Game selection menu now saves the last selection.
+
+07 January 2009
+   released version 0.3.22 of PandoraPanic
+
+     Change log:
+        -Added: PanJoust
+        -Fixed: BackBuffering
+        -New: ScoreScreen class
+
+31 December 2008
+   released version 0.3.21 of PandoraPanic
+
+     Change log:
+        -Updated: Alpha-blended background is now buffered.
+
+22 December 2008
+   released version 0.3.20 of PandoraPanic
+
+     Change log:
+        -Added: SimpleJoy axis scaling
+
+14 December 2008
+   released version 0.3.19 of PandoraPanic
+
+     Change log:
+        -Fixed: ParticleEmitter not starting until lifetime is expired.
+
+04 December 2008
+   released version 0.3.18 of PandoraPanic
+
+     Change log:
+        -Fixed: Particles fading
+
+28 November 2008
+   released version 0.3.17 of PandoraPanic
+
+     Change log:
+        -Fixed: Scaling and Rotations for Sprites and Animated Sprites
+
+13 November 2008
+   released version 0.3.12 of PandoraPanic
+
+     Change log:
+        -Added: Double Nub Trouble minigame
+        -Updated: Timer class now has optional Fixed point support.
+        -Added: more gfx, gradual colour fade on title
+
+11 November 2008
+   released version 0.3.11 of PandoraPanic
+
+     Change log:
+        -Updated: TitleScreen pretty much complete now.
+
+11 November 2008
+   released version 0.3.10 of PandoraPanic
+
+     Change log:
+        -Added: Double Nub Trouble minigame
+        -Updated: Timer class now has optional Fixed point support.
+        -Added: New TitleScreen
+
+07 November 2008
+   released version 0.3.7 of PandoraPanic
+
+     Change log:
+        -Fixed: Particles now can finish their lifetime!
+        -Added: Some future adjustments to particle engine regarding fading. Needs some adjustment but if particles go black, they will be reset.
+        -Fixed: Particles out of bounds crashing.
+        -Updated: Fixed random number generation in Random class.
+        -Fixed: potentially fixed sprites disappearing on 0 angle rotations in Image class.
+
+29 October 2008
+   released version 0.3.2 of PandoraPanic
+
+     Change log:
+        -Added: workaround for linux slowdowns in debug mode.
+        -Updated: functions for customising hi score tables.
+
