@@ -1,0 +1,18 @@
+;   Control Map Parser Config File
+;   ##############################
+;DEVICE:type,id;
+;type = wiimote,sdlmouse,sdljoy,sdlkey
+;id = number of device to use
+DEVICE:1,1;
+;BUTTON:action,id;
+BUTTON:1,1;
+;KEY:action,id;
+KEY:2,0;
+;AXIS:action,id;
+AXIS:1,1;
+;DIGITAL_AXIS:action,id,trigger;
+DIGITAL_AXIS:1,2;
+;HAT:action,id;
+HAT:2,0;
+DEVICE_END:0,0;
+END:0,0;
