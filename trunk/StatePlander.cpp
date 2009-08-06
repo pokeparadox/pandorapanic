@@ -24,11 +24,14 @@ void StatePlander::init()
     bounds.y = -500;
     bounds.w = getStateXResolution();
     bounds.h = getStateYResolution();
+    collect.loadFrames("images/RocketEscape/treasure.png",4,1);
+    collect.setFrameRate(DECI_SECONDS);
     int jitter = Random::nextInt(-30,30);
     rocket.setBounds(bounds);
     rocket.setStartPosition(Vector2di(getStateXResolution()*0.2f+jitter, getStateYResolution()-100));
     rocket.setPosition(Vector2di(getStateXResolution()*0.2f+jitter, getStateYResolution()-164));
     rocket.setWrapSides(true);
+    rocket.linkCollectible(&collect);
     pad.linkRocket(&rocket);
 
     for(int i = 2; i >= 0; --i)
@@ -45,8 +48,31 @@ void StatePlander::init()
     float width = 60/(float)variables[2].getInt();
     pad.setWidth(NumberUtility::limit((int)width,1,15));
     rocket.setFuel(NumberUtility::limit((width/30.0f)*100,5.0f,100.0f));
+    collect.setReward((variables[2].getInt()*1.2f)+0.5f);
     pad.setPosition(Vector2di(-25+getStateXResolution()*0.5f + Random::nextInt(-30,30),getStateYResolution()-123));
     initStars();
+
+    /*
+    SDL_Rect t;
+    t.x = *xRes * 0.1f;
+    t.y = *yRes * 0.1f;
+    t.w = 102;
+    t.h = 20;
+    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,255,255));
+    t.x +=1;
+    t.y +=1;
+    t.w = rocket.getFuel()+0.5f;
+    t.h = 18;
+    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,0,0));
+    */
+
+    fuelMeter[0].setPosition(*xRes * 0.1f,*yRes * 0.1f);
+    fuelMeter[0].setDimensions(102,20);
+    fuelMeter[0].setColour(WHITE);
+    fuelMeter[1].setPosition((*xRes * 0.1f)+1,(*yRes * 0.1f)+1);
+    fuelMeter[1].setDimensions(rocket.getFuel()+0.5f,18);
+    fuelMeter[1].setColour(RED);
+
     GFX::setClearColour(BLACK);
 }
 
@@ -100,7 +126,7 @@ void StatePlander::initStars()
 void StatePlander::renderStars(SDL_Surface* screen)
 {
     int f = star.getCurrentFrame();
-    int divider = numStars*0.25f;
+    int divider = numStars-1*0.25f;
     for(int i = numStars-1; i>=0; --i)
     {
         star.setPosition(starPos[i]);
@@ -134,6 +160,11 @@ void StatePlander::renderStars(SDL_Surface* screen)
 
 void StatePlander::renderFuelMeter(SDL_Surface* screen)
 {
+    fuelMeter[1].setDimensions(rocket.getFuel()+0.5f,18);
+
+    fuelMeter[0].render(screen);
+    fuelMeter[1].render(screen);
+    /*
     SDL_Rect t;
     t.x = *xRes * 0.1f;
     t.y = *yRes * 0.1f;
@@ -145,6 +176,7 @@ void StatePlander::renderFuelMeter(SDL_Surface* screen)
     t.w = rocket.getFuel()+0.5f;
     t.h = 18;
     SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,0,0));
+    */
 }
 
 void StatePlander::render(SDL_Surface* screen)
@@ -152,6 +184,7 @@ void StatePlander::render(SDL_Surface* screen)
     GFX::clearScreen(screen);
     renderStars(screen);
     floor.render(screen);
+    collect.render(screen);
     rocket.render(screen);
     pad.render(screen);
     renderFuelMeter(screen);
@@ -160,7 +193,7 @@ void StatePlander::render(SDL_Surface* screen)
 void StatePlander::renderStars()
 {
     int f = star.getCurrentFrame();
-    int divider = numStars*0.25f;
+    int divider = numStars-1*0.25f;
     for(int i = numStars-1; i>=0; --i)
     {
         star.setPosition(starPos[i]);
@@ -214,6 +247,7 @@ void StatePlander::render()
     GFX::clearScreen();
     renderStars();
     floor.render();
+    collect.render();
     rocket.render();
     pad.render();
     renderFuelMeter();
@@ -222,7 +256,25 @@ void StatePlander::render()
 
 void StatePlander::update()
 {
+    collect.update();
     rocket.update();
+    if(rocket.checkCollectible())
+    {
+        collect.setPosition(-100,-100); // move it out of the way
+        float colFuel = rocket.getFuel() + collect.getReward();
+        if(colFuel>100)
+        {
+            int lives = variables[4].getInt();
+            if(lives<3)
+            {
+                ++lives;
+                variables[4].setInt(lives);
+            }
+            fuelMeter[1].setColour(BLUE);
+        }
+        else
+            rocket.setFuel(colFuel);
+    }
     pad.update();
     if(pad.hasRocketLanded())
     {

@@ -4,8 +4,10 @@
 #include "userStates.h"
 #include "RocketEscape/Rocket.h"
 #include "RocketEscape/LandingPad.h"
+#include "RocketEscape/Collectible.h"
 #include "ParticleMirror.h"
 #include "Music.h"
+#include "Rectangle.h"
 
 class StatePlander : public BaseState
 {
@@ -30,12 +32,15 @@ class StatePlander : public BaseState
         Music ambient;
         Rocket rocket;
         ParticleMirror floor;
+    // Twinkly Stars
         AnimatedSprite star;
         Pixel backStar;
         Vector2di starPos[numStars];
         Vector2di backStarPos[numBackStars];
 
         LandingPad pad;
+        Collectible collect;
+        Rectangle fuelMeter[2];
         void initStars();
         #ifdef PENJIN_SDL
             void renderFuelMeter(SDL_Surface* screen);
