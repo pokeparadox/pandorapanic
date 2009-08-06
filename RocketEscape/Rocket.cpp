@@ -20,50 +20,56 @@ Rocket::Rocket()
     leftThruster[t].setInvisible(MAX_ONE-INVISIBLE);
     leftThruster[t].setColour(YELLOW);
     leftThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
-    leftThruster[t].setLifeTime(150);
+    leftThruster[t].setLifeTime(100);
     leftThruster[t].setGravity(GRAVITY);
     leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
+    leftThruster[t].setShouldStopNew(false);
 
     leftThruster[++t].setMax(MAX_TWO);
     leftThruster[t].setInvisible(MAX_TWO-INVISIBLE);
     leftThruster[t].setColour(RED);
     leftThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
-    leftThruster[t].setLifeTime(130);
+    leftThruster[t].setLifeTime(90);
     leftThruster[t].setGravity(GRAVITY);
     leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
+    leftThruster[t].setShouldStopNew(false);
 
     leftThruster[++t].setMax(MAX_THREE);
     leftThruster[t].setInvisible(MAX_THREE-INVISIBLE);
     leftThruster[t].setColour(BLUE);
     leftThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
-    leftThruster[t].setLifeTime(120);
+    leftThruster[t].setLifeTime(80);
     leftThruster[t].setGravity(GRAVITY);
     leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
+    leftThruster[t].setShouldStopNew(false);
 
     t = 0;
     rightThruster[t].setMax(MAX_ONE);
     rightThruster[t].setInvisible(MAX_ONE-INVISIBLE);
     rightThruster[t].setColour(YELLOW);
     rightThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
-    rightThruster[t].setLifeTime(150);
+    rightThruster[t].setLifeTime(100);
     rightThruster[t].setGravity(GRAVITY);
     rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
+    rightThruster[t].setShouldStopNew(false);
 
     rightThruster[++t].setMax(MAX_TWO);
     rightThruster[t].setInvisible(MAX_TWO-INVISIBLE);
     rightThruster[t].setColour(RED);
     rightThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
-    rightThruster[t].setLifeTime(130);
+    rightThruster[t].setLifeTime(90);
     rightThruster[t].setGravity(GRAVITY);
     rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
+    rightThruster[t].setShouldStopNew(false);
 
     rightThruster[++t].setMax(MAX_THREE);
     rightThruster[t].setInvisible(MAX_THREE-INVISIBLE);
     rightThruster[t].setColour(BLUE);
     rightThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
-    rightThruster[t].setLifeTime(120);
+    rightThruster[t].setLifeTime(80);
     rightThruster[t].setGravity(GRAVITY);
     rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
+    rightThruster[t].setShouldStopNew(false);
 
     /// Setup Ship Sprite
     sprite.loadSprite("images/RocketEscape/rocket.png");
@@ -225,6 +231,34 @@ void Rocket::limitVelocity()
         velocity.y = MAX_VEL_UP;
     else if(velocity.y > MAX_VEL_DN)
         velocity.y = MAX_VEL_DN;
+}
+
+bool Rocket::checkCollectible()
+{
+    float left[2];
+    float right[2];
+    float top[2];
+    float bottom[2];
+    bool collision = true;
+    int xOffset = 4;
+    left[0] = sprite.getX() + xOffset;
+    left[1] = collect->getX();
+    right[0] = left[0] + 64 - xOffset;
+    right[1] = left[1] + collect->getWidth();
+    top[0] = sprite.getY();
+    top[1] = collect->getY();
+    bottom[0] = top[0] + 64;
+    bottom[1] = top[1] + collect->getHeight();
+
+    if (bottom[0] < top[1])
+        collision = false;
+    else if (top[0] > bottom[1])
+        collision = false;
+    else if (right[0] < left[1])
+        collision = false;
+    else if (left[0] > right[1])
+        collision = false;
+    return collision;
 }
 
 void Rocket::setBounds(SDL_Rect bounds)

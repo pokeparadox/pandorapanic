@@ -5,6 +5,7 @@
 #include "Sprite.h"
 #include "Sound.h"
 #include "Emitter.h"
+#include "Collectible.h"
 #include <vector>
 
 namespace RocketConstants
@@ -50,6 +51,7 @@ class Rocket
         void setStartPosition(const Vector2di& pos){startPos = pos;}
         void setFuel(CRfloat f){fuel=f;}
         void setWrapSides(CRbool shouldWrap){wrapSides = shouldWrap;}
+        void linkCollectible(Collectible* c){collect = c;}
         float getFuel()const{return fuel;}
         bool hasLanded()const{return landed;}
         Vector2df getPosition(){return sprite.getPosition();}
@@ -67,14 +69,19 @@ class Rocket
 
         Emitter* getLeftThruster(CRuint i){if(i<=leftThruster.size()-1){return &leftThruster[i];}return NULL;}
         Emitter* getRightThruster(CRuint i){if(i<=rightThruster.size()-1){return &rightThruster[i];}return NULL;}
+
+        bool checkCollectible();
+
     private:
         Vector2df rotatePoint(const Vector2df& toRot,const Vector2df& centre, CRfloat angle);
         void limitVelocity();
+
         void startThrusters(CRbool start);
         vector <Emitter> leftThruster;
         vector <Emitter> rightThruster;
         Vector2df leftRotated;
         Vector2df rightRotated;
+        Collectible* collect;
         Sprite sprite;
         Sound hit;
         Vector2df velocity;

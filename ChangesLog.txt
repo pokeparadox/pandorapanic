@@ -1,3 +1,22 @@
+06 August 2009
+   released version 1.1.1245 of PandoraPanic
+
+     Change log:
+        -Added: Preliminary Collectible item mechanics added to Plander
+
+06 August 2009
+   released version 1.1.1238 of PandoraPanic
+
+     Change log:
+        -Fixed: segfault when using a Rectangle object
+        -Added: Collectible to Plander
+
+01 August 2009
+   released version 1.1.1221 of PandoraPanic
+
+     Change log:
+        -Fixed: Stars animation bug in Plander
+
 22 July 2009
    released version 1.1.1199 of PandoraPanic
 
