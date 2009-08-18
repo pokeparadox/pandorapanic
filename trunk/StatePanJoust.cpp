@@ -203,7 +203,7 @@ void StatePanJoust::render(SDL_Surface *screen)
         }
 
     }
-
+    /* Particle Thingies
     jet.setPosition(Vector2df(hero1.getX() + 20, hero1.getY()+40));
     if (hero1.getDirection() == 0)
     {jet.setGravity(Vector2df(1,0));}
@@ -211,6 +211,7 @@ void StatePanJoust::render(SDL_Surface *screen)
     {jet.setGravity(Vector2df(-1,0));}
 
     jet.render(screen);
+    */
 
     hero1.render(screen);
 
