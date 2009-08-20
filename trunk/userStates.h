@@ -16,6 +16,7 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 #include "StateGameoverOrdered.h"
 #include "StateTitle.h"
 #include "StateMain.h"
+#include "StateArena.h"
 #include "StateBallDrop.h"          //  Zacaj - Catch the ball
 #include "StatePuttPutt.h"
 #include "StateSpaceInvaders.h"     //  pstudio - Shoot the invader
@@ -46,6 +47,7 @@ enum STATE_MODES
 	STATE_TITLE = 2,
 	STATE_MAIN,
 	/// Mini games
+	STATE_ARENA,
 	STATE_BALLDROP,
 	STATE_SPACEINVADERS,
 	STATE_SPELLINGCONTEST,
