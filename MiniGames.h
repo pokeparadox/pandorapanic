@@ -3,12 +3,13 @@
 
 enum
 {
-    MAX_GAMES = 20,              //  The number of minigames we have
+    MAX_GAMES = 21,              //  The number of minigames we have
     EXTRA_LIFE_STAGES = 10,      //  The number of stages we need to pass for an extra life to be added.
     SUBSTATE_TRIGGER = 9
 };
 enum MINIGAMES_LIST
 {
+    GAME_ARENA,
     GAME_BALLDROP=2,
     GAME_SPACEINVADERS,
     GAME_SPELLINGCONTEST,
@@ -36,6 +37,7 @@ enum MINIGAMES_LIST
 
 static string MINIGAMES_NAMES[]=
 {
+    "Arena",
     "BallDrop",
     "Space Invaders",
     "Spelling Contest",

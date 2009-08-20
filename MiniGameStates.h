@@ -13,6 +13,8 @@ You now just need to add your minigames here and it should work!
     else if (next == STATE_MAIN)
         state = new StateMain;
 
+    else if (next == STATE_ARENA)
+        state = new StateArena;
     else if (next == STATE_BALLDROP)
         state = new StateBallDrop;
     else if (next == STATE_SPACEINVADERS)
