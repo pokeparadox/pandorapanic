@@ -43,7 +43,7 @@ void StateMaze::init()
     robotleft.setTransparentColour(MAGENTA);
     robotleft.setFrameRate(DECI_SECONDS);
     */
-    hero.loadSprite("images/Jumper/greencloud.png");
+    hero.loadSprite("images/Maze/hero.png");
     hero.setPosition(64,180);
     hero.setTransparentColour(MAGENTA);
     /*
@@ -70,8 +70,14 @@ void StateMaze::init()
     righthit[i] = 0;
     lefthit[i] = 0;
     downtrigger[i] = 0;
+    willekeur = rand()%5;
+    if (willekeur == 0){cloud[i].loadSprite("images/Maze/purplecloud.png");}
+    else if (willekeur == 1){cloud[i].loadSprite("images/Maze/cloud.png");}
+    else if (willekeur == 2){cloud[i].loadSprite("images/Maze/redcloud.png");}
+    else if (willekeur == 3){cloud[i].loadSprite("images/Maze/greencloud.png");}
+    else if (willekeur == 4){cloud[i].loadSprite("images/Maze/yellowcloud.png");}
 
-    cloud[i].loadSprite("images/Jumper/cloud.png");
+
     cloud[i].setTransparentColour(MAGENTA);
 
 
@@ -87,7 +93,7 @@ void StateMaze::init()
      cloud[4].setPosition(712,264);
      cloud[5].setPosition(712,64);
 
-    goal.loadSprite("images/pp_life.png");
+    goal.loadSprite("images/Maze/goal.png");
     goal.setTransparentColour(MAGENTA);
 
         background0.loadBackground("images/Jumper/jumperbackstripes.png");
@@ -98,14 +104,20 @@ void StateMaze::init()
     inputlimiter.start();
     teller.setMode(SECONDS);
     teller.start();
-    tilesprite.loadSprite("images/Jumper/tile1.png");
+
+        tilesprite[0].loadSprite("images/Maze/mazewire.png");
+        tilesprite[0].setTransparentColour(MAGENTA);
+        tilesprite[1].loadSprite("images/Maze/mazewire2.png");
+        tilesprite[1].setTransparentColour(MAGENTA);
+        tilesprite[2].loadSprite("images/Maze/mazewire3.png");
+        tilesprite[2].setTransparentColour(MAGENTA);
 
     youdead = false;
 
     gamelength = 20;
 
 
-    filename = "scripts/Jumper/maze.map";
+    filename = "scripts/Maze/maze.map";
 
     ifstream tilemap (filename);
 
@@ -129,6 +141,8 @@ void StateMaze::init()
         getline(tilemap,testingy);
         getline(tilemap,tiletype);
         getline(tilemap,withblob);
+
+        bloksprite[j] = rand()%3;
 
         blok[j].setDimensions(32,32);
         blok[j].setPosition(stringToInt(testingx),stringToInt(testingy));
@@ -281,9 +295,25 @@ void StateMaze::onResume()
 
         for (int i = 0; i < tilenumber; i++)
         {
-           tilesprite.setX(blok[i].getX() + blok[i].getXMovement());
-           tilesprite.setY(blok[i].getY() + blok[i].getYMovement());
-           tilesprite.render(screen);
+
+           if (bloksprite[i] == 0)
+           {
+                tilesprite[0].setX(blok[i].getX() + blok[i].getXMovement());
+                tilesprite[0].setY(blok[i].getY() + blok[i].getYMovement());
+                tilesprite[0].render(screen);
+           }
+           else if (bloksprite[i] == 1)
+           {
+               tilesprite[1].setX(blok[i].getX() + blok[i].getXMovement());
+                tilesprite[1].setY(blok[i].getY() + blok[i].getYMovement());
+               tilesprite[1].render(screen);
+               }
+           else if (bloksprite[i] == 2)
+           {
+               tilesprite[2].setX(blok[i].getX() + blok[i].getXMovement());
+                tilesprite[2].setY(blok[i].getY() + blok[i].getYMovement());
+               tilesprite[2].render(screen);
+            }
         }
 
         goal.render(screen);
@@ -321,7 +351,7 @@ void StateMaze::onResume()
         //text.print(screen, blobjump);
         //buttonPrompter.render();
         text.setPosition(30,30);
-        text.print(screen, (gamelength - teller.getScaledTicks()));
+        if (hero.getX() > 96 && hero.getY() > 64){text.print(screen, (gamelength - teller.getScaledTicks()));}
     }
 #else
     void StateMaze::render()
@@ -369,7 +399,8 @@ void StateMaze::onResume()
 
         //text.print(screen, blobjump);
         //buttonPrompter.render();
-        text.render(gamelength - teller.getScaledTicks())
+        if (hero.getX() > 96 && hero.getY() > 64){text.render(gamelength - teller.getScaledTicks());}
+
     }
 #endif
 

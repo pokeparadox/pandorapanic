@@ -74,7 +74,7 @@ class StateMaze : public BaseState
         Timer inputlimiter;
         const char* filename;
         Sprite mysprite;
-        Sprite tilesprite;
+        Sprite tilesprite[10];
         Sprite blobevil;
         Charac cloud[32];
         //AnimatedSprite robotright;
@@ -82,6 +82,7 @@ class StateMaze : public BaseState
         Charac hero;
 
         Tile blok[300];
+        int bloksprite[300];
 
         Music music;
         int downhit[30];
