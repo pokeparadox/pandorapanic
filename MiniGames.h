@@ -9,8 +9,9 @@ enum
 };
 enum MINIGAMES_LIST
 {
+    GAME_PANG=2,
     GAME_ARENA,
-    GAME_BALLDROP=2,
+    GAME_BALLDROP,
     GAME_SPACEINVADERS,
     GAME_SPELLINGCONTEST,
     GAME_BADVISTA,
@@ -37,6 +38,7 @@ enum MINIGAMES_LIST
 
 static string MINIGAMES_NAMES[]=
 {
+    "Pang",
     "Arena",
     "BallDrop",
     "Space Invaders",
