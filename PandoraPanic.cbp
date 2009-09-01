@@ -381,6 +381,12 @@
 		<Unit filename="StatePanJoust.h">
 			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
+		<Unit filename="StatePang.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\" />
+		</Unit>
+		<Unit filename="StatePang.h">
+			<Option virtualFolder="MyGame\States\MiniGames\" />
+		</Unit>
 		<Unit filename="StatePanicAttack.cpp">
 			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
