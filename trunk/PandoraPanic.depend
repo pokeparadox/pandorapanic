@@ -8343,3 +8343,1172 @@
 1249564882 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StatePlander.cpp
 	"StatePlander.h"
 
+1251828321 source:c:\work\projects\pandora\pandorapanic\arena\arenaeffect.cpp
+	"ArenaEffect.h"
+
+1251828321 c:\work\projects\pandora\pandorapanic\arena\arenaeffect.h
+	"AnimatedSprite.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\animatedsprite.h
+	"Image.h"
+	"Timer.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\image.h
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	"Texture.h"
+	<SDL/SDL_rotozoom.h>
+	<SDL/SDL_image.h>
+	<string>
+	<vector>
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+	"Colour.h"
+	"GFX.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\texture.h
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_image.h>
+	"NumberUtility.h"
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+	"GFX.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\numberutility.h
+	<cmath>
+	"PenjinTypes.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\penjintypes.h
+	<string>
+	"trenki/vector_math.h"
+	"Vector2df.h"
+	"Vector2dx.h"
+	"Vector2di.h"
+	"Vector3df.h"
+	"Vector3dx.h"
+	"Vector3di.h"
+	"userTypes.h"
+	"Variable.h"
+
+1250896292 c:\work\projects\pandora\penjinbase\trenki\vector_math.h
+	<cmath>
+
+1250896296 c:\work\projects\pandora\penjinbase\vector2df.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1250896295 c:\work\projects\pandora\penjinbase\penjinfixedfunc.h
+	"trenki/fixed_class.h"
+	"trenki/fixed_func.h"
+	"trenki/vector_math.h"
+
+1250896292 c:\work\projects\pandora\penjinbase\trenki\fixed_class.h
+	"fixed_func.h"
+
+1250896292 c:\work\projects\pandora\penjinbase\trenki\fixed_func.h
+	<stdint.h>
+	"stdint.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\vector2dx.h
+	"trenki/vector_math.h"
+	"trenki/fixed_class.h"
+	<limits>
+
+1250896296 c:\work\projects\pandora\penjinbase\vector2di.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1250896295 c:\work\projects\pandora\penjinbase\vector3df.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1250896296 c:\work\projects\pandora\penjinbase\vector3dx.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1250896295 c:\work\projects\pandora\penjinbase\vector3di.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1251828392 c:\work\projects\pandora\pandorapanic\usertypes.h
+
+1250896295 c:\work\projects\pandora\penjinbase\variable.h
+	"PenjinTypes.h"
+	<string>
+
+1250896296 c:\work\projects\pandora\penjinbase\penjinerrors.h
+	<string>
+
+1250896296 c:\work\projects\pandora\penjinbase\gfx.h
+	"PenjinTypes.h"
+	"Random.h"
+	"StringUtility.h"
+	"Pixel.h"
+	<SDL/SDL_opengl.h>
+	<SDL.h>
+
+1250896296 c:\work\projects\pandora\penjinbase\random.h
+	<ctime>
+	<cstdlib>
+	"PenjinTypes.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\stringutility.h
+	<string>
+	<sstream>
+	<iostream>
+	<algorithm>
+	"PenjinTypes.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\pixel.h
+	"PenjinTypes.h"
+	"Colour.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\colour.h
+	"PenjinTypes.h"
+	<SDL/SDL.h>
+
+1250896296 c:\work\projects\pandora\penjinbase\timer.h
+	<SDL/SDL.h>
+	"PenjinTypes.h"
+
+1251828321 source:c:\work\projects\pandora\pandorapanic\arena\arenaeffectsystem.cpp
+	"ArenaEffectSystem.h"
+
+1251828321 c:\work\projects\pandora\pandorapanic\arena\arenaeffectsystem.h
+	"Arena/ArenaEffect.h"
+
+1251828321 source:c:\work\projects\pandora\pandorapanic\arena\arenaenvironment.cpp
+	"ArenaEnvironment.h"
+
+1251828321 c:\work\projects\pandora\pandorapanic\arena\arenaenvironment.h
+	"Background.h"
+	"CollisionMap.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\background.h
+	"Image.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\collisionmap.h
+	"Image.h"
+	"GFX.h"
+
+1251828321 source:c:\work\projects\pandora\pandorapanic\arena\arenahero.cpp
+	"ArenaHero.h"
+
+1251828321 c:\work\projects\pandora\pandorapanic\arena\arenahero.h
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"SimpleJoy.h"
+	"HitRegion.h"
+	"ArenaEnvironment.h"
+	"Sound.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\sprite.h
+	"Image.h"
+	"PenjinTypes.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\simplejoy.h
+	"PenjinTypes.h"
+	"KeyMapper.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\keymapper.h
+	"KeyMapSDLKey.h"
+	"KeyMapMouseButton.h"
+	"KeyMapMouseAxis.h"
+	"KeyMapJoyButton.h"
+	"KeyMapJoyAxis.h"
+	"KeyMapDigitalJoyAxis.h"
+	"KeyMapHat.h"
+	"Parser.h"
+	<vector>
+
+1250896295 c:\work\projects\pandora\penjinbase\keymapsdlkey.h
+	"KeyMap.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\keymap.h
+	"KeyboardDefines.h"
+	"PenjinTypes.h"
+	<string>
+
+1250896296 c:\work\projects\pandora\penjinbase\keyboarddefines.h
+	<SDL/SDL.h>
+
+1250896295 c:\work\projects\pandora\penjinbase\keymapmousebutton.h
+	"KeyMap.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\keymapmouseaxis.h
+	"KeyMap.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\keymapjoybutton.h
+	"KeyMap.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\keymapjoyaxis.h
+	"KeyMap.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\keymapdigitaljoyaxis.h
+	"KeyMap.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\keymaphat.h
+	"KeyMap.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\parser.h
+	<string>
+	<iostream>
+	<fstream>
+	<sstream>
+	<queue>
+	"Command.h"
+	"TextDoc.h"
+	"StringUtility.h"
+	"ErrorHandler.h"
+	"KeyWord.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\command.h
+	<vector>
+	"Variable.h"
+	"PenjinTypes.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\textdoc.h
+	<string>
+	<vector>
+	<fstream>
+	<iostream>
+	"ErrorHandler.h"
+	"PenjinTypes.h"
+	"Memwatch.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\errorhandler.h
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<string>
+	"PenjinErrors.h"
+	"PenjinTypes.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\keyword.h
+	"PenjinTypes.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\hitregion.h
+	"Sprite.h"
+	"Rectangle.h"
+	"CollisionMap.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\rectangle.h
+	"PenjinTypes.h"
+	"Colour.h"
+	"GFX.h"
+	<SDL/SDL_opengl.h>
+
+1250896296 c:\work\projects\pandora\penjinbase\sound.h
+	<SDL/SDL.h>
+	<SDL/SDL_mixer.h>
+	<string>
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+
+1251828321 source:c:\work\projects\pandora\pandorapanic\arena\arenamonster.cpp
+	"ArenaMonster.h"
+
+1251828321 c:\work\projects\pandora\pandorapanic\arena\arenamonster.h
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"HitRegion.h"
+	"ArenaEnvironment.h"
+	"ArenaEffectSystem.h"
+
+1251828321 source:c:\work\projects\pandora\pandorapanic\arena\arenamonsterlist.cpp
+	"ArenaMonsterList.h"
+
+1251828321 c:\work\projects\pandora\pandorapanic\arena\arenamonsterlist.h
+	"Background.h"
+	"Arena/ArenaMonster.h"
+	"Arena/ArenaEnvironment.h"
+	"Arena/ArenaEffectSystem.h"
+	"HitRegion.h"
+	"Sound.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\buttonprompter.cpp
+	"ButtonPrompter.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\buttonprompter.h
+	"Sprite.h"
+	"MMUHack.h"
+	"Timer.h"
+	<vector>
+
+1250896295 c:\work\projects\pandora\penjinbase\mmuhack.h
+	<unistd.h>
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<fcntl.h>
+	<sys/time.h>
+	<sys/mman.h>
+	"mmuhack/flush_uppermem_cache.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\mmuhack\flush_uppermem_cache.h
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\mygame.cpp
+	"MyGame.h"
+	"MiniGameStates.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\mygame.h
+	"Engine.h"
+	"SimpleJoy.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\engine.h
+	"PenjinIncludes.h"
+	"StringUtility.h"
+	"GFX.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\penjinincludes.h
+	<gccore.h>
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	"version.h"
+	"PenjinStates.h"
+	"PenjinTypes.h"
+	"ErrorHandler.h"
+	"StringUtility.h"
+	"SimpleJoy.h"
+	<string>
+	<iostream>
+	<fstream>
+	"Timer.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\version.h
+
+1250896295 c:\work\projects\pandora\penjinbase\penjinstates.h
+	"BaseState.h"
+	"Memwatch.h"
+	"userStates.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\basestate.h
+	<vector>
+	"PenjinTypes.h"
+	"SimpleJoy.h"
+	"GFX.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+
+1251828668 c:\work\projects\pandora\pandorapanic\userstates.h
+	"BaseState.h"
+	"StateCredits.h"
+	"StateGameover.h"
+	"StateGameoverOrdered.h"
+	"StateTitle.h"
+	"StateMain.h"
+	"StatePang.h"
+	"StateArena.h"
+	"StateBallDrop.h"
+	"StatePuttPutt.h"
+	"StateSpaceInvaders.h"
+	"StateSpellingContest.h"
+	"StateBadVista.h"
+	"StateDistractedMath.h"
+	"StatePunchWrestler.h"
+	"StateDoubleNubTrouble.h"
+	"StateReflex.h"
+	"StateOneButtonBandit.h"
+	"StatePong.h"
+	"StatePanicAttack.h"
+	"StatePanJoust.h"
+	"StateJumper.h"
+	"StateRotDef.h"
+	"StateMemoryBlocks.h"
+	"StateSnatchABeer.h"
+	"StateTheCountJob.h"
+	"StateFire.h"
+	"StateTileEditor.h"
+	"StateBarrelRoll.h"
+	"StatePlander.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statecredits.h
+	"userStates.h"
+	"version.h"
+	"Background.h"
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"Music.h"
+	"Text.h"
+	"Timer.h"
+	"Random.h"
+	"Colour.h"
+	"BackBuffer.h"
+	"Emitter.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\music.h
+	<SDL/SDL.h>
+	<SDL/SDL_mixer.h>
+	<string>
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\text.h
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_ttf.h>
+	"Texture.h"
+	<SDL/SDL_ttf.h>
+	<string>
+	"PenjinTypes.h"
+	"Colour.h"
+	"StringUtility.h"
+	"PenjinErrors.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\backbuffer.h
+	"Pixel.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\emitter.h
+	"AnimatedParticle.h"
+	"SpriteParticle.h"
+	"Particle.h"
+	"Random.h"
+	<vector>
+
+1250896295 c:\work\projects\pandora\penjinbase\animatedparticle.h
+	"Particle.h"
+	"AnimatedSprite.h"
+	"Random.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\particle.h
+	"PenjinTypes.h"
+	"Colour.h"
+	"Timer.h"
+	"Random.h"
+	<cmath>
+	"Pixel.h"
+	<SDL/SDL_opengl.h>
+
+1250896296 c:\work\projects\pandora\penjinbase\spriteparticle.h
+	"Particle.h"
+	"Sprite.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\stategameover.h
+	"userStates.h"
+	"ScoreScreen.h"
+	"Background.h"
+	"Text.h"
+	"Sound.h"
+	"Music.h"
+	"BackBuffer.h"
+	"Random.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\scorescreen.h
+	"HiScore.h"
+	"Emitter.h"
+	"Text.h"
+	"PenjinErrors.h"
+	<vector>
+
+1250896295 c:\work\projects\pandora\penjinbase\hiscore.h
+	<string>
+	<sstream>
+	<iostream>
+	<fstream>
+	"PenjinErrors.h"
+	"PenjinTypes.h"
+	"Text.h"
+	"TextDoc.h"
+	"Encryption.h"
+	"StringUtility.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\encryption.h
+	<string>
+	"Random.h"
+	"NumberUtility.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\stategameoverordered.h
+	"userStates.h"
+	"ScoreScreen.h"
+	"Background.h"
+	"Text.h"
+	"Sound.h"
+	"Music.h"
+	"BackBuffer.h"
+	"Random.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statetitle.h
+	"userStates.h"
+	"Menu.h"
+	"Music.h"
+	"Emitter.h"
+	"Background.h"
+	"Sprite.h"
+	"AnimatedSprite.h"
+	"Random.h"
+	"Timer.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\menu.h
+	<vector>
+	"MenuItem.h"
+	"StringMenuItem.h"
+	"AnimationStringMenuItem.h"
+	"AnimationMenuItem.h"
+	"ImageMenuItem.h"
+	"ImageStringMenuItem.h"
+	"PenjinErrors.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\menuitem.h
+	"PenjinTypes.h"
+	<SDL/SDL.h>
+
+1250896296 c:\work\projects\pandora\penjinbase\stringmenuitem.h
+	"Text.h"
+	"MenuItem.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\animationstringmenuitem.h
+	"AnimationMenuItem.h"
+	"StringMenuItem.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\animationmenuitem.h
+	"MenuItem.h"
+	"AnimatedSprite.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\imagemenuitem.h
+	"MenuItem.h"
+	"Image.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\imagestringmenuitem.h
+	"ImageMenuItem.h"
+	"StringMenuItem.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statemain.h
+	"userStates.h"
+	"MiniGames.h"
+	"Random.h"
+	"Sprite.h"
+	"Colour.h"
+	"Music.h"
+
+1251828605 c:\work\projects\pandora\pandorapanic\minigames.h
+
+1251040073 c:\work\projects\pandora\pandorapanic\statepang.h
+	"userStates.h"
+	"ButtonPrompter.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statearena.h
+	"userStates.h"
+	"Arena/ArenaEnvironment.h"
+	"Arena/ArenaEffectSystem.h"
+	"Arena/ArenaHero.h"
+	"HitRegion.h"
+	"Arena/ArenaMonsterList.h"
+	"Music.h"
+	"Sprite.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\stateballdrop.h
+	"userStates.h"
+	"ButtonPrompter.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\stateputtputt.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"Emitter.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statespaceinvaders.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"Emitter.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\statespellingcontest.h
+	"userStates.h"
+	"Background.h"
+	"TextDoc.h"
+	"AnimatedSprite.h"
+	"Music.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\statebadvista.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	<vector>
+	"ButtonPrompter.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statedistractedmath.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statepunchwrestler.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"trabitboy/agroState.h"
+	"trabitboy/punchState.h"
+	"trabitboy/winState.h"
+	"trabitboy/loseState.h"
+
+1251828390 c:\work\projects\pandora\pandorapanic\trabitboy\agrostate.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"SimpleJoy.h"
+	"trabitboy/userActionEnum.h"
+
+1251828390 c:\work\projects\pandora\pandorapanic\trabitboy\activegamesubstate.h
+	<SDL/SDL.h>
+	"SimpleJoy.h"
+	"trabitboy/blowEnum.h"
+
+1251828390 c:\work\projects\pandora\pandorapanic\trabitboy\blowenum.h
+
+1251828390 c:\work\projects\pandora\pandorapanic\trabitboy\useractionenum.h
+
+1251828390 c:\work\projects\pandora\pandorapanic\trabitboy\punchstate.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"Sound.h"
+
+1251828390 c:\work\projects\pandora\pandorapanic\trabitboy\winstate.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"SimpleJoy.h"
+	"Music.h"
+
+1251828390 c:\work\projects\pandora\pandorapanic\trabitboy\losestate.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"SimpleJoy.h"
+	"Music.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statedoublenubtrouble.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\statereflex.h
+	"userStates.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\stateonebuttonbandit.h
+	"userStates.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statepong.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statepanicattack.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"Text.h"
+	"Random.h"
+	<vector>
+	"StatePanicAttackButtonsEvents.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statepanicattackbuttonsevents.h
+	"Sprite.h"
+	"Timer.h"
+	"Music.h"
+	"ButtonPrompter.h"
+	<vector>
+
+1251828392 c:\work\projects\pandora\pandorapanic\statepanjoust.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+	"ButtonPrompter.h"
+	"PanJoust/HeroBird.h"
+	"Emitter.h"
+
+1251828390 c:\work\projects\pandora\pandorapanic\panjoust\herobird.h
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"Sound.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\statejumper.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+	"Jumper/Tile.h"
+	"ButtonPrompter.h"
+
+1251828322 c:\work\projects\pandora\pandorapanic\jumper\tile.h
+
+1251828392 c:\work\projects\pandora\pandorapanic\staterotdef.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"Sound.h"
+	"LUT.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\lut.h
+	"PenjinTypes.h"
+	<cmath>
+
+1251828392 c:\work\projects\pandora\pandorapanic\statememoryblocks.h
+	"userStates.h"
+	"Background.h"
+	"Image.h"
+	"Sprite.h"
+	"AnimatedSprite.h"
+	<vector>
+	<string>
+
+1251828392 c:\work\projects\pandora\pandorapanic\statesnatchabeer.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\statethecountjob.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\statefire.h
+	"userStates.h"
+	<vector>
+	"LUT.h"
+	"Background.h"
+	"Emitter.h"
+	"Sprite.h"
+	"MMUHack.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statetileeditor.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+	"Jumper/Tile.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\statebarrelroll.h
+	"userStates.h"
+	"AnimatedSprite.h"
+	"Background.h"
+
+1251828392 c:\work\projects\pandora\pandorapanic\stateplander.h
+	"userStates.h"
+	"RocketEscape/Rocket.h"
+	"RocketEscape/LandingPad.h"
+	"RocketEscape/Collectible.h"
+	"ParticleMirror.h"
+	"Music.h"
+	"Rectangle.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\rocketescape\rocket.h
+	"LUT.h"
+	"Sprite.h"
+	"Sound.h"
+	"Emitter.h"
+	"Collectible.h"
+	<vector>
+
+1251828391 c:\work\projects\pandora\pandorapanic\rocketescape\collectible.h
+	"AnimatedSprite.h"
+	"Random.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\rocketescape\landingpad.h
+	"RocketEscape/Rocket.h"
+	"ParticleMirror.h"
+	"AnimatedSprite.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\particlemirror.h
+	"ParticleCollider.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\particlecollider.h
+	"Emitter.h"
+
+1251828631 c:\work\projects\pandora\pandorapanic\minigamestates.h
+	"userStates.h"
+
+1251828390 source:c:\work\projects\pandora\pandorapanic\panjoust\herobird.cpp
+	"PanJoust/HeroBird.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\rocketescape\collectible.cpp
+	"Collectible.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\rocketescape\landingpad.cpp
+	"LandingPad.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\rocketescape\rocket.cpp
+	"Rocket.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\segway.cpp
+	"SegWay.h"
+
+1251828391 c:\work\projects\pandora\pandorapanic\segway.h
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statearena.cpp
+	"StateArena.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statebadvista.cpp
+	"StateBadVista.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\stateballdrop.cpp
+	"StateBallDrop.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\statebarrelroll.cpp
+	"StateBarrelRoll.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statecredits.cpp
+	"StateCredits.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statedistractedmath.cpp
+	"StateDistractedMath.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statedoublenubtrouble.cpp
+	"StateDoubleNubTrouble.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statefire.cpp
+	"StateFire.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\stategameover.cpp
+	"StateGameover.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\stategameoverordered.cpp
+	"StateGameover.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statejumper.cpp
+	"StateJumper.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statemain.cpp
+	"StateMain.h"
+	"MiniGameStates.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statememoryblocks.cpp
+	"StateMemoryBlocks.h"
+	"Image.h"
+	<cmath>
+	<string>
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\stateonebuttonbandit.cpp
+	"StateOneButtonBandit.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statepanjoust.cpp
+	"StatePanJoust.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statepanicattack.cpp
+	"StatePanicAttack.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\statepanicattackbuttonsevents.cpp
+	"StatePanicAttackButtonsEvents.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\stateplander.cpp
+	"StatePlander.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statepong.cpp
+	"StatePong.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statepunchwrestler.cpp
+	"StatePunchWrestler.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\stateputtputt.cpp
+	"StatePuttPutt.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statereflex.cpp
+	"StateReflex.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\staterotdef.cpp
+	"StateRotDef.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\statesnatchabeer.cpp
+	"StateSnatchABeer.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statespaceinvaders.cpp
+	"StateSpaceInvaders.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statespellingcontest.cpp
+	"StateSpellingContest.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statethecountjob.cpp
+	"StateTheCountJob.h"
+
+1251828391 source:c:\work\projects\pandora\pandorapanic\statetileeditor.cpp
+	"StateTileEditor.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\statetitle.cpp
+	"StateTitle.h"
+
+1251828392 source:c:\work\projects\pandora\pandorapanic\_main.cpp
+	"MyGame.h"
+
+1251828390 source:c:\work\projects\pandora\pandorapanic\trabitboy\agrostate.cpp
+	"agroState.h"
+	"StatePunchWrestler.h"
+
+1251828390 source:c:\work\projects\pandora\pandorapanic\trabitboy\losestate.cpp
+	"loseState.h"
+	"StatePunchWrestler.h"
+	"userStates.h"
+
+1251828390 source:c:\work\projects\pandora\pandorapanic\trabitboy\punchstate.cpp
+	"punchState.h"
+	"StatePunchWrestler.h"
+
+1251828390 source:c:\work\projects\pandora\pandorapanic\trabitboy\winstate.cpp
+	"winState.h"
+	"StatePunchWrestler.h"
+	"userStates.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\animatedparticle.cpp
+	"AnimatedParticle.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\animatedsprite.cpp
+	"AnimatedSprite.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\animation.cpp
+	"Animation.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\animation.h
+	"Image.h"
+	"Timer.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\animationmenuitem.cpp
+	"AnimationMenuItem.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\animationstringmenuitem.cpp
+	"AnimationStringMenuItem.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\backbuffer.cpp
+	"BackBuffer.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\background.cpp
+	"Background.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\basestate.cpp
+	"BaseState.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\collisionmap.cpp
+	"CollisionMap.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\colour.cpp
+	"Colour.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\command.cpp
+
+1250896296 source:c:\work\projects\pandora\penjinbase\emitter.cpp
+	"Emitter.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\encryption.cpp
+	"Encryption.h"
+
+1251666131 source:c:\work\projects\pandora\penjinbase\engine.cpp
+	"Engine.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\gfx.cpp
+	"GFX.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\hiscore.cpp
+	"HiScore.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\hitregion.cpp
+	"HitRegion.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\image.cpp
+	"Image.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\imagemenuitem.cpp
+	"ImageMenuItem.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\imagestringmenuitem.cpp
+	"ImageStringMenuItem.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\intvector2d.cpp
+	"IntVector2d.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\intvector2d.h
+	<cmath>
+	"PenjinTypes.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\keymap.cpp
+	"KeyMap.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\keymapdigitaljoyaxis.cpp
+	"KeyMapDigitalJoyAxis.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\keymaphat.cpp
+	"KeyMapHat.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\keymapjoyaxis.cpp
+	"KeyMapJoyAxis.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\keymapjoybutton.cpp
+	"KeyMapJoyButton.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\keymapmouseaxis.cpp
+	"KeyMapMouseAxis.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\keymapmousebutton.cpp
+	"KeyMapMouseButton.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\keymapsdlkey.cpp
+	"KeyMapSDLKey.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\keymapper.cpp
+	"KeyMapper.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\lut.cpp
+	"LUT.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\mmuhack.cpp
+	"MMUHack.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\menu.cpp
+	"Menu.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\menuitem.cpp
+	"MenuItem.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\music.cpp
+	"Music.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\numberutility.cpp
+	"NumberUtility.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\parser.cpp
+	"Parser.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\particle.cpp
+	"Particle.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\particlecollider.cpp
+	"ParticleCollider.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\particlekiller.cpp
+	"ParticleKiller.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\particlekiller.h
+	"ParticleCollider.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\particlemirror.cpp
+	"ParticleMirror.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\penjinfixedfunc.cpp
+	"PenjinFixedFunc.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\pixel.cpp
+	"Pixel.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\random.cpp
+	"Random.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\rectangle.cpp
+	"Rectangle.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\score.cpp
+	"Score.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\score.h
+	"PenjinTypes.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\scorescreen.cpp
+	"ScoreScreen.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\screenpartition.cpp
+	"ScreenPartition.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\screenpartition.h
+	"PenjinTypes.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\simplejoy.cpp
+	"SimpleJoy.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\sound.cpp
+	"Sound.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\sprite.cpp
+	"Sprite.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\spriteparticle.cpp
+	"SpriteParticle.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\starfield.cpp
+	"StarField.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\starfield.h
+	"Emitter.h"
+	<vector>
+
+1250896295 source:c:\work\projects\pandora\penjinbase\stringmenuitem.cpp
+	"StringMenuItem.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\stringutility.cpp
+	"StringUtility.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\text.cpp
+	"Text.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\textdoc.cpp
+	"TextDoc.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\texture.cpp
+	"Texture.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\tilemap.cpp
+	"TileMap.h"
+
+1250896296 c:\work\projects\pandora\penjinbase\tilemap.h
+	"Image.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\timer.cpp
+	"Timer.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\variable.cpp
+	"Variable.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\vector2df.cpp
+	"Vector2df.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\vector2di.cpp
+	"Vector2di.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\vector2dx.cpp
+	"Vector2dx.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\vector3d.cpp
+	"Vector3d.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\vector3d.h
+	<cmath>
+	<SDL/SDL_opengl.h>
+	"PenjinTypes.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\vector3df.cpp
+	"Vector3df.h"
+
+1250896295 source:c:\work\projects\pandora\penjinbase\vector3di.cpp
+	"Vector3di.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\vector3dx.cpp
+	"Vector3dx.h"
+
+1250896296 source:c:\work\projects\pandora\penjinbase\wiijoy.cpp
+	"WiiJoy.h"
+
+1250896295 c:\work\projects\pandora\penjinbase\wiijoy.h
+	<wiiuse/wpad.h>
+	<SDL/SDL.h>
+
+1250897723 source:c:\work\projects\pandora\penjinbase\trenki\fixed_func.cpp
+	"fixed_func.h"
+	"fixsintab.h"
+
+1250896292 c:\work\projects\pandora\penjinbase\trenki\fixsintab.h
+
+1251739166 source:c:\work\projects\pandora\pandorapanic\statepang.cpp
+	"StatePang.h"
+	<vector>
+	<algorithm>
+	<math.h>
+
