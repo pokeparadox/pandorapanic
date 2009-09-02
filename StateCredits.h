@@ -1,6 +1,6 @@
 #ifndef STATECREDITS_H
 #define STATECREDITS_H
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
 Staff Roll/credits
 */

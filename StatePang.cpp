@@ -3,11 +3,14 @@
 #include <vector>
 #include <algorithm>
 #include <math.h>
-
+#include <assert.h>
 #ifdef PENJIN_SDL
 #define GET_SCREEN( ) ( screen )
 #else
 #define GET_SCREEN( )
+#endif
+#ifndef _MAX_PATH
+#define _MAX_PATH  128
 #endif
 
 // Put all my code in a name space as I create my own custom types like Sprite that conflicts with stuff elsewhere.
@@ -182,7 +185,7 @@ namespace PangMiniGame
         {
             if ( AlphaMultiplier == rhs.AlphaMultiplier )
             {
-                return ( stricmp( Filename, rhs.Filename ) == 0 );
+                return ( strcmp( Filename, rhs.Filename ) == 0 );
             }
             else
             {
