@@ -1,6 +1,6 @@
 #ifndef MINIGAMESTATES_H_INCLUDED
 #define MINIGAMESTATES_H_INCLUDED
-#include "userStates.h"
+#include "PenjinStates.h"
 /*
 This file is just to stop reduncy in StateManagement and preview rendering.
 You now just need to add your minigames here and it should work!
@@ -59,6 +59,8 @@ You now just need to add your minigames here and it should work!
         state = new StateTheCountJob;
     else if (next == STATE_FIRE)
         state = new Fire;
+    else if (next == STATE_ARENA)
+        state = new StateArena;
     /*else if(next == STATE_ROCKETESCAPE)
         state = new StateRocketEscape;*/
     else if (next == STATE_PUTTPUTT)

@@ -1,7 +1,7 @@
 #ifndef STATETITLE_H
 #define STATETITLE_H
 
-#include "userStates.h"
+#include "PenjinStates.h"
 
 /*
 This state is the PandoraPanic minigame selectiom screen

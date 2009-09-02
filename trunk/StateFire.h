@@ -14,10 +14,12 @@
     #include "MMUHack.h"
 #endif
 
+#define     FIRE_DEBUG                  1
+
 #define     FIRE_MAX_ACCEL              0.7f
 #define     FIRE_GRAVITY                0.5f
-#define     FIRE_MAX_VEL_UP             -10.5f
-#define     FIRE_MAX_VEL_DN             8.2f
+#define     FIRE_MAX_VEL_UP             -10.0f
+#define     FIRE_MAX_VEL_DN             8.0f
 #ifdef PENJIN_FIXED
 #define     FIRE_MAX_ANGLE              (Fixed)(45)
 #else
@@ -34,14 +36,14 @@
 #define     FIRE_MAX_WATER		        100
 #define     FIRE_MAX_WATERUSE	        1
 #define     FIRE_MAX_WATERSHOT	        1
-#define     FIRE_MAX_WATERPARTS         1000
-#define     FIRE_MAX_SMOKEPARTS         1000
+#define     FIRE_MAX_WATERPARTS         2000
+#define     FIRE_MAX_SMOKEPARTS         2000
 #define     FIRE_MAX_FIRESIZE	        100
 #define     FIRE_MAX_FIRESHOT	        5
 #define     FIRE_MAX_FIREREGEN	        5
-#define     FIRE_MAX_FIRETIMER	        100
+#define     FIRE_MAX_FIRETIMER	        10 //100
 #define     FIRE_MAX_FLOORLIFE	        100
-#define     FIRE_MAX_BURNTIMER	        100
+#define     FIRE_MAX_BURNTIMER	        10 // 100
 
 #define     FIRE_SPRITE_FIRE_ROWS       3
 #define     FIRE_SPRITE_FIRE_FRAMES     4
@@ -63,6 +65,7 @@ struct sFire {
 	int16_t x, y;
 	int8_t	size;
 	int8_t	regentimer;
+	int8_t  frame;
 };
 
 struct sTower {
@@ -70,8 +73,7 @@ struct sTower {
 	vector<int8_t>  floors;
 	int8_t          burntimer;
 	sFire           fire;
-    Emitter	        smokeblack;
-    Emitter	        smokewhite;
+    Emitter	        smoke;
 };
 
 struct sCannon {
@@ -80,6 +82,8 @@ struct sCannon {
 	uint8_t	water;
 	bool	shooting;
 	bool	moving;
+    Vector2df velocity;
+    Vector2df acceleration;
 };
 
 
@@ -109,16 +113,22 @@ class Fire : public BaseState
     private:
         Text                text;
         Text                pauseText;
+        Text                debugText;
         Emitter             water;
         Background			background;
         Sprite				sprCannon;
         Image				imgFire;
         Image				imgFloor;
         sCannon             cannon;
-        sTower              towers[FIRE_MAX_TOWERS];;
+        sTower              towers[FIRE_MAX_TOWERS];
         bool moving;
         bool shooting;
 
+#if FIRE_DEBUG
+        #define DEBUG_STRING_MAX 100
+        char debug_firestats[FIRE_MAX_TOWERS][DEBUG_STRING_MAX];
+        char debug_floorstats[FIRE_MAX_TOWERS][DEBUG_STRING_MAX];
+#endif
         void SetupGame( int8_t lvl );
         results_t CheckGameConditions( void );
         int8_t GameResult( results_t result );
@@ -129,9 +139,15 @@ class Fire : public BaseState
 #ifdef PENJIN_SDL
         void RenderFloorsAndFires( SDL_Surface* screen );
         void RenderCannon( SDL_Surface* screen );
+    #if FIRE_DEBUG
+        void RenderDebug( SDL_Surface* screen );
+    #endif
 #else
         void RenderFloorsAndFires( void );
         void RenderCannon( void );
+    #if FIRE_DEBUG
+        void RenderDebug( void );
+    #endif
 #endif
 };
 
