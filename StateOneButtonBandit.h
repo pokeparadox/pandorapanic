@@ -87,6 +87,7 @@ class StateOneButtonBandit : public BaseState
         Timer inputlimiter; //timer for the pause functionality
 
         Background background;
+        Image shading;
 
         bool win, waitForButtonLift;
         int shapes, currentColumn, currentState;
