@@ -47,7 +47,7 @@ void OBBColumn::initColumn(OBBShapes &s, OBBColumnConfig &c, float r, int x) {
     sprites = s;
     config = c;
     xPos = x;
-    alpha = 255;
+    // alpha = 255;
     rateAdditive = r;
     active = false;
 
@@ -60,7 +60,7 @@ void OBBColumn::initColumn(OBBShapes &s, OBBColumnConfig &c, float r, int x) {
     // And the button to push
     button.loadSprite("images/OneButtonBandit/button.png");
     button.setPosition(xPos + config.shapeX*0.5f - 15, 400);
-    button.setAlpha(200);
+    // button.setAlpha(200);
 
     // Populate our list with random shapes
     shapeNode = lastShapeNode = finalMatchNode = tempNode = NULL;
@@ -72,9 +72,6 @@ void OBBColumn::initColumn(OBBShapes &s, OBBColumnConfig &c, float r, int x) {
             lastShapeNode->shape = config.matchShape;
         }
     }
-
-    text.loadFont("font/chromo.ttf", 48);
-    text.setColour(Colour(RED));
 }
 
 void OBBColumn::deleteLeadNode() {
@@ -147,12 +144,12 @@ void OBBColumn::render(SDL_Surface * screen) {
     // and might have to wait until I'm using a 3d surface.
     // Possibly telling SDL exactly what the sprites are instead of letting
     // it guess would make this quick enough.
-    if (moveY > 12) {
-        alpha = 255 - moveY + 6;
-    }
-    else {
-        alpha = 255;
-    }
+    // if (moveY > 12) {
+    //     alpha = 255 - moveY + 6;
+    // }
+    // else {
+    //     alpha = 255;
+    // }
 
     // Render ourselves some sprites
     tempNode = shapeNode;
@@ -160,7 +157,7 @@ void OBBColumn::render(SDL_Surface * screen) {
         // Don't render anything that isn't on the screen
         if (tempNode->yPos + config.shapeY > 0) {
             sprites.getSprite(tempNode->shape, false).setPosition(xPos, tempNode->yPos);
-            sprites.getSprite(tempNode->shape, false).setAlpha(alpha);
+            // sprites.getSprite(tempNode->shape, false).setAlpha(alpha);
             sprites.getSprite(tempNode->shape, false).render(screen);
         }
         tempNode = tempNode->next;
@@ -182,12 +179,12 @@ void OBBColumn::render()
     // and might have to wait until I'm using a 3d surface.
     // Possibly telling SDL exactly what the sprites are instead of letting
     // it guess would make this quick enough.
-    if (moveY > 12) {
-        alpha = 255 - moveY + 6;
-    }
-    else {
-        alpha = 255;
-    }
+    // if (moveY > 12) {
+    //     alpha = 255 - moveY + 6;
+    // }
+    // else {
+    //     alpha = 255;
+    // }
 
     // Render ourselves some sprites
     tempNode = shapeNode;
@@ -195,7 +192,7 @@ void OBBColumn::render()
         // Don't render anything that isn't on the screen
         if (tempNode->yPos + config.shapeY > 0) {
             sprites.getSprite(tempNode->shape, false).setPosition(xPos, tempNode->yPos);
-            sprites.getSprite(tempNode->shape, false).setAlpha(alpha);
+            // sprites.getSprite(tempNode->shape, false).setAlpha(alpha);
             sprites.getSprite(tempNode->shape, false).render();
         }
         tempNode = tempNode->next;
@@ -328,6 +325,7 @@ void StateOneButtonBandit::init() {
     currentGlobalRate = 0.0;
 
     // Get the difficulty setting
+    float scale = 0.0f;
     switch(variables[2].getInt()) {
         case 0 ... 10:
             config.numberOfShapes = 3;
@@ -335,17 +333,20 @@ void StateOneButtonBandit::init() {
             maxGlobalRate = 1.6f;
             break;
 
-        case 11 ... 20:
+        case 11 ... 25:
+            scale = (variables[2].getInt() - 11)/50.0f;
             config.numberOfShapes = 4;
-            startGlobalRate = 1.3f;
-            maxGlobalRate = 2.0f;
+            startGlobalRate = 1.3f + scale;
+            maxGlobalRate = 2.0f + scale;
             break;
 
-        case 26 ... 100:
+        default:
+            scale = (variables[2].getInt() - 25)/100.0f;
             config.numberOfShapes = 5;
-            startGlobalRate = 1.6f;
-            maxGlobalRate = 2.5f;
+            startGlobalRate = 1.6f + scale;
+            maxGlobalRate = 2.5f + scale;
             break;
+
     }
 
     // Load up each of the images to be displayed
@@ -381,10 +382,10 @@ void StateOneButtonBandit::init() {
 
     // Load the background graphic
     background.loadBackground("images/OneButtonBandit/background.png");
+    shading.loadImageNoKey("images/OneButtonBandit/shading.png");
 
     // Load the sound effects
-    if(variables.size()<SUBSTATE_TRIGGER)
-    {
+    if(variables.size() < SUBSTATE_TRIGGER) {
         coin.loadSound("sounds/OneButtonBandit/coin.ogg");
         click.loadSound("sounds/OneButtonBandit/click.ogg");
         chime.loadSound("sounds/OneButtonBandit/chime.ogg");
@@ -393,7 +394,6 @@ void StateOneButtonBandit::init() {
         tumbler.setLoops(100);
 
         // Background music
-
         music.loadMusic("music/OneButtonBandit/OneArm.ogg");
         music.setLooping(false);
         music.play();
@@ -401,6 +401,7 @@ void StateOneButtonBandit::init() {
         // Start with the coin effect
         coin.play();
     }
+
     // System debug text
     text.loadFont("font/foo.ttf", 28);
     text.setColour(Colour(BLUE));
@@ -453,8 +454,8 @@ if(!isPaused)
                 // Go straight to endgame mode
                 switch (currentColumn) {
                     case 0: leftColumn.instantStop(); break;
-                    case 1: leftColumn.instantStop(); break;
-                    case 2: leftColumn.instantStop(); break;
+                    case 1: centreColumn.instantStop(); break;
+                    case 2: rightColumn.instantStop(); break;
                 }
                 win = false;
                 currentState = 4;
@@ -471,6 +472,7 @@ void StateOneButtonBandit::render(SDL_Surface *screen)
     leftColumn.render(screen);
     centreColumn.render(screen);
     rightColumn.render(screen);
+    shading.renderImage(screen, 0, 0);
 }
 
 void StateOneButtonBandit::pauseScreen(SDL_Surface* screen)
@@ -496,6 +498,7 @@ void StateOneButtonBandit::pauseScreen(SDL_Surface* screen)
         leftColumn.render();
         centreColumn.render();
         rightColumn.render();
+        shading.renderImage(0, 0);
     }
 
     void StateOneButtonBandit::pauseScreen()
