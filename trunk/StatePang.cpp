@@ -17,31 +17,34 @@
 namespace PangMiniGame
 {
     // Dimensions of Pandora screen, could probably get these elsewhere?
-    static const float  kSCREEN_WIDTH                   = 800.f;
-    static const float  kSCREEN_HEIGHT                  = 480.f;
+    static const float  kSCREEN_WIDTH                           = 800.f;
+    static const float  kSCREEN_HEIGHT                          = 480.f;
 
     // Where the ground/floor is in the level.
-    static const float  kFLOOR                          = 440.f;
+    static const float  kFLOOR                                  = 440.f;
 
     // Gravity, measured in, err.... pixels per second?
-    static const float  kGRAVITY                        = 600.f;
+    static const float  kGRAVITY                                = 600.f;
 
     // How high the balls should bounce.
-    const static int    kMAX_HEIGHTS[ 5 ]               = { 400, 345, 290, 235, 180 };
+    const static int    kMAX_HEIGHTS[ 5 ]                       = { 400, 345, 290, 235, 180 };
 
     // How fast the player can walk.
-    static const float  kPLAYER_SPEED                   = 250.f;
+    static const float  kPLAYER_SPEED                           = 250.f;
 
     // How fast the spear travels once fired.
-    static const float  kSPEAR_SPEED                    = 10.f;
+    static const float  kSPEAR_SPEED                            = 10.f;
 
     // How long spears stay attached to ceiling for.
-    static const float  kSPEAR_HOLD_TIME                = 0.1;
+    static const float  kSPEAR_HOLD_TIME                        = 0.1;
+
+    // How long the spear draws for after hitting a ball.
+    static const float kSPEAR_HOLD_TIME_AFTER_BALL_COLLISION    = 0.05f;
 
     // Debug - when set the game will freeze, handy for checking collision detection.
-    static bool         g_Frozen                        = false;
-    static bool         g_FreezeOnPlayerBallCollision   = false;
-    static bool         g_FreezeOnBallSpearCollision    = false;
+    static bool         g_Frozen                                = false;
+    static bool         g_FreezeOnPlayerBallCollision           = false;
+    static bool         g_FreezeOnBallSpearCollision            = false;
 
     // Animation details, the non filename stuff could be stored in a file...
     struct AnimationDetails
@@ -624,27 +627,33 @@ namespace PangMiniGame
     }
     bool BackgroundLayer::Render( float frameTime )
     {
+        float gap = 0.f;
         if ( m_IsTiled )
         {
-            for ( float xPosToRender = m_FirstTileXPosition; xPosToRender <= kSCREEN_WIDTH; xPosToRender += m_pSprite[ 0 ]->GetWidth( ) - 1 )
-            {
-                int xPos = ( int )floorf( xPosToRender );
-                float scaler1 = 1.f - ( xPosToRender - ( float ) xPos );
-                if ( scaler1 > 1.f )
-                    scaler1 = 1.f;
-                if ( scaler1 < 0.f )
-                    scaler1 = 0.f;
+            gap = -1.f;
+        }
+        else
+        {
+            gap = 200.f;
+        }
+        for ( float xPosToRender = m_FirstTileXPosition; xPosToRender <= kSCREEN_WIDTH; xPosToRender += m_pSprite[ 0 ]->GetWidth( ) + gap )
+        {
+            int xPos = ( int )floorf( xPosToRender );
+            float scaler1 = 1.f - ( xPosToRender - ( float ) xPos );
+            if ( scaler1 > 1.f )
+                scaler1 = 1.f;
+            if ( scaler1 < 0.f )
+                scaler1 = 0.f;
 
-                int ix1 = (int)( scaler1 * 10 );
-                int ix2 = 10 - ix1;
+            int ix1 = (int)( scaler1 * 10 );
+            int ix2 = 10 - ix1;
 
-                m_pSprite[ ix1 ]->SetPosition( xPos - 1, m_YPosition );
-                m_pSprite[ ix1 ]->Render( );
-                m_pSprite[  10 ]->SetPosition( xPos + 0, m_YPosition );
-                m_pSprite[  10 ]->Render( );
-                m_pSprite[ ix2 ]->SetPosition( xPos + 1, m_YPosition );
-                m_pSprite[ ix2 ]->Render( );
-            }
+            m_pSprite[ ix1 ]->SetPosition( xPos - 1, m_YPosition );
+            m_pSprite[ ix1 ]->Render( );
+            m_pSprite[  10 ]->SetPosition( xPos + 0, m_YPosition );
+            m_pSprite[  10 ]->Render( );
+            m_pSprite[ ix2 ]->SetPosition( xPos + 1, m_YPosition );
+            m_pSprite[ ix2 ]->Render( );
         }
         return true;
     }
@@ -904,12 +913,21 @@ namespace PangMiniGame
 
     private:
 
+        enum State
+        {
+            kState_Active,
+            kState_HitBall
+        };
+        State       m_State;
+        float       m_HitTime;
         float       m_BottomY;
         float       m_HoldTime;
         Sprite *    m_pSprite;
     };
     Spear::Spear( float startX, float startY )
     {
+        m_State = kState_Active;
+        m_HitTime = -1.f;
         m_BottomY = kFLOOR;
         m_pSprite = new Sprite( kImageSpear.Filename, kImageSpear.NumFrames );
         m_pSprite->SetPosition( startX - 0.5f * m_pSprite->GetWidth( ), startY );
@@ -981,11 +999,25 @@ namespace PangMiniGame
             }
             else
             {
-                pSpear->m_pSprite->SetY( pSpear->m_pSprite->GetY( ) - kSPEAR_SPEED );
-                if ( pSpear->m_pSprite->GetY( ) < 0.f )
+                if ( pSpear->m_State == Spear::kState_Active )
                 {
-                    pSpear->m_HoldTime = kSPEAR_HOLD_TIME;
-                    pSpear->m_pSprite->SetY( 0.f );
+                    pSpear->m_pSprite->SetY( pSpear->m_pSprite->GetY( ) - kSPEAR_SPEED );
+                    if ( pSpear->m_pSprite->GetY( ) < 0.f )
+                    {
+                        pSpear->m_HoldTime = kSPEAR_HOLD_TIME;
+                        pSpear->m_pSprite->SetY( 0.f );
+                    }
+                }
+                else if ( pSpear->m_State == Spear::kState_HitBall )
+                {
+                    pSpear->m_HitTime -= frameTime;
+
+                    if ( pSpear->m_HitTime <= 0.f )
+                    {
+                        delete *spearIt;
+                        spearIt = m_Spears.erase( spearIt );
+                        continue;
+                    }
                 }
             }
             spearIt++;
@@ -1225,7 +1257,11 @@ namespace PangMiniGame
         m_pBackgroundLayerManager = new BackgroundLayerManager;
         if ( !m_pBackgroundLayerManager->Initialise( ) )
             return false;
-        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsTop.Filename, 0, true, 1.f ) )
+        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsTop.Filename, 0, true, 20.f ) )
+            return false;
+        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsMiddle1.Filename, 100, false, 10.f ) )
+            return false;
+        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsMiddle2.Filename, 200, false, 5.f ) )
             return false;
 
         m_pBackground = new Sprite( kImageBackground.Filename, kImageBackground.NumFrames );
@@ -1390,24 +1426,28 @@ namespace PangMiniGame
         {
             Ball *pBall = *ballIt;
             bool ballHit = false;
-            for ( std::vector< Spear* >::iterator spearIt = m_pSpearManager->m_Spears.begin( ); spearIt != m_pSpearManager->m_Spears.end( ); ++spearIt )
+            for ( std::vector< Spear* >::iterator spearIt = m_pSpearManager->m_Spears.begin( ); spearIt != m_pSpearManager->m_Spears.end( ); )
             {
                 Spear *pSpear = *spearIt;
 
-                if ( pBall->m_pSprite->HasCollidedWith( pSpear->m_pSprite ) )
+                if ( pSpear->m_State == Spear::kState_Active )
                 {
-                    if ( g_FreezeOnBallSpearCollision )
+                    if ( pBall->m_pSprite->HasCollidedWith( pSpear->m_pSprite ) )
                     {
-                        g_Frozen = true;
-                    }
-                    else
-                    {
-                        ballHit = true;
-                        delete *spearIt;
-                        spearIt = m_pSpearManager->m_Spears.erase( spearIt );
-                        break;
+                        if ( g_FreezeOnBallSpearCollision )
+                        {
+                            g_Frozen = true;
+                        }
+                        else
+                        {
+                            ballHit = true;
+                            pSpear->m_State = Spear::kState_HitBall;
+                            pSpear->m_HitTime = kSPEAR_HOLD_TIME_AFTER_BALL_COLLISION;
+                            break;
+                        }
                     }
                 }
+                ++spearIt;
             }
             if ( ballHit == false )
             {
@@ -1468,6 +1508,8 @@ namespace PangMiniGame
 
         m_pBackground->Render( );
 
+        m_pBackgroundLayerManager->Render( m_FrameTime );
+
         m_pSpearManager->RenderAll( );
 
         (*m_ppPlayerCurrent)->Render( );
@@ -1475,8 +1517,6 @@ namespace PangMiniGame
         m_pBallManager->RenderAll( );
 
         m_pExplosionManager->RenderAll( );
-
-        m_pBackgroundLayerManager->Render( m_FrameTime );
 #if 0
         char buffer[ 512 ];
         strcpy( buffer, "C:\\EjoyStudio\\FastCapPro\\movies\\" );
