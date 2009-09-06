@@ -55,6 +55,12 @@ namespace PangMiniGame
 
     static rconst int   kGOD_MODE                                = 0;
 
+    static rconst float kBALL_SCALES[ 5 ]                       = { 1.f, 1.f, 1.f, 1.f, 1.f };
+
+    static rconst float kPLAYER_SCALE                           = 1.f;
+
+    static rconst float kSPEAR_SCALE                            = 1.f;
+
     // Debug - when set the game will freeze, handy for checking collision detection.
     static bool         g_Frozen                                = false;
     static bool         g_FreezeOnPlayerBallCollision           = false;
@@ -166,7 +172,7 @@ namespace PangMiniGame
 
         static bool Destroy( );
 
-        static bool LoadSurface( char const * const pFilename, SDL_Surface ** ppSurface, float alphaMultiplier = 1.f );
+        static bool LoadSurface( char const * const pFilename, SDL_Surface ** ppSurface, float alphaMultiplier = 1.f, float scale = 1.f );
 
         static bool FreeSurface( SDL_Surface * pSurface, float alphaMultiplier = 1.f );
 
@@ -182,11 +188,12 @@ namespace PangMiniGame
             SDL_Surface *   pSurface;
             int             RefCount;
             float           AlphaMultiplier;
+            float           Scale;
         };
 
         static std::vector< RefCountedSurface >    m_RefCountedSurfaces;
     };
-    SurfaceResourceManager::RefCountedSurface::RefCountedSurface( ) : pSurface( NULL ), RefCount( 0 ), AlphaMultiplier( 1.f )
+    SurfaceResourceManager::RefCountedSurface::RefCountedSurface( ) : pSurface( NULL ), RefCount( 0 ), AlphaMultiplier( 1.f ), Scale( 1.f )
     {
     }
     bool SurfaceResourceManager::RefCountedSurface::operator == ( const RefCountedSurface::RefCountedSurface & rhs )
@@ -200,7 +207,7 @@ namespace PangMiniGame
         }
         else
         {
-            if ( AlphaMultiplier == rhs.AlphaMultiplier )
+            if ( AlphaMultiplier == rhs.AlphaMultiplier && Scale == rhs.Scale )
             {
                 return ( strcmp( Filename, rhs.Filename ) == 0 );
             }
@@ -227,11 +234,12 @@ namespace PangMiniGame
     {
         return true;
     }
-    bool SurfaceResourceManager::LoadSurface( char const * const pFilename, SDL_Surface ** ppSurface, float alphaMultiplier /*= 1.f*/ )
+    bool SurfaceResourceManager::LoadSurface( char const * const pFilename, SDL_Surface ** ppSurface, float alphaMultiplier /*= 1.f*/, float scale /*= 1.f*/ )
     {
         RefCountedSurface ToFind;
         strcpy( ToFind.Filename, pFilename );
         ToFind.AlphaMultiplier = alphaMultiplier;
+        ToFind.Scale = scale;
         ToFind.pSurface = NULL;
         std::vector< RefCountedSurface >::iterator it = std::find( m_RefCountedSurfaces.begin( ), m_RefCountedSurfaces.end( ), ToFind );
         if ( it != m_RefCountedSurfaces.end( ) )
@@ -251,6 +259,66 @@ namespace PangMiniGame
             //If the image loaded
             if( loadedImage != NULL )
             {
+                if ( scale != 1.f )
+                {
+                    // Lock surface if required...
+                    if( SDL_MUSTLOCK( loadedImage ) )
+                        SDL_LockSurface( loadedImage );
+
+                        #if SDL_BYTEORDER == SDL_BIG_ENDIAN
+                        Uint32 rmask = 0xff000000;
+                        Uint32 gmask = 0x00ff0000;
+                        Uint32 bmask = 0x0000ff00;
+                        Uint32 amask = 0x000000ff;
+                        #else
+                        Uint32 rmask = 0x000000ff;
+                        Uint32 gmask = 0x0000ff00;
+                        Uint32 bmask = 0x00ff0000;
+                        Uint32 amask = 0xff000000;
+                        #endif
+
+                        SDL_Surface * newSurface = SDL_CreateRGBSurface(
+                            loadedImage->flags,
+                            loadedImage->w * scale,
+                            loadedImage->h * scale,
+                            32,
+                            loadedImage->format->Rmask,
+                            loadedImage->format->Gmask,
+                            loadedImage->format->Bmask,
+                            loadedImage->format->Amask );
+
+                    // Lock surface if required...
+                    if( SDL_MUSTLOCK( newSurface ) )
+                        SDL_LockSurface( newSurface );
+
+                    Uint32 * pixel = (Uint32*)newSurface->pixels;
+
+                    unsigned char * newSurfacePixelData = ( unsigned char *) newSurface->pixels;
+                    unsigned char * oldSurfacePixelData = ( unsigned char *) loadedImage->pixels;
+
+                    for ( int y = 0; y < newSurface->h; ++y )
+                    {
+                        pixel = (Uint32*)&( newSurfacePixelData[ y * newSurface->pitch ] );
+                        for ( int x = 0; x < newSurface->w; ++x )
+                        {
+                            int xToUse = floorf( x/scale );
+                            int yToUse = floorf( y/scale );
+                            pixel[ x ] = *(Uint32*)&oldSurfacePixelData[ yToUse * loadedImage->pitch + xToUse*(loadedImage->format->BitsPerPixel/8) ];
+                        }
+                    }
+
+                    // Unlock surfaces if required...
+                    if( SDL_MUSTLOCK( newSurface ) )
+                        SDL_UnlockSurface( newSurface );
+
+                    // Unlock surfaces if required...
+                    if( SDL_MUSTLOCK( loadedImage ) )
+                        SDL_UnlockSurface( loadedImage );
+
+                        SDL_FreeSurface( loadedImage );
+
+                        loadedImage = newSurface;
+                }
                 if ( alphaMultiplier >= 0.f && alphaMultiplier < 1.f )
                 {
                     // Only support doing this on images with alpha channel!
@@ -321,7 +389,7 @@ namespace PangMiniGame
         static bool         ClassInit( );
         #endif
 
-                            Sprite( char const * const pFilename, int numFrames = 1, float updateInterval = 0.05f, float alphaMultiplier = 1.f, bool looping = true );
+                            Sprite( char const * const pFilename, int numFrames = 1, float updateInterval = 0.05f, float alphaMultiplier = 1.f, bool looping = true, float scale = 1.f );
 
         bool                Update( float frameTime );
 
@@ -383,7 +451,7 @@ namespace PangMiniGame
 
         return true;
     }
-    Sprite::Sprite( char const * const pFilename, int numFrames /* = 1 */, float updateInterval /* = 0.05f */, float alphaMultiplier /* = 1.f */, bool looping /* = true */ )
+    Sprite::Sprite( char const * const pFilename, int numFrames /* = 1 */, float updateInterval /* = 0.05f */, float alphaMultiplier /* = 1.f */, bool looping /* = true */, float scale /* = 1.f */ )
     {
         m_PositionX         = 0;
         m_PositionY         = 0;
@@ -396,7 +464,7 @@ namespace PangMiniGame
         m_SinceLastUpdate   = 0.f;
 
         //Load the image from the resouce manager (ref counted).
-        SurfaceResourceManager::LoadSurface( pFilename, &m_pSurface, alphaMultiplier );
+        SurfaceResourceManager::LoadSurface( pFilename, &m_pSurface, alphaMultiplier, scale );
 
         m_ClippingRect.x    = 0;
         m_ClippingRect.y    = 0;
@@ -784,7 +852,7 @@ namespace PangMiniGame
 
     Ball::Ball( float posX, float posY, int size, int direction )
     {
-        m_pSprite = new Sprite( kImageBalls[ size ].Filename, kImageBalls[ size ].NumFrames );
+        m_pSprite = new Sprite( kImageBalls[ size ].Filename, kImageBalls[ size ].NumFrames, 0.f, 1.f, false, kBALL_SCALES[ size ] );
 
         posX -= 0.5f * m_pSprite->GetWidth( );
         posY -= 0.5f * m_pSprite->GetHeight( );
@@ -943,7 +1011,7 @@ namespace PangMiniGame
         m_State = kState_Active;
         m_HitTime = -1.f;
         m_BottomY = kFLOOR;
-        m_pSprite = new Sprite( kImageSpear.Filename, kImageSpear.NumFrames );
+        m_pSprite = new Sprite( kImageSpear.Filename, kImageSpear.NumFrames, 0.05f, 1.f, true, kSPEAR_SCALE );
         m_pSprite->SetPosition( startX - 0.5f * m_pSprite->GetWidth( ), startY );
         m_pSprite->SetClippingRect( 0, 0, m_pSprite->GetWidth( ), m_BottomY - m_pSprite->GetY( ) );
         m_HoldTime  = -1.f;
@@ -1285,6 +1353,10 @@ namespace PangMiniGame
         char    line[ 1024 ];
         int     linePos = 0;
 
+        bool    ballScalesThatHaveChanged[ 5 ] = { false, false, false, false, false };
+        bool    playerScaleChanged = false;
+        bool    spearScaleChanged = false;
+
         for ( size_t i = 0; i < fileSize; ++i )
         {
             if ( pBuffer[ i ] != '\n' && pBuffer[ i ] != '\r' && pBuffer[ i ] != '\0' )
@@ -1371,6 +1443,41 @@ namespace PangMiniGame
                             {
                                 kGOD_MODE = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
                             }
+                            else if ( stricmp( key, "BallScale0" ) == 0 )
+                            {
+                                kBALL_SCALES[ 0 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                                ballScalesThatHaveChanged[ 0 ] = true;
+                            }
+                            else if ( stricmp( key, "BallScale1" ) == 0 )
+                            {
+                                kBALL_SCALES[ 1 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                                ballScalesThatHaveChanged[ 1 ] = true;
+                            }
+                            else if ( stricmp( key, "BallScale2" ) == 0 )
+                            {
+                                kBALL_SCALES[ 2 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                                ballScalesThatHaveChanged[ 2 ] = true;
+                            }
+                            else if ( stricmp( key, "BallScale3" ) == 0 )
+                            {
+                                kBALL_SCALES[ 3 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                                ballScalesThatHaveChanged[ 3 ] = true;
+                            }
+                            else if ( stricmp( key, "BallScale4" ) == 0 )
+                            {
+                                kBALL_SCALES[ 4 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                                ballScalesThatHaveChanged[ 4 ] = true;
+                            }
+                            else if ( stricmp( key, "PlayerScale" ) == 0 )
+                            {
+                                kPLAYER_SCALE = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                                spearScaleChanged = true;
+                            }
+                            else if ( stricmp( key, "SpearScale" ) == 0 )
+                            {
+                                kSPEAR_SCALE = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                                playerScaleChanged = true;
+                            }
                         }
                     }
 
@@ -1381,11 +1488,67 @@ namespace PangMiniGame
 
         delete [] pBuffer;
 
+        // Balls.
         if ( m_pBallManager )
         {
             for ( std::vector< Ball * >::iterator it = m_pBallManager->m_Balls.begin( ); it != m_pBallManager->m_Balls.end( ); ++it )
             {
-                (*it)->m_SpeedX = ( (*it)->m_SpeedX > 0 ) ? kBALL_X_SPEED : -kBALL_X_SPEED;
+                Ball *pBall = *it;
+
+                pBall->m_SpeedX = ( pBall->m_SpeedX > 0 ) ? kBALL_X_SPEED : -kBALL_X_SPEED;
+
+                if ( ballScalesThatHaveChanged[ pBall->m_Size ] )
+                {
+                    float posX = pBall->m_pSprite->GetX( );
+                    float posY = pBall->m_pSprite->GetY( );
+
+                    delete pBall->m_pSprite;
+                    pBall->m_pSprite = new Sprite(
+                        kImageBalls[ pBall->m_Size ].Filename,
+                        kImageBalls[ pBall->m_Size ].NumFrames,
+                        0.f,
+                        1.f,
+                        false,
+                        kBALL_SCALES[ pBall->m_Size ] );
+
+                    pBall->m_pSprite->SetPosition( posX, posY );
+                }
+            }
+        }
+
+        // Player.
+        if ( playerScaleChanged && m_pPlayer[ kPlayerAnimWalkLeft ] && m_pPlayer[ kPlayerAnimStand ] && m_pPlayer[ kPlayerAnimWalkRight ] )
+        {
+            float posX = (*m_ppPlayerCurrent)->GetX( );
+            float width = (*m_ppPlayerCurrent)->GetWidth( );
+
+            delete m_pPlayer[ kPlayerAnimWalkLeft ];
+            delete m_pPlayer[ kPlayerAnimStand ];
+            delete m_pPlayer[ kPlayerAnimWalkRight ];
+
+            m_pPlayer[ kPlayerAnimWalkLeft ]    = new Sprite( kImagePlayerWalkLeft.Filename,    kImagePlayerWalkLeft.NumFrames, 0.05f, 1.f, true, kPLAYER_SCALE );
+            m_pPlayer[ kPlayerAnimStand ]       = new Sprite( kImagePlayerIdle.Filename,        kImagePlayerIdle.NumFrames, 0.05f, 1.f, true, kPLAYER_SCALE );
+            m_pPlayer[ kPlayerAnimWalkRight ]   = new Sprite( kImagePlayerWalkRight.Filename,   kImagePlayerWalkRight.NumFrames, 0.05f, 1.f, true, kPLAYER_SCALE );
+
+            (*m_ppPlayerCurrent)->SetX( posX + ( 0.5f * width ) - ( 0.5f * (*m_ppPlayerCurrent)->GetWidth( ) ) );
+            (*m_ppPlayerCurrent)->SetY( ( kFLOOR - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f );
+        }
+
+        if ( spearScaleChanged && m_pSpearManager )
+        {
+            for ( std::vector< Spear * >::iterator it = m_pSpearManager->m_Spears.begin( ); it != m_pSpearManager->m_Spears.end( ); ++it )
+            {
+                Spear *pSpear = *it;
+
+                float posX = pSpear->m_pSprite->GetX( );
+                float posY = pSpear->m_pSprite->GetY( );
+                float width = pSpear->m_pSprite->GetWidth( );
+
+                delete pSpear->m_pSprite;
+                pSpear->m_pSprite = new Sprite( kImageSpear.Filename, kImageSpear.NumFrames, 0.05f, 1.f, true, kSPEAR_SCALE );
+
+                pSpear->m_pSprite->SetX( posX + ( 0.5f * width ) - ( 0.5f * pSpear->m_pSprite->GetWidth( ) ) );
+                pSpear->m_pSprite->SetY( posY );
             }
         }
 
@@ -1433,9 +1596,9 @@ namespace PangMiniGame
         m_pBackground = new Sprite( kImageBackground.Filename, kImageBackground.NumFrames );
         m_pBackground->SetPosition( 0, 0 );
 
-        m_pPlayer[ kPlayerAnimWalkLeft ]    = new Sprite( kImagePlayerWalkLeft.Filename,    kImagePlayerWalkLeft.NumFrames );
-        m_pPlayer[ kPlayerAnimStand ]       = new Sprite( kImagePlayerIdle.Filename,        kImagePlayerIdle.NumFrames );
-        m_pPlayer[ kPlayerAnimWalkRight ]   = new Sprite( kImagePlayerWalkRight.Filename,   kImagePlayerWalkRight.NumFrames );
+        m_pPlayer[ kPlayerAnimWalkLeft ]    = new Sprite( kImagePlayerWalkLeft.Filename,    kImagePlayerWalkLeft.NumFrames, 0.05f, 1.f, true, kPLAYER_SCALE );
+        m_pPlayer[ kPlayerAnimStand ]       = new Sprite( kImagePlayerIdle.Filename,        kImagePlayerIdle.NumFrames, 0.05f, 1.f, true, kPLAYER_SCALE );
+        m_pPlayer[ kPlayerAnimWalkRight ]   = new Sprite( kImagePlayerWalkRight.Filename,   kImagePlayerWalkRight.NumFrames, 0.05f, 1.f, true, kPLAYER_SCALE );
         (*m_ppPlayerCurrent)->SetX( ( m_pBackground->GetWidth( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetWidth( ) * 0.5f );
         (*m_ppPlayerCurrent)->SetY( ( kFLOOR - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f );
 
