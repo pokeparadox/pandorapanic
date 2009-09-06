@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <math.h>
 #include <assert.h>
+#include <sys/stat.h>
 #ifdef PENJIN_SDL
 #define GET_SCREEN( ) ( screen )
 #else
@@ -13,33 +14,46 @@
 #define _MAX_PATH  128
 #endif
 
+//#define _PANG_DEBUG_MODE
+
 // Put all my code in a name space as I create my own custom types like Sprite that conflicts with stuff elsewhere.
 namespace PangMiniGame
 {
+    #ifdef _PANG_DEBUG_MODE
+    #   define rconst
+    #else
+    #   define rconst const
+    #endif
+
     // Dimensions of Pandora screen, could probably get these elsewhere?
-    static const float  kSCREEN_WIDTH                           = 800.f;
-    static const float  kSCREEN_HEIGHT                          = 480.f;
+    static rconst float  kSCREEN_WIDTH                           = 800.f;
+    static rconst float  kSCREEN_HEIGHT                          = 480.f;
 
     // Where the ground/floor is in the level.
-    static const float  kFLOOR                                  = 440.f;
+    static rconst float  kFLOOR                                  = 440.f;
 
     // Gravity, measured in, err.... pixels per second?
-    static const float  kGRAVITY                                = 600.f;
+    static rconst float  kGRAVITY                                = 400.f;
 
     // How high the balls should bounce.
-    const static int    kMAX_HEIGHTS[ 5 ]                       = { 400, 345, 290, 235, 180 };
+    static rconst float  kMAX_HEIGHTS[ 5 ]                       = { 480, 415, 340, 255, 160 };
 
     // How fast the player can walk.
-    static const float  kPLAYER_SPEED                           = 250.f;
+    static rconst float  kPLAYER_SPEED                           = 340.f;
 
     // How fast the spear travels once fired.
-    static const float  kSPEAR_SPEED                            = 10.f;
+    static rconst float  kSPEAR_SPEED                            = 10.f;
+
+    // How fast the ball travels horizontally
+    static rconst float  kBALL_X_SPEED                           = 3.45f;
 
     // How long spears stay attached to ceiling for.
-    static const float  kSPEAR_HOLD_TIME                        = 0.1;
+    static rconst float  kSPEAR_HOLD_TIME                        = 0.1;
 
     // How long the spear draws for after hitting a ball.
-    static const float kSPEAR_HOLD_TIME_AFTER_BALL_COLLISION    = 0.05f;
+    static rconst float kSPEAR_HOLD_TIME_AFTER_BALL_COLLISION    = 0.05f;
+
+    static rconst int   kGOD_MODE                                = 0;
 
     // Debug - when set the game will freeze, handy for checking collision detection.
     static bool         g_Frozen                                = false;
@@ -777,7 +791,7 @@ namespace PangMiniGame
 
         m_Size = size;
         m_SpeedY = 0.f;
-        m_SpeedX = direction == kDirectionRight ? 4.f : -4.f;
+        m_SpeedX = direction == kDirectionRight ? kBALL_X_SPEED : -kBALL_X_SPEED;
 
         float peak = posY - ( kSCREEN_HEIGHT - kMAX_HEIGHTS[ m_Size ] );
         if ( peak < 0 )
@@ -1109,6 +1123,7 @@ namespace PangMiniGame
     bool ExplosionManager::Add( float posX, float posY )
     {
         m_Explosions.push_back( new Explosion( posX, posY ) );
+        return true;
     }
     bool ExplosionManager::UpdateAll( float frameTime )
     {
@@ -1178,6 +1193,10 @@ namespace PangMiniGame
 
         void            SetLevelComplete( bool successful );
 
+        bool            ReadSettings( char const * const configFile = "scripts/Pang/config.ini" );
+
+        time_t                      m_SettingsFileModifiedTime;
+
         BallManager *               m_pBallManager;
         SpearManager *              m_pSpearManager;
         ExplosionManager *          m_pExplosionManager;
@@ -1226,13 +1245,160 @@ namespace PangMiniGame
         m_FrameTime                         = 0;
         m_LevelFailed                       = false;
         m_LevelSuccessful                   = false;
+        m_SettingsFileModifiedTime          = -1;
     }
     PangGame::~PangGame( )
     {
         Destroy( );
     }
+    bool PangGame::ReadSettings( char const * const configFile /* = "scripts/Pang/config.ini" */ )
+    {
+        #if !defined(_PANG_DEBUG_MODE)
+        return true;
+        #else
+        struct stat fileStat;
+        if ( stat( configFile, &fileStat ) )
+            return false;
+        if ( m_SettingsFileModifiedTime == fileStat.st_mtime )
+            return true;
+        else
+            m_SettingsFileModifiedTime = fileStat.st_mtime;
+
+        FILE * fh = fopen( configFile, "r" );
+        if ( !fh )
+            return false;
+
+        size_t fileSize;
+
+        fseek( fh, 0, SEEK_END );
+
+        fileSize = ftell( fh );
+
+        fseek( fh, 0, SEEK_SET );
+
+        char * pBuffer = new char[ fileSize ];
+
+        fread( pBuffer, fileSize, 1, fh );
+
+        fclose( fh );
+
+        char    line[ 1024 ];
+        int     linePos = 0;
+
+        for ( size_t i = 0; i < fileSize; ++i )
+        {
+            if ( pBuffer[ i ] != '\n' && pBuffer[ i ] != '\r' && pBuffer[ i ] != '\0' )
+            {
+                line[ linePos++ ] = pBuffer[ i ];
+            }
+            else
+            {
+                if ( linePos > 0 )
+                {
+                    line[ linePos ] = '\0';
+
+                    char * key          = NULL;
+                    char * value        = NULL;
+                    bool valueIsFloat   = true;
+                    for ( size_t j = 0; j < linePos; ++j )
+                    {
+                        if ( line[ j ] == '=' )
+                        {
+                            if ( j == 0 )
+                                break;
+
+                            if ( linePos - j == 1 )
+                                break;
+
+                            line[ j ] = '\0';
+                            key = &line[ 0 ];
+                            value = &line[ j + 1 ];
+
+                            if ( strchr( value, '.' ) == 0 )
+                            {
+                                valueIsFloat = false;
+                            }
+
+                            if ( stricmp( key, "Floor" ) == 0 )
+                            {
+                                kFLOOR = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "Gravity" ) == 0 )
+                            {
+                                kGRAVITY = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "BallHeight0" ) == 0 )
+                            {
+                                kMAX_HEIGHTS[ 0 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "BallHeight1" ) == 0 )
+                            {
+                                kMAX_HEIGHTS[ 1 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "BallHeight2" ) == 0 )
+                            {
+                                kMAX_HEIGHTS[ 2 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "BallHeight3" ) == 0 )
+                            {
+                                kMAX_HEIGHTS[ 3 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "BallHeight4" ) == 0 )
+                            {
+                                kMAX_HEIGHTS[ 4 ] = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "BallXSpeed" ) == 0 )
+                            {
+                                kBALL_X_SPEED = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "PlayerSpeed" ) == 0 )
+                            {
+                                kPLAYER_SPEED = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "SpearSpeed" ) == 0 )
+                            {
+                                kSPEAR_SPEED = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "SpearCeilingHoldTime" ) == 0 )
+                            {
+                                kSPEAR_HOLD_TIME = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "SpearBallHoldTime" ) == 0 )
+                            {
+                                kSPEAR_HOLD_TIME_AFTER_BALL_COLLISION = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                            else if ( stricmp( key, "GodMode" ) == 0 )
+                            {
+                                kGOD_MODE = ( float )( valueIsFloat ? atof( value ) : atoi( value ) );
+                            }
+                        }
+                    }
+
+                    linePos = 0;
+                }
+            }
+        }
+
+        delete [] pBuffer;
+
+        if ( m_pBallManager )
+        {
+            for ( std::vector< Ball * >::iterator it = m_pBallManager->m_Balls.begin( ); it != m_pBallManager->m_Balls.end( ); ++it )
+            {
+                (*it)->m_SpeedX = ( (*it)->m_SpeedX > 0 ) ? kBALL_X_SPEED : -kBALL_X_SPEED;
+            }
+        }
+
+        return true;
+        #endif
+    }
     bool PangGame::Initialise( )
     {
+        #if defined(_PANG_DEBUG_MODE)
+        if ( ! ReadSettings( ) )
+            return false;
+        #endif
+
         // Cache all images recources that might be deleted during game play.
         m_pSprites[ kLevelResourceImage_Ball0 ]     = new Sprite( kImageBalls[ 0 ].Filename, kImageBalls[ 0 ].NumFrames );
         m_pSprites[ kLevelResourceImage_Ball1 ]     = new Sprite( kImageBalls[ 1 ].Filename, kImageBalls[ 1 ].NumFrames );
@@ -1365,6 +1531,10 @@ namespace PangMiniGame
     }
     bool PangGame::Update( SimpleJoy * input )
     {
+        #if defined(_PANG_DEBUG_MODE)
+        ReadSettings( );
+        #endif
+
         if ( g_Frozen )
             return true;
 
@@ -1471,7 +1641,7 @@ namespace PangMiniGame
                 ballIt = m_pBallManager->m_Balls.erase( ballIt );
                 continue;
             }
-            if ( pBall->m_pSprite->HasCollidedWith( (*m_ppPlayerCurrent) ) )
+            if ( !kGOD_MODE && pBall->m_pSprite->HasCollidedWith( (*m_ppPlayerCurrent) ) )
             {
                 if ( g_FreezeOnPlayerBallCollision )
                 {
