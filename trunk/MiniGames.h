@@ -3,7 +3,7 @@
 
 enum
 {
-    MAX_GAMES = 21,              //  The number of minigames we have
+    MAX_GAMES = 22,              //  The number of minigames we have
     EXTRA_LIFE_STAGES = 10,      //  The number of stages we need to pass for an extra life to be added.
     SUBSTATE_TRIGGER = 9
 };
