@@ -48,7 +48,7 @@ void StateMain::loadCommon()
     SDL_Surface* t = SDL_GetVideoSurface();
     bgBuffer = SDL_CreateRGBSurface(t->flags,getStateXResolution(), getStateYResolution(), t->format->BitsPerPixel, 0, 0, 0, 0);
     Random::setLimits(0,255);
-    backColour.setColour(Random::nextInt(),Random::nextInt(),Random::nextInt());
+    backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
     SDL_FillRect(bgBuffer, NULL, SDL_MapRGB(bgBuffer->format,backColour.red,backColour.green,backColour.blue));
     #ifdef PENJIN_SDL
         back.render(bgBuffer);

@@ -37,7 +37,7 @@ StateTitle::~StateTitle()
 
 void StateTitle::init()
 {
-    backColour.setColour(Random::nextInt(),Random::nextInt(),Random::nextInt());
+    backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
 
     GFX::setClearColour(backColour);
     newColour = backColour;
@@ -293,7 +293,7 @@ void StateTitle::unlimitedUpdate()
     if(timer.getScaledTicks() > 902)
     {
         timer.start();
-        newColour.setColour(Random::nextInt(),Random::nextInt(),Random::nextInt());
+        newColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
     }
 }
 

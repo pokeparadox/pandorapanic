@@ -52,19 +52,6 @@ void StatePlander::init()
     pad.setPosition(Vector2di(-25+getStateXResolution()*0.5f + Random::nextInt(-30,30),getStateYResolution()-123));
     initStars();
 
-    /*
-    SDL_Rect t;
-    t.x = *xRes * 0.1f;
-    t.y = *yRes * 0.1f;
-    t.w = 102;
-    t.h = 20;
-    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,255,255));
-    t.x +=1;
-    t.y +=1;
-    t.w = rocket.getFuel()+0.5f;
-    t.h = 18;
-    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,0,0));
-    */
 
     fuelMeter[0].setPosition(*xRes * 0.1f,*yRes * 0.1f);
     fuelMeter[0].setDimensions(102,20);
@@ -164,19 +151,6 @@ void StatePlander::renderFuelMeter(SDL_Surface* screen)
 
     fuelMeter[0].render(screen);
     fuelMeter[1].render(screen);
-    /*
-    SDL_Rect t;
-    t.x = *xRes * 0.1f;
-    t.y = *yRes * 0.1f;
-    t.w = 102;
-    t.h = 20;
-    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,255,255));
-    t.x +=1;
-    t.y +=1;
-    t.w = rocket.getFuel()+0.5f;
-    t.h = 18;
-    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,0,0));
-    */
 }
 
 void StatePlander::render(SDL_Surface* screen)
@@ -227,19 +201,10 @@ void StatePlander::renderStars()
 
 void StatePlander::renderFuelMeter()
 {
-    /*
-    SDL_Rect t;
-    t.x = *xRes * 0.1f;
-    t.y = *yRes * 0.1f;
-    t.w = 102;
-    t.h = 20;
-    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,255,255));
-    t.x +=1;
-    t.y +=1;
-    t.w = rocket.getFuel()+0.5f;
-    t.h = 18;
-    SDL_FillRect(screen, &t, SDL_MapRGB(screen->format,255,0,0));
-    */
+    fuelMeter[1].setDimensions(rocket.getFuel()+0.5f,18);
+
+    fuelMeter[0].render();
+    fuelMeter[1].render();
 }
 
 void StatePlander::render()

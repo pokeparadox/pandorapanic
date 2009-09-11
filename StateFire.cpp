@@ -128,24 +128,53 @@ void Fire::userInput()
 
 }
 
-void Fire::render(SDL_Surface *screen)
-{
-	background.render(screen);
-	RenderFloorsAndFires(screen);
-	RenderCannon(screen);
-#if FIRE_DEBUG
-	RenderDebug(screen);
+#ifdef PENJIN_SDL
+    void Fire::render(SDL_Surface *screen)
+    {
+        background.render(screen);
+        RenderFloorsAndFires(screen);
+        RenderCannon(screen);
+    #if FIRE_DEBUG
+        RenderDebug(screen);
+    #endif
+    }
+
+    void Fire::pauseScreen(SDL_Surface* screen)
+    {
+        pauseSymbol(screen);
+        pauseText.setPosition(50,180);
+        pauseText.print(screen, "Put out the fires! press A to shoot");
+    }
+#else
+    void Fire::render()
+    {
+        background.render();
+        RenderFloorsAndFires();
+        RenderCannon();
+        /*
+    #if FIRE_DEBUG
+        RenderDebug(screen);
+    #endif
+    */
+    }
+
+    void Fire::pauseScreen()
+    {
+        pauseSymbol();
+        pauseText.setPosition(50,180);
+        pauseText.print("Put out the fires! press A to shoot");
+    }
+
+    void Fire::RenderFloorsAndFires()
+    {
+
+    }
+
+    void Fire::RenderCannon()
+    {
+
+    }
 #endif
-}
-
-void Fire::pauseScreen(SDL_Surface* screen)
-{
-    pauseSymbol(screen);
-    pauseText.setPosition(50,180);
-    pauseText.print(screen, "Put out the fires! press A to shoot");
-    SDL_Flip(screen);
-}
-
 void Fire::onPause()
 {
 }
@@ -399,7 +428,7 @@ void Fire::MoveParticles( void )
     }
 }
 
-
+#ifdef PENJIN_SDL
 void Fire::RenderFloorsAndFires( SDL_Surface* screen )
 {
     uint8_t i,j;
@@ -485,7 +514,7 @@ void Fire::RenderDebug( SDL_Surface* screen )
     }
 }
 #endif
-
+#endif
 void Fire::ShootWater()
 {
     #ifdef PENJIN_FIXED

@@ -84,6 +84,7 @@ class StateBadVista : public BaseState
       BV_WON,
       BV_PWNED
     };
+    int numBounces;
 
     int bvState;
 
