@@ -221,7 +221,7 @@ void StateTheCountJob::update()
 {
     if (counter.getScaledTicks() == 10) {
         // creating the circles
-        int pos[2];
+        //int pos[2];
         int count=0;
         for (int I=0; I<circleLevel; I++) {
             for (int K=0; K<arr[I]; K++) {

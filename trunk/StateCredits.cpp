@@ -519,7 +519,7 @@ void StateCredits::update()
     for(int e = emit.size()-1; e >= 0; --e)
     {
         emit[e].update();
-        emit[e].setColour(Colour(Random::nextInt(),Random::nextInt(),Random::nextInt()));
+        emit[e].setColour(Colour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt()));
         if(emit[1].isFinished())
         {
             emit[1].setPosition(Vector2df(Random::nextInt(50,750),Random::nextInt(50,430)));

@@ -80,6 +80,7 @@ void StateBadVista::init()
   pwned_count = 0;
   armAngle = 1;
   armIncrement = 4;
+  numBounces = 10;
   arm.setPosition((int)ARM_INIT_X, (int)ARM_INIT_Y);
   logo.setPosition((int)LOGO_INIT_X, (int)LOGO_INIT_Y);
   buttonPrompter.display(ButtonPrompter::BUTTON_A, LOGO_INIT_X - 10, LOGO_INIT_Y - 28);
@@ -146,6 +147,7 @@ bool StateBadVista::hitObstacle(std::vector<SimpleRegion> obstacles, SimpleRegio
     SimpleRegion region = *(obstacleIt);
     if (region.intersects(motion)) {
         bounce.play();
+        numBounces--;
         return true;
     }
   }
@@ -156,9 +158,9 @@ bool StateBadVista::ballStopped(){
   const int LOGO_TOP  = logo.getHeight() / 2;
   //cout << "ballStopped? y=" << logoY + LOGO_TOP << "\t" << FLOOR << "/" << BASKET_BOT << "\n";
   return
-    (logoY + LOGO_TOP >= BASKET_BOT)
-    && abs(logoVelocityX) < 0.5
-    && abs(logoVelocityY) < 0.5;
+    ((logoY + LOGO_TOP >= BASKET_BOT)
+    && abs(logoVelocityX) < 0.5f
+    && abs(logoVelocityY) < 0.5f) || numBounces == 0;
 }
 
 
@@ -178,9 +180,9 @@ void StateBadVista::update()
 
 
   if(bvState == BV_WINDUP) {
-    float radians = armAngle * 3.14159 / 180.0;
+    float radians = armAngle * 3.14159f / 180.0f;
     logo.setPosition(
-        (int) LOGO_INIT_X + (armAngle / 4.0) - (50 * sin(radians)),
+        (int) LOGO_INIT_X + (armAngle * 0.25f) - (50 * sin(radians)),
         (int) LOGO_INIT_Y - 100 + (100 * cos(radians)));
     return;
   }

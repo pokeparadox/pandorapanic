@@ -107,9 +107,6 @@ class Fire : public BaseState
         virtual ~Fire();
         virtual void userInput();
 
-#ifdef PLATFORM_GP2X
-		MMUHack hack;
-#endif
     private:
         Text                text;
         Text                pauseText;

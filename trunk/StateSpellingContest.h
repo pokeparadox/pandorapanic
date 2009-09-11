@@ -10,6 +10,7 @@
 #include "TextDoc.h"
 #include "AnimatedSprite.h"
 #include "Music.h"
+#include "StringUtility.h"
 
 /// TODO fix memleak in game.
 
