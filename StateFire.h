@@ -14,51 +14,26 @@
     #include "MMUHack.h"
 #endif
 
-#define     FIRE_DEBUG                  1
-
-#define     FIRE_MAX_ACCEL              0.7f
-#define     FIRE_GRAVITY                0.5f
-#define     FIRE_MAX_VEL_UP             -10.0f
-#define     FIRE_MAX_VEL_DN             8.0f
-#ifdef PENJIN_FIXED
-#define     FIRE_MAX_ANGLE              (Fixed)(45)
-#else
-#define     FIRE_MAX_ANGLE              45
-#endif
-#define     FIRE_SCREEN_WIDTH           800
-#define     FIRE_SCREEN_HEIGHT          480
 #define     FIRE_FAIL                   0
 #define     FIRE_PASS                   1
 #define     FIRE_MAX_TOWERS		        10
-#define     FIRE_MAX_ABSANGLE           90	// +/- deg
-#define     FIRE_MIN_POWER		        0
-#define     FIRE_MAX_POWER		        100
-#define     FIRE_MAX_WATER		        100
-#define     FIRE_MAX_WATERUSE	        1
-#define     FIRE_MAX_WATERSHOT	        1
-#define     FIRE_MAX_WATERPARTS         2000
-#define     FIRE_MAX_SMOKEPARTS         2000
-#define     FIRE_MAX_FIRESIZE	        100
-#define     FIRE_MAX_FIRESHOT	        5
-#define     FIRE_MAX_FIREREGEN	        5
-#define     FIRE_MAX_FIRETIMER	        10 //100
-#define     FIRE_MAX_FLOORLIFE	        100
-#define     FIRE_MAX_BURNTIMER	        10 // 100
+#define     FIRE_MAX_FLOORS		        6
 
-#define     FIRE_SPRITE_FIRE_ROWS       3
-#define     FIRE_SPRITE_FIRE_FRAMES     4
-#define     FIRE_SPRITE_FLOOR_ROWS      4
-#define     FIRE_SPRITE_FLOOR_FRAMES    1
-#define     FIRE_GROUND_HEIGHT          10
-#define     FIRE_CANNON_HEIGHT          50
-#define     FIRE_TRUCK_WIDTH            20
-
+#define     FIRE_DEBUG                  1
 
 enum results_t {
 	RESULT_NONE,
 	RESULT_NOWATER,
 	RESULT_NOFIRES,
-	RESULT_NOFLOORS
+	RESULT_NOFLOOR
+};
+
+enum pickle_states_t {
+	STATE_INACTIVE,
+	STATE_TOWERTO,
+	STATE_TOWERFROM,
+	STATE_FIRE_START,
+    STATE_FIRE_ACTIVE
 };
 
 struct sFire {
@@ -72,21 +47,40 @@ struct sTower {
 	int16_t x, y;
 	vector<int8_t>  floors;
 	int8_t          burntimer;
+	int16_t         smoketimer;
+    Emitter	        smokeblack;
+    Emitter	        smokewhite;
 	sFire           fire;
-    Emitter	        smoke;
 };
 
 struct sCannon {
-	uint8_t	power;
+	int8_t	power;
 	int8_t	angle;
-	uint8_t	water;
+	int8_t	chgrate;
+	int16_t	water;
 	bool	shooting;
 	bool	moving;
+	int16_t tip_x;
+	int16_t tip_y;
     Vector2df velocity;
     Vector2df acceleration;
 };
 
+struct sWater {
+    int16_t x, y;
+    int16_t vel_x;
+    int16_t vel_y;
+};
 
+struct sPickle {
+    int16_t x, y;
+    uint8_t target;
+    uint8_t state;
+    uint8_t dir;
+    uint8_t frame;
+    uint8_t lpf;
+    sFire   fire;
+};
 
 class Fire : public BaseState
 {
@@ -107,34 +101,47 @@ class Fire : public BaseState
         virtual ~Fire();
         virtual void userInput();
 
+#ifdef PLATFORM_GP2X
+		MMUHack hack;
+#endif
     private:
         Text                text;
         Text                pauseText;
         Text                debugText;
-        Emitter             water;
+        vector<sWater>      water;
         Background			background;
         Sprite				sprCannon;
+        Sprite				sprWater;
         Image				imgFire;
         Image				imgFloor;
+        Image				imgPickle;
         sCannon             cannon;
         sTower              towers[FIRE_MAX_TOWERS];
-        bool moving;
-        bool shooting;
+        sPickle             pickle;
+        bool                moving;
+        bool                shooting;
+        bool                firstrun;
+        int16_t             screen_width;
+        int16_t             screen_height;
 
 #if FIRE_DEBUG
         #define DEBUG_STRING_MAX 100
         char debug_firestats[FIRE_MAX_TOWERS][DEBUG_STRING_MAX];
         char debug_floorstats[FIRE_MAX_TOWERS][DEBUG_STRING_MAX];
+        char debug_cannonstats[DEBUG_STRING_MAX];
 #endif
         void SetupGame( int8_t lvl );
         results_t CheckGameConditions( void );
         int8_t GameResult( results_t result );
         void FireRegen( void );
         void FloorBurn( void );
+        void PickleAI( void );
         void MoveParticles( void );
         void ShootWater( void );
+        bool CheckRectCollision( SDL_Rect* boxA, SDL_Rect* boxB );
+        int16_t RandomValue( int16_t low, int16_t high );
 #ifdef PENJIN_SDL
-        void RenderFloorsAndFires( SDL_Surface* screen );
+        void RenderSprites( SDL_Surface* screen );
         void RenderCannon( SDL_Surface* screen );
     #if FIRE_DEBUG
         void RenderDebug( SDL_Surface* screen );
