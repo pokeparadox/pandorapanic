@@ -14,14 +14,15 @@
 //-----------------------------
 StateArena::StateArena() : m_FrameRateCounter(0), m_EndCounter(0)
 {
+    m_HeroPtr = NULL;
     m_HeroPtr = new ArenaHero();
 
+    m_MonsterListPtr = NULL;
     m_MonsterListPtr = new ArenaMonsterList();
 
-    m_MusicPtr = new Music();
-    m_MusicPtr->loadMusic("music/Arena/Music.ogg");
+    m_Music.loadMusic("music/Arena/Music.ogg");
 
-    m_MusicPtr->setLooping(true);
+    m_Music.setLooping(true);
 
     m_Clouds.loadSprite("images/Arena/Clouds.png");
     m_Clouds.setTransparentColour(MAGENTA);
@@ -35,7 +36,12 @@ StateArena::StateArena() : m_FrameRateCounter(0), m_EndCounter(0)
 }
 StateArena::~StateArena()
 {
+    m_Music.stop();
 
+    if(m_HeroPtr)
+        delete m_HeroPtr;
+    if(m_MonsterListPtr)
+        delete m_MonsterListPtr;
 }
 //-----------------------------
 // Methods
@@ -115,7 +121,7 @@ void StateArena::init()
 
     if(variables.size()<SUBSTATE_TRIGGER)
     {
-        m_MusicPtr->play();
+        m_Music.play();
     }
 }
 void StateArena::userInput()

@@ -29,7 +29,6 @@ void ArenaEffect::init(int x, int y, int type)
         m_Y = y - 144;
 
         m_bmpEffect.loadFrames("images/Arena/Effects/Explosion.png", 6, 1);
-        m_bmpEffect.setTransparentColour(MAGENTA);
     }
     else if(type == FX_MONSTERHIT)
     {

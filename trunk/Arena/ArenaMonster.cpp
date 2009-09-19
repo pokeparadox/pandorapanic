@@ -71,6 +71,9 @@ ArenaMonster::ArenaMonster() : m_X(0), m_Y(0), m_DeathSpeedX(0), m_DeathSpeedY(0
     m_bmpSpinning.setTransparentColour(MAGENTA);
     m_bmpSpinning.setFrameRate(DECI_SECONDS);
 
+    m_bmpCurrentPtr = NULL;
+    m_bmpCurrentPtr = &m_bmpStandingDown;
+
     m_bmpShadow.loadSprite("images/Arena/Monster/MonsterShadow.png");
     m_bmpShadow.setAlpha(72);
 
@@ -83,7 +86,10 @@ ArenaMonster::ArenaMonster() : m_X(0), m_Y(0), m_DeathSpeedX(0), m_DeathSpeedY(0
 }
 ArenaMonster::~ArenaMonster()
 {
+    m_bmpCurrentPtr = NULL;
 
+    if(m_HitRegionPtr)
+        delete m_HitRegionPtr;
 }
 //-----------------------------------------------------
 // Methodes
@@ -98,32 +104,33 @@ void ArenaMonster::init(int x, int y, int direction)
     //Set the current image
     if(direction == DIR_UP)
     {
-        m_bmpCurrent = m_bmpStandingUp;
+        m_bmpCurrentPtr = &m_bmpStandingUp;
     }
     else if(direction == DIR_DOWN)
     {
-        m_bmpCurrent = m_bmpStandingDown;
+        m_bmpCurrentPtr = &m_bmpStandingDown;
     }
     else if(direction == DIR_LEFT)
     {
-        m_bmpCurrent = m_bmpStandingLeft;
+        m_bmpCurrentPtr = &m_bmpStandingLeft;
     }
     else if(direction == DIR_RIGHT)
     {
-         m_bmpCurrent = m_bmpStandingRight;
+         m_bmpCurrentPtr = &m_bmpStandingRight;
     }
 
+    m_HitRegionPtr = NULL;
     m_HitRegionPtr = new HitRegion();
     m_HitRegionPtr->init(m_X, m_Y + 16, 64, 48);
 
-    m_bmpCurrent.setPosition(m_X, m_Y);
+    m_bmpCurrentPtr->setPosition(m_X, m_Y);
     m_bmpShadow.setPosition(m_X, m_Y);
 }
 void ArenaMonster::render(SDL_Surface* screen)
 {
     m_bmpShadow.render(screen);
 
-    m_bmpCurrent.render(screen);
+    m_bmpCurrentPtr->render(screen);
     //m_HitRegionPtr->render(screen);
 }
 void ArenaMonster::HandleCurrentImage()
@@ -137,22 +144,22 @@ void ArenaMonster::HandleCurrentImage()
         //UP
         if(m_Direction == DIR_UP)
         {
-            m_bmpCurrent = m_bmpStandingUp;
+            m_bmpCurrentPtr = &m_bmpStandingUp;
         }
         //DOWN
         else if(m_Direction == DIR_DOWN)
         {
-            m_bmpCurrent = m_bmpStandingDown;
+            m_bmpCurrentPtr = &m_bmpStandingDown;
         }
         //LEFT
         else if(m_Direction == DIR_LEFT)
         {
-            m_bmpCurrent = m_bmpStandingLeft;
+            m_bmpCurrentPtr = &m_bmpStandingLeft;
         }
         //RIGHT
         else if(m_Direction == DIR_RIGHT)
         {
-            m_bmpCurrent = m_bmpStandingRight;
+            m_bmpCurrentPtr = &m_bmpStandingRight;
         }
     }
 
@@ -165,22 +172,22 @@ void ArenaMonster::HandleCurrentImage()
         //UP
         if(m_Direction == DIR_UP)
         {
-            m_bmpCurrent = m_bmpWalkingUp;
+            m_bmpCurrentPtr = &m_bmpWalkingUp;
         }
         //DOWN
         else if(m_Direction == DIR_DOWN)
         {
-            m_bmpCurrent = m_bmpWalkingDown;
+            m_bmpCurrentPtr = &m_bmpWalkingDown;
         }
         //LEFT
         else if(m_Direction == DIR_LEFT)
         {
-            m_bmpCurrent = m_bmpWalkingLeft;
+            m_bmpCurrentPtr = &m_bmpWalkingLeft;
         }
         //RIGHT
         else if(m_Direction == DIR_RIGHT)
         {
-            m_bmpCurrent = m_bmpWalkingRight;
+            m_bmpCurrentPtr = &m_bmpWalkingRight;
         }
     }
 }
@@ -316,7 +323,7 @@ void ArenaMonster::HandleAll()
  {
      m_IsDead = true;
 
-     m_bmpCurrent = m_bmpSpinning;
+     m_bmpCurrentPtr = &m_bmpSpinning;
 
     //----------------------------------------------------------
     // Calculate the Speed - "Math-gic" by FoxBlock
@@ -326,7 +333,7 @@ void ArenaMonster::HandleAll()
      const double speed = 25.0;
 
      // Position difference between monster and hero
-     const Vector2df diff = Vector2df((m_X + m_bmpCurrent.getWidth() / 2)-(herox + 96.0),(m_Y + m_bmpCurrent.getHeight() / 2)-(heroy + 112.0));
+     const Vector2df diff = Vector2df((m_X + m_bmpCurrentPtr->getWidth() / 2)-(herox + 96.0),(m_Y + m_bmpCurrentPtr->getHeight() / 2)-(heroy + 112.0));
 
      // Math magic
      m_DeathSpeedX = round( diff.x / sqrt( pow(diff.x,2) + pow(diff.y,2) ) * speed );
@@ -339,8 +346,8 @@ void ArenaMonster::update()
     // Update the current animation
     //-----------------------------------
 
-    m_bmpCurrent.setPosition(m_X, m_Y);
-    m_bmpCurrent.update();
+    m_bmpCurrentPtr->setPosition(m_X, m_Y);
+    m_bmpCurrentPtr->update();
 
     m_bmpShadow.setPosition(m_X, m_Y);
 

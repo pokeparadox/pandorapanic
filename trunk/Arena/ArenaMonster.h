@@ -66,7 +66,8 @@ private:
 	//-------------------------------------------------
     int m_X, m_Y, m_DeathSpeedX, m_DeathSpeedY, m_Direction, m_RandomDirection, m_RandCheckCounter;
     bool m_IsWalking, m_CanWalk, m_IsDead, m_SmokeSlowdown;
-    AnimatedSprite m_bmpStandingUp, m_bmpStandingDown, m_bmpStandingLeft, m_bmpStandingRight, m_bmpWalkingUp, m_bmpWalkingDown, m_bmpWalkingLeft, m_bmpWalkingRight, m_bmpSpinning, m_bmpCurrent;
+    AnimatedSprite m_bmpStandingUp, m_bmpStandingDown, m_bmpStandingLeft, m_bmpStandingRight, m_bmpWalkingUp, m_bmpWalkingDown, m_bmpWalkingLeft, m_bmpWalkingRight, m_bmpSpinning;
+    AnimatedSprite* m_bmpCurrentPtr;
     Sprite m_bmpShadow;
 
     HitRegion* m_HitRegionPtr;

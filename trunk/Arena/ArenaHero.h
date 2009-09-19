@@ -56,8 +56,10 @@ private:
 	//-------------------------------------------------
     int m_X, m_Y, m_Direction;
     bool m_IsSwinging;
-    AnimatedSprite m_bmpStandingUp, m_bmpStandingDown, m_bmpStandingLeft, m_bmpStandingRight, m_bmpWalkingUp, m_bmpWalkingDown, m_bmpWalkingLeft, m_bmpWalkingRight, m_bmpCurrent;
+    AnimatedSprite m_bmpStandingUp, m_bmpStandingDown, m_bmpStandingLeft, m_bmpStandingRight, m_bmpWalkingUp, m_bmpWalkingDown, m_bmpWalkingLeft, m_bmpWalkingRight;
     AnimatedSprite m_bmpSwordUp, m_bmpSwordDown, m_bmpSwordLeft, m_bmpSwordRight;
+
+    AnimatedSprite* m_bmpCurrentPtr;
 
     Sprite m_bmpShadow;
 

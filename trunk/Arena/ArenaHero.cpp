@@ -89,23 +89,31 @@ ArenaHero::ArenaHero() : m_X(312), m_Y(260), m_Direction(DIR_UP)
     m_bmpShadow.setAlpha(72);
 
     //Set the current image to Hero facing up
-    m_bmpCurrent = m_bmpStandingUp;
+    m_bmpCurrentPtr = NULL;
+    m_bmpCurrentPtr = &m_bmpStandingUp;
 
     m_IsSwinging = false;
 
+    m_HitRegionPtr = NULL;
     m_HitRegionPtr = new HitRegion();
     m_HitRegionPtr->init(m_X + 80, m_Y + 128, 32, 32);
 
+    m_SwordRegionPtr = NULL;
     m_SwordRegionPtr = new HitRegion();
 
     m_sndSword.loadSound("sounds/Arena/SwordSwing.wav");
 
-    m_bmpCurrent.setPosition(m_X, m_Y);
+    m_bmpCurrentPtr->setPosition(m_X, m_Y);
     m_bmpShadow.setPosition(m_X, m_Y);
 }
 ArenaHero::~ArenaHero()
 {
+    m_bmpCurrentPtr = 0;
 
+    if(m_HitRegionPtr)
+        delete m_HitRegionPtr;
+    if(m_SwordRegionPtr)
+        delete m_SwordRegionPtr;
 }
 //-----------------------------------------------------
 // Methodes
@@ -114,7 +122,7 @@ void ArenaHero::render(SDL_Surface* screen)
 {
     m_bmpShadow.render(screen);
 
-    m_bmpCurrent.render(screen);
+    m_bmpCurrentPtr->render(screen);
     //m_HitRegionPtr->render(screen);
     //m_SwordRegionPtr->render(screen);
 }
@@ -139,22 +147,22 @@ void ArenaHero::userInput(SimpleJoy* input)
             //UP
             if(m_Direction == DIR_UP)
             {
-                m_bmpCurrent = m_bmpSwordUp;
+                m_bmpCurrentPtr = &m_bmpSwordUp;
             }
             //DOWN
             else if(m_Direction == DIR_DOWN)
             {
-                m_bmpCurrent = m_bmpSwordDown;
+                m_bmpCurrentPtr = &m_bmpSwordDown;
             }
             //LEFT
             else if(m_Direction == DIR_LEFT)
             {
-                m_bmpCurrent = m_bmpSwordLeft;
+                m_bmpCurrentPtr = &m_bmpSwordLeft;
             }
             //RIGHT
             else if(m_Direction == DIR_RIGHT)
             {
-                m_bmpCurrent = m_bmpSwordRight;
+                m_bmpCurrentPtr = &m_bmpSwordRight;
             }
         }
 
@@ -255,22 +263,22 @@ void ArenaHero::HandleCurrentImage(SimpleJoy* input)
     //UP
     if(m_Direction == DIR_UP && !input->isUp())
     {
-        m_bmpCurrent = m_bmpStandingUp;
+        m_bmpCurrentPtr = &m_bmpStandingUp;
     }
     //DOWN
     else if(m_Direction == DIR_DOWN && !input->isDown())
     {
-        m_bmpCurrent = m_bmpStandingDown;
+        m_bmpCurrentPtr = &m_bmpStandingDown;
     }
     //LEFT
     else if(m_Direction == DIR_LEFT && !input->isLeft())
     {
-        m_bmpCurrent = m_bmpStandingLeft;
+        m_bmpCurrentPtr = &m_bmpStandingLeft;
     }
     //RIGHT
     else if(m_Direction == DIR_RIGHT && !input->isRight())
     {
-        m_bmpCurrent = m_bmpStandingRight;
+        m_bmpCurrentPtr = &m_bmpStandingRight;
     }
 
     //-----------------------------
@@ -280,22 +288,22 @@ void ArenaHero::HandleCurrentImage(SimpleJoy* input)
     //UP
     if(input->isUp())
     {
-        m_bmpCurrent = m_bmpWalkingUp;
+        m_bmpCurrentPtr = &m_bmpWalkingUp;
     }
     //DOWN
     else if(input->isDown())
     {
-        m_bmpCurrent = m_bmpWalkingDown;
+        m_bmpCurrentPtr = &m_bmpWalkingDown;
     }
     //LEFT
     else if(input->isLeft())
     {
-        m_bmpCurrent = m_bmpWalkingLeft;
+        m_bmpCurrentPtr = &m_bmpWalkingLeft;
     }
     //RIGHT
     else if(input->isRight())
     {
-        m_bmpCurrent = m_bmpWalkingRight;
+        m_bmpCurrentPtr = &m_bmpWalkingRight;
     }
 
 }
@@ -308,27 +316,31 @@ void ArenaHero::Move(int x, int y)
 }
  void ArenaHero::SwingSword()
  {
-    if (m_bmpCurrent.hasFinished())
+    if (m_bmpCurrentPtr->hasFinished())
     {
         //UP
         if(m_Direction == DIR_UP)
         {
-            m_bmpCurrent = m_bmpStandingUp;
+            m_bmpCurrentPtr = &m_bmpStandingUp;
+            m_bmpSwordUp.setCurrentFrame(0);
         }
         //DOWN
         else if(m_Direction == DIR_DOWN)
         {
-            m_bmpCurrent = m_bmpStandingDown;
+            m_bmpCurrentPtr = &m_bmpStandingDown;
+            m_bmpSwordDown.setCurrentFrame(0);
         }
         //LEFT
         else if(m_Direction == DIR_LEFT)
         {
-            m_bmpCurrent = m_bmpStandingLeft;
+            m_bmpCurrentPtr = &m_bmpStandingLeft;
+            m_bmpSwordLeft.setCurrentFrame(0);
         }
         //RIGHT
         else if(m_Direction == DIR_RIGHT)
         {
-            m_bmpCurrent = m_bmpStandingRight;
+            m_bmpCurrentPtr = &m_bmpStandingRight;
+            m_bmpSwordRight.setCurrentFrame(0);
         }
 
         m_IsSwinging = false;
@@ -385,8 +397,8 @@ void ArenaHero::update()
     // Update the current animation
     //-----------------------------------
 
-    m_bmpCurrent.setPosition(m_X, m_Y);
-    m_bmpCurrent.update();
+    m_bmpCurrentPtr->setPosition(m_X, m_Y);
+    m_bmpCurrentPtr->update();
 
     m_bmpShadow.setPosition(m_X, m_Y);
 
