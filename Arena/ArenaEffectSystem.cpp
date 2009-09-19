@@ -15,6 +15,7 @@ ArenaEffectSystem::ArenaEffectSystem()
 {
     for(int counter = 0; counter < MAX; ++counter)
     {
+        m_EffectArr[counter] = NULL;
         m_EffectArr[counter] = new ArenaEffect();
     }
 }
@@ -22,8 +23,13 @@ ArenaEffectSystem::~ArenaEffectSystem()
 {
     for(int counter = 0; counter < MAX; ++counter)
     {
-        delete m_EffectArr[counter];
+        if(m_EffectArr[counter])
+            delete m_EffectArr[counter];
+        m_EffectArr[counter] = NULL;
     }
+    if(m_EffectSystemPtr)
+        delete m_EffectSystemPtr;
+
 }
 //-----------------------------------------------------
 // Methodes

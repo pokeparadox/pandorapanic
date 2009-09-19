@@ -18,12 +18,19 @@ ArenaEnvironment::ArenaEnvironment()
     m_bmpBorder.loadBackground("images/Arena/Border.png");
     m_bmpBorder.setTransparentColour(MAGENTA);
 
+    m_CollisionMapPtr = NULL;
     m_CollisionMapPtr = new CollisionMap();
     m_CollisionMapPtr->loadImage("images/Arena/Mask.png");
 }
 ArenaEnvironment::~ArenaEnvironment()
 {
-
+     if(m_CollisionMapPtr)
+    {
+        delete m_CollisionMapPtr;
+        m_CollisionMapPtr = NULL;
+    }
+    if(m_EnvironmentPtr)
+        delete m_EnvironmentPtr;
 }
 //-----------------------------------------------------
 // Methodes

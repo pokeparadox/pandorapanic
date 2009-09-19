@@ -16,7 +16,7 @@ ArenaMonsterList::ArenaMonsterList()
 {
     for(int counter = 0; counter < MAX; ++counter)
     {
-        m_MonsterArr[counter] = 0;
+        m_MonsterArr[counter] = NULL;
     }
 
     m_sndDie.loadSound("sounds/Arena/EnemyDie.wav");
@@ -25,8 +25,9 @@ ArenaMonsterList::~ArenaMonsterList()
 {
    	for (int counter = 0; counter < MAX; ++counter)
 	{
-		delete m_MonsterArr[counter];
-		m_MonsterArr[counter] = 0;
+	    if(m_MonsterArr)
+            delete m_MonsterArr[counter];
+		m_MonsterArr[counter] = NULL;
 	}
 }
 //-----------------------------------------------------
@@ -71,7 +72,7 @@ void ArenaMonsterList::HandleCollision()
 
     for(int counter = 0; counter < MAX; ++counter)
     {
-        if (m_MonsterArr[counter] != 0)
+        if (m_MonsterArr[counter])
 		{
 		    if(!(m_MonsterArr[counter]->GetDead()))
 		    {
@@ -82,7 +83,7 @@ void ArenaMonsterList::HandleCollision()
                     m_MonsterArr[counter]->Move(0, -4);
                     for(int hrcounter = 0; hrcounter < MAX; hrcounter += 1)
                     {
-                        if(m_MonsterArr[hrcounter] != 0 && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
+                        if(m_MonsterArr[hrcounter] && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
                         {
                             if(m_MonsterArr[counter]->GetHitRegion()->hitTest(m_MonsterArr[hrcounter]->GetHitRegion()))
                             {
@@ -97,7 +98,7 @@ void ArenaMonsterList::HandleCollision()
                     m_MonsterArr[counter]->Move(0, 4);
                     for(int hrcounter = 0; hrcounter < MAX; hrcounter += 1)
                     {
-                        if(m_MonsterArr[hrcounter] != 0 && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
+                        if(m_MonsterArr[hrcounter] && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
                         {
                             if(m_MonsterArr[counter]->GetHitRegion()->hitTest(m_MonsterArr[hrcounter]->GetHitRegion()))
                             {
@@ -112,7 +113,7 @@ void ArenaMonsterList::HandleCollision()
                     m_MonsterArr[counter]->Move(-4, 0);
                     for(int hrcounter = 0; hrcounter < MAX; hrcounter += 1)
                     {
-                        if(m_MonsterArr[hrcounter] != 0 && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
+                        if(m_MonsterArr[hrcounter] && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
                         {
                             if(m_MonsterArr[counter]->GetHitRegion()->hitTest(m_MonsterArr[hrcounter]->GetHitRegion()))
                             {
@@ -127,7 +128,7 @@ void ArenaMonsterList::HandleCollision()
                     m_MonsterArr[counter]->Move(4, 0);
                     for(int hrcounter = 0; hrcounter < MAX; hrcounter += 1)
                     {
-                        if(m_MonsterArr[hrcounter] != 0 && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
+                        if(m_MonsterArr[hrcounter] && m_MonsterArr[hrcounter] != m_MonsterArr[counter])
                         {
                             if(m_MonsterArr[counter]->GetHitRegion()->hitTest(m_MonsterArr[hrcounter]->GetHitRegion()))
                             {
@@ -152,10 +153,11 @@ void ArenaMonsterList::HandleCollision()
 void ArenaMonsterList::Add(ArenaMonster* monsterPtr)
 {
 	int position = 0;
-	while (position < MAX && m_MonsterArr[position] != 0) position += 1;
+	while (position < MAX && m_MonsterArr[position]) position += 1;
 
 	if (position != MAX)
 	{
+	    // possible problem here with contained Penjin classes, due to copy constructor
 		m_MonsterArr[position] = monsterPtr;
 	}
 }
@@ -166,9 +168,9 @@ void ArenaMonsterList::Remove(ArenaMonster* monsterPtr)
 
 	if (position != MAX)
 	{
-	    m_MonsterArr[position] = new ArenaMonster();
-		delete m_MonsterArr[position];
-		m_MonsterArr[position] = 0;
+	    if(m_MonsterArr[position])
+            delete m_MonsterArr[position];
+		m_MonsterArr[position] = NULL;
 
 		if(m_sndDie.isPlaying())
 		{

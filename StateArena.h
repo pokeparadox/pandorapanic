@@ -48,7 +48,7 @@ public:
     ArenaHero* m_HeroPtr;
     ArenaMonsterList* m_MonsterListPtr;
 
-    Music* m_MusicPtr;
+    Music m_Music;
 
     Sprite m_Clouds, m_Clouds2;
 
