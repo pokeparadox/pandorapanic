@@ -147,7 +147,6 @@ bool StateBadVista::hitObstacle(std::vector<SimpleRegion> obstacles, SimpleRegio
     SimpleRegion region = *(obstacleIt);
     if (region.intersects(motion)) {
         bounce.play();
-        numBounces--;
         return true;
     }
   }
@@ -205,6 +204,7 @@ void StateBadVista::update()
       logoVelocityX *= BOUNCE_DECAY;
       logoVelocityY *= BOUNCE_DECAY;
       logoVelocityY *= -1;
+      numBounces--;
     }
 
     if (hitObstacle(verticalObstacles, motion)) {
