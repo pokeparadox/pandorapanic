@@ -37,10 +37,6 @@
 
 
 #include "Sprite.h"
-#ifdef PLATFORM_GP2X
-    #include "MMUHack.h"
-#endif
-
 #include "Timer.h"
 
 #include <vector>

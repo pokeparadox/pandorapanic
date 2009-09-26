@@ -11,6 +11,7 @@ It performs differing tasks depending on what has been stored in variables.
 #include "Sprite.h"
 #include "Colour.h"
 #include "Music.h"
+#include "ButtonPrompter.h"
 
 class StateMain : public BaseState
 {
@@ -51,6 +52,7 @@ class StateMain : public BaseState
         bool playWin;
         bool playFail;
         Timer timer;
+        ButtonPrompter prompt;
 };
 
 #endif // STATEMAIN_H

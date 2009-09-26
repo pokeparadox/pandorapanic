@@ -19,6 +19,7 @@ SelectionBox - play individual minigames
 #include "AnimatedSprite.h"
 #include "Random.h"
 #include "Timer.h"
+#include "ButtonPrompter.h"
 
 class StateTitle : public BaseState
 {
@@ -65,6 +66,7 @@ class StateTitle : public BaseState
         Music music;
         Timer timer;
         Timer startTimer;
+        ButtonPrompter prompt;
 };
 
 #endif // STATETITLE_H
