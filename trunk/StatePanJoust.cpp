@@ -7,6 +7,7 @@ StatePanJoust::StatePanJoust()
 StatePanJoust::~StatePanJoust()
 {
 //    clear();
+delete [] platform;
 }
 
 void StatePanJoust::init()

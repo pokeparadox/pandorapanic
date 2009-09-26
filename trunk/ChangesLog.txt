@@ -1,3 +1,21 @@
+26 September 2009
+   released version 1.2.1327 of PandoraPanic
+
+     Change log:
+        -Added: ButtonPrompter to selectionBox screen
+
+26 September 2009
+   released version 1.2.1325 of PandoraPanic
+
+     Change log:
+        -Added: ButtonPrompt for titlescreen indicating menu selection
+
+17 September 2009
+   released version 1.1.1295 of PandoraPanic
+
+     Change log:
+        -Updated: BallDrop now uses SDL_gfx primitives to draw ball etc instead of hacked version!
+
 11 September 2009
    released version 1.1.1291 of PandoraPanic
 

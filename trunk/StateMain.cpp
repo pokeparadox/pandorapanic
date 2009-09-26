@@ -57,6 +57,8 @@ void StateMain::loadCommon()
         back.render();
         logo.render();
     #endif
+    prompt.setDefaultX(650);
+    prompt.setDefaultY(400);
 }
 
 void StateMain::winLoseLoad()
@@ -242,6 +244,7 @@ void StateMain::genPreview(uint next)
     if(state)
         delete state;
     state=NULL;
+    prompt.display();
 }
 
 void StateMain::userInput()
@@ -333,6 +336,7 @@ void StateMain::render(SDL_Surface* screen)
     {
         text.print(screen,(string)MINIGAMES_NAMES[selection]);
         text.print(screen," \n");text.print(screen,"Level: ");text.print(screen,variables[2].getInt());
+        prompt.render();
     }
     else
         text.print(screen, "Loading...");

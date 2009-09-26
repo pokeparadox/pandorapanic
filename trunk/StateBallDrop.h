@@ -8,6 +8,9 @@
 */
 
 #include "ButtonPrompter.h"
+#ifdef PENJIN_SDL
+    #include <SDL/SDL_gfxPrimitives.h>
+#endif
 
 class StateBallDrop : public BaseState
 {

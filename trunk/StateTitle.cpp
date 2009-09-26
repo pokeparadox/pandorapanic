@@ -37,6 +37,8 @@ StateTitle::~StateTitle()
 
 void StateTitle::init()
 {
+    prompt.setDefaultX(600);
+    prompt.setFlashQuantity(4);
     backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
 
     GFX::setClearColour(backColour);
@@ -113,7 +115,7 @@ void StateTitle::setupMainMenu()
     choice = -1;
     menu.clear();
     menu.setMenuStart(getStateXResolution()*0.25f - 15,50);
-    menu.setCurrentSelection(1);
+    menu.setSelection(1);
     menu.loadFont("font/foo.ttf", 28);
     menu.setTextColour(Colour(YELLOW));
     menu.setTextSelectionColour(Colour(WHITE));
@@ -304,7 +306,10 @@ void StateTitle::render(SDL_Surface* screen)
     SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
     emit.render(screen);
     if(splashDone)
+    {
         menu.render(screen);
+        prompt.render();
+    }
     else
     {
         splash.render(screen);
@@ -376,23 +381,28 @@ void StateTitle::userInput()
         if(input->isQuit())
             nullifyState();
     #endif
+    const uint offset = 6;
     if(splashDone)
     {
         menu.setMouseSelection(input->getTouch());
         if(input->isTouch() || input->isA() || input->isStart())
         {
-            choice = menu.getCurrentSelection();
+            choice = menu.getSelection();
             input->resetKeys();
         }
         if(input->isUp())
         {
             menu.menuUp();
             input->resetKeys();
+            prompt.setDefaultY(menu.getSelectionPosition().y+offset);
+            prompt.display();
         }
         else if(input->isDown())
         {
             menu.menuDown();
             input->resetKeys();
+            prompt.setDefaultY(menu.getSelectionPosition().y+offset);
+            prompt.display();
         }
         if(returnToCentre)
         {
