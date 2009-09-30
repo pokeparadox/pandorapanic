@@ -211,8 +211,6 @@
 			<Add directory="../PenjinBase/include" />
 			<Add directory="../PenjinBase" />
 		</Compiler>
-		<Unit filename="../../PenjinBase/Ellipse.cpp" />
-		<Unit filename="../../PenjinBase/Ellipse.h" />
 		<Unit filename="../../PenjinBase/HitRegion.cpp">
 			<Option virtualFolder="PenjinBase/Physics/" />
 		</Unit>

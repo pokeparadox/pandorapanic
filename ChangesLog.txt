@@ -1,3 +1,21 @@
+30 September 2009
+   released version 1.2.1357 of PandoraPanic
+
+     Change log:
+        -Updated: Button instructions for SelectionBox mode.
+
+30 September 2009
+   released version 1.2.1350 of PandoraPanic
+
+     Change log:
+        -Fixed: SimpleJoy state after completing minigame continues onto selection screen.
+
+30 September 2009
+   released version 1.2.1345 of PandoraPanic
+
+     Change log:
+        -Added: Can press A button to launch spears in Pang (more in tune with rest of the games)
+
 26 September 2009
    released version 1.2.1327 of PandoraPanic
 

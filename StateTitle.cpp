@@ -37,7 +37,8 @@ StateTitle::~StateTitle()
 
 void StateTitle::init()
 {
-    prompt.setDefaultX(600);
+    prompt.setDefaultX(700);
+    prompt.setDefaultY(400);
     prompt.setFlashQuantity(4);
     backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
 
@@ -381,7 +382,6 @@ void StateTitle::userInput()
         if(input->isQuit())
             nullifyState();
     #endif
-    const uint offset = 6;
     if(splashDone)
     {
         menu.setMouseSelection(input->getTouch());
@@ -394,15 +394,15 @@ void StateTitle::userInput()
         {
             menu.menuUp();
             input->resetKeys();
-            prompt.setDefaultY(menu.getSelectionPosition().y+offset);
-            prompt.display();
+            if(prompt.getNumEvents()<1)
+                prompt.display();
         }
         else if(input->isDown())
         {
             menu.menuDown();
             input->resetKeys();
-            prompt.setDefaultY(menu.getSelectionPosition().y+offset);
-            prompt.display();
+            if(prompt.getNumEvents()<1)
+                prompt.display();
         }
         if(returnToCentre)
         {

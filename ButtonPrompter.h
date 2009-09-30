@@ -83,6 +83,9 @@ class ButtonPrompter : public Image
 
     virtual void render();
 
+    size_t getNumEvents()const{return queue.size();}
+    void purgeEvents(){queue.clear();}     //  clear
+
 
     enum BUTTON {
       BUTTON_A,

@@ -53,6 +53,7 @@ class StateMain : public BaseState
         bool playFail;
         Timer timer;
         ButtonPrompter prompt;
+        Vector2di upArrow, downArrow, leftArrow, rightArrow, bButton;
 };
 
 #endif // STATEMAIN_H
