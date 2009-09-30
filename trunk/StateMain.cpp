@@ -12,6 +12,15 @@ StateMain::StateMain()
     text.setRelativity(true);
     bgBuffer = NULL;
     preview = NULL;
+
+    upArrow.x = downArrow.x = 600;
+    upArrow.y = 102;
+    downArrow.y = 440;
+    leftArrow.x = 0;
+    leftArrow.y = rightArrow.y = 90;
+    rightArrow.x = 80;
+    bButton.x = 0;
+    bButton.y = 440;
 }
 
 StateMain::~StateMain()
@@ -101,6 +110,7 @@ void StateMain::loadLose()
 
 void StateMain::init()
 {
+    input->resetKeys();
     // The game needs to pass the following variables
     /// 0 - PASS / FAIL  0 is fail 1 is pass
     /// 1 - Game mode
@@ -244,7 +254,8 @@ void StateMain::genPreview(uint next)
     if(state)
         delete state;
     state=NULL;
-    prompt.display();
+    if(prompt.getNumEvents()<1)
+        prompt.display();
 }
 
 void StateMain::userInput()
@@ -337,6 +348,13 @@ void StateMain::render(SDL_Surface* screen)
         text.print(screen,(string)MINIGAMES_NAMES[selection]);
         text.print(screen," \n");text.print(screen,"Level: ");text.print(screen,variables[2].getInt());
         prompt.render();
+        prompt.renderImage(16,upArrow.x,upArrow.y);
+        prompt.renderImage(17,downArrow.x, downArrow.y);
+        prompt.renderImage(14,leftArrow.x, leftArrow.y);
+        prompt.renderImage(15,rightArrow.x, rightArrow.y);
+        prompt.renderImage(11,bButton.x, bButton.y);
+        text.setPosition(bButton.x + 50,bButton.y);
+        text.print(screen,"Go Back");
     }
     else
         text.print(screen, "Loading...");

@@ -135,7 +135,7 @@ namespace PangMiniGame
             m_IsRightDown = 0;
         }
         // Up.
-        if ( joy->isUp( ) )
+        if ( joy->isUp( ) || joy->isA())
         {
             if ( m_IsUpDown == 0 )
                 m_IsUpDown = 1;
@@ -1735,7 +1735,7 @@ namespace PangMiniGame
             m_ppPlayerCurrent = &m_pPlayer[ kPlayerAnimStand ];
         }
 
-        if ( Controls::IsUpHit( ) )
+        if ( Controls::IsUpHit( ))
         {
             if ( m_pSpearManager->CanAddSpear( ) )
             {
