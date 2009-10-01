@@ -1,3 +1,9 @@
+02 October 2009
+   released version 1.2.1364 of PandoraPanic
+
+     Change log:
+        -Added: Help screen on Y Button to SelectionBox
+
 30 September 2009
    released version 1.2.1357 of PandoraPanic
 

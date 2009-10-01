@@ -9,6 +9,7 @@ StateMain::StateMain()
     gotoNext = false;
     playFail = false;
     playWin = false;
+    helpMode = false;
     text.setRelativity(true);
     bgBuffer = NULL;
     preview = NULL;
@@ -21,6 +22,8 @@ StateMain::StateMain()
     rightArrow.x = 80;
     bButton.x = 0;
     bButton.y = 440;
+    yButton.x = 0;
+    yButton.y = 400;
 }
 
 StateMain::~StateMain()
@@ -240,6 +243,8 @@ void StateMain::genPreview(uint next)
 #ifdef PENJIN_SDL
     SDL_Surface* t = SDL_GetVideoSurface();
     state->render(t);
+    if(helpMode)
+        state->pauseScreen(t);
     preview = rotozoomSurfaceXY(t, 0, 0.6f, 0.6f, SMOOTHING_ON);
     SDL_Rect trect;
     trect.x = *xRes*0.23f;
@@ -305,15 +310,39 @@ void StateMain::userInput()
             genPreview(selection);
             input->resetKeys();
         }
+        if(input->isY())
+        {
+            helpMode = !helpMode;
+            genPreview(selection);
+            input->resetKeys();
+        }
         if(input->isA() || input->isStart() || input->isTouch())
         {
-            variables[3].setInt(selection+1);
-            gotoNext = true;
+            if(helpMode)
+            {
+                helpMode = !helpMode;
+                genPreview(selection);
+                input->resetKeys();
+            }
+            else
+            {
+                variables[3].setInt(selection+1);
+                gotoNext = true;
+            }
         }
         else if (input->isB())
         {
-            variables[3].setInt(-1);
-            gotoNext = true;
+            if(helpMode)
+            {
+                helpMode = !helpMode;
+                genPreview(selection);
+                input->resetKeys();
+            }
+            else
+            {
+                variables[3].setInt(-1);
+                gotoNext = true;
+            }
         }
     }
 }
@@ -332,7 +361,7 @@ void StateMain::update()
     {
         if(variables[6].getInt() == 1)
             variables[6].setInt(0);
-        input->resetKeys();
+        input->resetKeys(); //  prevent rogue keys in next minigame
         setNextState(variables[3].getInt()+3);
     }
 }
@@ -355,6 +384,9 @@ void StateMain::render(SDL_Surface* screen)
         prompt.renderImage(11,bButton.x, bButton.y);
         text.setPosition(bButton.x + 50,bButton.y);
         text.print(screen,"Go Back");
+        prompt.renderImage(13,yButton.x, yButton.y);
+        text.setPosition(yButton.x + 50,yButton.y);
+        text.print(screen,"Help!");
     }
     else
         text.print(screen, "Loading...");

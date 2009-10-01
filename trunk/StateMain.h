@@ -33,7 +33,7 @@ class StateMain : public BaseState
         void winLoseLoad(); //  Loads resources needed in both winning and losing.
         void loadWin();     //  Loads resources only needed if a game is won
         void loadLose();    //  Loads resources neededif a game is lost
-        void genPreview(uint next);  // Load a substate for previewing purposes.
+        void genPreview(uint next);     //  Load a substate for previewing purposes.
 
         SDL_Surface* bgBuffer;
         SDL_Surface* preview;
@@ -51,9 +51,10 @@ class StateMain : public BaseState
 
         bool playWin;
         bool playFail;
+        bool helpMode;
         Timer timer;
         ButtonPrompter prompt;
-        Vector2di upArrow, downArrow, leftArrow, rightArrow, bButton;
+        Vector2di upArrow, downArrow, leftArrow, rightArrow, bButton, yButton;
 };
 
 #endif // STATEMAIN_H
