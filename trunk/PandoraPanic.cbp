@@ -211,16 +211,16 @@
 			<Add directory="../PenjinBase/include" />
 			<Add directory="../PenjinBase" />
 		</Compiler>
-		<Unit filename="../../PenjinBase/HitRegion.cpp">
+		<Unit filename="../PenjinBase/HitRegion.cpp">
 			<Option virtualFolder="PenjinBase/Physics/" />
 		</Unit>
-		<Unit filename="../../PenjinBase/HitRegion.h">
+		<Unit filename="../PenjinBase/HitRegion.h">
 			<Option virtualFolder="PenjinBase/Physics/" />
 		</Unit>
-		<Unit filename="../../PenjinBase/Line.cpp">
+		<Unit filename="../PenjinBase/Line.cpp">
 			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
 		</Unit>
-		<Unit filename="../../PenjinBase/Line.h">
+		<Unit filename="../PenjinBase/Line.h">
 			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
 		</Unit>
 		<Unit filename="Arena/ArenaEffect.cpp">
