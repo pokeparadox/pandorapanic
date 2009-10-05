@@ -4,7 +4,7 @@
 #include "userStates.h"     // Make sure your state is listed in this include.
 /*
     BadVista minigame for Pandora Panic
-    Release: 1 March 2009
+    Release: 4 Oct 2009
     Authors: Todd Foster, code
              Gruso, soundtrack
     License: GPLv3
@@ -16,6 +16,7 @@
 #include "Sprite.h"
 #include <vector>
 #include "ButtonPrompter.h"
+#include "Text.h"
 
 class SimpleRegion {
   public:
@@ -44,6 +45,7 @@ class StateBadVista : public BaseState
     #endif
     virtual void update();
     virtual void userInput();
+    virtual void pauseScreen(SDL_Surface* screen);
 
   private:
     ButtonPrompter buttonPrompter;
@@ -58,6 +60,8 @@ class StateBadVista : public BaseState
     Music backsound;
     Sound bounce;
 
+    Text pauseText;
+
     const static int LOSER_DELAY = 4;
     const static int END_DELAY = 1;
 
@@ -69,12 +73,7 @@ class StateBadVista : public BaseState
 
     bool hitObstacle(std::vector<SimpleRegion> obstacles, SimpleRegion motion);
     bool ballStopped();
-
-    #ifdef PENJIN_SDL
-        void drawObstacles(SDL_Surface *screen, std::vector<SimpleRegion> obstacles, int color);
-    #else
-        void drawObstacles(std::vector<SimpleRegion> obstacles, int color);
-    #endif
+    bool inBasket();
 
     enum BV_STATE {
       BV_INIT,
@@ -84,7 +83,9 @@ class StateBadVista : public BaseState
       BV_WON,
       BV_PWNED
     };
+
     int numBounces;
+    const static int MAX_NUM_BOUNCES = 15;
 
     int bvState;
 

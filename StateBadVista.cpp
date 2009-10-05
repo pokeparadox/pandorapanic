@@ -1,7 +1,7 @@
 #include "StateBadVista.h"
 /*
     BadVista minigame for Pandora Panic
-    Release: 1 Mar 2009
+    Release: 4 Oct 2009
     Authors: Todd Foster, code
              Gruso, soundtrack
     License: GPLv3
@@ -66,10 +66,13 @@ StateBadVista::StateBadVista()
     verticalObstacles.push_back(SimpleRegion(0, 0, BAD_WIDTH, BAD_BOTTOM));
     verticalObstacles.push_back(SimpleRegion(0, VISTA_TOP, VISTA_WIDTH, VISTA_BOT));
 
-    basketLeft.push_back(SimpleRegion(BASKET_LEFT_OUTSIDE, BASKET_TOP, BASKET_LEFT_INSIDE, FLOOR));
-    basketRight.push_back(SimpleRegion(BASKET_RIGHT_OUTSIDE, BASKET_TOP, BASKET_RIGHT_INSIDE, FLOOR));
+    basketLeft.push_back(SimpleRegion(BASKET_LEFT_OUTSIDE, BASKET_TOP - logo.getHeight() / 4, BASKET_LEFT_INSIDE, FLOOR));
+    basketRight.push_back(SimpleRegion(BASKET_RIGHT_OUTSIDE, BASKET_TOP - logo.getHeight() / 4, BASKET_RIGHT_INSIDE, FLOOR));
 
     playerObstacle.push_back(SimpleRegion(PERSON_X, PERSON_Y, SCREEN_MAX_X, SCREEN_MAX_Y));
+
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(BLACK);
 }
 
 
@@ -80,7 +83,7 @@ void StateBadVista::init()
   pwned_count = 0;
   armAngle = 1;
   armIncrement = 4;
-  numBounces = 10;
+  numBounces = 0;
   arm.setPosition((int)ARM_INIT_X, (int)ARM_INIT_Y);
   logo.setPosition((int)LOGO_INIT_X, (int)LOGO_INIT_Y);
   buttonPrompter.display(ButtonPrompter::BUTTON_A, LOGO_INIT_X - 10, LOGO_INIT_Y - 28);
@@ -140,13 +143,21 @@ void StateBadVista::userInput()
         input->resetKeys();
     }
 }
-
+void StateBadVista::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Put Vista where it belongs!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Press and hold     to throw!");
+    buttonPrompter.renderImage(10,260,220);
+}
 
 bool StateBadVista::hitObstacle(std::vector<SimpleRegion> obstacles, SimpleRegion motion){
   for(std::vector<SimpleRegion>::iterator obstacleIt=obstacles.begin(); obstacleIt!=obstacles.end(); obstacleIt++) {
     SimpleRegion region = *(obstacleIt);
     if (region.intersects(motion)) {
-        bounce.play();
         return true;
     }
   }
@@ -157,11 +168,24 @@ bool StateBadVista::ballStopped(){
   const int LOGO_TOP  = logo.getHeight() / 2;
   //cout << "ballStopped? y=" << logoY + LOGO_TOP << "\t" << FLOOR << "/" << BASKET_BOT << "\n";
   return
-    ((logoY + LOGO_TOP >= BASKET_BOT)
-    && abs(logoVelocityX) < 0.5f
-    && abs(logoVelocityY) < 0.5f) || numBounces == 0;
+    (
+        (
+            (
+                (inBasket() && abs(logoY + LOGO_TOP - BASKET_BOT) < 5)
+                || (!inBasket() && abs(logoY + LOGO_TOP - FLOOR) < 5)
+            )
+        && abs(logoVelocityX) < 0.5f
+        && abs(logoVelocityY) < 0.5f
+        )
+    || numBounces > MAX_NUM_BOUNCES);
 }
 
+
+bool StateBadVista::inBasket() {
+    return
+        BASKET_LEFT_OUTSIDE <= logoX && logoX <= BASKET_RIGHT_OUTSIDE
+        && BASKET_TOP <= logoY;
+}
 
 void StateBadVista::update()
 {
@@ -201,13 +225,17 @@ void StateBadVista::update()
       tempRegion.y2() + LOGO_TOP);
 
     if (hitObstacle(horizontalObstacles, motion)) {
+      if (bounce.isPlaying()) bounce.stop();
+      bounce.play();
       logoVelocityX *= BOUNCE_DECAY;
       logoVelocityY *= BOUNCE_DECAY;
       logoVelocityY *= -1;
-      numBounces--;
+      numBounces++;
     }
 
     if (hitObstacle(verticalObstacles, motion)) {
+      if (bounce.isPlaying()) bounce.stop();
+      bounce.play();
       logoVelocityX *= BOUNCE_DECAY;
       logoVelocityY *= BOUNCE_DECAY;
       logoVelocityX *= -1;
@@ -217,6 +245,7 @@ void StateBadVista::update()
     // neither inside nor out. The following two paragraphs seek to prevent
     // that.
     if (hitObstacle(basketLeft, motion)) {
+      bounce.play();
       logoVelocityX *= BOUNCE_DECAY;
       logoVelocityY *= BOUNCE_DECAY;
       if (logoX >= BASKET_LEFT_INSIDE && logoVelocityX < 0)
@@ -226,6 +255,7 @@ void StateBadVista::update()
     }
 
     if (hitObstacle(basketRight, motion)) {
+      bounce.play();
       logoVelocityX *= BOUNCE_DECAY;
       logoVelocityY *= BOUNCE_DECAY;
       if (logoX >= BASKET_RIGHT_INSIDE && logoVelocityX < 0)
@@ -243,7 +273,7 @@ void StateBadVista::update()
 
     // Check for end of game
     if (ballStopped()) {
-      bool won = BASKET_LEFT_INSIDE <= logoX && logoX <= BASKET_RIGHT_INSIDE;
+      bool won = inBasket();
       variables[0].setValue(won ? 1 : 0);
       if (won)
         bvState = BV_WON;
@@ -252,7 +282,30 @@ void StateBadVista::update()
       counter.start();
     }
 
-    logoVelocityY += GRAVITY;
+    // Ensure gravity doesn't overcome the bounce decay
+    if (inBasket()) {
+        // Once the logo enters the basket, don't let it bounce out
+        float newYPos = GRAVITY + logoVelocityY + logoY + LOGO_TOP;
+        if (logoVelocityY < 1 && BASKET_BOT - logoY < LOGO_TOP + 5) {
+            logoVelocityY = 0;
+            logoVelocityX = 0;
+            logoY = BASKET_BOT - LOGO_TOP;
+        }
+        else if (BASKET_TOP < newYPos && newYPos < BASKET_BOT)
+            logoVelocityY += GRAVITY;
+        else if (newYPos  > BASKET_BOT)
+            logoVelocityY = BASKET_BOT - logoY - LOGO_TOP;
+        else
+            logoVelocityY = BASKET_TOP - logoY - LOGO_TOP;
+    }
+    else {
+        if (GRAVITY + logoVelocityY + logoY + LOGO_TOP < FLOOR)
+            logoVelocityY += GRAVITY;
+        else
+            logoVelocityY = FLOOR - logoY - LOGO_TOP;
+    }
+
+
     #ifdef PENJIN_FIXED
         logoY += fixedpoint::fix2int(logoVelocityY);
         logoX += fixedpoint::fix2int(logoVelocityX);
@@ -300,33 +353,8 @@ void StateBadVista::update()
 }
 
 #ifdef PENJIN_SDL
-// For testing
-void StateBadVista::drawObstacles(SDL_Surface *screen, std::vector<SimpleRegion> obstacles, int color){
-  //cout << "Draw obstacles with " << obstacles.size() << "\n";
-  unsigned int *ptr = (unsigned int*)screen->pixels;
-  for(std::vector<SimpleRegion>::iterator obstacleIt=obstacles.begin(); obstacleIt!=obstacles.end(); obstacleIt++) {
-    SimpleRegion r = *(obstacleIt);
-    //cout << "Obstacle: " << r.x1() << "," << r.y1() << " x " << r.x2() << "," << r.y2() << "\n";
-    for (int y=r.y1(); y<=r.y2(); y++) {
-      int lineoffset = y * (screen->pitch / 4);
-      for (int x=r.x1(); x<=r.x2(); x++) {
-        if (0<=x && x<=(int)*xRes && 0<=y && y<=(int)*yRes) {
-          ptr[lineoffset + x] = color;
-        }
-      }
-    }
-  }
-}
-
-
 void StateBadVista::render(SDL_Surface *screen) {
-	background.render(screen);
-
-  /*
-  drawObstacles(screen, horizontalObstacles, 0xff0000);
-  drawObstacles(screen, verticalObstacles, 0xff0000);
-  drawObstacles(screen, basketInterior, 0x0000ff)
-  */
+    background.render(screen);
 
   if (bvState == BV_PWNED)
     loserBackground.render(screen);
@@ -341,12 +369,6 @@ void StateBadVista::render()
 {
 	background.render();
 
-  /*
-  drawObstacles(screen, horizontalObstacles, 0xff0000);
-  drawObstacles(screen, verticalObstacles, 0xff0000);
-  drawObstacles(screen, basketInterior, 0x0000ff)
-  */
-
   if (bvState == BV_PWNED)
     loserBackground.render();
   else {
@@ -355,7 +377,4 @@ void StateBadVista::render()
     buttonPrompter.render();
   }
 }
-
-void StateBadVista::drawObstacles(std::vector<SimpleRegion> obstacles, int color)
-{}
 #endif

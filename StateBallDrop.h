@@ -8,6 +8,7 @@
 */
 
 #include "ButtonPrompter.h"
+#include "Text.h"
 #ifdef PENJIN_SDL
     #include <SDL/SDL_gfxPrimitives.h>
 #endif
@@ -26,6 +27,7 @@ class StateBallDrop : public BaseState
 
         virtual ~StateBallDrop();
         virtual void userInput();
+        virtual void pauseScreen(SDL_Surface* screen);
 
         char r,g,b;
         float ballx,bally;
@@ -38,6 +40,8 @@ class StateBallDrop : public BaseState
         ButtonPrompter buttonPrompter;
         bool gotoNext;
         Music music;
+
+        Text pauseText;
 
         /////////////////////////////
         //Added by billykater

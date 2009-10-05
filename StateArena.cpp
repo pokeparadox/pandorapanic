@@ -33,6 +33,10 @@ StateArena::StateArena() : m_FrameRateCounter(0), m_EndCounter(0)
     m_Clouds2.setTransparentColour(MAGENTA);
     m_Clouds2.setAlpha(72);
     m_Clouds.setPosition(-800,0);
+
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
 }
 StateArena::~StateArena()
 {
@@ -150,6 +154,11 @@ void StateArena::userInput()
             monsterhitPtr->SetDead(m_HeroPtr->GetX(), m_HeroPtr->GetY());
         }
     }
+    if (input->isStart())
+    {
+            isPaused = !isPaused;
+            input->resetKeys();
+    }
 }
 void StateArena::render(SDL_Surface *screen)
 {
@@ -168,7 +177,15 @@ void StateArena::render(SDL_Surface *screen)
 }
 void StateArena::pauseScreen(SDL_Surface* screen)
 {
+    // Pause screen
     pauseSymbol(screen);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Kill all the monsters!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Press     to swing your sword!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render(screen);
 }
 void StateArena::onPause()
 {
