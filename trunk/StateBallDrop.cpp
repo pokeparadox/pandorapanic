@@ -16,6 +16,9 @@ StateBallDrop::StateBallDrop()
     buttonPrompter.display(ButtonPrompter::BUTTON_LEFT, 350, 370);
     gotoNext = false;
     GFX::setClearColour(WHITE);
+
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(BLACK);
 }
 
 void StateBallDrop::init()
@@ -78,6 +81,21 @@ void StateBallDrop::userInput()
         input->resetKeys();
     }
 }
+void StateBallDrop::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    text.setPosition(300,216);
+    text.setColour(WHITE);
+    text.print(screen,"CATCH!");
+    text.setColour(BLACK);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Catch the ball!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Use     and     to navigate!");
+    buttonPrompter.renderImage(14,100,220);
+    buttonPrompter.renderImage(15,200,220);
+}
 
 #ifdef PENJIN_SDL
 void StateBallDrop::render(SDL_Surface *screen)
@@ -103,7 +121,7 @@ void StateBallDrop::render(SDL_Surface *screen)
         {
             bally+=8;
             if(bally>400)cnt++;
-                text.print(screen,"CATCH!");
+            text.print(screen,"CATCH!");
         }
         if(cnt==2)
         {

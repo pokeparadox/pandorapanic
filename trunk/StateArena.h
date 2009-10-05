@@ -17,6 +17,7 @@
 #include "Music.h"
 
 #include "Sprite.h"
+#include "Text.h"
 
 //-----------------------------------------------------
 // Arena Class
@@ -51,6 +52,9 @@ public:
     Music m_Music;
 
     Sprite m_Clouds, m_Clouds2;
+
+    AnimatedSprite buttonSheet;
+    Text pauseText;
 
 };
 
