@@ -143,16 +143,6 @@ void StateBadVista::userInput()
         input->resetKeys();
     }
 }
-void StateBadVista::pauseScreen(SDL_Surface* screen)
-{
-    // Pause screen
-    pauseSymbol(screen);
-    pauseText.setPosition(50,180);
-    pauseText.print(screen, "Put Vista where it belongs!");
-    pauseText.setPosition(50,220);
-    pauseText.print(screen, "Press and hold     to throw!");
-    buttonPrompter.renderImage(10,260,220);
-}
 
 bool StateBadVista::hitObstacle(std::vector<SimpleRegion> obstacles, SimpleRegion motion){
   for(std::vector<SimpleRegion>::iterator obstacleIt=obstacles.begin(); obstacleIt!=obstacles.end(); obstacleIt++) {
@@ -364,6 +354,16 @@ void StateBadVista::render(SDL_Surface *screen) {
     buttonPrompter.render();
   }
 }
+void StateBadVista::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Put Vista where it belongs!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Press and hold     to throw!");
+    buttonPrompter.renderImage(10,260,220);
+}
 #else
 void StateBadVista::render()
 {
@@ -376,5 +376,15 @@ void StateBadVista::render()
     logo.render();
     buttonPrompter.render();
   }
+}
+void StateBadVista::pauseScreen()
+{
+    // Pause screen
+    pauseSymbol();
+    pauseText.setPosition(50,180);
+    pauseText.print("Put Vista where it belongs!");
+    pauseText.setPosition(50,220);
+    pauseText.print("Press and hold     to throw!");
+    buttonPrompter.renderImage(10,260,220);
 }
 #endif

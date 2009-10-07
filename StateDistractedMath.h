@@ -24,8 +24,10 @@ class StateDistractedMath : public BaseState
         virtual void init();
     #ifdef PENJIN_SDL
         virtual void render(SDL_Surface *screen);
+        virtual void pauseScreen(SDL_Surface *screen);
     #else
         virtual void render();
+        virtual void pauseScreen();
     #endif
         virtual void update();
         virtual void userInput();
@@ -38,6 +40,7 @@ class StateDistractedMath : public BaseState
         Text text;
         Text command;
         Text telfont;
+        Text pauseText;
         Timer teller;
         Background background0;
         Background background1;

@@ -11,6 +11,7 @@
 #include "Image.h"
 #include "Sprite.h"
 #include "AnimatedSprite.h"
+#include "Rectangle.h"
 #include <vector>
 #include <string>
 
@@ -45,6 +46,7 @@ class StateMemoryBlocks : public BaseState
 
         Text command;
         Text timer;
+        Text pauseText;
         Timer counter;
         Background background;
         std::vector<BlockSlot> combination;
@@ -52,6 +54,7 @@ class StateMemoryBlocks : public BaseState
         std::vector<Image*> blocks;
         Image slot;
         AnimatedSprite cursor;
+        AnimatedSprite buttonSheet;
         int currentSlot;
         bool keyPressLimiter;
 };

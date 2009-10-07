@@ -81,21 +81,6 @@ void StateBallDrop::userInput()
         input->resetKeys();
     }
 }
-void StateBallDrop::pauseScreen(SDL_Surface* screen)
-{
-    // Pause screen
-    pauseSymbol(screen);
-    text.setPosition(300,216);
-    text.setColour(WHITE);
-    text.print(screen,"CATCH!");
-    text.setColour(BLACK);
-    pauseText.setPosition(50,180);
-    pauseText.print(screen, "Catch the ball!");
-    pauseText.setPosition(50,220);
-    pauseText.print(screen, "Use     and     to navigate!");
-    buttonPrompter.renderImage(14,100,220);
-    buttonPrompter.renderImage(15,200,220);
-}
 
 #ifdef PENJIN_SDL
 void StateBallDrop::render(SDL_Surface *screen)
@@ -149,6 +134,21 @@ void StateBallDrop::render(SDL_Surface *screen)
         }
         //buttonPrompter.render(screen);
 }
+void StateBallDrop::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    text.setPosition(300,216);
+    text.setColour(WHITE);
+    text.print(screen,"CATCH!");
+    text.setColour(BLACK);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Catch the ball!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Use     and     to navigate!");
+    buttonPrompter.renderImage(14,100,220);
+    buttonPrompter.renderImage(15,200,220);
+}
 #else
 void StateBallDrop::render()
 {
@@ -200,6 +200,21 @@ void StateBallDrop::render()
             GFX::clearScreen();
         }
         //buttonPrompter.render(screen);
+}
+void StateBallDrop::pauseScreen()
+{
+    // Pause screen
+    pauseSymbol();
+    text.setPosition(300,216);
+    text.setColour(WHITE);
+    text.print("CATCH!");
+    text.setColour(BLACK);
+    pauseText.setPosition(50,180);
+    pauseText.print("Catch the ball!");
+    pauseText.setPosition(50,220);
+    pauseText.print("Use     and     to navigate!");
+    buttonPrompter.renderImage(14,100,220);
+    buttonPrompter.renderImage(15,200,220);
 }
 #endif
 

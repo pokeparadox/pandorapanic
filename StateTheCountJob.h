@@ -3,17 +3,22 @@
 
 #include "userStates.h"     // Make sure your state is listed in this include.
 /*
-    foxblock became interested in C++ programming, so fear his second creation
+    foxblock got interested in C++ programming, so fear his second creation
 */
 
 
-#include "Background.h"
 #include "Sprite.h"
+#include "NumberUtility.h"
+#include "Vector2df.h"
+
+/// const
+#define INSTRUCTIONS_TIME 10
 
 class StateTheCountJob : public BaseState
 {
     public:
         StateTheCountJob();
+        virtual ~StateTheCountJob();
         virtual void init();
         #ifdef PENJIN_SDL
             virtual void render(SDL_Surface *screen);
@@ -25,25 +30,25 @@ class StateTheCountJob : public BaseState
         virtual void update();
         virtual void onPause();
         virtual void onResume();
-
-
-        virtual ~StateTheCountJob();
         virtual void userInput();
 
-        virtual bool checkPos(int curr);
+        virtual bool checkPos(vector<Vector2df>::iterator curr, int arr);
 
+        /// visuals
         Text pauseText;
         Text text;
         Timer counter;
-        Sprite circle[75];
+        Sprite circle[5];
         Sprite selection;
 
+        /// sounds
         Sound sTime1;
         Sound sTime2;
         Sound sAlarm;
         Sound sSelection;
 
-        int arr[5];
+        /// vars
+        vector<Vector2df> pos[5];
         bool colourBlind;
         bool inputMode;
         int circleLevel;
@@ -51,6 +56,7 @@ class StateTheCountJob : public BaseState
         int showTime;
         int winTime;
         int selected;
+        int pauseMayhem;
 };
 
 #endif // STATETHECOUNTJOB_H_INCLUDED

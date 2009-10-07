@@ -13,6 +13,8 @@ keyPressLimiter(false)
     command.loadFont("font/origami.ttf",48);
     command.setRelativity(false);
     command.setPosition(220,150);
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
     counter.setMode(SECONDS);
 
     timer.loadFont("font/chromo.ttf",60);
@@ -39,6 +41,7 @@ keyPressLimiter(false)
     cursor.loadFrames("images/MemoryBlocks/cursor.png", 4, 1);
     cursor.setLooping(true);
     cursor.setFrameRate(DECI_SECONDS);
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     /*
     enemy.loadSprite("images/RotDef/bomb.png");
     turret.loadSprite("images/RotDef/turret_top.png");
@@ -162,27 +165,61 @@ void StateMemoryBlocks::userInput()
 #ifdef PENJIN_SDL
 void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
 {
-    SDL_Rect t;
-    t.x = 0;
-    t.y = getStateYResolution()*0.35f;
-    t.w = getStateXResolution();
-    t.h = getStateYResolution()*0.33f;
-    SDL_FillRect(screen, &t,SDL_MapRGB(screen->format, 0,0,0));
+    background.render(screen);
+    Rectangle recta;
+    recta.setPosition(0,168);
+    recta.setDimensions(800,160);
+    recta.setColour(BLACK);
+    recta.render(screen);
     pauseSymbol(screen);
-    command.print(screen, "Memorize!");
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Memorize the symbols and rebuild the code!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Press     or     to navigate through the code.");
+    buttonSheet.setCurrentFrame(14);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(15);
+    buttonSheet.setPosition(215,220);
+    buttonSheet.render(screen);
+    pauseText.setPosition(50,260);
+    pauseText.print(screen, "Use     or     to change the symbol!");
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(100,260);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(17);
+    buttonSheet.setPosition(185,260);
+    buttonSheet.render(screen);
 }
+
 #else
 void StateMemoryBlocks::pauseScreen()
-{/*
-    SDL_Rect t;
-    t.x = 0;
-    t.y = getStateYResolution()*0.35f;
-    t.w = getStateXResolution();
-    t.h = getStateYResolution()*0.33f;
-    SDL_FillRect(screen, &t,SDL_MapRGB(screen->format, 0,0,0));
-    pauseSymbol(screen);
-    command.print(screen, "Memorize!");
-    */
+{
+    background.render();
+    Rectangle recta;
+    recta.setPosition(0,168);
+    recta.setDimensions(800,160);
+    recta.setColour(BLACK);
+    recta.render();
+    pauseSymbol();
+    pauseText.setPosition(50,180);
+    pauseText.print("Memorize the symbols and rebuild the code!");
+    pauseText.setPosition(50,220);
+    pauseText.print("Press     or     to navigate through the code.");
+    buttonSheet.setCurrentFrame(14);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(15);
+    buttonSheet.setPosition(215,220);
+    buttonSheet.render();
+    pauseText.setPosition(50,260);
+    pauseText.print("Use     or     to change the symbol!");
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(100,260);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(17);
+    buttonSheet.setPosition(185,260);
+    buttonSheet.render();
 }
 #endif
 
