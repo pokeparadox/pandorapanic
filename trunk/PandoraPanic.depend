@@ -11702,11 +11702,11 @@
 1252628893 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/Arena/ArenaEffect.h
 	"AnimatedSprite.h"
 
-1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/AnimatedSprite.h
+1254858023 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/AnimatedSprite.h
 	"Image.h"
 	"Timer.h"
 
-1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Image.h
+1254861513 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Image.h
 	<SDL/SDL.h>
 	<SDL/SDL_opengl.h>
 	"Texture.h"
@@ -11727,8 +11727,9 @@
 	"PenjinErrors.h"
 	"GFX.h"
 
-1253975350 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/NumberUtility.h
+1254849550 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/NumberUtility.h
 	"PenjinTypes.h"
+	"NumberUtility.inl"
 
 1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/PenjinTypes.h
 	<string>
@@ -11862,9 +11863,14 @@
 	"Image.h"
 	"PenjinTypes.h"
 
-1254237198 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/SimpleJoy.h
+1254848012 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/SimpleJoy.h
 	"PenjinTypes.h"
 	"KeyMapper.h"
+	<linux/input.h>
+	<string.h>
+	<fcntl.h>
+	<unistd.h>
+	<stdio.h>
 
 1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/KeyMapper.h
 	"KeyMapSDLKey.h"
@@ -11948,13 +11954,13 @@
 	"Rectangle.h"
 	"CollisionMap.h"
 
-1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Rectangle.h
+1254877371 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Rectangle.h
 	"PenjinTypes.h"
 	"Colour.h"
 	"GFX.h"
 	<SDL/SDL_opengl.h>
 
-1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Sound.h
+1254853702 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Sound.h
 	<SDL/SDL.h>
 	<SDL/SDL_mixer.h>
 	<string>
@@ -12030,7 +12036,7 @@
 	<fstream>
 	"Timer.h"
 
-1254438868 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/version.h
+1254951786 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/version.h
 
 1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/PenjinStates.h
 	"BaseState.h"
@@ -12182,7 +12188,7 @@
 	"BackBuffer.h"
 	"Random.h"
 
-1253744750 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateTitle.h
+1254877456 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateTitle.h
 	"PenjinStates.h"
 	"Menu.h"
 	"Music.h"
@@ -12243,7 +12249,7 @@
 	"userStates.h"
 	"ButtonPrompter.h"
 
-1253208537 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateArena.h
+1254791830 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateArena.h
 	"userStates.h"
 	"Arena/ArenaEnvironment.h"
 	"Arena/ArenaEffectSystem.h"
@@ -12252,10 +12258,12 @@
 	"Arena/ArenaMonsterList.h"
 	"Music.h"
 	"Sprite.h"
+	"Text.h"
 
-1253190120 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBallDrop.h
+1254791830 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBallDrop.h
 	"userStates.h"
 	"ButtonPrompter.h"
+	"Text.h"
 	<SDL/SDL_gfxPrimitives.h>
 
 1246885587 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StatePuttPutt.h
@@ -12264,13 +12272,14 @@
 	"Sprite.h"
 	"Emitter.h"
 
-1246885587 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateSpaceInvaders.h
+1254950743 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateSpaceInvaders.h
 	"userStates.h"
 	"Background.h"
 	"Sprite.h"
 	"Emitter.h"
+	"AnimatedSprite.h"
 
-1252627283 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateSpellingContest.h
+1254947553 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateSpellingContest.h
 	"userStates.h"
 	"Background.h"
 	"TextDoc.h"
@@ -12278,12 +12287,13 @@
 	"Music.h"
 	"StringUtility.h"
 
-1252628435 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBadVista.h
+1254791830 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBadVista.h
 	"userStates.h"
 	"Background.h"
 	"Sprite.h"
 	<vector>
 	"ButtonPrompter.h"
+	"Text.h"
 
 1246885587 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateDistractedMath.h
 	"userStates.h"
@@ -12382,7 +12392,7 @@
 	"PanJoust/HeroBird.h"
 	"Emitter.h"
 
-1246786633 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/PanJoust/HeroBird.h
+1254849378 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/PanJoust/HeroBird.h
 	"AnimatedSprite.h"
 	"Sprite.h"
 	"Sound.h"
@@ -12485,7 +12495,7 @@
 1252444648 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/MiniGameStates.h
 	"PenjinStates.h"
 
-1244599615 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/PanJoust/HeroBird.cpp
+1254849378 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/PanJoust/HeroBird.cpp
 	"PanJoust/HeroBird.h"
 
 1249560443 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/RocketEscape/Collectible.cpp
@@ -12502,13 +12512,13 @@
 
 1242123876 /home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/SegWay.h
 
-1253220493 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateArena.cpp
+1254950192 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateArena.cpp
 	"StateArena.h"
 
-1252628664 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBadVista.cpp
+1254791830 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBadVista.cpp
 	"StateBadVista.h"
 
-1253190948 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBallDrop.cpp
+1254791830 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBallDrop.cpp
 	"StateBallDrop.h"
 
 1245480424 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateBarrelRoll.cpp
@@ -12535,9 +12545,8 @@
 1247620623 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateJumper.cpp
 	"StateJumper.h"
 
-1254425764 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateMain.cpp
+1254438865 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateMain.cpp
 	"StateMain.h"
-	"MiniGameStates.h"
 	"MiniGameStates.h"
 
 1246926132 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateMemoryBlocks.cpp
@@ -12576,13 +12585,13 @@
 1246925872 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateSpaceInvaders.cpp
 	"StateSpaceInvaders.h"
 
-1252107821 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateTheCountJob.cpp
+1254853826 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateTheCountJob.cpp
 	"StateTheCountJob.h"
 
 1245780170 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateTileEditor.cpp
 	"StateTileEditor.h"
 
-1254272674 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateTitle.cpp
+1254940739 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateTitle.cpp
 	"StateTitle.h"
 
 1241204492 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/_main.cpp
@@ -12657,7 +12666,7 @@
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/HiScore.cpp
 	"HiScore.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Image.cpp
+1254940500 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Image.cpp
 	"Image.h"
 
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/ImageMenuItem.cpp
@@ -12697,7 +12706,7 @@
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/KeyMapSDLKey.cpp
 	"KeyMapSDLKey.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/KeyMapper.cpp
+1254685944 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/KeyMapper.cpp
 	"KeyMapper.h"
 
 1253618124 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/LUT.cpp
@@ -12712,10 +12721,10 @@
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/MenuItem.cpp
 	"MenuItem.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Music.cpp
+1254949773 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Music.cpp
 	"Music.h"
 
-1253975350 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/NumberUtility.cpp
+1254685734 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/NumberUtility.cpp
 	"NumberUtility.h"
 
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Parser.cpp
@@ -12745,7 +12754,7 @@
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Random.cpp
 	"Random.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Rectangle.cpp
+1254877371 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Rectangle.cpp
 	"Rectangle.h"
 
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Score.cpp
@@ -12763,10 +12772,10 @@
 1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/ScreenPartition.h
 	"PenjinTypes.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/SimpleJoy.cpp
+1254848875 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/SimpleJoy.cpp
 	"SimpleJoy.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Sound.cpp
+1254853733 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Sound.cpp
 	"Sound.h"
 
 1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Sprite.cpp
@@ -12862,7 +12871,7 @@
 1253230519 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StatePlander.cpp
 	"StatePlander.h"
 
-1252627332 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateSpellingContest.cpp
+1254949068 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateSpellingContest.cpp
 	"StateSpellingContest.h"
 
 1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Line.cpp
@@ -12882,4 +12891,18 @@
 	"Colour.h"
 	"GFX.h"
 	<SDL/SDL_opengl.h>
+
+1254685734 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/NumberUtility.inl
+
+1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/HitRegion.cpp
+	"HitRegion.h"
+
+1253616691 source:/home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Line.cpp
+	"Line.h"
+
+1253616691 /home/kevin/Documents/Programming/Penjin/Projects/PenjinBase/Line.h
+	"PenjinTypes.h"
+	"Colour.h"
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_gfxPrimitives.h>
 

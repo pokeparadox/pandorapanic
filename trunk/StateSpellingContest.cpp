@@ -17,6 +17,8 @@ StateSpellingContest::StateSpellingContest()
     boy.setFrameRate(SECONDS); //one frame per second
     girl.setFrameRate(SECONDS); //this doesn't actually work - Penjin just defaults too scaler = 1000;
     //it would be nice if AnimatedSprite used Timer::setScaler(float) so that you could use any framerate
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
 }
 
 
@@ -69,6 +71,10 @@ void StateSpellingContest::userInput()
                 #endif
 
                 case SDL_KEYDOWN:
+                    if(event.key.keysym.sym == SDLK_RETURN)
+                    {
+                        isPaused = !isPaused;
+                    }
                     if ((event.key.keysym.unicode > 64 && event.key.keysym.unicode < 91)
                     ||(event.key.keysym.unicode > 96 && event.key.keysym.unicode < 123))
                     {
@@ -160,6 +166,16 @@ void StateSpellingContest::render(SDL_Surface *screen)
         case 1: renderGame(screen); break;
         case 2: renderEnd(screen); break;
     }
+}
+
+void StateSpellingContest::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(50,320);
+    pauseText.print(screen, "Type the word in the time limit!");
+    pauseText.setPosition(50,360);
+    pauseText.print(screen, "Don't press the wrong key!");
 }
 #else
     void StateSpellingContest::renderInfo()

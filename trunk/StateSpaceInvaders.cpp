@@ -13,6 +13,7 @@ StateSpaceInvaders::StateSpaceInvaders()
     ship.loadSprite("images/SpaceInvaders/ship.png");
     shot.loadSprite("images/SpaceInvaders/shot.png");
     background.loadBackground("images/SpaceInvaders/background.png");
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     pauseText.loadFont("font/bip.ttf", 32);
 }
 
@@ -137,7 +138,10 @@ void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
     pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.setColour(WHITE);
-    pauseText.print(screen, "Shoot the alien! press A to shoot");
+    pauseText.print(screen, "Shoot the alien! press    to shoot.");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(365,180);
+    buttonSheet.render(screen);
 }
 #else
     void StateSpaceInvaders::render()
@@ -169,7 +173,7 @@ void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
         pauseSymbol();
         pauseText.setPosition(50,180);
         pauseText.setColour(WHITE);
-        pauseText.print("Shoot the alien! press A to shoot");
+        pauseText.print("Shoot the alien! press   to shoot");
     }
 #endif
 

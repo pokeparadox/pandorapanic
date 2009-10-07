@@ -1,3 +1,10 @@
+07 October 2009
+   released version 1.2.1398 of PandoraPanic
+
+     Change log:
+        -Added: Instructions for SpellingContest
+        -Added: Instructions for SpaceInvaders
+
 02 October 2009
    released version 1.2.1364 of PandoraPanic
 
