@@ -20,14 +20,15 @@ class StateBallDrop : public BaseState
         virtual void init();
     #ifdef PENJIN_SDL
         virtual void render(SDL_Surface *screen);
+        virtual void pauseScreen(SDL_Surface* screen);
     #else
         virtual void render();
+        virtual void pauseScreen();
     #endif
         virtual void update();
 
         virtual ~StateBallDrop();
         virtual void userInput();
-        virtual void pauseScreen(SDL_Surface* screen);
 
         char r,g,b;
         float ballx,bally;

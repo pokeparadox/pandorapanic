@@ -10,6 +10,8 @@ StateDistractedMath::StateDistractedMath()
     command.setPosition(315,216);
     telfont.loadFont("font/AlphaMaleModern.ttf",180);
     telfont.setColour(Colour(RED));
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
     teller.setMode(SECONDS);
 
     rnd = rand()%4;
@@ -57,21 +59,15 @@ void StateDistractedMath::onResume()
     teller.unpause();
 }
 
-
 void StateDistractedMath::userInput()
 {
-        /*
-        TODO put manual defines to handle pausing.
-        Input.update();
-        if (Input.isStart())
-        {
+    /*input->update();
+    if (input->isStart())
+    {
+        isPaused = !isPaused;
+        input->resetKeys();
+    }*/
 
-               if (isPaused == false) {isPaused = true; teller.pause();}
-                else {isPaused = false;teller.unpause();}
-                Input.resetKeys();
-
-
-        }*/
         if (mathstate == 0)
         {
             SDL_Event event;
@@ -256,6 +252,14 @@ void StateDistractedMath::render(SDL_Surface *screen)
         text.print(screen,"ready...");
     }
 }
+void StateDistractedMath::pauseScreen(SDL_Surface* screen)
+{
+    pauseSymbol(screen);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Use your math magic and the numeric keys");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "to correctly solve the given problems.");
+}
 #else
 void StateDistractedMath::render()
 {
@@ -343,6 +347,14 @@ void StateDistractedMath::render()
         text.print("ready...");
     }
 }
+void StateDistractedMath::pauseScreen()
+{
+    pauseSymbol();
+    pauseText.setPosition(50,180);
+    pauseText.print( "Use your math magic and the numeric keys");
+    pauseText.setPosition(50,220);
+    pauseText.print( "to correctly solve the given problems.");
+}
 #endif
 
 void StateDistractedMath::update()
@@ -356,7 +368,7 @@ void StateDistractedMath::update()
 
             if (teller.getScaledTicks() == 3)
             {
-
+                input->resetKeys();
                 teller.start();
                 mathstate = 0;
                 number = rand()%10;
