@@ -10,7 +10,7 @@
 #include "Background.h"
 #include "Sprite.h"
 #include "Emitter.h"
-
+#include "AnimatedSprite.h"
 class StateSpaceInvaders : public BaseState
 {
     public:
@@ -45,6 +45,7 @@ class StateSpaceInvaders : public BaseState
         float alienDir;
         float shipVel;
         Text pauseText;
+        AnimatedSprite buttonSheet;
 };
 
 #endif // STATESPACEINVADERS_H_INCLUDED

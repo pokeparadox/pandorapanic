@@ -40,7 +40,7 @@ StateArena::StateArena() : m_FrameRateCounter(0), m_EndCounter(0)
 }
 StateArena::~StateArena()
 {
-    m_Music.stop();
+    //m_Music.stop();
 
     if(m_HeroPtr)
         delete m_HeroPtr;

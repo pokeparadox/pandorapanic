@@ -6,7 +6,7 @@
 		<Option pch_mode="2" />
 		<Option default_target="Lin Release" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="MyGame/;MyGame/States/;PenjinBase/;PenjinBase/Sprite/;PenjinBase/Particle/;PenjinBase/Menu/;PenjinBase/PlatformSpecific/;PenjinBase/PlatformSpecific/GP2X/;PenjinBase/PlatformSpecific/Wii/;MyGame/States/MiniGames/;MyGame/States/MiniGames/StatePunchWrestler/;PenjinBase/PlatformSpecific/Pandora/;PenjinBase/Input/;PenjinBase/Scoring/;MyGame/States/MiniGames/StateRocketEscape/;PenjinBase/Input/KeyMapper/;MyGame/States/MiniGames/StatePanJoust/;PenjinBase/Draw/;PenjinBase/Particle/Collidables/;PenjinBase/Particle/Effects/;PenjinBase/3D/;PenjinBase/Sound/;PenjinBase/Particle/Particles/;PenjinBase/Menu/MenuItems/;PenjinBase/Draw/Primitives/;PenjinBase/Physics/;MyGame/States/MiniGames/StateSegWay/;PenjinBase/Draw/Primitives/Trenki/;PenjinBase/Draw/3D/;PenjinBase/Physics/Vectors/old/;PenjinBase/Physics/Vectors/;PenjinBase/Physics/Vectors/Trenki/;MyGame/States/MiniGames/StateArena/;" />
+		<Option virtualFolders="MyGame/;MyGame/States/;PenjinBase/;PenjinBase/Sprite/;PenjinBase/Particle/;PenjinBase/Menu/;PenjinBase/PlatformSpecific/;PenjinBase/PlatformSpecific/GP2X/;PenjinBase/PlatformSpecific/Wii/;MyGame/States/MiniGames/;MyGame/States/MiniGames/StatePunchWrestler/;PenjinBase/PlatformSpecific/Pandora/;PenjinBase/Input/;PenjinBase/Scoring/;MyGame/States/MiniGames/StateRocketEscape/;PenjinBase/Input/KeyMapper/;MyGame/States/MiniGames/StatePanJoust/;PenjinBase/Draw/;PenjinBase/Particle/Collidables/;PenjinBase/Particle/Effects/;PenjinBase/3D/;PenjinBase/Sound/;PenjinBase/Particle/Particles/;PenjinBase/Menu/MenuItems/;PenjinBase/Draw/Primitives/;PenjinBase/Physics/;MyGame/States/MiniGames/StateSegWay/;PenjinBase/Draw/3D/;PenjinBase/Physics/Vectors/old/;PenjinBase/Physics/Vectors/;PenjinBase/Physics/Vectors/Trenki/;MyGame/States/MiniGames/StateArena/;" />
 		<Build>
 			<Target title="W32 Debug">
 				<Option platforms="Windows;" />
@@ -211,18 +211,6 @@
 			<Add directory="../PenjinBase/include" />
 			<Add directory="../PenjinBase" />
 		</Compiler>
-		<Unit filename="../PenjinBase/HitRegion.cpp">
-			<Option virtualFolder="PenjinBase/Physics/" />
-		</Unit>
-		<Unit filename="../PenjinBase/HitRegion.h">
-			<Option virtualFolder="PenjinBase/Physics/" />
-		</Unit>
-		<Unit filename="../PenjinBase/Line.cpp">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
-		</Unit>
-		<Unit filename="../PenjinBase/Line.h">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
-		</Unit>
 		<Unit filename="Arena/ArenaEffect.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
 		</Unit>
@@ -632,6 +620,12 @@
 		<Unit filename="../PenjinBase/HiScore.h">
 			<Option virtualFolder="PenjinBase/Scoring/" />
 		</Unit>
+		<Unit filename="../PenjinBase/HitRegion.cpp">
+			<Option virtualFolder="PenjinBase/Physics/" />
+		</Unit>
+		<Unit filename="../PenjinBase/HitRegion.h">
+			<Option virtualFolder="PenjinBase/Physics/" />
+		</Unit>
 		<Unit filename="../PenjinBase/Image.cpp">
 			<Option virtualFolder="PenjinBase/Draw/" />
 		</Unit>
@@ -724,6 +718,12 @@
 		</Unit>
 		<Unit filename="../PenjinBase/LUT.h">
 			<Option virtualFolder="PenjinBase/" />
+		</Unit>
+		<Unit filename="../PenjinBase/Line.cpp">
+			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
+		</Unit>
+		<Unit filename="../PenjinBase/Line.h">
+			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
 		</Unit>
 		<Unit filename="../PenjinBase/MMUHack.cpp">
 			<Option virtualFolder="PenjinBase/PlatformSpecific/GP2X/" />
