@@ -1,3 +1,9 @@
+15 October 2009
+   released version 1.2.1461 of PandoraPanic
+
+     Change log:
+        -Updated: Instructions for RotatingTurret finished
+
 07 October 2009
    released version 1.2.1398 of PandoraPanic
 

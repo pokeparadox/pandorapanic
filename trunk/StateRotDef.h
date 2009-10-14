@@ -18,6 +18,7 @@ class StateRotDef : public BaseState
         virtual void init();
         #ifdef PENJIN_SDL
             virtual void render(SDL_Surface *screen);
+            virtual void pauseScreen(SDL_Surface* screen);
         #else
             virtual void render();
         #endif
@@ -43,6 +44,8 @@ class StateRotDef : public BaseState
         Vector2df shotVelocity;
         Vector2df enemyPosition;
         Vector2df enemyVelocity;
+        Text pauseText;
+        AnimatedSprite buttonSheet;
 };
 
 #endif // STATESPACEINVADERS_H_INCLUDED

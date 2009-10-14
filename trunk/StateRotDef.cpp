@@ -17,6 +17,9 @@ StateRotDef::StateRotDef()
     shot.loadSprite("images/RotDef/bullet.png");
     background.loadBackground("images/RotDef/battlefield.png");
     LUT::init();
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
 }
 
 
@@ -131,6 +134,24 @@ void StateRotDef::render(SDL_Surface *screen)
     {
         command.print(screen, "Shoot!");
     }
+}
+void StateRotDef::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(220,60);
+    pauseText.print(screen, "Rotate the turret using    and");
+    buttonSheet.setCurrentFrame(14);
+    buttonSheet.setPosition(556,60);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(15);
+    buttonSheet.setPosition(648,60);
+    buttonSheet.render(screen);
+    pauseText.setPosition(220,100);
+    pauseText.print(screen, "Press     to shoot the bomb!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(300,100);
+    buttonSheet.render(screen);
 }
 #else
 void StateRotDef::render()

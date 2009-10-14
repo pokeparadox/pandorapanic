@@ -435,14 +435,6 @@
 		<Unit filename="StateRotDef.h">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
-		<Unit filename="StateSegway.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-			<Option virtualFolder="MyGame/States/MiniGames/" />
-		</Unit>
-		<Unit filename="StateSegway.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
-		</Unit>
 		<Unit filename="StateSnatchABeer.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
