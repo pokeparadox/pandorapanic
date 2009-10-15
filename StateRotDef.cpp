@@ -190,8 +190,8 @@ void StateRotDef::update()
         }
 
 
-        if(shot.getX()+(int)shot.getWidth()/2 >= enemy.getX() &&
-           shot.getX()+(int)shot.getWidth()/2 <= enemy.getX()+(int)enemy.getWidth() &&
+        if(shot.getX()+(int)shot.getWidth()*0.5f >= enemy.getX() &&
+           shot.getX()+(int)shot.getWidth()*0.5f <= enemy.getX()+(int)enemy.getWidth() &&
            shot.getY()+(int)shot.getHeight()*0.5f >= enemy.getY() &&
            shot.getY()+(int)shot.getHeight()*0.5f <= enemy.getY()+(int)enemy.getHeight() )
         {
