@@ -23,6 +23,7 @@ void StatePanJoust::init()
     panic = false;
     text.loadFont("font/bip.ttf",32);
     text.setColour(Colour(GREEN));
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     inputlimiter.setMode(MILLI_SECONDS);
     enemynumber = (variables[2].getInt()/8) + 2;
     teller.setMode(SECONDS);
@@ -165,15 +166,27 @@ void StatePanJoust::userInput()
 void StatePanJoust::pauseScreen(SDL_Surface* screen)
 {
     pauseSymbol(screen);
-    text.setPosition(50,200);
     text.setColour(WHITE);
-    text.print(screen, "Fly! And land on the other birds to kill them");
-    //buttonPrompter.render(screen);
+    text.setPosition(50,180);
+    text.print(screen, "Fly! And land on the other birds to kill them!");
+    text.setPosition(50,220);
+    text.print(screen, "Press     repeatedly to stay in the air!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render(screen);
 }
 #else
 void StatePanJoust::pauseScreen()
 {
-
+    pauseSymbol();
+    text.setColour(WHITE);
+    text.setPosition(50,180);
+    text.print("Fly! And land on the other birds to kill them!");
+    text.setPosition(50,220);
+    text.print("Press     repeatedly to stay in the air!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render();
 }
 #endif
 

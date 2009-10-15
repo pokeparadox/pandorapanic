@@ -30,6 +30,7 @@ class StatePanJoust : public BaseState
 
     private:
         AnimatedSprite enemy[40];
+        AnimatedSprite buttonSheet;
         Text text;
         Timer teller;
         Timer inputlimiter;

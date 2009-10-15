@@ -16,6 +16,10 @@ StatePuttPutt::StatePuttPutt()
     sunk.loadSound("sounds/PuttPutt/Sunk.ogg");
     gasp.loadSound("sounds/PuttPutt/Gasp.ogg");
     background.loadBackground("images/PuttPutt/Background.png");
+
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(BLACK);
 }
 
 StatePuttPutt::~StatePuttPutt()
@@ -197,6 +201,18 @@ void StatePuttPutt::render(SDL_Surface *screen)
             }
         }
 }
+void StatePuttPutt::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(20,180);
+    pauseText.print(screen, "Stop the power meter within the green bar!");
+    pauseText.setPosition(20,220);
+    pauseText.print(screen, "Press     to make the putt!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(100,220);
+    buttonSheet.render(screen);
+}
 #else
     void StatePuttPutt::render()
     {
@@ -265,6 +281,19 @@ void StatePuttPutt::render(SDL_Surface *screen)
     }
     void DrawRect(int startX,int startY, int width, int height, int thickness, Uint32 Color)
     {}
+void StatePuttPutt::pauseScreen()
+{
+    // Pause screen
+    pauseSymbol();
+    pauseText.setPosition(20,180);
+    pauseText.print("Stop the power meter within the green bar!");
+    pauseText.setPosition(20,220);
+    pauseText.print("Press     to make the putt!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render();
+
+}
 #endif
 void StatePuttPutt::onPause()
 {

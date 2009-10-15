@@ -237,9 +237,12 @@ void StatePanicAttack::update()
 void StatePanicAttack::pauseScreen(SDL_Surface* screen)
 {
     pauseSymbol(screen);
+    pauseText.setPosition(52,182);
+    pauseText.setColour(WHITE);
+    pauseText.print(screen, "Press the prompted buttons within the timelimit!");
     pauseText.setPosition(50,180);
-    pauseText.setColour(RED);
-    pauseText.print(screen, "Press the prompted buttons within the timelimit");
+    pauseText.setColour(BLACK);
+    pauseText.print(screen, "Press the prompted buttons within the timelimit!");
 }
 
 void StatePanicAttack::render(SDL_Surface *screen) {

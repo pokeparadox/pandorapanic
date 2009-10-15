@@ -60,6 +60,10 @@ void StatePlander::init()
     fuelMeter[1].setDimensions(rocket.getFuel()+0.5f,18);
     fuelMeter[1].setColour(RED);
 
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
+
     GFX::setClearColour(BLACK);
 }
 
@@ -163,6 +167,59 @@ void StatePlander::render(SDL_Surface* screen)
     pad.render(screen);
     renderFuelMeter(screen);
 }
+void StatePlander::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Land on the platform!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Get the collectible for some extra fuel!");
+    pauseText.setPosition(50,260);
+    pauseText.print(screen, "   ,     or        +        for forward thrust."); // Up, Y, L+R
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(30,260);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(13);
+    buttonSheet.setPosition(80,260);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(18);
+    buttonSheet.setPosition(180,260);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(19);
+    buttonSheet.setPosition(270,260);
+    buttonSheet.render(screen);
+    pauseText.setPosition(50,300);
+    pauseText.print(screen, "    or     to decrease thrust."); // Down, X
+    buttonSheet.setCurrentFrame(17);
+    buttonSheet.setPosition(30,300);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(12);
+    buttonSheet.setPosition(115,300);
+    buttonSheet.render(screen);
+    pauseText.setPosition(50,340);
+    pauseText.print(screen, "   ,     or        to rotate left."); // Left, A, L
+    buttonSheet.setCurrentFrame(14);
+    buttonSheet.setPosition(30,340);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(80,340);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(18);
+    buttonSheet.setPosition(180,340);
+    buttonSheet.render(screen);
+    pauseText.setPosition(50,380);
+    pauseText.print(screen, "   ,     or        to rotate right."); // Right, B, R
+    buttonSheet.setCurrentFrame(15);
+    buttonSheet.setPosition(30,380);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(11);
+    buttonSheet.setPosition(80,380);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(19);
+    buttonSheet.setPosition(180,380);
+    buttonSheet.render(screen);
+}
 #else
 void StatePlander::renderStars()
 {
@@ -216,6 +273,60 @@ void StatePlander::render()
     rocket.render();
     pad.render();
     renderFuelMeter();
+}
+
+void StatePlander::pauseScreen()
+{
+    // Pause screen
+    pauseSymbol();
+    pauseText.setPosition(50,180);
+    pauseText.print("Land on the platform!");
+    pauseText.setPosition(50,220);
+    pauseText.print("Get the collectible for some extra fuel!");
+    pauseText.setPosition(50,260);
+    pauseText.print("   ,     or        +        for forward thrust."); // Up, Y, L+R
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(30,260);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(13);
+    buttonSheet.setPosition(80,260);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(18);
+    buttonSheet.setPosition(180,260);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(19);
+    buttonSheet.setPosition(270,260);
+    buttonSheet.render();
+    pauseText.setPosition(50,300);
+    pauseText.print("    or     to decrease thrust."); // Down, X
+    buttonSheet.setCurrentFrame(17);
+    buttonSheet.setPosition(30,300);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(12);
+    buttonSheet.setPosition(115,300);
+    buttonSheet.render();
+    pauseText.setPosition(50,340);
+    pauseText.print("   ,     or        to rotate left."); // Left, A, L
+    buttonSheet.setCurrentFrame(14);
+    buttonSheet.setPosition(30,340);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(80,340);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(18);
+    buttonSheet.setPosition(180,340);
+    buttonSheet.render();
+    pauseText.setPosition(50,380);
+    pauseText.print("   ,     or        to rotate right."); // Right, B, R
+    buttonSheet.setCurrentFrame(15);
+    buttonSheet.setPosition(30,380);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(11);
+    buttonSheet.setPosition(80,380);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(19);
+    buttonSheet.setPosition(180,380);
+    buttonSheet.render();
 }
 #endif
 

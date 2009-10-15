@@ -1873,6 +1873,10 @@ StatePang::StatePang( )
 
 void StatePang::init( )
 {
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(BLACK);
+
     m_pPangGame = new PangMiniGame::PangGame( );
     m_pPangGame->Initialise( );
     m_pPangGame->StartLevel( GetRequestedLevelNumber( ) );
@@ -1886,7 +1890,39 @@ void StatePang::render( )
 {
     m_pPangGame->Render( GET_SCREEN( ) );
 }
-
+#ifdef PENJIN_SDL
+void StatePang::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Burst those balls, but don't let them hit you!");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Press     or     to shoot your spear!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(210,220);
+    buttonSheet.render(screen);
+}
+#else
+void StatePang::pauseScreen()
+{
+    // Pause screen
+    pauseSymbol();
+    pauseText.setPosition(50,180);
+    pauseText.print("Burst those balls, but don't let them hit you!");
+    pauseText.setPosition(50,220);
+    pauseText.print("Press     or     to shoot your spear!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,220);
+    buttonSheet.render();
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(210,220);
+    buttonSheet.render();
+}
+#endif
 void StatePang::update( )
 {
     // Pump input.

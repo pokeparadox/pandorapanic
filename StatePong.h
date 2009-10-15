@@ -17,8 +17,10 @@ class StatePong : public BaseState
         virtual void init();
         #ifdef PENJIN_SDL
             virtual void render(SDL_Surface *screen);
+            virtual void pauseScreen(SDL_Surface *screen);
         #else
             virtual void render();
+            virtual void pauseScreen();
         #endif
         virtual void update();
         virtual void unlimitedUpdate();
@@ -37,6 +39,8 @@ class StatePong : public BaseState
         int     screenWidth, screenHeight, paddleWidth, paddleHeight, ballWidth, ballHeight;
 
         Text text;
+
+        Text pauseText;
 };
 
 #endif // STATEPONG_H_INCLUDED

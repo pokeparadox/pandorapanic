@@ -86,6 +86,9 @@ void StatePong::init()
 
     // Put the opponents paddle somewhere
     cpuPaddle.setPosition(screenWidth - 120 - paddleWidth, (screenHeight - paddleHeight) *0.5f);
+
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
 }
 
 void StatePong::userInput()
@@ -132,6 +135,16 @@ void StatePong::userInput()
         // Add the ball
         ball.render(screen);
     }
+
+    void StatePong::pauseScreen(SDL_Surface* screen)
+    {
+        // Pause screen
+        pauseSymbol(screen);
+        pauseText.setPosition(50,180);
+        pauseText.print(screen, "Win a good, old game of Pong!");
+        pauseText.setPosition(50,220);
+        pauseText.print(screen, "Caution: It's sudden death!");
+    }
 #else
     void StatePong::render()
     {
@@ -146,6 +159,16 @@ void StatePong::userInput()
 
         // Add the ball
         ball.render();
+    }
+
+    void StatePong::pauseScreen()
+    {
+        // Pause screen
+        pauseSymbol();
+        pauseText.setPosition(50,180);
+        pauseText.print("Win a good, old game of Pong!");
+        pauseText.setPosition(50,220);
+        pauseText.print("Caution: It's sudden death!");
     }
 #endif
 void StatePong::unlimitedUpdate()
