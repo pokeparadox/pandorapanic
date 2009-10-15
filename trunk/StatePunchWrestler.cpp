@@ -17,7 +17,6 @@ StatePunchWrestler::StatePunchWrestler()
 
     //textobject for instructions
     text.loadFont("font/bip.ttf", 24);
-    text.setColour(Colour(RED));
     text.setPosition(50,20);
 
 
@@ -135,7 +134,11 @@ void StatePunchWrestler::render(SDL_Surface *screen)
 void StatePunchWrestler::pauseScreen(SDL_Surface* screen)
 {
     pauseSymbol(screen);
-    text.setPosition(50,20);
+    text.setPosition(52,182);
+    text.setColour(Colour(WHITE));
+    text.print(screen, "Push the D-Pad button corresponding to the arrow on screen");
+    text.setPosition(50,180);
+    text.setColour(Colour(BLACK));
     text.print(screen, "Push the D-Pad button corresponding to the arrow on screen");
 }
 #else
@@ -147,7 +150,11 @@ void StatePunchWrestler::render()
 void StatePunchWrestler::pauseScreen()
 {
     pauseSymbol();
-    text.setPosition(50,20);
+    text.setPosition(52,182);
+    text.setColour(Colour(WHITE));
+    text.print("Push the D-Pad button corresponding to the arrow on screen");
+    text.setPosition(50,180);
+    text.setColour(Colour(BLACK));
     text.print("Push the D-Pad button corresponding to the arrow on screen");
 }
 #endif

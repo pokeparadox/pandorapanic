@@ -3,7 +3,8 @@
 
 #include "userStates.h"
 
-#include "ButtonPrompter.h"
+#include "AnimatedSprite.h"
+#include "Text.h"
 
 namespace PangMiniGame
 {
@@ -20,8 +21,10 @@ class StatePang : public BaseState
         virtual void init();
     #ifdef PENJIN_SDL
         virtual void render(SDL_Surface *screen);
+        virtual void pauseScreen(SDL_Surface *screen);
     #else
         virtual void render();
+        virtual void pauseScreen();
     #endif
         virtual void update();
 
@@ -34,6 +37,8 @@ class StatePang : public BaseState
         int     GetRequestedLevelNumber( );
 
         PangMiniGame::PangGame * m_pPangGame;
+        Text pauseText;
+        AnimatedSprite buttonSheet;
 };
 
 // Implement this or input won't work...

@@ -10,6 +10,7 @@
 
 #include "Background.h"
 #include "Sprite.h"
+#include "AnimatedSprite.h"
 #include "Emitter.h"
 
 class StatePuttPutt : public BaseState
@@ -19,8 +20,10 @@ class StatePuttPutt : public BaseState
         virtual void init();
         #ifdef PENJIN_SDL
             virtual void render(SDL_Surface *screen);
+            virtual void pauseScreen(SDL_Surface* screen);
         #else
             virtual void render();
+            virtual void pauseScreen();
         #endif
         virtual void update();
         virtual void onPause();
@@ -33,6 +36,9 @@ class StatePuttPutt : public BaseState
         Text command;
         Timer counter;
         Background background;
+
+        Text pauseText;
+        AnimatedSprite buttonSheet;
 
         Sprite hole;
         Sprite ball;

@@ -207,8 +207,8 @@ void StateTheCountJob::render(SDL_Surface *screen)
     }
     else // input/win mode
     {
-        text.setPosition(55,55);
-        text.print(screen,"Which one was displayed most?");
+        text.setPosition(15,100);
+        text.print(screen,"Which one was displayed the most?");
         for (int I=0; I<circleLevel; I++)
         {
             circle[I].render(screen); // render selection circles
@@ -318,8 +318,8 @@ void StateTheCountJob::render()
     }
     else // input/win mode
     {
-        text.setPosition(55,55);
-        text.print("Which one was displayed most?");
+        text.setPosition(15,100);
+        text.print("Which one was displayed the most?");
         for (int I=0; I<circleLevel; I++)
         {
             circle[I].render(); // render selection circles

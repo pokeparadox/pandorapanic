@@ -5,6 +5,8 @@ StateReflex::StateReflex()
 
     text.loadFont("font/atrox.ttf", 125);
     text.setColour(Colour(YELLOW));
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
 
     counter.setMode(SECONDS);
     circle.loadSprite("images/Reflex/circle.png");
@@ -129,6 +131,15 @@ void StateReflex::render(SDL_Surface *screen)
     text.print(screen,(gameDuration)-counter.getScaledTicks());
     text.setPosition(0,200);
 }
+void StateReflex::pauseScreen(SDL_Surface* screen)
+{
+    // Pause screen
+    pauseSymbol(screen);
+    pauseText.setPosition(50,180);
+    pauseText.print(screen, "Quickly press the D-Pad");
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "matching the direction on screen!");
+}
 #else
     void StateReflex::render()
     {
@@ -170,6 +181,15 @@ void StateReflex::render(SDL_Surface *screen)
         text.setPosition(0,100);
         text.print((gameDuration)-counter.getScaledTicks());
         text.setPosition(0,200);
+    }
+    void StateReflex::pauseScreen()
+    {
+        // Pause screen
+        pauseSymbol();
+        pauseText.setPosition(50,180);
+        pauseText.print("Quickly press the D-Pad");
+        pauseText.setPosition(50,220);
+        pauseText.print("matching the direction on screen!");
     }
 #endif
 
