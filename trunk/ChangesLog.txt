@@ -1,4 +1,10 @@
 15 October 2009
+   released version 1.2.1530 of PandoraPanic
+
+     Change log:
+        -Fixed: Pang game can now Pause and unPause the game.
+
+15 October 2009
    released version 1.2.1461 of PandoraPanic
 
      Change log:

@@ -1925,15 +1925,6 @@ void StatePang::pauseScreen()
 #endif
 void StatePang::update( )
 {
-    // Pump input.
-    input->update( );
-
-    #ifdef PLATFORM_PC
-    // Not sure what this is all about, but without it, closing the GFX window doesn't work...
-    if(input->isQuit())
-        nullifyState();
-    #endif
-
     // Pump game.
     m_pPangGame->Update( input );
 
