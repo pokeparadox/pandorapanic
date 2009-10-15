@@ -20,10 +20,6 @@ StateArena::StateArena() : m_FrameRateCounter(0), m_EndCounter(0)
     m_MonsterListPtr = NULL;
     m_MonsterListPtr = new ArenaMonsterList();
 
-    m_Music.loadMusic("music/Arena/Music.ogg");
-
-    m_Music.setLooping(true);
-
     m_Clouds.loadSprite("images/Arena/Clouds.png");
     m_Clouds.setTransparentColour(MAGENTA);
     m_Clouds.setAlpha(72);
@@ -125,6 +121,8 @@ void StateArena::init()
 
     if(variables.size()<SUBSTATE_TRIGGER)
     {
+        m_Music.loadMusic("music/Arena/Music.ogg");
+        m_Music.setLooping(true);
         m_Music.play();
     }
 }
