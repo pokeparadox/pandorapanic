@@ -42,6 +42,7 @@ void StateTheCountJob::init()
     text.setColour(Colour(BLACK));
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(MAGENTA);
+    pauseMayhem = rand()%100;
 
     GFX::setClearColour(WHITE);
 
@@ -54,7 +55,6 @@ void StateTheCountJob::init()
     inputMode = false;
     selected = 0;
     winTime = 0;
-    pauseMayhem = rand()%100;
 
     // setting amount of circles
     int numCircles = 75;
