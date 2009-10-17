@@ -1,44 +1,50 @@
 #include "StateSnatchABeer.h"
 StateSnatchABeer::StateSnatchABeer()
 {
-    nullify = false;
+    //
 }
 
 StateSnatchABeer::~StateSnatchABeer()
 {
-
+    //
 }
 
 void StateSnatchABeer::init()
 {
-    // Check if game is started and not viewed in the level selection then play music
-    if(variables.size()<SUBSTATE_TRIGGER) {
-        barmusic.loadMusic("music/SnatchABeer/bgmusic.ogg");
-        barmusic.setLooping(true);
-        barmusic.play();
-    }
+    enemyIdle.loadFrames("images/SnatchABeer/enemyidle.png",1,1);
+    enemyIdle.setCurrentFrame(0);
+    enemyIdle.setLooping(true);
+    enemyIdle.setFrameRate(DECI_SECONDS);
+    enemyIdle.setPosition(256,9);
 
-    // Initialize variables
-        //sprites
-    enemy.loadFrames("images/SnatchABeer/enemyidle.png",1,1);
-    enemy.setCurrentFrame(0);
-    enemy.setLooping(true);
-    enemy.setFrameRate(DECI_SECONDS);
-    enemy.setPosition(256,9);
-    player.loadFrames("images/SnatchABeer/playeridle.png",1,1);
-    player.setCurrentFrame(0);
-    player.setLooping(true);
-    player.setFrameRate(DECI_SECONDS);
-    player.setPosition(202,63);
+    enemy = &enemyIdle;
+
+    playerIdle.loadFrames("images/SnatchABeer/playeridle.png",1,1);
+    playerIdle.setCurrentFrame(0);
+    playerIdle.setLooping(true);
+    playerIdle.setFrameRate(DECI_SECONDS);
+    playerIdle.setPosition(202,63);
+
+    player = &playerIdle;
+
     bar.loadSprite("images/SnatchABeer/bar.png");
     bar.setPosition(-2,304);
+
     beer.loadSprite("images/SnatchABeer/beer.png");
     beer.setPosition(-70,238);
-    action.loadSprite("images/SnatchABeer/action.png");
-    action.setPosition(278,62);
-    action.setScale(0);
+
+    action1.loadSprite("images/SnatchABeer/action.png");
+    action1.setPosition(278,62);
+    action1.setScale(0);
+
+    action2.loadSprite("images/SnatchABeer/action2.png");
+    action2.setPosition(558,-16);
+    action2.setScale(0);
+
     background.loadBackground("images/SnatchABeer/bg.png");
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(WHITE);
 
         //time
     counter.setMode(SECONDS);
@@ -65,8 +71,101 @@ void StateSnatchABeer::init()
     winZones[2][0] = 320;
     winZones[2][1] = 370;
 
+
+    // The following are only loaded when the game is not viewed in selection box
+    if(variables.size()<SUBSTATE_TRIGGER) {
+
+    barmusic.loadMusic("music/SnatchABeer/bgmusic.ogg");
+    barmusic.setLooping(true);
+    barmusic.play();
+        //sound
+    sGlassSlide.loadSound("sounds/SnatchABeer/glass_slide.wav");
+    sGlassBreak.loadSound("sounds/SnatchABeer/glass_break.wav");
+    sPlayer[0].loadSound("sounds/SnatchABeer/nice.wav");
+    sPlayer[1].loadSound("sounds/SnatchABeer/alright.wav");
+    sPlayer[2].loadSound("sounds/SnatchABeer/yeah.wav");
+    sPlayer[3].loadSound("sounds/SnatchABeer/chuckle.wav");
+    sEnemyPunch.loadSound("sounds/SnatchABeer/punch.wav");
+    sEnemyLaugh.loadSound("sounds/SnatchABeer/laugh.wav");
+    sEnemyWhat.loadSound("sounds/SnatchABeer/what.wav");
+
+        //sprites
+    enemyAngry.loadFrames("images/SnatchABeer/enemyangry.png",3,1);
+    enemyAngry.setCurrentFrame(0);
+    enemyAngry.setLooping(true);
+    enemyAngry.setFrameRate(DECI_SECONDS);
+    enemyAngry.setPosition(256,9);
+
+    enemyWin.loadFrames("images/SnatchABeer/enemywin.png",4,1);
+    enemyWin.setCurrentFrame(0);
+    enemyWin.setLooping(true);
+    enemyWin.setFrameRate(DECI_SECONDS);
+    enemyWin.setPosition(256,9);
+
+    enemyPunch.loadFrames("images/SnatchABeer/enemypunch.png",4,1);
+    enemyPunch.setCurrentFrame(0);
+    enemyPunch.setLooping(false);
+    enemyPunch.setFrameRate(DECI_SECONDS);
+    enemyPunch.setPosition(256,9);
+
+    enemyLaugh.loadFrames("images/SnatchABeer/enemylaughing.png",4,1);
+    enemyLaugh.setCurrentFrame(0);
+    enemyLaugh.setLooping(true);
+    enemyLaugh.setFrameRate(DECI_SECONDS);
+    enemyLaugh.setPosition(256,9);
+
+    enemyWhat.loadFrames("images/SnatchABeer/enemywhat.png",4,1);
+    enemyWhat.setCurrentFrame(0);
+    enemyWhat.setLooping(true);
+    enemyWhat.setFrameRate(DECI_SECONDS);
+    enemyWhat.setPosition(256,9);
+
+    playerWin.loadFrames("images/SnatchABeer/playerwin.png",1,1);
+    playerWin.setCurrentFrame(0);
+    playerWin.setLooping(true);
+    playerWin.setFrameRate(DECI_SECONDS);
+    playerWin.setPosition(202,63);
+
+    playerWin2.loadFrames("images/SnatchABeer/playerwin2.png",1,1);
+    playerWin2.setCurrentFrame(0);
+    playerWin2.setLooping(true);
+    playerWin2.setFrameRate(DECI_SECONDS);
+    playerWin2.setPosition(618,150);
+
+    playerWin3.loadFrames("images/SnatchABeer/playerwin2_2.png",1,1);
+    playerWin3.setCurrentFrame(0);
+    playerWin3.setLooping(true);
+    playerWin3.setFrameRate(DECI_SECONDS);
+    playerWin3.setPosition(618,150);
+
+    playerLose.loadFrames("images/SnatchABeer/playerlose.png",2,1);
+    playerLose.setCurrentFrame(0);
+    playerLose.setLooping(true);
+    playerLose.setFrameRate(DECI_SECONDS);
+    playerLose.setPosition(202,63);
+
+    playerLose2.loadFrames("images/SnatchABeer/playerlose2.png",1,1);
+    playerLose2.setCurrentFrame(0);
+    playerLose2.setLooping(true);
+    playerLose2.setFrameRate(DECI_SECONDS);
+    playerLose2.setPosition(618,150);
+
+    playerSnatch.loadFrames("images/SnatchABeer/playersnatch.png",1,1);
+    playerSnatch.setCurrentFrame(0);
+    playerSnatch.setLooping(true);
+    playerSnatch.setFrameRate(DECI_SECONDS);
+    playerSnatch.setPosition(202,63);
+
+    playerHit.loadFrames("images/SnatchABeer/playerhit.png",4,1);
+    playerHit.setCurrentFrame(0);
+    playerHit.setLooping(true);
+    playerHit.setFrameRate(DECI_SECONDS);
+    playerHit.setPosition(202,63);
+
     //GO!
     counter.start();
+
+    } // sel box check
 }
 
 void StateSnatchABeer::userInput()
@@ -121,11 +220,12 @@ void StateSnatchABeer::render(SDL_Surface *screen)
 {
 	// Render things
 	background.render(screen);
-    enemy.render(screen);
-    player.render(screen);
+    enemy->render(screen);
+    player->render(screen);
     beer.render(screen);
     bar.render(screen);
-    action.render(screen);
+    action1.render(screen);
+    action2.render(screen);
 }
 
 void StateSnatchABeer::pauseScreen(SDL_Surface* screen)
@@ -133,19 +233,26 @@ void StateSnatchABeer::pauseScreen(SDL_Surface* screen)
     // Pause screen
     pauseSymbol(screen);
     pauseText.setPosition(50,180);
-    pauseText.setColour(WHITE);
-    pauseText.print(screen, "Press the 'A'-key at the right time to get the beer!");
+    pauseText.print(screen, "Press     at the right time to get the beer!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,180);
+    buttonSheet.render(screen);
+    pauseText.setPosition(50,220);
+    pauseText.print(screen, "Hint: You might get a 2nd chance");
+    pauseText.setPosition(50,260);
+    pauseText.print(screen, "if you miss the first time.");
 }
 #else
 void StateSnatchABeer::render()
 {
 	// Render things
 	background.render();
-    enemy.render();
-    player.render();
+    enemy->render();
+    player->render();
     beer.render();
     bar.render();
-    action.render();
+    action1.render();
+    action2.render();
 }
 
 void StateSnatchABeer::pauseScreen()
@@ -153,8 +260,14 @@ void StateSnatchABeer::pauseScreen()
     // Pause screen
     pauseSymbol();
     pauseText.setPosition(50,180);
-    pauseText.setColour(WHITE);
-    pauseText.print("Press the 'A'-key at the right time to get the beer!");
+    pauseText.print("Press     at the right time to get the beer!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(130,180);
+    buttonSheet.render();
+    pauseText.setPosition(50,220);
+    pauseText.print("Hint: You might get a 2nd chance");
+    pauseText.setPosition(50,260);
+    pauseText.print("if you miss the first time.");
 }
 #endif
 
@@ -170,14 +283,13 @@ void StateSnatchABeer::onResume()
 
 void StateSnatchABeer::update()
 {
-    player.update();
-    enemy.update();
+    player->update();
+    enemy->update();
 
     // start beer
     if(counter.getScaledTicks() >= delay && !started) {
         started = true;
-        sGlass.loadSound("sounds/SnatchABeer/glass_slide.wav");
-        sGlass.play();
+        sGlassSlide.play();
     }
 
     int temprandom;
@@ -208,16 +320,8 @@ void StateSnatchABeer::update()
     }
 
     if (beer.getX() > 800 || beer.getY() > 480) {
-        //-------------------------
-        // wee, working!, well kind of
-        // if I use sGlass instead of sPlayer which would be much more logic
-        // the enemy laughing sound (played by sEnemy) stops playing
-        // EXPLAIN THIS EINSTEIN!
-        // no, seriously, this is wierd
-        // but I don't care it is working this way...
         if (!playOnce) {
-            sPlayer.loadSound("sounds/SnatchABeer/glass_break.wav");
-            sPlayer.play();
+            sGlassBreak.play();
             playOnce = true;
         }
         //-------------------------
@@ -229,39 +333,25 @@ void StateSnatchABeer::update()
 
     // Action notifier
     if (beer.getX() >= winZones[0][0] && beer.getX() <= winZones[0][1] && status == IDLE) {
-        action.setScale(min((winZones[0][1] - beer.getX()) / 20.0,1.0));
+        action1.setScale(min((winZones[0][1] - beer.getX()) / 20.0,1.0));
     } else if (secondChance && status == MISSCLOSE) {
-        action.setScale(min(min(max((winZones[1][1] - beer.getX()) / 30.0,0.0), max((winZones[2][1] - beer.getY()) / 30.0,0.0)),1.0));
+        action2.setScale(min(min(max((winZones[1][1] - beer.getX()) / 30.0,0.0), max((winZones[2][1] - beer.getY()) / 30.0,0.0)),1.0));
     } else {
-        action.setScale(0);
+        action1.setScale(0);
+        action2.setScale(0);
     }
 
     // Animation stuff - and (NEW) sounds
     if (status == WIN) {
         if (animFrame == 0) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playerwin.png",1,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemyangry.png",3,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(true);
+            player = &playerWin;
+            enemy = &enemyAngry;
             beer.clear();
         }
         if (animFrame == 10) {
             temprandom = rand()%7;
            if (temprandom < 4) {
-                if (temprandom == 0) {
-                    sPlayer.loadSound("sounds/SnatchABeer/nice.wav");
-                } else if (temprandom == 1) {
-                    sPlayer.loadSound("sounds/SnatchABeer/alright.wav");
-                } else if (temprandom == 2){
-                    sPlayer.loadSound("sounds/SnatchABeer/yeah.wav");
-                } else {
-                    sPlayer.loadSound("sounds/SnatchABeer/chuckle.wav");
-                }
-                sPlayer.play();
+                sPlayer[temprandom].play();
             }
         }
         if (animFrame > 40) {
@@ -270,37 +360,18 @@ void StateSnatchABeer::update()
         }
     } else if (status == WIN2) {
         if (animFrame == 0) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playerwin2.png",1,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
-            player.setPosition(618,150);
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemyangry.png",3,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(true);
+            player = &playerWin2;
+            enemy = &enemyAngry;
             beer.clear();
         }
         if (animFrame == 10) {
             temprandom = rand()%7;
             if (temprandom < 4) {
-                if (temprandom == 0) {
-                    sPlayer.loadSound("sounds/SnatchABeer/nice.wav");
-                } else if (temprandom == 1) {
-                    sPlayer.loadSound("sounds/SnatchABeer/alright.wav");
-                } else if (temprandom == 2){
-                    sPlayer.loadSound("sounds/SnatchABeer/yeah.wav");
-                } else {
-                    sPlayer.loadSound("sounds/SnatchABeer/knuckle.wav");
-                }
-                sPlayer.play();
+                sPlayer[temprandom].play();
             }
         }
         if (animFrame == 20 && rand()%20 == 0) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playerwin2_2.png",1,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
+            player = &playerWin3;
         }
         if (animFrame > 40) {
             variables[0].setInt(1);
@@ -308,14 +379,8 @@ void StateSnatchABeer::update()
         }
     } else if (status == NOTRY) {
         if (animFrame == 0) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playerlose.png",2,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemywin.png",4,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(true);
+            player = &playerLose;
+            enemy = &enemyWin;
             beer.clear();
         }
         if (animFrame > 40) {
@@ -324,31 +389,17 @@ void StateSnatchABeer::update()
         }
     } else if (status == MISS) {
         if (animFrame == 0) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playersnatch.png",1,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemypunch.png",4,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(false);
+            player = &playerSnatch;
+            enemy = &enemyPunch;
         }
-        if (enemy.getCurrentFrame() == 3 && !animationStarted) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playerhit.png",4,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
+        if (enemy->getCurrentFrame() == 3 && !animationStarted) {
+            player = &playerHit;
             animationStarted = true;
-            sEnemy.loadSound("sounds/SnatchABeer/punch.wav");
-            sEnemy.play();
+            sEnemyPunch.play();
         }
         if (animFrame == 20) {
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemylaughing.png",4,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(true);
-            sEnemy.loadSound("sounds/SnatchABeer/laugh.wav");
-            sEnemy.play();
+            enemy = &enemyLaugh;
+            sEnemyLaugh.play();
         }
         if (animFrame > 70) {
             variables[0].setInt(0);
@@ -356,17 +407,9 @@ void StateSnatchABeer::update()
         }
     } else if (status == MISS2) {
         if (animFrame == 0) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playerlose2.png",1,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
-            player.setPosition(618,150);
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemylaughing.png",4,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(true);
-            sEnemy.loadSound("sounds/SnatchABeer/laugh.wav");
-            sEnemy.play();
+            player = &playerLose2;
+            enemy = &enemyLaugh;
+            sEnemyLaugh.play();
         }
         if (animFrame > 40) {
             variables[0].setInt(0);
@@ -374,14 +417,8 @@ void StateSnatchABeer::update()
         }
     } else if (status == NOTRY2) {
         if (animFrame == 10) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playerlose.png",2,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemyangry.png",3,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(true);
+            player = &playerLose;
+            enemy = &enemyAngry;
         }
         if (animFrame > 40) {
             variables[0].setInt(0);
@@ -389,26 +426,12 @@ void StateSnatchABeer::update()
         }
     } else if (status == MISSCLOSE) {
         if (animFrame == 0) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playersnatch.png",1,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
-            enemy.clearFrames();
-            enemy.loadFrames("images/SnatchABeer/enemywhat.png",4,1);
-            enemy.setCurrentFrame(0);
-            enemy.setLooping(true);
-            sEnemy.loadSound("sounds/SnatchABeer/what.wav");
-            sEnemy.play();
-            action.clear();
-            action.loadSprite("images/SnatchABeer/action2.png");
-            action.setPosition(558,-16);
-            action.setScale(0);
+            player = &playerSnatch;
+            enemy = &enemyWhat;
+            sEnemyWhat.play();
         }
         if (animFrame == 10) {
-            player.clearFrames();
-            player.loadFrames("images/SnatchABeer/playeridle.png",1,1);
-            player.setCurrentFrame(0);
-            player.setLooping(true);
+            player = &playerIdle;
         }
     }
     if (status != IDLE) {
