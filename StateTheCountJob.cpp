@@ -2,13 +2,13 @@
 
 StateTheCountJob::StateTheCountJob()
 {
-    nullify = false;
+    //
 }
 
 
 StateTheCountJob::~StateTheCountJob()
 {
-
+    //
 }
 
 bool StateTheCountJob::checkPos(vector<Vector2df>::iterator curr, int arr)
@@ -38,6 +38,16 @@ bool StateTheCountJob::checkPos(vector<Vector2df>::iterator curr, int arr)
 
 void StateTheCountJob::init()
 {
+    text.loadFont("font/bip.ttf", 48);
+    text.setColour(Colour(BLACK));
+    pauseText.loadFont("font/bip.ttf", 32);
+    pauseText.setColour(MAGENTA);
+
+    GFX::setClearColour(WHITE);
+
+    // The following gets only triggert in a real game
+    if(variables.size()<SUBSTATE_TRIGGER) {
+
     /// vars
     counter.setMode(DECI_SECONDS);
     colourBlind = false;
@@ -91,9 +101,6 @@ void StateTheCountJob::init()
 
     /// visuals
     selection.loadSprite("images/TheCountJob/selection.png");
-    pauseText.loadFont("font/bip.ttf", 32);
-    text.loadFont("font/bip.ttf", 48);
-    text.setColour(Colour(BLACK));
     circle[0].loadSprite("images/TheCountJob/circle_y.png");
     circle[1].loadSprite("images/TheCountJob/circle_r.png");
     circle[2].loadSprite("images/TheCountJob/circle_b.png");
@@ -106,10 +113,10 @@ void StateTheCountJob::init()
     sAlarm.loadSound("sounds/TheCountJob/alarm_clock.wav");
     sSelection.loadSound("sounds/TheCountJob/selection.wav");
 
-    GFX::setClearColour(WHITE);
-
     // gogogo
     counter.start();
+
+    } // end sel box check
 }
 
 void StateTheCountJob::userInput()
@@ -239,7 +246,6 @@ void StateTheCountJob::pauseScreen(SDL_Surface* screen)
 {
     pauseSymbol(screen);
     pauseText.setPosition(50,180);
-    pauseText.setColour(MAGENTA);
     if (pauseMayhem <= 95)
     {
         pauseText.print(screen, "Read this!");

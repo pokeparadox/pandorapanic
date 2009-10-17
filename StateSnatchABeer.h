@@ -25,6 +25,8 @@ class StateSnatchABeer : public BaseState
         };
 
         StateSnatchABeer();
+        virtual ~StateSnatchABeer();
+
         virtual void init();
         #ifdef PENJIN_SDL
             virtual void render(SDL_Surface *screen);
@@ -37,23 +39,42 @@ class StateSnatchABeer : public BaseState
         virtual void onPause();
         virtual void onResume();
 
-
-        virtual ~StateSnatchABeer();
-
         virtual void userInput();
 
-        Timer counter;
-        Background background;
-        AnimatedSprite enemy;
-        AnimatedSprite player;
+        AnimatedSprite enemyIdle;
+        AnimatedSprite enemyAngry;
+        AnimatedSprite enemyWin;
+        AnimatedSprite enemyPunch;
+        AnimatedSprite enemyLaugh;
+        AnimatedSprite enemyWhat;
+        AnimatedSprite* enemy;
+        AnimatedSprite playerIdle;
+        AnimatedSprite playerWin;
+        AnimatedSprite playerWin2;
+        AnimatedSprite playerWin3;
+        AnimatedSprite playerLose;
+        AnimatedSprite playerLose2;
+        AnimatedSprite playerSnatch;
+        AnimatedSprite playerHit;
+        AnimatedSprite* player;
+        AnimatedSprite buttonSheet;
         Sprite bar;
         Sprite beer;
-        Sprite action;
+        Sprite action1;
+        Sprite action2;
+
         Music barmusic;
-        Sound sGlass;
-        Sound sEnemy;
-        Sound sPlayer;
+        Sound sGlassSlide;
+        Sound sGlassBreak;
+        Sound sEnemyPunch;
+        Sound sEnemyLaugh;
+        Sound sEnemyWhat;
+        Sound sPlayer[4];
+
         Text pauseText;
+        Background background;
+        Timer counter;
+
         bool started;
         bool animationStarted;
         bool playOnce;
