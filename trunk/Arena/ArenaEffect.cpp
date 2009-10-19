@@ -13,6 +13,7 @@ ArenaEffect::ArenaEffect() : m_X(0), m_Y(0)
     m_bmpEffect.setFrameRate(DECI_SECONDS);
 
     m_Exists = false;
+    m_Type = 0;
 }
 ArenaEffect::~ArenaEffect()
 {

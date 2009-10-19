@@ -24,6 +24,7 @@ HeroBird::HeroBird()
 
     velocity.x = 0;
     velocity.y = 0;
+    direction = false;
 }
 
 HeroBird::~HeroBird()
@@ -43,7 +44,7 @@ void HeroBird::render(SDL_Surface* screen)
 {
     if (onplatform == false )
     {
-        if (direction == 0)
+        if (direction == false)
         {
             bird.setPosition(position);
             bird.render(screen);
@@ -57,7 +58,7 @@ void HeroBird::render(SDL_Surface* screen)
     else
     {
 
-        if (direction == 0)
+        if (direction == false)
         {
             herowalking.setPosition(position);
             herowalking.render(screen);
@@ -74,7 +75,7 @@ void HeroBird::render()
 {
     if (onplatform == false )
     {
-        if (direction == 0)
+        if (direction == false)
         {
             bird.setPosition(position);
             bird.render();
@@ -88,7 +89,7 @@ void HeroBird::render()
     else
     {
 
-        if (direction == 0)
+        if (direction == false)
         {
             herowalking.setPosition(position);
             herowalking.render();
