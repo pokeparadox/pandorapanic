@@ -1,3 +1,15 @@
+22 October 2009
+   released version 1.2.1547 of PandoraPanic
+
+     Change log:
+        -Added: Added: button instructions to StateGameOver and StateGameOverOrdered screens
+
+22 October 2009
+   released version 1.2.1539 of PandoraPanic
+
+     Change log:
+        -Added: Gruso's music for Jumper
+
 15 October 2009
    released version 1.2.1530 of PandoraPanic
 

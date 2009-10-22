@@ -11555,10 +11555,10 @@
 1250944035 source:/home/kevin/Documents/Programming/Penjin/Projects/PandoraPanic/StateArena.cpp
 	"StateArena.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/HitRegion.cpp
+1256134369 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/HitRegion.cpp
 	"HitRegion.h"
 
-1253616691 /home/kevin/Documents/Programming/Penjin/PenjinBase/HitRegion.h
+1256134009 /home/kevin/Documents/Programming/Penjin/PenjinBase/HitRegion.h
 	"Sprite.h"
 	"Rectangle.h"
 	"CollisionMap.h"
@@ -13103,7 +13103,7 @@
 	<fstream>
 	"Timer.h"
 
-1255958829 /home/kevin/Documents/Programming/Penjin/PandoraPanic/version.h
+1256237939 /home/kevin/Documents/Programming/Penjin/PandoraPanic/version.h
 
 1253616691 /home/kevin/Documents/Programming/Penjin/PenjinBase/PenjinStates.h
 	"BaseState.h"
@@ -13211,7 +13211,7 @@
 	"Particle.h"
 	"Sprite.h"
 
-1246885587 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameover.h
+1256153641 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameover.h
 	"userStates.h"
 	"ScoreScreen.h"
 	"Background.h"
@@ -13220,6 +13220,7 @@
 	"Music.h"
 	"BackBuffer.h"
 	"Random.h"
+	"ButtonPrompter.h"
 
 1253616691 /home/kevin/Documents/Programming/Penjin/PenjinBase/ScoreScreen.h
 	"HiScore.h"
@@ -13245,7 +13246,7 @@
 	"Random.h"
 	"NumberUtility.h"
 
-1246885587 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameoverOrdered.h
+1256153045 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameoverOrdered.h
 	"userStates.h"
 	"ScoreScreen.h"
 	"Background.h"
@@ -13254,6 +13255,7 @@
 	"Music.h"
 	"BackBuffer.h"
 	"Random.h"
+	"ButtonPrompter.h"
 
 1254877456 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateTitle.h
 	"PenjinStates.h"
@@ -13466,12 +13468,13 @@
 	"Sprite.h"
 	"Sound.h"
 
-1246885587 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateJumper.h
+1256231887 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateJumper.h
 	"userStates.h"
 	"Background.h"
 	"Sprite.h"
 	"TextDoc.h"
 	"Random.h"
+	"Music.h"
 	"Jumper/Tile.h"
 	"ButtonPrompter.h"
 
@@ -13620,20 +13623,20 @@
 1252869726 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateFire.cpp
 	"StateFire.h"
 
-1245478089 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameover.cpp
+1256237480 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameover.cpp
 	"StateGameover.h"
 
-1245541674 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameoverOrdered.cpp
+1256153297 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameoverOrdered.cpp
 	"StateGameover.h"
 
-1247620623 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateJumper.cpp
+1256232057 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateJumper.cpp
 	"StateJumper.h"
 
 1254438865 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateMain.cpp
 	"StateMain.h"
 	"MiniGameStates.h"
 
-1255012321 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateMemoryBlocks.cpp
+1256231942 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateMemoryBlocks.cpp
 	"StateMemoryBlocks.h"
 	"Image.h"
 	<cmath>
@@ -13764,7 +13767,7 @@
 1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/HiScore.cpp
 	"HiScore.h"
 
-1254940500 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Image.cpp
+1256059090 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Image.cpp
 	"Image.h"
 
 1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/ImageMenuItem.cpp
@@ -13852,7 +13855,7 @@
 1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Random.cpp
 	"Random.h"
 
-1254877371 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Rectangle.cpp
+1256134362 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Rectangle.cpp
 	"Rectangle.h"
 
 1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Score.cpp

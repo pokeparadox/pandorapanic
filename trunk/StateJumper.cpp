@@ -24,9 +24,6 @@ StateJumper::~StateJumper()
 
 void StateJumper::init()
 {
-
-
-
     text.loadFont("font/bip.ttf", 32);
     text.setColour(Colour(WHITE));
     text.setPosition(40,40);
@@ -151,7 +148,12 @@ void StateJumper::init()
     }
     blobnumber = blobnumber - 1;
     tilemap.close();
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+    {
+        music.loadMusic("music/Jumper/PP-Jumper.ogg");
+        music.setLooping(true);
+        music.play();
+    }
 }
 
 

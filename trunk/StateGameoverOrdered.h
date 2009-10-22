@@ -9,7 +9,7 @@
 #include "Music.h"
 #include "BackBuffer.h"
 #include "Random.h"
-
+#include "ButtonPrompter.h"
 /*This is the hi scores for the Pandoreed mode*/
 
 class StateGameoverOrdered : public BaseState
@@ -36,5 +36,6 @@ class StateGameoverOrdered : public BaseState
 		Music music;
 		Text text;
 		vector <Emitter> emit;
+        ButtonPrompter prompt;
 };
 #endif	//	STATEGAMEOVERORDERED_H
