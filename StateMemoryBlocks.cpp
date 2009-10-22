@@ -42,13 +42,6 @@ keyPressLimiter(false)
     cursor.setLooping(true);
     cursor.setFrameRate(DECI_SECONDS);
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
-    /*
-    enemy.loadSprite("images/RotDef/bomb.png");
-    turret.loadSprite("images/RotDef/turret_top.png");
-    turretBase.loadSprite("images/RotDef/turret_base.png");
-    shot.loadSprite("images/RotDef/bullet.png");
-
-    */
 }
 
 

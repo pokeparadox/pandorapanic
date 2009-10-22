@@ -9,7 +9,7 @@
 #include "Sprite.h"
 #include "TextDoc.h"
 #include "Random.h"
-
+#include "Music.h"
 #include "Jumper/Tile.h"
 #include "ButtonPrompter.h"
 //#include "StatePanJoust/HeroBird.h
@@ -96,6 +96,7 @@ class StateJumper : public BaseState
 
         int blobjump[100];
         int blobnumber;
+        Music music;
 };
 //The tile
 

@@ -44,7 +44,15 @@ void StateGameoverOrdered::init()
         music.loadMusic("music/Rick Kelsall - PP Interlude.ogg");
         music.setLooping(true);
         music.play();
+        text.loadFont("font/foo.ttf", 28);
 	}
+	else
+	{
+        prompt.setDefaultX(700);
+        prompt.setDefaultY(400);
+        prompt.setFlashQuantity(4);
+        prompt.display();
+    }
 
 	buff.update();
 
@@ -60,7 +68,7 @@ void StateGameoverOrdered::init()
         back.setUseHardware(false);
     #endif
     logo.loadSprite("images/pp_logo_large.png");
-    logo.setPosition(Vector2di(getStateXResolution()/4,getStateYResolution()/3));
+    logo.setPosition(Vector2di(getStateXResolution()*0.25f,getStateYResolution()/3));
     #ifdef PENJIN_SDL
         back.render(bgBuffer);
     #else
@@ -91,7 +99,7 @@ void StateGameoverOrdered::userInput()
 
     if(input->isA())
         scoreScreen.charInput();
-    else if(input->isX())
+    else if(input->isB())
         scoreScreen.charDelete();
 /// TODO add Start button to confirm name in score screen.
 
@@ -113,6 +121,17 @@ void StateGameoverOrdered::userInput()
             SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
             buff.render();
             scoreScreen.render();
+            if(scoreScreen.inNameEntryScreen())
+            {
+                //  up and down arrows
+                prompt.renderImage(16,360,350);prompt.renderImage(17,360,440);
+                // a button
+                prompt.renderImage(10,50,400);text.setPosition(100,400);text.print("Enter");
+                //  b button
+                prompt.renderImage(11,50,440);text.setPosition(100,440);text.print("Delete");
+            }
+            else
+                prompt.render();
     }
 #else
     void StateGameoverOrdered::render()

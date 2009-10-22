@@ -44,7 +44,15 @@ void StateGameover::init()
         music.loadMusic("music/Rick Kelsall - PP Interlude.ogg");
         music.setLooping(true);
         music.play();
+        text.loadFont("font/foo.ttf", 28);
 	}
+	else
+	{
+        prompt.setDefaultX(700);
+        prompt.setDefaultY(400);
+        prompt.setFlashQuantity(4);
+        prompt.display();
+    }
 	#ifdef PENJIN_SDL
         buff.update();
         bgBuffer = SDL_CreateRGBSurface(screen->flags,getStateXResolution(), getStateYResolution(), screen->format->BitsPerPixel, 0, 0, 0, 0);
@@ -87,7 +95,7 @@ void StateGameover::userInput()
 
     if(input->isA())
         scoreScreen.charInput();
-    else if(input->isX())
+    else if(input->isB())
         scoreScreen.charDelete();
 
     //	Check to return to main menu
@@ -108,6 +116,17 @@ void StateGameover::userInput()
         SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
         buff.render();
         scoreScreen.render(screen);
+        if(scoreScreen.inNameEntryScreen())
+        {
+            //  up and down arrows
+            prompt.renderImage(16,360,350);prompt.renderImage(17,360,440);
+            // a button
+            prompt.renderImage(10,50,400);text.setPosition(100,400);text.print("Enter");
+            //  b button
+            prompt.renderImage(11,50,440);text.setPosition(100,440);text.print("Delete");
+        }
+        else
+            prompt.render();
     }
 #else
     void StateGameover::render()
