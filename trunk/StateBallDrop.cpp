@@ -31,6 +31,11 @@ void StateBallDrop::init()
 
         input->setScaler(0.00007f);
         input->setDeadZoneX(2);
+        int levelNumber = variables[2].getInt();
+        if(levelNumber <80)
+            BALL_SPEED = 8.0f + (levelNumber * 0.1f);
+        else
+            BALL_SPEED = 16.1f;
     }
 }
 
@@ -53,13 +58,13 @@ void StateBallDrop::userInput()
     //Added by billykater
     if(input->isLeft())
     {
-        x -= BALL_SPEED;
+        x -= CUP_SPEED;
         if(x < 40)
             x = 40;
     }
     else if(input->isRight())
     {
-        x += BALL_SPEED;
+        x += CUP_SPEED;
         if(x > (800 - 40))
             x = 800 - 40;
     }
@@ -104,7 +109,7 @@ void StateBallDrop::render(SDL_Surface *screen)
         }
         if(cnt<2)
         {
-            bally+=8;
+            bally+=BALL_SPEED;
             if(bally>400)cnt++;
             text.print(screen,"CATCH!");
         }
