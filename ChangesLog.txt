@@ -1,3 +1,9 @@
+23 October 2009
+   released version 1.2.1551 of PandoraPanic
+
+     Change log:
+        -Added: Difficulties for BallDrop game
+
 22 October 2009
    released version 1.2.1547 of PandoraPanic
 
