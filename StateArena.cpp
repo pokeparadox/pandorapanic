@@ -20,24 +20,12 @@ StateArena::StateArena() : m_FrameRateCounter(0), m_EndCounter(0)
     m_MonsterListPtr = NULL;
     m_MonsterListPtr = new ArenaMonsterList();
 
-    m_Clouds.loadSprite("images/Arena/Clouds.png");
-    m_Clouds.setTransparentColour(MAGENTA);
-    m_Clouds.setAlpha(72);
-    m_Clouds.setPosition(0,0);
-
-    m_Clouds2.loadSprite("images/Arena/Clouds.png");
-    m_Clouds2.setTransparentColour(MAGENTA);
-    m_Clouds2.setAlpha(72);
-    m_Clouds.setPosition(-800,0);
-
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(WHITE);
 }
 StateArena::~StateArena()
 {
-    //m_Music.stop();
-
     if(m_HeroPtr)
         delete m_HeroPtr;
     if(m_MonsterListPtr)
@@ -143,7 +131,7 @@ void StateArena::userInput()
     else m_FrameRateCounter += 1;
 
     //Collision
-    if(m_HeroPtr->GetSwinging())
+    if(m_HeroPtr->GetSwinging() && !m_HeroPtr->GetDying())
     {
         ArenaMonster* monsterhitPtr = m_MonsterListPtr->HitTest(m_HeroPtr->GetSwordRegion());
         if (monsterhitPtr != 0 && !monsterhitPtr->GetDead())
@@ -154,8 +142,8 @@ void StateArena::userInput()
     }
     if (input->isStart())
     {
-            isPaused = !isPaused;
-            input->resetKeys();
+        isPaused = !isPaused;
+        input->resetKeys();
     }
 }
 void StateArena::render(SDL_Surface *screen)
@@ -168,17 +156,14 @@ void StateArena::render(SDL_Surface *screen)
 
     m_HeroPtr->render(screen);
 
-    ENVIRONMENT->renderBorder(screen);
-
-    m_Clouds.render(screen);
-    m_Clouds2.render(screen);
+    if(!m_HeroPtr->GetDying()) ENVIRONMENT->renderBorder(screen);
 }
 void StateArena::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
     pauseSymbol(screen);
     pauseText.setPosition(50,180);
-    pauseText.print(screen, "Kill all the monsters!");
+    pauseText.print(screen, "Kill all the monsters but don't get hit!");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press     to swing your sword!");
     buttonSheet.setCurrentFrame(10);
@@ -206,22 +191,26 @@ void StateArena::update()
         ArenaMonster* monsterhitPtr = m_MonsterListPtr->HitTest(m_HeroPtr->GetHitRegion());
         if (monsterhitPtr != 0)
         {
-            variables[0].setInt(0);
-            setNextState(STATE_MAIN);
+            m_HeroPtr->SetDead();
+            m_Music.stop();
         }
 
-        if(m_MonsterListPtr->GetMonsterAmount() == 0) m_EndCounter += 1;
+        if(m_MonsterListPtr->GetMonsterAmount() == 0 || m_HeroPtr->GetDying()) m_EndCounter += 1;
 
         if(m_EndCounter == 64)
         {
-            variables[0].setInt(1);
-            setNextState(STATE_MAIN);
+            if(m_HeroPtr->GetDying())
+            {
+                variables[0].setInt(0);
+                setNextState(STATE_MAIN);
+            }
+            else if(m_MonsterListPtr->GetMonsterAmount() == 0)
+            {
+                variables[0].setInt(1);
+                setNextState(STATE_MAIN);
+            }
         }
     }
 
-    if(m_Clouds.getX() == 800) m_Clouds.setPosition(-800, m_Clouds.getY());
-    else m_Clouds.setPosition(m_Clouds.getX() + 2, m_Clouds.getY());
-
-    if(m_Clouds2.getX() == 800) m_Clouds2.setPosition(-800, m_Clouds2.getY());
-    else m_Clouds2.setPosition(m_Clouds2.getX() + 2, m_Clouds2.getY());
+    ENVIRONMENT->update();
 }

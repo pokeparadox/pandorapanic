@@ -8,7 +8,9 @@
 // Include Files
 //-----------------------------------------------------
 #include "Background.h"
+#include "Animation.h"
 #include "CollisionMap.h"
+#include "Sprite.h"
 
 //-----------------------------------------------------
 // ArenaEnvironment Class
@@ -37,7 +39,9 @@ private:
 	//-------------------------------------------------
 	// Datamembers
 	//-------------------------------------------------
-    Background m_bmpArena, m_bmpBorder;
+    Background m_bmpArena;
+    Animation m_bmpBorder;
+    Sprite m_Clouds, m_Clouds2;
 
     CollisionMap* m_CollisionMapPtr;
 };

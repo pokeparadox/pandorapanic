@@ -38,7 +38,7 @@ private:
 	// Datamembers
 	//-------------------------------------------------
 	int m_X, m_Y, m_Type;
-	bool m_Exists;
+	bool m_Exists, m_RenderFix;
     AnimatedSprite m_bmpEffect;
 };
 #endif // ArenaEffect_H
