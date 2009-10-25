@@ -66,7 +66,10 @@ ArenaMonster::ArenaMonster() : m_X(0), m_Y(0), m_DeathSpeedX(0), m_DeathSpeedY(0
     // Spinning
     //------------------------
 
-    m_bmpSpinning.loadFrames("images/Arena/Monster/MonsterSpinning.png", 4, 1);
+    m_bmpSpinning.loadFrame("images/Arena/Monster/MonsterStandingDown.png");
+    m_bmpSpinning.loadFrame("images/Arena/Monster/MonsterStandingLeft.png");
+    m_bmpSpinning.loadFrame("images/Arena/Monster/MonsterStandingUp.png");
+    m_bmpSpinning.loadFrame("images/Arena/Monster/MonsterStandingRight.png");
     m_bmpSpinning.setLooping(true);
     m_bmpSpinning.setTransparentColour(MAGENTA);
     m_bmpSpinning.setFrameRate(DECI_SECONDS);

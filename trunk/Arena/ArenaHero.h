@@ -40,6 +40,7 @@ public:
     int GetX();
     int GetY();
     bool GetSwinging();
+    bool GetDying(){return m_IsDying;}
 
 
     //-------------------------------------------------
@@ -48,16 +49,16 @@ public:
     void HandleFacing(SimpleJoy* input);
     void HandleCurrentImage(SimpleJoy* input);
     void Move(int x, int y);
-    void SwingSword();
+    void SetDead();
 
 private:
 	//-------------------------------------------------
 	// Datamembers
 	//-------------------------------------------------
     int m_X, m_Y, m_Direction;
-    bool m_IsSwinging;
-    AnimatedSprite m_bmpStandingUp, m_bmpStandingDown, m_bmpStandingLeft, m_bmpStandingRight, m_bmpWalkingUp, m_bmpWalkingDown, m_bmpWalkingLeft, m_bmpWalkingRight;
-    AnimatedSprite m_bmpSwordUp, m_bmpSwordDown, m_bmpSwordLeft, m_bmpSwordRight;
+    bool m_IsSwinging, m_IsDying, m_RenderFix;
+    AnimatedSprite m_bmpStandingUp, m_bmpStandingDown, m_bmpStandingLeft, m_bmpStandingRight, m_bmpWalkingUp, m_bmpWalkingDown, m_bmpWalkingLeft, m_bmpWalkingRight,
+    m_bmpSwordUp, m_bmpSwordDown, m_bmpSwordLeft, m_bmpSwordRight, m_bmpSpinning;
 
     AnimatedSprite* m_bmpCurrentPtr;
 

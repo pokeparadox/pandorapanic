@@ -65,25 +65,46 @@ ArenaHero::ArenaHero() : m_X(312), m_Y(260), m_Direction(DIR_UP)
     // Sword swinging
     //------------------------
 
-    m_bmpSwordUp.loadFrames("images/Arena/Hero/HeroSwordUp.png", 5, 1);
+    m_bmpSwordUp.loadFrames("images/Arena/Hero/HeroSwordUp.png", 4, 1);
     m_bmpSwordUp.setLooping(false);
     m_bmpSwordUp.setTransparentColour(MAGENTA);
     m_bmpSwordUp.setFrameRate(FIFTEEN_FRAMES);
 
-    m_bmpSwordDown.loadFrames("images/Arena/Hero/HeroSwordDown.png", 5, 1);
+    m_bmpSwordDown.loadFrames("images/Arena/Hero/HeroSwordDown.png", 4, 1);
     m_bmpSwordDown.setLooping(false);
     m_bmpSwordDown.setTransparentColour(MAGENTA);
     m_bmpSwordDown.setFrameRate(FIFTEEN_FRAMES);
 
-    m_bmpSwordLeft.loadFrames("images/Arena/Hero/HeroSwordLeft.png", 5, 1);
+    m_bmpSwordLeft.loadFrames("images/Arena/Hero/HeroSwordLeft.png", 4, 1);
     m_bmpSwordLeft.setLooping(false);
     m_bmpSwordLeft.setTransparentColour(MAGENTA);
     m_bmpSwordLeft.setFrameRate(FIFTEEN_FRAMES);
 
-    m_bmpSwordRight.loadFrames("images/Arena/Hero/HeroSwordRight.png", 5, 1);
+    m_bmpSwordRight.loadFrames("images/Arena/Hero/HeroSwordRight.png", 4, 1);
     m_bmpSwordRight.setLooping(false);
     m_bmpSwordRight.setTransparentColour(MAGENTA);
     m_bmpSwordRight.setFrameRate(FIFTEEN_FRAMES);
+
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroHit.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroHit.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingLeft.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingUp.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingRight.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingDown.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingLeft.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingUp.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingRight.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingDown.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingLeft.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingUp.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingRight.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingDown.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingDown.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroStandingDown.png");
+    m_bmpSpinning.loadFrame("images/Arena/Hero/HeroDead.png");
+    m_bmpSpinning.setLooping(false);
+    m_bmpSpinning.setTransparentColour(MAGENTA);
+    m_bmpSpinning.setFrameRate(FIFTEEN_FRAMES);
 
     m_bmpShadow.loadSprite("images/Arena/Hero/HeroShadow.png");
     m_bmpShadow.setAlpha(72);
@@ -93,6 +114,8 @@ ArenaHero::ArenaHero() : m_X(312), m_Y(260), m_Direction(DIR_UP)
     m_bmpCurrentPtr = &m_bmpStandingUp;
 
     m_IsSwinging = false;
+    m_IsDying = false;
+    m_RenderFix = false;
 
     m_HitRegionPtr = NULL;
     m_HitRegionPtr = new HitRegion();
@@ -122,111 +145,140 @@ void ArenaHero::render(SDL_Surface* screen)
 {
     m_bmpShadow.render(screen);
 
+    if(m_bmpCurrentPtr == &m_bmpSwordRight || m_bmpCurrentPtr == &m_bmpSwordDown || m_bmpCurrentPtr == &m_bmpSwordLeft || m_bmpCurrentPtr == &m_bmpSwordUp) m_RenderFix = true;
+    else m_RenderFix = false;
+
     m_bmpCurrentPtr->render(screen);
+
+    if(m_bmpCurrentPtr == &m_bmpSpinning)
+    {
+        if(m_bmpCurrentPtr->getCurrentFrame() == 0 || m_bmpCurrentPtr->getCurrentFrame() == 1)
+        {
+            Rectangle flash;
+            flash.setColour(WHITE);
+            flash.setDimensions(800, 480);
+            flash.setPosition(0, 0);
+            flash.render(screen);
+        }
+        else
+        {
+            Rectangle dark;
+            dark.setColour(BLACK);
+            dark.setDimensions(800, 480);
+            dark.setPosition(0, 0);
+            dark.render(screen);
+
+            m_bmpCurrentPtr->render(screen);
+        }
+
+    }
     //m_HitRegionPtr->render(screen);
     //m_SwordRegionPtr->render(screen);
 }
 void ArenaHero::userInput(SimpleJoy* input)
 {
-
-    if(!m_IsSwinging)
+    if(!m_IsDying)
     {
-        HandleFacing(input);
-        HandleCurrentImage(input);
-
-
-        //-----------------------------------------------------
-        // Sword swinging
-        //-----------------------------------------------------
-
-        if(input->isA())
+        if(!m_IsSwinging)
         {
-            m_sndSword.play();
-            m_IsSwinging = true;
+            HandleFacing(input);
+            HandleCurrentImage(input);
+
+
+            //-----------------------------------------------------
+            // Sword swinging
+            //-----------------------------------------------------
+
+            if(input->isA())
+            {
+                m_sndSword.play();
+                m_IsSwinging = true;
+
+                //UP
+                if(m_Direction == DIR_UP)
+                {
+                    m_bmpCurrentPtr = &m_bmpSwordUp;
+                }
+                //DOWN
+                else if(m_Direction == DIR_DOWN)
+                {
+                    m_bmpCurrentPtr = &m_bmpSwordDown;
+                }
+                //LEFT
+                else if(m_Direction == DIR_LEFT)
+                {
+                    m_bmpCurrentPtr = &m_bmpSwordLeft;
+                }
+                //RIGHT
+                else if(m_Direction == DIR_RIGHT)
+                {
+                    m_bmpCurrentPtr = &m_bmpSwordRight;
+                }
+
+                m_bmpCurrentPtr->setCurrentFrame(0);
+            }
+
+            //-----------------------------------------------------
+            // Walking movement
+            //-----------------------------------------------------
 
             //UP
-            if(m_Direction == DIR_UP)
+            else if(input->isUp() && !input->isDown() && !input->isLeft() && !input->isRight())
             {
-                m_bmpCurrentPtr = &m_bmpSwordUp;
+                Move(0, -4);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, 4);
             }
-            //DOWN
-            else if(m_Direction == DIR_DOWN)
+
+            //UPRIGHT
+            else if(input->isUpRight() || (input->isUp() && input->isRight()))
             {
-                m_bmpCurrentPtr = &m_bmpSwordDown;
+                Move(4, -4);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-4, 4);
             }
-            //LEFT
-            else if(m_Direction == DIR_LEFT)
-            {
-                m_bmpCurrentPtr = &m_bmpSwordLeft;
-            }
+
             //RIGHT
-            else if(m_Direction == DIR_RIGHT)
+            else if(input->isRight() && !input->isUp() && !input->isDown() && !input->isLeft())
             {
-                m_bmpCurrentPtr = &m_bmpSwordRight;
+                Move(4, 0);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-4, 0);
             }
-        }
 
-        //-----------------------------------------------------
-        // Walking movement
-        //-----------------------------------------------------
+            //DOWNRIGHT
+            else if(input->isDownRight() || (input->isDown() && input->isRight()))
+            {
+                Move(4, 4);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-4, -4);
+            }
 
-        //UP
-        else if(input->isUp() && !input->isDown() && !input->isLeft() && !input->isRight())
-        {
-            Move(0, -4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, 4);
-        }
+            //DOWN
+            else if(input->isDown() && !input->isUp() && !input->isLeft() && !input->isRight())
+            {
+                Move(0, 4);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, -4);
+            }
 
-        //UPRIGHT
-        else if(input->isUpRight() || (input->isUp() && input->isRight()))
-        {
-            Move(4, -4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-4, 4);
-        }
+            //DOWNLEFT
+            else if(input->isDownLeft() || (input->isDown() && (input->isLeft())))
+            {
+                Move(-4, 4);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(4, -4);
+            }
 
-        //RIGHT
-        else if(input->isRight() && !input->isUp() && !input->isDown() && !input->isLeft())
-        {
-            Move(4, 0);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-4, 0);
-        }
+            //LEFT
+            else if(input->isLeft() && !input->isUp() && !input->isDown() && !input->isRight())
+            {
+                Move(-4, 0);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(4, 0);
+            }
 
-        //DOWNRIGHT
-        else if(input->isDownRight() || (input->isDown() && input->isRight()))
-        {
-            Move(4, 4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-4, -4);
-        }
-
-        //DOWN
-        else if(input->isDown() && !input->isUp() && !input->isLeft() && !input->isRight())
-        {
-            Move(0, 4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, -4);
-        }
-
-        //DOWNLEFT
-        else if(input->isDownLeft() || (input->isDown() && (input->isLeft())))
-        {
-            Move(-4, 4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(4, -4);
-        }
-
-        //LEFT
-        else if(input->isLeft() && !input->isUp() && !input->isDown() && !input->isRight())
-        {
-            Move(-4, 0);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(4, 0);
-        }
-
-        //UPLEFT
-        else if(input->isUpLeft() || (input->isUp() && input->isLeft()))
-        {
-            Move(-4, -4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(4, 4);
+            //UPLEFT
+            else if(input->isUpLeft() || (input->isUp() && input->isLeft()))
+            {
+                Move(-4, -4);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(4, 4);
+            }
         }
     }
-    else SwingSword();
 }
 void ArenaHero::HandleFacing(SimpleJoy* input)
 {
@@ -314,37 +366,11 @@ void ArenaHero::Move(int x, int y)
     m_HitRegionPtr->move(x, y);
     m_SwordRegionPtr->move(x, y);
 }
- void ArenaHero::SwingSword()
+ void ArenaHero::SetDead()
  {
-    if (m_bmpCurrentPtr->hasFinished())
-    {
-        //UP
-        if(m_Direction == DIR_UP)
-        {
-            m_bmpCurrentPtr = &m_bmpStandingUp;
-            m_bmpSwordUp.setCurrentFrame(0);
-        }
-        //DOWN
-        else if(m_Direction == DIR_DOWN)
-        {
-            m_bmpCurrentPtr = &m_bmpStandingDown;
-            m_bmpSwordDown.setCurrentFrame(0);
-        }
-        //LEFT
-        else if(m_Direction == DIR_LEFT)
-        {
-            m_bmpCurrentPtr = &m_bmpStandingLeft;
-            m_bmpSwordLeft.setCurrentFrame(0);
-        }
-        //RIGHT
-        else if(m_Direction == DIR_RIGHT)
-        {
-            m_bmpCurrentPtr = &m_bmpStandingRight;
-            m_bmpSwordRight.setCurrentFrame(0);
-        }
-
-        m_IsSwinging = false;
-    }
+     m_IsDying = true;
+     m_bmpCurrentPtr = &m_bmpSpinning;
+     m_bmpCurrentPtr->setPosition(m_X, m_Y);
  }
 HitRegion* ArenaHero::GetHitRegion()
 {
@@ -368,51 +394,94 @@ bool ArenaHero::GetSwinging()
 }
 void ArenaHero::update()
 {
-    //-----------------------------------
-    // Update the SwordRegion position
-    //-----------------------------------
-
-    //UP
-    if(m_Direction == DIR_UP)
+    if(!m_IsDying)
     {
-        m_SwordRegionPtr->init(m_X + 56, m_Y + 32, 80, 32);
+        //-----------------------------------
+        // Update the SwordRegion position
+        //-----------------------------------
+
+        //UP
+        if(m_Direction == DIR_UP)
+        {
+            m_SwordRegionPtr->init(m_X + 56, m_Y + 32, 80, 64);
+        }
+        //DOWN
+        else if(m_Direction == DIR_DOWN)
+        {
+            m_SwordRegionPtr->init(m_X + 56, m_Y + 184, 80, 32);
+        }
+        //LEFT
+        else if(m_Direction == DIR_LEFT)
+        {
+            m_SwordRegionPtr->init(m_X + 16, m_Y + 72, 32, 80);
+        }
+        //RIGHT
+        else if(m_Direction == DIR_RIGHT)
+        {
+            m_SwordRegionPtr->init(m_X + 144, m_Y + 72, 32, 80);;
+        }
+
+        if (m_bmpCurrentPtr->hasFinished())
+        {
+            //UP
+            if(m_Direction == DIR_UP)
+            {
+                m_bmpCurrentPtr = &m_bmpStandingUp;
+                m_bmpSwordUp.setCurrentFrame(0);
+            }
+            //DOWN
+            else if(m_Direction == DIR_DOWN)
+            {
+                m_bmpCurrentPtr = &m_bmpStandingDown;
+                m_bmpSwordDown.setCurrentFrame(0);
+            }
+            //LEFT
+            else if(m_Direction == DIR_LEFT)
+            {
+                m_bmpCurrentPtr = &m_bmpStandingLeft;
+                m_bmpSwordLeft.setCurrentFrame(0);
+            }
+            //RIGHT
+            else if(m_Direction == DIR_RIGHT)
+            {
+                m_bmpCurrentPtr = &m_bmpStandingRight;
+                m_bmpSwordRight.setCurrentFrame(0);
+            }
+
+            m_IsSwinging = false;
+        }
+
+        //-----------------------------------
+        // Update the current animation
+        //-----------------------------------
+
+        m_bmpCurrentPtr->setPosition(m_X, m_Y);
+
+        if(m_bmpCurrentPtr == &m_bmpSwordRight || m_bmpCurrentPtr == &m_bmpSwordDown || m_bmpCurrentPtr == &m_bmpSwordLeft || m_bmpCurrentPtr == &m_bmpSwordUp)
+        {
+            if(m_RenderFix) m_bmpCurrentPtr->update();
+        }
+        else m_bmpCurrentPtr->update();
+
+        m_bmpShadow.setPosition(m_X, m_Y);
+
+        //-----------------------------------
+        // Update all other animations
+        //-----------------------------------
+
+        m_bmpStandingUp.update();
+        m_bmpStandingDown.update();
+        m_bmpStandingLeft.update();
+        m_bmpStandingRight.update();
+
+        m_bmpWalkingUp.update();
+        m_bmpWalkingDown.update();
+        m_bmpWalkingLeft.update();
+        m_bmpWalkingRight.update();
     }
-    //DOWN
-    else if(m_Direction == DIR_DOWN)
+    else
     {
-        m_SwordRegionPtr->init(m_X + 56, m_Y + 184, 80, 32);
+        m_bmpCurrentPtr->setPosition(m_X, m_Y);
+        m_bmpCurrentPtr->update();
     }
-    //LEFT
-    else if(m_Direction == DIR_LEFT)
-    {
-        m_SwordRegionPtr->init(m_X + 16, m_Y + 72, 32, 80);
-    }
-    //RIGHT
-    else if(m_Direction == DIR_RIGHT)
-    {
-        m_SwordRegionPtr->init(m_X + 144, m_Y + 72, 32, 80);;
-    }
-
-    //-----------------------------------
-    // Update the current animation
-    //-----------------------------------
-
-    m_bmpCurrentPtr->setPosition(m_X, m_Y);
-    m_bmpCurrentPtr->update();
-
-    m_bmpShadow.setPosition(m_X, m_Y);
-
-    //-----------------------------------
-    // Update all other animations
-    //-----------------------------------
-
-    m_bmpStandingUp.update();
-    m_bmpStandingDown.update();
-    m_bmpStandingLeft.update();
-    m_bmpStandingRight.update();
-
-    m_bmpWalkingUp.update();
-    m_bmpWalkingDown.update();
-    m_bmpWalkingLeft.update();
-    m_bmpWalkingRight.update();
 }
