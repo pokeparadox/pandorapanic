@@ -12912,7 +12912,7 @@
 1255957487 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaEffect.cpp
 	"ArenaEffect.h"
 
-1252628893 /home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaEffect.h
+1256515191 /home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaEffect.h
 	"AnimatedSprite.h"
 
 1254858023 /home/kevin/Documents/Programming/Penjin/PenjinBase/AnimatedSprite.h
@@ -12936,9 +12936,11 @@
 1253629170 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaEnvironment.cpp
 	"ArenaEnvironment.h"
 
-1252628893 /home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaEnvironment.h
+1256515191 /home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaEnvironment.h
 	"Background.h"
+	"Animation.h"
 	"CollisionMap.h"
+	"Sprite.h"
 
 1253616691 /home/kevin/Documents/Programming/Penjin/PenjinBase/Background.h
 	"Image.h"
@@ -12946,7 +12948,7 @@
 1253207949 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaHero.cpp
 	"ArenaHero.h"
 
-1253206059 /home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaHero.h
+1256515191 /home/kevin/Documents/Programming/Penjin/PandoraPanic/Arena/ArenaHero.h
 	"AnimatedSprite.h"
 	"Sprite.h"
 	"SimpleJoy.h"
@@ -13103,7 +13105,7 @@
 	<fstream>
 	"Timer.h"
 
-1256335014 /home/kevin/Documents/Programming/Penjin/PandoraPanic/version.h
+1256514977 /home/kevin/Documents/Programming/Penjin/PandoraPanic/version.h
 
 1253616691 /home/kevin/Documents/Programming/Penjin/PenjinBase/PenjinStates.h
 	"BaseState.h"
@@ -13319,7 +13321,7 @@
 	"AnimatedSprite.h"
 	"Text.h"
 
-1254791830 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateArena.h
+1256515192 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateArena.h
 	"userStates.h"
 	"Arena/ArenaEnvironment.h"
 	"Arena/ArenaEffectSystem.h"
@@ -13605,7 +13607,7 @@
 1255012321 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateBadVista.cpp
 	"StateBadVista.h"
 
-1255012321 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateBallDrop.cpp
+1256335323 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateBallDrop.cpp
 	"StateBallDrop.h"
 
 1245480424 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateBarrelRoll.cpp
@@ -13722,10 +13724,10 @@
 1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/AnimatedSprite.cpp
 	"AnimatedSprite.h"
 
-1253616691 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Animation.cpp
+1256510623 source:/home/kevin/Documents/Programming/Penjin/PenjinBase/Animation.cpp
 	"Animation.h"
 
-1253616691 /home/kevin/Documents/Programming/Penjin/PenjinBase/Animation.h
+1256510623 /home/kevin/Documents/Programming/Penjin/PenjinBase/Animation.h
 	"Image.h"
 	"Timer.h"
 
@@ -13958,7 +13960,7 @@
 
 1253616690 /home/kevin/Documents/Programming/Penjin/PenjinBase/trenki/fixsintab.h
 
-1255610364 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateRotDef.cpp
+1256514974 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateRotDef.cpp
 	"StateRotDef.h"
 
 1255610155 /home/kevin/Documents/Programming/Penjin/PenjinBase/userTypes.h
