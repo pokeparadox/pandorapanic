@@ -137,13 +137,13 @@ void Fire::userInput()
         input->resetKeys();
     }
 
-    if (!moving)
+    if (!cannon.moving)
 	{
-        shooting = false;
+        cannon.shooting = false;
         // Shoot water
         if (input->isA() || input->isLeftClick())
         {
-            shooting = true;
+            cannon.shooting = true;
             ShootWater();
 			cannon.water -= WATER_SHOT;
 			if (cannon.water < 0)
@@ -154,13 +154,13 @@ void Fire::userInput()
         }
 	}
 
-	if (!shooting)
+	if (!cannon.shooting)
 	{
-        moving = false;
+        cannon.moving = false;
         // Adjust Angle
         if (input->isLeft())
         {
-			moving = true;
+			cannon.moving = true;
 			cannon.chgrate++;
 			if (cannon.chgrate > CANNON_CHGRATE_MAX)
 			{
@@ -173,7 +173,7 @@ void Fire::userInput()
         }
         if (input->isRight())
         {
-			moving = true;
+			cannon.moving = true;
 			cannon.chgrate++;
 			if (cannon.chgrate > CANNON_CHGRATE_MAX)
 			{
@@ -186,7 +186,7 @@ void Fire::userInput()
         // Adjust Power
         if (input->isDown())
         {
-			moving = true;
+			cannon.moving = true;
 			cannon.chgrate++;
 			if (cannon.chgrate > CANNON_CHGRATE_MAX)
 			{
@@ -198,7 +198,7 @@ void Fire::userInput()
         }
         if (input->isUp())
         {
-			moving = true;
+			cannon.moving = true;
 			cannon.chgrate++;
 			if (cannon.chgrate > CANNON_CHGRATE_MAX)
 			{
@@ -209,7 +209,6 @@ void Fire::userInput()
                 cannon.power = CANNON_POWER_MAX;
         }
 	}
-
 }
 
 void Fire::render(SDL_Surface *screen)
