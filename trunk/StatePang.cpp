@@ -33,7 +33,8 @@ namespace PangMiniGame
     static rconst float  kFLOOR                                  = 440.f;
 
     // Gravity, measured in, err.... pixels per second?
-    static rconst float  kGRAVITY                                = 400.f;
+    static rconst float  kGRAVITY_INITIAL                        = 400.f;
+    static float         kGRAVITY                                = kGRAVITY_INITIAL;
 
     // How high the balls should bounce.
     static rconst float  kMAX_HEIGHTS[ 5 ]                       = { 480, 415, 340, 255, 160 };
@@ -45,7 +46,8 @@ namespace PangMiniGame
     static rconst float  kSPEAR_SPEED                            = 10.f;
 
     // How fast the ball travels horizontally
-    static rconst float  kBALL_X_SPEED                           = 3.45f;
+    static rconst float  kBALL_X_SPEED_INITIAL                   = 3.45f;
+    static float         kBALL_X_SPEED                           = kBALL_X_SPEED_INITIAL;
 
     // How long spears stay attached to ceiling for.
     static rconst float  kSPEAR_HOLD_TIME                        = 0.1;
@@ -691,7 +693,7 @@ namespace PangMiniGame
         m_IsTiled   = isTiled;
         m_Speed     = speed;
         m_YPosition = yPosition;
-        m_FirstTileXPosition = 0.f;
+        m_FirstTileXPosition = rand() * -m_pSprite[ 0 ]->GetWidth( );
 
         return true;
     }
@@ -744,7 +746,7 @@ namespace PangMiniGame
         m_FirstTileXPosition += m_Speed * frameTime;
         if ( m_FirstTileXPosition > 0 )
         {
-            m_FirstTileXPosition -= m_pSprite[ 0 ]->GetWidth( );
+            m_FirstTileXPosition -= m_IsTiled ? ( m_pSprite[ 0 ]->GetWidth( ) - 1 ) : ( m_pSprite[ 0 ]->GetWidth( ) + 200.f );
         }
         return true;
     }
@@ -1534,6 +1536,7 @@ namespace PangMiniGame
             (*m_ppPlayerCurrent)->SetY( ( kFLOOR - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f );
         }
 
+        // Spear.
         if ( spearScaleChanged && m_pSpearManager )
         {
             for ( std::vector< Spear * >::iterator it = m_pSpearManager->m_Spears.begin( ); it != m_pSpearManager->m_Spears.end( ); ++it )
@@ -1588,9 +1591,9 @@ namespace PangMiniGame
             return false;
         if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsTop.Filename, 0, true, 20.f ) )
             return false;
-        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsMiddle1.Filename, 100, false, 10.f ) )
+        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsMiddle2.Filename, 150, false, 15.f ) )
             return false;
-        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsMiddle2.Filename, 200, false, 5.f ) )
+        if ( !m_pBackgroundLayerManager->AddLayer( kImageCloudsMiddle1.Filename, 50, false, 10.f ) )
             return false;
 
         m_pBackground = new Sprite( kImageBackground.Filename, kImageBackground.NumFrames );
@@ -1674,20 +1677,163 @@ namespace PangMiniGame
     }
     bool PangGame::StartLevel( int levelNumber )
     {
-        if ( levelNumber % 3 == 1 )
+        kBALL_X_SPEED = kBALL_X_SPEED_INITIAL * ( 1 + ( ( levelNumber / 20 ) * 0.25f ) );
+        kGRAVITY = kGRAVITY_INITIAL * ( 1 + ( ( levelNumber / 20 ) * 0.25f ) );
+
+        if ( levelNumber % 20 == 0 )
         {
-            m_pBallManager->Add( 100, 100, 0, Ball::kDirectionRight );
+            m_pBallManager->Add( 400, 300, 3, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 3 == 2 )
+        if ( levelNumber % 20 == 1 )
         {
-            m_pBallManager->Add( 100, 100, 0, Ball::kDirectionRight );
-            m_pBallManager->Add( 300, 100, 0, Ball::kDirectionRight );
+            m_pBallManager->Add( 100, 300, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 700, 300, 4, Ball::kDirectionLeft );
         }
-        else
+        else if ( levelNumber % 20 == 2 )
         {
-            m_pBallManager->Add( 100, 100, 0, Ball::kDirectionRight );
-            m_pBallManager->Add( 200, 200, 1, Ball::kDirectionRight );
-            m_pBallManager->Add( 300, 100, 0, Ball::kDirectionRight );
+            m_pBallManager->Add( 100, 300, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 200, 300, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 300, 4, Ball::kDirectionLeft );
+            m_pBallManager->Add( 700, 300, 4, Ball::kDirectionLeft );
+        }
+        else if ( levelNumber % 20 == 3 )
+        {
+            m_pBallManager->Add( 100, 300, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 150, 250, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 200, 300, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 300, 4, Ball::kDirectionLeft );
+            m_pBallManager->Add( 650, 250, 4, Ball::kDirectionLeft );
+            m_pBallManager->Add( 700, 300, 4, Ball::kDirectionLeft );
+        }
+        else if ( levelNumber % 20 == 4 )
+        {
+            m_pBallManager->Add( 100, 250, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 700, 250, 3, Ball::kDirectionLeft );
+        }
+        else if ( levelNumber % 20 == 5 )
+        {
+            m_pBallManager->Add( 100, 250, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 200, 250, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 250, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 700, 250, 3, Ball::kDirectionLeft );
+        }
+        else if ( levelNumber % 20 == 6 )
+        {
+            m_pBallManager->Add( 100, 250, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 150, 200, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 200, 250, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 250, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 650, 200, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 700, 250, 3, Ball::kDirectionLeft );
+        }
+        else if ( levelNumber % 20 == 7 )
+        {
+            m_pBallManager->Add( 400, 200, 1, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 8 )
+        {
+            m_pBallManager->Add( 200, 200, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 200, 4, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 9 )
+        {
+            m_pBallManager->Add( 200, 200, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 200, 3, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 10 )
+        {
+            m_pBallManager->Add( 300, 200, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 400, 200, 1, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 200, 3, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 11 )
+        {
+            m_pBallManager->Add( 200, 200, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 400, 200, 1, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 200, 3, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 12 )
+        {
+            m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 13 )
+        {
+            m_pBallManager->Add( 100, 100, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 125, 140, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 150, 180, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 175, 220, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 200, 260, 3, Ball::kDirectionRight );
+
+            m_pBallManager->Add( 700, 100, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 675, 140, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 650, 180, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 625, 220, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 600, 260, 3, Ball::kDirectionLeft );
+        }
+        else if ( levelNumber % 20 == 14 )
+        {
+            m_pBallManager->Add( 100, 100, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 125, 140, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 150, 180, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 175, 220, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 200, 260, 3, Ball::kDirectionRight );
+
+            m_pBallManager->Add( 700, 100, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 675, 140, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 650, 180, 2, Ball::kDirectionLeft );
+            m_pBallManager->Add( 625, 220, 3, Ball::kDirectionLeft );
+            m_pBallManager->Add( 600, 260, 3, Ball::kDirectionLeft );
+        }
+        else if ( levelNumber % 20 == 15 )
+        {
+            m_pBallManager->Add( 350, 200, 1, Ball::kDirectionRight );
+            m_pBallManager->Add( 450, 200, 1, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 16 )
+        {
+            m_pBallManager->Add( 300, 220, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 350, 200, 1, Ball::kDirectionRight );
+            m_pBallManager->Add( 450, 200, 1, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 220, 2, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 17 )
+        {
+            m_pBallManager->Add( 400, 200, 0, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 18 )
+        {
+            m_pBallManager->Add( 300, 200, 1, Ball::kDirectionRight );
+            m_pBallManager->Add( 400, 200, 0, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 200, 1, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 19 )
+        {
+            m_pBallManager->Add( 200, 200, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 250, 130, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 350, 130, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 400, 200, 1, Ball::kDirectionRight );
+            m_pBallManager->Add( 450, 130, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 550, 130, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 200, 3, Ball::kDirectionRight );
+        }
+        else if ( levelNumber % 20 == 20 )
+        {
+            m_pBallManager->Add( 200, 200, 2, Ball::kDirectionRight );
+            m_pBallManager->Add( 250, 130, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 350, 130, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 400, 200, 0, Ball::kDirectionRight );
+            m_pBallManager->Add( 450, 130, 3, Ball::kDirectionRight );
+            m_pBallManager->Add( 550, 130, 4, Ball::kDirectionRight );
+            m_pBallManager->Add( 600, 200, 2, Ball::kDirectionRight );
         }
 
         return true;
@@ -1713,7 +1859,12 @@ namespace PangMiniGame
         Controls::Update( input );
 
         // Set player position based on left/right input.
-        if ( Controls::IsLeftPressed( ) )
+        if ( ( Controls::IsLeftPressed( ) && Controls::IsRightPressed( ) ) || ( !Controls::IsLeftPressed( ) && !Controls::IsRightPressed( ) ) )
+        {
+            m_pPlayer[ kPlayerAnimStand ]->SetPosition( (*m_ppPlayerCurrent)->GetX( ), (*m_ppPlayerCurrent)->GetY( ) );
+            m_ppPlayerCurrent = &m_pPlayer[ kPlayerAnimStand ];
+        }
+        else if ( Controls::IsLeftPressed( ) )
         {
             m_pPlayer[ kPlayerAnimWalkLeft ]->SetPosition( (*m_ppPlayerCurrent)->GetX( ), (*m_ppPlayerCurrent)->GetY( ) );
             m_ppPlayerCurrent = &m_pPlayer[ kPlayerAnimWalkLeft ];
@@ -1721,18 +1872,13 @@ namespace PangMiniGame
             if ( (*m_ppPlayerCurrent)->GetX( ) < 0.f )
                 (*m_ppPlayerCurrent)->SetX( 0 );
         }
-        if ( Controls::IsRightPressed( ) )
+        else if ( Controls::IsRightPressed( ) )
         {
             m_pPlayer[ kPlayerAnimWalkRight ]->SetPosition( (*m_ppPlayerCurrent)->GetX( ), (*m_ppPlayerCurrent)->GetY( ) );
             m_ppPlayerCurrent = &m_pPlayer[ kPlayerAnimWalkRight ];
             (*m_ppPlayerCurrent)->SetX( (*m_ppPlayerCurrent)->GetX( ) + kPLAYER_SPEED * m_FrameTime );
             if ( (*m_ppPlayerCurrent)->GetX( ) + (*m_ppPlayerCurrent)->GetWidth( ) > kSCREEN_WIDTH )
                 (*m_ppPlayerCurrent)->SetX( kSCREEN_WIDTH - (*m_ppPlayerCurrent)->GetWidth( ) );
-        }
-        if ( ( Controls::IsLeftPressed( ) && Controls::IsRightPressed( ) ) || ( !Controls::IsLeftPressed( ) && !Controls::IsRightPressed( ) ) )
-        {
-            m_pPlayer[ kPlayerAnimStand ]->SetPosition( (*m_ppPlayerCurrent)->GetX( ), (*m_ppPlayerCurrent)->GetY( ) );
-            m_ppPlayerCurrent = &m_pPlayer[ kPlayerAnimStand ];
         }
 
         if ( Controls::IsUpHit( ))
@@ -1850,13 +1996,7 @@ namespace PangMiniGame
         m_pBallManager->RenderAll( );
 
         m_pExplosionManager->RenderAll( );
-#if 0
-        char buffer[ 512 ];
-        strcpy( buffer, "C:\\EjoyStudio\\FastCapPro\\movies\\" );
-        static int num = 0;
-        sprintf( &buffer[ strlen( buffer ) ], "%03d.bmp", num++ );
-        SDL_SaveBMP( GET_SCREEN( ), buffer );
-#endif
+
         return true;
     }
     // --------------------------------------------------------------
