@@ -19,7 +19,9 @@
 #define     FIRE_MAX_TOWERS		        10
 #define     FIRE_MAX_FLOORS		        6
 
+#ifdef _DEBUG
 #define     FIRE_DEBUG                  1
+#endif
 
 enum results_t {
 	RESULT_NONE,
@@ -118,8 +120,6 @@ class Fire : public BaseState
         sCannon             cannon;
         sTower              towers[FIRE_MAX_TOWERS];
         sPickle             pickle;
-        bool                moving;
-        bool                shooting;
         bool                firstrun;
         int16_t             screen_width;
         int16_t             screen_height;

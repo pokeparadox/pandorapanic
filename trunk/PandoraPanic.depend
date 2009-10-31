@@ -13965,3 +13965,1206 @@
 
 1255610155 /home/kevin/Documents/Programming/Penjin/PenjinBase/userTypes.h
 
+1256932031 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaEffect.cpp
+	"ArenaEffect.h"
+
+1256932032 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaEffect.h
+	"AnimatedSprite.h"
+
+1256932263 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimatedSprite.h
+	"Image.h"
+	"Timer.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Image.h
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	"Texture.h"
+	<SDL/SDL_rotozoom.h>
+	<SDL/SDL_image.h>
+	<string>
+	<vector>
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+	"Colour.h"
+	"GFX.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Texture.h
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_image.h>
+	"NumberUtility.h"
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+	"GFX.h"
+
+1256932263 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/NumberUtility.h
+	"PenjinTypes.h"
+	"NumberUtility.inl"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/PenjinTypes.h
+	<string>
+	"trenki/vector_math.h"
+	"Vector2df.h"
+	"Vector2dx.h"
+	"Vector2di.h"
+	"Vector3df.h"
+	"Vector3dx.h"
+	"Vector3di.h"
+	"userTypes.h"
+	"Variable.h"
+
+1254685473 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/trenki/vector_math.h
+	<cmath>
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector2df.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/PenjinFixedFunc.h
+	"trenki/fixed_class.h"
+	"trenki/fixed_func.h"
+	"trenki/vector_math.h"
+
+1254685473 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/trenki/fixed_class.h
+	"fixed_func.h"
+
+1254685473 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/trenki/fixed_func.h
+	<stdint.h>
+	"stdint.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector2dx.h
+	"trenki/vector_math.h"
+	"trenki/fixed_class.h"
+	<limits>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector2di.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3df.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1254685482 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3dx.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3di.h
+	"trenki/vector_math.h"
+	"PenjinFixedFunc.h"
+	<limits>
+
+1256932264 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/userTypes.h
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Variable.h
+	"PenjinTypes.h"
+	<string>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/NumberUtility.inl
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/PenjinErrors.h
+	<string>
+
+1254685482 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/GFX.h
+	"PenjinTypes.h"
+	"Random.h"
+	"StringUtility.h"
+	"Pixel.h"
+	<SDL/SDL_opengl.h>
+	<SDL/SDL.h>
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Random.h
+	<ctime>
+	<cstdlib>
+	"PenjinTypes.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/StringUtility.h
+	<string>
+	<sstream>
+	<iostream>
+	<algorithm>
+	<cctype>
+	"PenjinTypes.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Pixel.h
+	"PenjinTypes.h"
+	"Colour.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Colour.h
+	"PenjinTypes.h"
+	<SDL/SDL.h>
+
+1256932264 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Timer.h
+	<SDL/SDL.h>
+	"PenjinTypes.h"
+
+1254685606 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaEffectSystem.cpp
+	"ArenaEffectSystem.h"
+
+1254685607 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaEffectSystem.h
+	"Arena/ArenaEffect.h"
+
+1256932032 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaEnvironment.cpp
+	"ArenaEnvironment.h"
+
+1256932031 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaEnvironment.h
+	"Background.h"
+	"Animation.h"
+	"CollisionMap.h"
+	"Sprite.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Background.h
+	"Image.h"
+
+1256932263 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Animation.h
+	"Image.h"
+	"Timer.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/CollisionMap.h
+	"Image.h"
+	"GFX.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Sprite.h
+	"Image.h"
+	"PenjinTypes.h"
+
+1256932031 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaHero.cpp
+	"ArenaHero.h"
+
+1256932032 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaHero.h
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"SimpleJoy.h"
+	"HitRegion.h"
+	"ArenaEnvironment.h"
+	"Sound.h"
+
+1256932263 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/SimpleJoy.h
+	"PenjinTypes.h"
+	"KeyMapper.h"
+	<linux/input.h>
+	<string.h>
+	<fcntl.h>
+	<unistd.h>
+	<stdio.h>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapper.h
+	"KeyMapSDLKey.h"
+	"KeyMapMouseButton.h"
+	"KeyMapMouseAxis.h"
+	"KeyMapJoyButton.h"
+	"KeyMapJoyAxis.h"
+	"KeyMapDigitalJoyAxis.h"
+	"KeyMapHat.h"
+	"Parser.h"
+	<vector>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapSDLKey.h
+	"KeyMap.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMap.h
+	"KeyboardDefines.h"
+	"PenjinTypes.h"
+	<string>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyboardDefines.h
+	<SDL/SDL.h>
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapMouseButton.h
+	"KeyMap.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapMouseAxis.h
+	"KeyMap.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapJoyButton.h
+	"KeyMap.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapJoyAxis.h
+	"KeyMap.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapDigitalJoyAxis.h
+	"KeyMap.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapHat.h
+	"KeyMap.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Parser.h
+	<string>
+	<iostream>
+	<fstream>
+	<sstream>
+	<queue>
+	"Command.h"
+	"TextDoc.h"
+	"StringUtility.h"
+	"ErrorHandler.h"
+	"KeyWord.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Command.h
+	<vector>
+	"Variable.h"
+	"PenjinTypes.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/TextDoc.h
+	<string>
+	<vector>
+	<fstream>
+	<iostream>
+	"ErrorHandler.h"
+	"PenjinTypes.h"
+	"Memwatch.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ErrorHandler.h
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<string>
+	"PenjinErrors.h"
+	"PenjinTypes.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyWord.h
+	"PenjinTypes.h"
+
+1256932263 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/HitRegion.h
+	"Sprite.h"
+	"Rectangle.h"
+	"CollisionMap.h"
+
+1256932263 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Rectangle.h
+	"PenjinTypes.h"
+	"Colour.h"
+	"GFX.h"
+	<SDL/SDL_opengl.h>
+
+1256932264 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Sound.h
+	<SDL/SDL.h>
+	<SDL/SDL_mixer.h>
+	<string>
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+
+1256932031 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaMonster.cpp
+	"ArenaMonster.h"
+
+1254685606 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaMonster.h
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"HitRegion.h"
+	"ArenaEnvironment.h"
+	"ArenaEffectSystem.h"
+
+1254685607 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaMonsterList.cpp
+	"ArenaMonsterList.h"
+
+1254685606 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Arena/ArenaMonsterList.h
+	"Background.h"
+	"Arena/ArenaMonster.h"
+	"Arena/ArenaEnvironment.h"
+	"Arena/ArenaEffectSystem.h"
+	"HitRegion.h"
+	"Sound.h"
+
+1254686055 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/ButtonPrompter.cpp
+	"ButtonPrompter.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/ButtonPrompter.h
+	"Sprite.h"
+	"Timer.h"
+	<vector>
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/MyGame.cpp
+	"MyGame.h"
+	"MiniGameStates.h"
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/MyGame.h
+	"Engine.h"
+	"SimpleJoy.h"
+
+1256932264 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Engine.h
+	"PenjinIncludes.h"
+	"PenjinStates.h"
+	"PenjinTypes.h"
+	"StringUtility.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/PenjinIncludes.h
+	<gccore.h>
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	"version.h"
+	"ErrorHandler.h"
+	"GFX.h"
+	"SimpleJoy.h"
+	<string>
+	<iostream>
+	<fstream>
+	"Timer.h"
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/version.h
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/PenjinStates.h
+	"BaseState.h"
+	"userStates.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/BaseState.h
+	<vector>
+	"PenjinTypes.h"
+	"SimpleJoy.h"
+	"GFX.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/userStates.h
+	"BaseState.h"
+	"StateCredits.h"
+	"StateGameover.h"
+	"StateGameoverOrdered.h"
+	"StateTitle.h"
+	"StateMain.h"
+	"StatePang.h"
+	"StateArena.h"
+	"StateBallDrop.h"
+	"StatePuttPutt.h"
+	"StateSpaceInvaders.h"
+	"StateSpellingContest.h"
+	"StateBadVista.h"
+	"StateDistractedMath.h"
+	"StatePunchWrestler.h"
+	"StateDoubleNubTrouble.h"
+	"StateReflex.h"
+	"StateOneButtonBandit.h"
+	"StatePong.h"
+	"StatePanicAttack.h"
+	"StatePanJoust.h"
+	"StateJumper.h"
+	"StateRotDef.h"
+	"StateMemoryBlocks.h"
+	"StateSnatchABeer.h"
+	"StateTheCountJob.h"
+	"StateFire.h"
+	"StateTileEditor.h"
+	"StateBarrelRoll.h"
+	"StatePlander.h"
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateCredits.h
+	"PenjinStates.h"
+	"version.h"
+	"Background.h"
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"Music.h"
+	"Text.h"
+	"Timer.h"
+	"Random.h"
+	"Colour.h"
+	"BackBuffer.h"
+	"Emitter.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Music.h
+	<SDL/SDL.h>
+	<SDL/SDL_mixer.h>
+	<string>
+	"PenjinTypes.h"
+	"PenjinErrors.h"
+
+1254685482 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Text.h
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_ttf.h>
+	"Texture.h"
+	<SDL/SDL_ttf.h>
+	<string>
+	"PenjinTypes.h"
+	"Colour.h"
+	"StringUtility.h"
+	"PenjinErrors.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/BackBuffer.h
+	"GFX.h"
+	"Pixel.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Emitter.h
+	"AnimatedParticle.h"
+	"SpriteParticle.h"
+	"Particle.h"
+	"Random.h"
+	<vector>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimatedParticle.h
+	"Particle.h"
+	"AnimatedSprite.h"
+	"Random.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Particle.h
+	"PenjinTypes.h"
+	"Colour.h"
+	"Timer.h"
+	"Random.h"
+	<cmath>
+	"Pixel.h"
+	<SDL/SDL_opengl.h>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/SpriteParticle.h
+	"Particle.h"
+	"Sprite.h"
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateGameover.h
+	"userStates.h"
+	"ScoreScreen.h"
+	"Background.h"
+	"Text.h"
+	"Sound.h"
+	"Music.h"
+	"BackBuffer.h"
+	"Random.h"
+	"ButtonPrompter.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ScoreScreen.h
+	"HiScore.h"
+	"Emitter.h"
+	"Text.h"
+	"PenjinErrors.h"
+	<vector>
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/HiScore.h
+	<string>
+	<sstream>
+	<iostream>
+	<fstream>
+	"PenjinErrors.h"
+	"PenjinTypes.h"
+	"Text.h"
+	"TextDoc.h"
+	"Encryption.h"
+	"StringUtility.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Encryption.h
+	<string>
+	"Random.h"
+	"NumberUtility.h"
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateGameoverOrdered.h
+	"userStates.h"
+	"ScoreScreen.h"
+	"Background.h"
+	"Text.h"
+	"Sound.h"
+	"Music.h"
+	"BackBuffer.h"
+	"Random.h"
+	"ButtonPrompter.h"
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateTitle.h
+	"PenjinStates.h"
+	"Menu.h"
+	"Music.h"
+	"Emitter.h"
+	"Background.h"
+	"Sprite.h"
+	"AnimatedSprite.h"
+	"Random.h"
+	"Timer.h"
+	"ButtonPrompter.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Menu.h
+	<vector>
+	"MenuItem.h"
+	"StringMenuItem.h"
+	"AnimationStringMenuItem.h"
+	"AnimationMenuItem.h"
+	"ImageMenuItem.h"
+	"ImageStringMenuItem.h"
+	"PenjinErrors.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/MenuItem.h
+	"PenjinTypes.h"
+	<SDL/SDL.h>
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/StringMenuItem.h
+	"Text.h"
+	"MenuItem.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimationStringMenuItem.h
+	"AnimationMenuItem.h"
+	"StringMenuItem.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimationMenuItem.h
+	"MenuItem.h"
+	"AnimatedSprite.h"
+
+1254685482 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ImageMenuItem.h
+	"MenuItem.h"
+	"Image.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ImageStringMenuItem.h
+	"ImageMenuItem.h"
+	"StringMenuItem.h"
+
+1254686055 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateMain.h
+	"userStates.h"
+	"MiniGames.h"
+	"Random.h"
+	"Sprite.h"
+	"Colour.h"
+	"Music.h"
+	"ButtonPrompter.h"
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/MiniGames.h
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePang.h
+	"userStates.h"
+	"AnimatedSprite.h"
+	"Text.h"
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateArena.h
+	"userStates.h"
+	"Arena/ArenaEnvironment.h"
+	"Arena/ArenaEffectSystem.h"
+	"Arena/ArenaHero.h"
+	"HitRegion.h"
+	"Arena/ArenaMonsterList.h"
+	"Music.h"
+	"Sprite.h"
+	"Text.h"
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateBallDrop.h
+	"userStates.h"
+	"ButtonPrompter.h"
+	"Text.h"
+	<SDL/SDL_gfxPrimitives.h>
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePuttPutt.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"AnimatedSprite.h"
+	"Emitter.h"
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateSpaceInvaders.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"Emitter.h"
+	"AnimatedSprite.h"
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateSpellingContest.h
+	"userStates.h"
+	"Background.h"
+	"TextDoc.h"
+	"AnimatedSprite.h"
+	"Music.h"
+	"StringUtility.h"
+
+1256932039 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateBadVista.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	<vector>
+	"ButtonPrompter.h"
+	"Text.h"
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateDistractedMath.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+
+1254686055 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePunchWrestler.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"trabitboy/agroState.h"
+	"trabitboy/punchState.h"
+	"trabitboy/winState.h"
+	"trabitboy/loseState.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/agroState.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"SimpleJoy.h"
+	"trabitboy/userActionEnum.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/activeGameSubState.h
+	<SDL/SDL.h>
+	"SimpleJoy.h"
+	"trabitboy/blowEnum.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/blowEnum.h
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/userActionEnum.h
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/punchState.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"Sound.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/winState.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"SimpleJoy.h"
+	"Music.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/loseState.h
+	"trabitboy/activeGameSubState.h"
+	"Sprite.h"
+	"Background.h"
+	"SimpleJoy.h"
+	"Music.h"
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateDoubleNubTrouble.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateReflex.h
+	"userStates.h"
+
+1254686055 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateOneButtonBandit.h
+	"userStates.h"
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePong.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePanicAttack.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"Text.h"
+	"Random.h"
+	<vector>
+	"StatePanicAttackButtonsEvents.h"
+
+1254686055 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePanicAttackButtonsEvents.h
+	"Sprite.h"
+	"Timer.h"
+	"Music.h"
+	"ButtonPrompter.h"
+	<vector>
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePanJoust.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+	"ButtonPrompter.h"
+	"PanJoust/HeroBird.h"
+	"Emitter.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/PanJoust/HeroBird.h
+	"AnimatedSprite.h"
+	"Sprite.h"
+	"Sound.h"
+
+1256932039 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateJumper.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+	"Music.h"
+	"Jumper/Tile.h"
+	"ButtonPrompter.h"
+
+1254685607 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/Jumper/Tile.h
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateRotDef.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"Sound.h"
+	"LUT.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/LUT.h
+	"PenjinTypes.h"
+	<cmath>
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateMemoryBlocks.h
+	"userStates.h"
+	"Background.h"
+	"Image.h"
+	"Sprite.h"
+	"AnimatedSprite.h"
+	"Rectangle.h"
+	<vector>
+	<string>
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateSnatchABeer.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+
+1256932040 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateTheCountJob.h
+	"userStates.h"
+	"Sprite.h"
+	"NumberUtility.h"
+	"Vector2df.h"
+
+1256958857 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateFire.h
+	"userStates.h"
+	<vector>
+	"LUT.h"
+	"Background.h"
+	"Emitter.h"
+	"Sprite.h"
+	"MMUHack.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/MMUHack.h
+	<unistd.h>
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	<time.h>
+	<fcntl.h>
+	<sys/time.h>
+	<sys/mman.h>
+	"mmuhack/flush_uppermem_cache.h"
+
+1254685477 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/mmuhack/flush_uppermem_cache.h
+
+1254686055 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateTileEditor.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+	"Jumper/Tile.h"
+
+1254686055 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateBarrelRoll.h
+	"userStates.h"
+	"AnimatedSprite.h"
+	"Background.h"
+
+1256932217 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePlander.h
+	"userStates.h"
+	"RocketEscape/Rocket.h"
+	"RocketEscape/LandingPad.h"
+	"RocketEscape/Collectible.h"
+	"ParticleMirror.h"
+	"Music.h"
+	"Rectangle.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/RocketEscape/Rocket.h
+	"LUT.h"
+	"Sprite.h"
+	"Sound.h"
+	"Emitter.h"
+	"Collectible.h"
+	<vector>
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/RocketEscape/Collectible.h
+	"AnimatedSprite.h"
+	"Random.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/RocketEscape/LandingPad.h
+	"RocketEscape/Rocket.h"
+	"ParticleMirror.h"
+	"AnimatedSprite.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ParticleMirror.h
+	"ParticleCollider.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ParticleCollider.h
+	"Emitter.h"
+
+1254686054 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/MiniGameStates.h
+	"PenjinStates.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/PanJoust/HeroBird.cpp
+	"PanJoust/HeroBird.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/RocketEscape/Collectible.cpp
+	"Collectible.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/RocketEscape/LandingPad.cpp
+	"LandingPad.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/RocketEscape/Rocket.cpp
+	"Rocket.h"
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/SegWay.cpp
+	"SegWay.h"
+
+1254686053 /mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/SegWay.h
+
+1256932218 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateArena.cpp
+	"StateArena.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateBadVista.cpp
+	"StateBadVista.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateBallDrop.cpp
+	"StateBallDrop.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateBarrelRoll.cpp
+	"StateBarrelRoll.h"
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateCredits.cpp
+	"StateCredits.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateDistractedMath.cpp
+	"StateDistractedMath.h"
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateDoubleNubTrouble.cpp
+	"StateDoubleNubTrouble.h"
+
+1256959020 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateFire.cpp
+	"StateFire.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateGameover.cpp
+	"StateGameover.h"
+
+1256932039 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateGameoverOrdered.cpp
+	"StateGameover.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateJumper.cpp
+	"StateJumper.h"
+
+1254686055 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateMain.cpp
+	"StateMain.h"
+	"MiniGameStates.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateMemoryBlocks.cpp
+	"StateMemoryBlocks.h"
+	"Image.h"
+	<cmath>
+	<string>
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateOneButtonBandit.cpp
+	"StateOneButtonBandit.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePanJoust.cpp
+	"StatePanJoust.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePang.cpp
+	"StatePang.h"
+	<vector>
+	<algorithm>
+	<math.h>
+	<assert.h>
+	<sys/stat.h>
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePanicAttack.cpp
+	"StatePanicAttack.h"
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePanicAttackButtonsEvents.cpp
+	"StatePanicAttackButtonsEvents.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePlander.cpp
+	"StatePlander.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePong.cpp
+	"StatePong.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePunchWrestler.cpp
+	"StatePunchWrestler.h"
+
+1256932039 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StatePuttPutt.cpp
+	"StatePuttPutt.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateReflex.cpp
+	"StateReflex.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateRotDef.cpp
+	"StateRotDef.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateSnatchABeer.cpp
+	"StateSnatchABeer.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateSpaceInvaders.cpp
+	"StateSpaceInvaders.h"
+
+1256932217 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateSpellingContest.cpp
+	"StateSpellingContest.h"
+
+1256932040 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateTheCountJob.cpp
+	"StateTheCountJob.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateTileEditor.cpp
+	"StateTileEditor.h"
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/StateTitle.cpp
+	"StateTitle.h"
+
+1254686054 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/_main.cpp
+	"MyGame.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/agroState.cpp
+	"agroState.h"
+	"StatePunchWrestler.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/loseState.cpp
+	"loseState.h"
+	"StatePunchWrestler.h"
+	"userStates.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/punchState.cpp
+	"punchState.h"
+	"StatePunchWrestler.h"
+
+1254686053 source:/mythtv/media/devel/source/pandora/pndpanic/PandoraPanic/trabitboy/winState.cpp
+	"winState.h"
+	"StatePunchWrestler.h"
+	"userStates.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimatedParticle.cpp
+	"AnimatedParticle.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimatedSprite.cpp
+	"AnimatedSprite.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Animation.cpp
+	"Animation.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimationMenuItem.cpp
+	"AnimationMenuItem.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/AnimationStringMenuItem.cpp
+	"AnimationStringMenuItem.h"
+
+1254685482 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/BackBuffer.cpp
+	"BackBuffer.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Background.cpp
+	"Background.h"
+
+1256932264 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/BaseState.cpp
+	"BaseState.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/CollisionMap.cpp
+	"CollisionMap.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Colour.cpp
+	"Colour.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Command.cpp
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Emitter.cpp
+	"Emitter.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Encryption.cpp
+	"Encryption.h"
+
+1256958152 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Engine.cpp
+	"Engine.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/GFX.cpp
+	"GFX.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/HiScore.cpp
+	"HiScore.h"
+
+1256932264 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/HitRegion.cpp
+	"HitRegion.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Image.cpp
+	"Image.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ImageMenuItem.cpp
+	"ImageMenuItem.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ImageStringMenuItem.cpp
+	"ImageStringMenuItem.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/IntVector2d.cpp
+	"IntVector2d.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/IntVector2d.h
+	<cmath>
+	"PenjinTypes.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMap.cpp
+	"KeyMap.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapDigitalJoyAxis.cpp
+	"KeyMapDigitalJoyAxis.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapHat.cpp
+	"KeyMapHat.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapJoyAxis.cpp
+	"KeyMapJoyAxis.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapJoyButton.cpp
+	"KeyMapJoyButton.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapMouseAxis.cpp
+	"KeyMapMouseAxis.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapMouseButton.cpp
+	"KeyMapMouseButton.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapSDLKey.cpp
+	"KeyMapSDLKey.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/KeyMapper.cpp
+	"KeyMapper.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/LUT.cpp
+	"LUT.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Line.cpp
+	"Line.h"
+
+1256932263 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Line.h
+	"PenjinTypes.h"
+	"Colour.h"
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_gfxPrimitives.h>
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/MMUHack.cpp
+	"MMUHack.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Menu.cpp
+	"Menu.h"
+
+1254685482 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/MenuItem.cpp
+	"MenuItem.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Music.cpp
+	"Music.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/NumberUtility.cpp
+	"NumberUtility.h"
+
+1254685482 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Parser.cpp
+	"Parser.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Particle.cpp
+	"Particle.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ParticleCollider.cpp
+	"ParticleCollider.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ParticleKiller.cpp
+	"ParticleKiller.h"
+
+1254685480 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ParticleKiller.h
+	"ParticleCollider.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ParticleMirror.cpp
+	"ParticleMirror.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/PenjinFixedFunc.cpp
+	"PenjinFixedFunc.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Pixel.cpp
+	"Pixel.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Random.cpp
+	"Random.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Rectangle.cpp
+	"Rectangle.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Score.cpp
+	"Score.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Score.h
+	"PenjinTypes.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ScoreScreen.cpp
+	"ScoreScreen.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ScreenPartition.cpp
+	"ScreenPartition.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/ScreenPartition.h
+	"PenjinTypes.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/SimpleJoy.cpp
+	"SimpleJoy.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Sound.cpp
+	"Sound.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Sprite.cpp
+	"Sprite.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/SpriteParticle.cpp
+	"SpriteParticle.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/StarField.cpp
+	"StarField.h"
+
+1254685482 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/StarField.h
+	"Emitter.h"
+	<vector>
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/StringMenuItem.cpp
+	"StringMenuItem.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/StringUtility.cpp
+	"StringUtility.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Text.cpp
+	"Text.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/TextDoc.cpp
+	"TextDoc.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Texture.cpp
+	"Texture.h"
+
+1254685482 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/TileMap.cpp
+	"TileMap.h"
+
+1254685481 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/TileMap.h
+	"Image.h"
+
+1256932263 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Timer.cpp
+	"Timer.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Variable.cpp
+	"Variable.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector2df.cpp
+	"Vector2df.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector2di.cpp
+	"Vector2di.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector2dx.cpp
+	"Vector2dx.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3d.cpp
+	"Vector3d.h"
+
+1254685479 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3d.h
+	<cmath>
+	<SDL/SDL_opengl.h>
+	"PenjinTypes.h"
+
+1254685479 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3df.cpp
+	"Vector3df.h"
+
+1254685478 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3di.cpp
+	"Vector3di.h"
+
+1254685480 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/Vector3dx.cpp
+	"Vector3dx.h"
+
+1254685481 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/WiiJoy.cpp
+	"WiiJoy.h"
+
+1254685478 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/WiiJoy.h
+	<wiiuse/wpad.h>
+	<SDL/SDL.h>
+
+1254685473 source:/mythtv/media/devel/source/pandora/pndpanic/PenjinBase/trenki/fixed_func.cpp
+	"fixed_func.h"
+	"fixsintab.h"
+
+1254685473 /mythtv/media/devel/source/pandora/pndpanic/PenjinBase/trenki/fixsintab.h
+
