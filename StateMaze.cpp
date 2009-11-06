@@ -142,11 +142,11 @@ void StateMaze::init()
         blok[j].setPosition(stringToInt(testingx),stringToInt(testingy));
         blok[j].setMovement(0,0);
         blok[j].moving = stringToInt(tiletype);
-
+    /*
         if (blok[j].moving == 1){blok[j].setYMovement(rand()%50);}
         if (blok[j].moving == 2){blok[j].setYMovement(50);}
         if (blok[j].moving == 3){blok[j].setXMovement(rand()%40);}
-        if (blok[j].moving == 4){blok[j].setXMovement(40);}
+        if (blok[j].moving == 4){blok[j].setXMovement(40);}*/
         tilenumber = j;
         j++;
 
@@ -389,7 +389,7 @@ void StateMaze::update()
         //hero.update();
         //if (hero.getYvel() > 0
         //hero.setYvel(hero.getYvel() + 15); Undo gravity
-        hero.setX(hero.getX() + (hero.getXvel()*0.1f));
+        hero.setX(hero.getX() + (hero.getXvel()*0.11f));
         hero.setY(hero.getY() + (hero.getYvel()*0.11f));
         //hero.ontile = 0;
         for (int i = 0;i< cloudnumber;i++)
@@ -424,14 +424,14 @@ void StateMaze::update()
 
             // collision checking with tile and hero
 
-            if (hero.getY() + 28 >= blok[i].getY() + blok[i].getYMovement() && hero.getY() + 16 < blok[i].getY() + blok[i].getYMovement()
+            if (hero.getY() + 28 >= blok[i].getY() + blok[i].getYMovement() && hero.getY() + 12 < blok[i].getY() + blok[i].getYMovement()
                 && hero.getX()  > blok[i].getX() + blok[i].getXMovement() - 24 && hero.getX()  < blok[i].getX() + blok[i].getXMovement()+ 24)
             {
                 if (hero.getYvel() > 0){hero.setYvel(0);}
                 hero.setY(blok[i].getY() + blok[i].getYMovement() - 28);
                 //hero.ontile = hero.ontile + 1;
             }
-            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() - 28 && hero.getX() < blok[i].getX() + blok[i].getXMovement() - 14
+            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() - 28 && hero.getX() < blok[i].getX() + blok[i].getXMovement() - 12
                 && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 24 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight() - 8)
             {
                 if (hero.getXvel() > 0)
@@ -441,7 +441,7 @@ void StateMaze::update()
                 }
                 //hero.setXvel(-22);
             }
-            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 14 && hero.getX() < blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 4
+            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 12 && hero.getX() < blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 4
                 && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 24 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight() - 8)
             {
                 if (hero.getXvel() < 0)
@@ -452,7 +452,7 @@ void StateMaze::update()
                 //hero.setXvel();
             }
             if (hero.getX() >  blok[i].getX() + blok[i].getXMovement() - 24 && hero.getX()  < blok[i].getX() + blok[i].getXMovement() + 24
-                && hero.getY() > blok[i].getY() + blok[i].getYMovement() + 16 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight())
+                && hero.getY() > blok[i].getY() + blok[i].getYMovement() + 12 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight())
             {
                 if (hero.getYvel() < 0){hero.setYvel(0);}
                 hero.setY(blok[i].getY() + blok[i].getYMovement() + 28);
