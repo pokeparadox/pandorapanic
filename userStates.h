@@ -25,7 +25,7 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 #include "StateBadVista.h"
 #include "StateDistractedMath.h"
 #include "StatePunchWrestler.h"
-#include "StateDoubleNubTrouble.h"
+//#include "StateDoubleNubTrouble.h"
 #include "StateReflex.h"
 #include "StateOneButtonBandit.h"
 #include "StatePong.h"
@@ -37,6 +37,7 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 #include "StateSnatchABeer.h"
 #include "StateTheCountJob.h"
 #include "StateFire.h"
+#include "StateCake.h"
 
 #include "StateTileEditor.h"
 #include "StateBarrelRoll.h"
@@ -56,7 +57,7 @@ enum STATE_MODES
 	STATE_BADVISTA,
 	STATE_DISTRACTEDMATH,
 	STATE_REFLEX,
-	STATE_DOUBLENUBTROUBLE,
+	//STATE_DOUBLENUBTROUBLE,
 	STATE_PUNCHWRESTLER,
 	STATE_PONG,
 	STATE_ONEBUTTONBANDIT,
@@ -70,6 +71,7 @@ enum STATE_MODES
     STATE_SNATCHABEER,
     STATE_COUNTJOB,
     STATE_FIRE,
+    STATE_CAKE,
 
     //STATE_BARRELROLL,
     /// Other stuff

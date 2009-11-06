@@ -27,8 +27,8 @@ You now just need to add your minigames here and it should work!
         state = new StateBadVista;
     else if (next == STATE_DISTRACTEDMATH)
         state = new StateDistractedMath;
-    else if(next == STATE_DOUBLENUBTROUBLE)
-        state = new StateDoubleNubTrouble;
+    /*else if(next == STATE_DOUBLENUBTROUBLE)
+        state = new StateDoubleNubTrouble;*/
     else if (next == STATE_REFLEX)
         state = new StateReflex;
     else if(next == STATE_PUNCHWRESTLER)
@@ -59,6 +59,8 @@ You now just need to add your minigames here and it should work!
         state = new StateTheCountJob;
     else if (next == STATE_FIRE)
         state = new Fire;
+    else if (next == STATE_CAKE)
+        state = new StateCake;
 
 
     /*else if(next == STATE_ROCKETESCAPE)
