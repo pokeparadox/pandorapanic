@@ -107,32 +107,6 @@ void StateCredits::userInput()
 		++currentLine;
 		input->resetKeys();
 	}
-
-    if(input->isLeft())
-    {
-        pandStartPos.x = -1;
-        pandStartPos.y = 0;
-        movePandora(pandStartPos);
-    }
-    else if(input->isRight())
-    {
-        pandStartPos.x = 1;
-        pandStartPos.y = 0;
-        movePandora(pandStartPos);
-    }
-    if(input->isUp())
-    {
-        pandStartPos.y = -1;
-        pandStartPos.x = 0;
-        movePandora(pandStartPos);
-    }
-    else if(input->isDown())
-    {
-        pandStartPos.y = 1;
-        pandStartPos.x = 0;
-        movePandora(pandStartPos);
-    }
-
 	//	skip credits
 	if(input->isStart())
 	{
@@ -536,6 +510,12 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"Fire/fire"+ext);
+                //logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "Bandit"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"OneButtonBandit/heart"+ext);
                 //logo.setTransparentColour(MAGENTA);
             }
 			else

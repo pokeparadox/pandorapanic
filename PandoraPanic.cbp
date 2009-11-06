@@ -370,6 +370,8 @@
 		<Unit filename="StateMain.h">
 			<Option virtualFolder="MyGame/States/" />
 		</Unit>
+		<Unit filename="StateMaze.cpp" />
+		<Unit filename="StateMaze.h" />
 		<Unit filename="StateMemoryBlocks.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
