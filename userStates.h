@@ -32,6 +32,7 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 #include "StatePanicAttack.h"
 #include "StatePanJoust.h"
 #include "StateJumper.h"
+#include "StateMaze.h"
 #include "StateRotDef.h"
 #include "StateMemoryBlocks.h"
 #include "StateSnatchABeer.h"
@@ -64,6 +65,7 @@ enum STATE_MODES
     STATE_PANICATTACK,
     STATE_PANJOUST,
     STATE_JUMPER,
+    STATE_MAZE,
     STATE_PUTTPUTT,
     STATE_ROT_DEF,
     STATE_MEMORY_BLOCKS,
