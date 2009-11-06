@@ -424,12 +424,18 @@ void StateCredits::unlimitedUpdate()
                 logo.loadSprite(path+"Pong/ball"+ext);
                 logo.setTransparentColour(BLACK);
             }
-            else if(strstr(CREDITS[currentLine].c_str(), "DoubleNub"))
+            else if(strstr(CREDITS[currentLine].c_str(), "Pang"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"Pang/player"+ext);
+                logo.setTransparentColour(BLACK);
+            }
+            /*else if(strstr(CREDITS[currentLine].c_str(), "DoubleNub"))
             {
                 logo.clear();
                 logo.loadSprite(path+"DoubleNubTrouble/target"+ext);
                 logo.setTransparentColour(MAGENTA);
-            }
+            }*/
             else if(strstr(CREDITS[currentLine].c_str(), "joust - Dragons_Slayer"))
             {
                 logo.clear();
@@ -474,6 +480,12 @@ void StateCredits::unlimitedUpdate()
                 logo.loadSprite(path+"Jumper/blobevil"+ext);
                 logo.setTransparentColour(MAGENTA);
             }
+            else if(strstr(CREDITS[currentLine].c_str(), "Maze"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"Maze/hero"+ext);
+                logo.setTransparentColour(MAGENTA);
+            }
             else if(strstr(CREDITS[currentLine].c_str(), "Plander - Poke"))
             {
                 logo.clear();
@@ -494,6 +506,36 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"PuttPutt/Ball"+ext);
+                //logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "Birthday"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"BirthdayCake/candles"+ext);
+                //logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "Arena"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"Arena/Hero/HeroStandingDown"+ext);
+                //logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "Beer"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"SnatchABeer/beer"+ext);
+                //logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "Count"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"TheCountJob/circle_g"+ext);
+                //logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "Fire"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"Fire/fire"+ext);
                 //logo.setTransparentColour(MAGENTA);
             }
 			else
