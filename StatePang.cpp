@@ -693,9 +693,7 @@ namespace PangMiniGame
         m_IsTiled   = isTiled;
         m_Speed     = speed;
         m_YPosition = yPosition;
-        m_FirstTileXPosition = 0.0;
-	// FIXME This assignment below is giving me infinite looping in Ubuntu x64	
-	//rand() * -m_pSprite[ 0 ]->GetWidth( );
+        m_FirstTileXPosition = Random::nextFloat(0,1) * -m_pSprite[ 0 ]->GetWidth( );
 
         return true;
     }
