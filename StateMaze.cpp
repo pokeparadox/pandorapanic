@@ -181,45 +181,47 @@ void StateMaze::userInput()
         if (input->isRight())
         {
             hero.setXvel(hero.getXvel() + 3);
-            if (hero.getYvel() > 0)
+            /*if (hero.getYvel() > 0)
             {
                 hero.setYvel(hero.getYvel() - 1);
             }
             else
             {
                 if (hero.getYvel() < 0){hero.setYvel(hero.getYvel() + 1);}
-            }
+            }*/
         }
         if (input->isLeft())
         {
             hero.setXvel(hero.getXvel() - 3);
+            /*
             if (hero.getYvel() < 0){hero.setYvel(hero.getYvel() - 1);}
             else
             {
                 if (hero.getYvel() < 0){hero.setYvel(hero.getYvel() + 1);}
-            }
+            }*/
 
         }
 
         if (input->isDown())
         {
             hero.setYvel(hero.getYvel() + 3);
-
+            /*
             if (hero.getXvel() > 0){hero.setXvel(hero.getXvel() - 1);}
             else
             {
                 if (hero.getXvel() < 0){hero.setXvel(hero.getXvel() + 1);}
-            }
+            }*/
 
         }
         if (input->isUp())
         {
             hero.setYvel(hero.getYvel() - 3);
+            /*
             if (hero.getXvel() > 0){hero.setXvel(hero.getXvel() - 1);}
             else
             {
                 if (hero.getXvel() < 0){hero.setXvel(hero.getXvel() + 1);}
-            }
+            }*/
 
 
         }
