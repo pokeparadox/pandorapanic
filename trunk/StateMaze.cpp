@@ -38,20 +38,11 @@ void StateMaze::init()
     text.setColour(Colour(RED));
     text.setPosition(40,40);
 
-    /*robotleft.loadFrames("images/Jumper/robotwalkright.png",4,1);
-    robotleft.setPosition(64,180);
-    robotleft.setTransparentColour(MAGENTA);
-    robotleft.setFrameRate(DECI_SECONDS);
-    */
+
     hero.loadSprite("images/Maze/hero.png");
     hero.setPosition(64,180);
     hero.setTransparentColour(MAGENTA);
-    /*
-    robotright.loadFrames("images/Jumper/robotwalkleft.png",4,1);
-    robotright.setPosition(200,180);
-    robotright.setTransparentColour(MAGENTA);
-    robotright.setFrameRate(DECI_SECONDS);
-    */
+
     buttonPrompter.display(ButtonPrompter::BUTTON_A, 200, 300);
 
 
@@ -61,7 +52,7 @@ void StateMaze::init()
     blobevil.setTransparentColour(MAGENTA);
     */
 
-    cloudnumber = 6;
+    cloudnumber = variables[2].getInt()/10 + 3 ;
 
     for (int i = 0; i< cloudnumber;i++)
     {
@@ -88,15 +79,18 @@ void StateMaze::init()
     }
      cloud[0].setPosition(252,128);
      cloud[1].setPosition(512,64);
-     cloud[2].setPosition(256,420);
+     cloud[2].setPosition(712,420);
      cloud[3].setPosition(512,264);
-     cloud[4].setPosition(712,264);
+     cloud[4].setPosition(252,420);
      cloud[5].setPosition(712,64);
+     cloud[6].setPosition(252,64);
+     cloud[7].setPosition(712,264);
+     cloud[8].setPosition(452,128);
 
     goal.loadSprite("images/Maze/goal.png");
     goal.setTransparentColour(MAGENTA);
 
-        background0.loadBackground("images/Jumper/jumperbackstripes.png");
+        background0.loadBackground("images/Maze/background.png");
 
 
 

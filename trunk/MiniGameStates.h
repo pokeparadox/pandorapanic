@@ -43,6 +43,8 @@ You now just need to add your minigames here and it should work!
         state = new StatePanJoust;
     else if (next == STATE_JUMPER)
         state = new StateJumper;
+    else if (next == STATE_MAZE)
+        state = new StateMaze;
     else if (next == STATE_TILEEDITOR)
         state = new StateTileEditor;
     else if (next == STATE_PUTTPUTT)
