@@ -401,11 +401,12 @@ void StateMaze::update()
         {
             hero.setXvel(18 + variables[2].getInt()/4);
         }
-        if (hero.getXvel() < -18 +variables[2].getInt()/4)
+        if (hero.getXvel() < -18 - variables[2].getInt()/4)
         {
-            hero.setXvel(-18 + variables[2].getInt()/4);
+            hero.setXvel(-18 - variables[2].getInt()/4);
         }
-
+        if (hero.getYvel() > 18 + variables[2].getInt()/4) {hero.setYvel(18 + + variables[2].getInt()/4);}
+        if (hero.getYvel() < -18 - variables[2].getInt()/4) {hero.setYvel(-18 - variables[2].getInt()/4);}
 
         //hero.ontile = 0;
         for (int i = 0;i< cloudnumber;i++)
@@ -572,8 +573,7 @@ void StateMaze::update()
 
 
 
-        if (hero.getYvel() > 24) {hero.setYvel(24);}
-        if (hero.getYvel() < -24) {hero.setYvel(-24);}
+
         if (hero.getXvel() < -3) {hero.setXvel(hero.getXvel() + 3);}
         if (hero.getXvel() > 3) {hero.setXvel(hero.getXvel() - 3);}
         if (hero.getXvel() <= 3 && hero.getXvel() >= -3){hero.setXvel(0);}
