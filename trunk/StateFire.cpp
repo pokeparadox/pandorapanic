@@ -56,7 +56,7 @@
 
 Fire::Fire()
 {
-    firstrun = true;
+    //firstrun = true;
 
     LUT::init();
 #if FIRE_DEBUG
@@ -241,7 +241,6 @@ void Fire::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Z key or A button shoot water");
     pauseText.setPosition(PAUSE_X+PAUSE_DELTA_X*8,PAUSE_Y+PAUSE_DELTA_Y*6);
     pauseText.print(screen, "Press Enter/Start to continue");
-    SDL_Flip(screen);
 }
 
 void Fire::onPause()
@@ -277,11 +276,11 @@ void Fire::update()
         setNextState(STATE_MAIN);
     }
 
-    if (firstrun)
+    /*if (firstrun)
     {
         isPaused=true;
         firstrun = false;
-    }
+    }*/
 }
 
 /**

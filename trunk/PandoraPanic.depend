@@ -15001,7 +15001,7 @@
 	<SDL/SDL.h>
 	<SDL/SDL_opengl.h>
 
-1257454975 /home/kevin/Documents/Programming/Penjin/PandoraPanic/userStates.h
+1257540185 /home/kevin/Documents/Programming/Penjin/PandoraPanic/userStates.h
 	"BaseState.h"
 	"StateCredits.h"
 	"StateGameover.h"
@@ -15023,6 +15023,7 @@
 	"StatePanicAttack.h"
 	"StatePanJoust.h"
 	"StateJumper.h"
+	"StateMaze.h"
 	"StateRotDef.h"
 	"StateMemoryBlocks.h"
 	"StateSnatchABeer.h"
@@ -15033,7 +15034,7 @@
 	"StateBarrelRoll.h"
 	"StatePlander.h"
 
-1257381033 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateCredits.h
+1257542084 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateCredits.h
 	"PenjinStates.h"
 	"version.h"
 	"Background.h"
@@ -15196,7 +15197,7 @@
 	"Music.h"
 	"ButtonPrompter.h"
 
-1257454897 /home/kevin/Documents/Programming/Penjin/PandoraPanic/MiniGames.h
+1257540185 /home/kevin/Documents/Programming/Penjin/PandoraPanic/MiniGames.h
 
 1257381033 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StatePang.h
 	"userStates.h"
@@ -15465,7 +15466,7 @@
 1257381331 /home/kevin/Documents/Programming/Penjin/PenjinBase/ParticleCollider.h
 	"Emitter.h"
 
-1257454997 /home/kevin/Documents/Programming/Penjin/PandoraPanic/MiniGameStates.h
+1257540185 /home/kevin/Documents/Programming/Penjin/PandoraPanic/MiniGameStates.h
 	"PenjinStates.h"
 
 1257381033 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/PanJoust/HeroBird.cpp
@@ -15497,13 +15498,13 @@
 1257381033 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateBarrelRoll.cpp
 	"StateBarrelRoll.h"
 
-1257381033 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateCredits.cpp
+1257542434 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateCredits.cpp
 	"StateCredits.h"
 
 1257381033 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateDistractedMath.cpp
 	"StateDistractedMath.h"
 
-1257381033 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateFire.cpp
+1257540476 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateFire.cpp
 	"StateFire.h"
 
 1257381033 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateGameover.cpp
@@ -15531,7 +15532,7 @@
 1257381033 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StatePanJoust.cpp
 	"StatePanJoust.h"
 
-1257381202 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StatePang.cpp
+1257466398 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StatePang.cpp
 	"StatePang.h"
 	<vector>
 	<algorithm>
@@ -15854,4 +15855,16 @@
 
 1257465609 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateCake.cpp
 	"StateCake.h"
+
+1257381033 /home/kevin/Documents/Programming/Penjin/PandoraPanic/StateMaze.h
+	"userStates.h"
+	"Background.h"
+	"Sprite.h"
+	"TextDoc.h"
+	"Random.h"
+	"Jumper/Tile.h"
+	"ButtonPrompter.h"
+
+1257542990 source:/home/kevin/Documents/Programming/Penjin/PandoraPanic/StateMaze.cpp
+	"StateMaze.h"
 

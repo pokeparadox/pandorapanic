@@ -16,7 +16,7 @@ Staff Roll/credits
 #include "BackBuffer.h"
 #include "Emitter.h"
 
-const static int CREDITS_SIZE = 55;
+const static int CREDITS_SIZE = 56;
 const static string CREDITS[]=
 {
     "PandoraPanic! [VERSION]",
@@ -35,6 +35,7 @@ const static string CREDITS[]=
     "GUI Concept and Art - Kagato",
     "BirdRiders/Platforms, Panjoust - Dragons_Slayer",
     "Rocket and Pad, Plander - Dragons_Slayer",
+    "Birthday Cake - Dragons_Slayer",
     "Robot, Jumper - Niqk_Dude",
     "Forum Posts - Chip",
     "Snazzy buttons, PanicAttack - TheBrainSquid",
@@ -49,12 +50,13 @@ const static string CREDITS[]=
     "Punch Wrestler - Trabitboy",
     "PuttPutt - DasFool",
     "Pong - Miggles",
-    "Pang - Rockthetmurf",
+    "Pang - Rockthesmurf",
+    "One Button Bandit - Miggles",
     "Distracted Maths - MarkoeZ",
     "Jumper - MarkoeZ",
-    /*"DoubleNubTrouble - MarkoeZ",*/
+    "Maze - MarkoeZ"
+    //"DoubleNubTrouble - MarkoeZ",
     "PanJoust - MarkoeZ",
-    "Maze Game - MarkoeZ",
     "Reflex - oclbdk",
     "Rotating Turret - B-Zar",
     "Memory Blocks - B-Zar",
