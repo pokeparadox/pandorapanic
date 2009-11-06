@@ -314,6 +314,12 @@
 		<Unit filename="StateBarrelRoll.h">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
+		<Unit filename="StateCake.cpp">
+			<Option virtualFolder="MyGame/States/MiniGames/" />
+		</Unit>
+		<Unit filename="StateCake.h">
+			<Option virtualFolder="MyGame/States/MiniGames/" />
+		</Unit>
 		<Unit filename="StateCredits.cpp">
 			<Option virtualFolder="MyGame/States/" />
 		</Unit>
@@ -327,6 +333,8 @@
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
 		<Unit filename="StateDoubleNubTrouble.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
 		<Unit filename="StateDoubleNubTrouble.h">
