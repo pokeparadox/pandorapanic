@@ -142,27 +142,6 @@ void StateMaze::init()
         blok[j].setPosition(stringToInt(testingx),stringToInt(testingy));
         blok[j].setMovement(0,0);
         blok[j].moving = stringToInt(tiletype);
-        /*if (stringToInt(withblob) == 1)
-        {
-           blob[blobnumber].setPosition(stringToInt(testingx),stringToInt(testingy) - 32);
-           blob[blobnumber].connecttotile = j;
-           blobjump[blobnumber] = rand()%100;
-           blobtimer[blobnumber] = 50 + rand()%50;
-           blob[blobnumber].type = 1;
-
-           blobnumber++;
-        }
-        if (stringToInt(withblob) == 2)
-        {
-           blob[blobnumber].setPosition(stringToInt(testingx),stringToInt(testingy) - 32);
-           blob[blobnumber].connecttotile = j;
-           blobjump[blobnumber] = rand()%100;
-           blobtimer[blobnumber] = 50 + rand()%50;
-           blob[blobnumber].type = 2;
-           blob[blobnumber].offset = rand()%60 + 10;
-           blob[blobnumber].setYvel(1);
-           blobnumber++;
-        }*/
 
         if (blok[j].moving == 1){blok[j].setYMovement(rand()%50);}
         if (blok[j].moving == 2){blok[j].setYMovement(50);}
@@ -444,14 +423,14 @@ void StateMaze::update()
 
             // collision checking with tile and hero
 
-            if (hero.getY() + 32 >= blok[i].getY() + blok[i].getYMovement() && hero.getY() + 16 < blok[i].getY() + blok[i].getYMovement()
+            if (hero.getY() + 28 >= blok[i].getY() + blok[i].getYMovement() && hero.getY() + 16 < blok[i].getY() + blok[i].getYMovement()
                 && hero.getX()  > blok[i].getX() + blok[i].getXMovement() - 24 && hero.getX()  < blok[i].getX() + blok[i].getXMovement()+ 24)
             {
                 if (hero.getYvel() > 0){hero.setYvel(0);}
                 hero.setY(blok[i].getY() + blok[i].getYMovement() - 28);
                 //hero.ontile = hero.ontile + 1;
             }
-            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() - 28 && hero.getX() < blok[i].getX() + blok[i].getXMovement() - 16
+            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() - 28 && hero.getX() < blok[i].getX() + blok[i].getXMovement() - 14
                 && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 24 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight() - 8)
             {
                 if (hero.getXvel() > 0)
@@ -461,7 +440,7 @@ void StateMaze::update()
                 }
                 //hero.setXvel(-22);
             }
-            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 16 && hero.getX() < blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 4
+            if (hero.getX() > blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 14 && hero.getX() < blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 4
                 && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 24 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight() - 8)
             {
                 if (hero.getXvel() < 0)
