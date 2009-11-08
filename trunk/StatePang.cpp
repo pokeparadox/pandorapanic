@@ -1756,7 +1756,6 @@ namespace PangMiniGame
         {
             m_Sfx[ i ].Destroy( );
         }
-
         if ( m_pMusic )
         {
             m_pMusic->freeAll( );
@@ -1785,26 +1784,37 @@ namespace PangMiniGame
     {
         m_NumFramesElapsedSinceLevelStart = 0;
 
-        kBALL_X_SPEED = kBALL_X_SPEED_INITIAL * ( 1 + ( ( levelNumber / 20 ) * 0.25f ) );
-        kGRAVITY = kGRAVITY_INITIAL * ( 1 + ( ( levelNumber / 20 ) * 0.25f ) );
+        int levelLayout = levelNumber;
 
-        if ( levelNumber % 20 == 0 )
+        if ( levelLayout >= 20 )
+        {
+            levelLayout = 10 + ( levelLayout % 10 );
+        }
+
+        int multiplier = 1;
+        if ( levelNumber > levelLayout )
+            multiplier = ( levelNumber - levelLayout ) / 10;
+
+        kBALL_X_SPEED = kBALL_X_SPEED_INITIAL * ( 1 + ( multiplier * 0.25f ) );
+        kGRAVITY = kGRAVITY_INITIAL * ( 1 + ( multiplier * 0.25f ) );
+
+        if ( levelLayout == 0 )
         {
             m_pBallManager->Add( 400, 300, 3, Ball::kDirectionRight );
         }
-        if ( levelNumber % 20 == 1 )
+        else if ( levelLayout == 1 )
         {
             m_pBallManager->Add( 100, 300, 4, Ball::kDirectionRight );
             m_pBallManager->Add( 700, 300, 4, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 2 )
+        else if ( levelLayout == 2 )
         {
             m_pBallManager->Add( 100, 300, 4, Ball::kDirectionRight );
             m_pBallManager->Add( 200, 300, 4, Ball::kDirectionRight );
             m_pBallManager->Add( 600, 300, 4, Ball::kDirectionLeft );
             m_pBallManager->Add( 700, 300, 4, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 3 )
+        else if ( levelLayout == 3 )
         {
             m_pBallManager->Add( 100, 300, 4, Ball::kDirectionRight );
             m_pBallManager->Add( 150, 250, 4, Ball::kDirectionRight );
@@ -1813,19 +1823,19 @@ namespace PangMiniGame
             m_pBallManager->Add( 650, 250, 4, Ball::kDirectionLeft );
             m_pBallManager->Add( 700, 300, 4, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 4 )
+        else if ( levelLayout == 4 )
         {
             m_pBallManager->Add( 100, 250, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 700, 250, 3, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 5 )
+        else if ( levelLayout == 5 )
         {
             m_pBallManager->Add( 100, 250, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 200, 250, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 600, 250, 3, Ball::kDirectionLeft );
             m_pBallManager->Add( 700, 250, 3, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 6 )
+        else if ( levelLayout == 6 )
         {
             m_pBallManager->Add( 100, 250, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 150, 200, 3, Ball::kDirectionRight );
@@ -1834,31 +1844,31 @@ namespace PangMiniGame
             m_pBallManager->Add( 650, 200, 3, Ball::kDirectionLeft );
             m_pBallManager->Add( 700, 250, 3, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 7 )
+        else if ( levelLayout == 7 )
         {
             m_pBallManager->Add( 400, 200, 1, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 8 )
+        else if ( levelLayout == 8 )
         {
             m_pBallManager->Add( 200, 200, 4, Ball::kDirectionRight );
             m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 600, 200, 4, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 9 )
+        else if ( levelLayout == 9 )
         {
             m_pBallManager->Add( 200, 200, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 600, 200, 3, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 10 )
+        else if ( levelLayout == 10 )
         {
             m_pBallManager->Add( 300, 200, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 400, 200, 1, Ball::kDirectionRight );
             m_pBallManager->Add( 500, 200, 3, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 11 )
+        else if ( levelLayout == 11 )
         {
             m_pBallManager->Add( 200, 200, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
@@ -1866,12 +1876,12 @@ namespace PangMiniGame
             m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 600, 200, 3, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 12 )
+        else if ( levelLayout == 12 )
         {
             m_pBallManager->Add( 300, 200, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 500, 200, 2, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 13 )
+        else if ( levelLayout == 13 )
         {
             m_pBallManager->Add( 100, 100, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 125, 140, 3, Ball::kDirectionRight );
@@ -1885,7 +1895,7 @@ namespace PangMiniGame
             m_pBallManager->Add( 625, 220, 3, Ball::kDirectionLeft );
             m_pBallManager->Add( 600, 260, 3, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 14 )
+        else if ( levelLayout == 14 )
         {
             m_pBallManager->Add( 100, 100, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 125, 140, 3, Ball::kDirectionRight );
@@ -1899,29 +1909,23 @@ namespace PangMiniGame
             m_pBallManager->Add( 625, 220, 3, Ball::kDirectionLeft );
             m_pBallManager->Add( 600, 260, 3, Ball::kDirectionLeft );
         }
-        else if ( levelNumber % 20 == 15 )
+        else if ( levelLayout == 15 )
         {
             m_pBallManager->Add( 350, 200, 1, Ball::kDirectionRight );
             m_pBallManager->Add( 450, 200, 1, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 16 )
+        else if ( levelLayout == 16 )
         {
             m_pBallManager->Add( 300, 220, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 350, 200, 1, Ball::kDirectionRight );
             m_pBallManager->Add( 450, 200, 1, Ball::kDirectionRight );
             m_pBallManager->Add( 500, 220, 2, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 17 )
+        else if ( levelLayout == 17 )
         {
             m_pBallManager->Add( 400, 200, 0, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 18 )
-        {
-            m_pBallManager->Add( 300, 200, 1, Ball::kDirectionRight );
-            m_pBallManager->Add( 400, 200, 0, Ball::kDirectionRight );
-            m_pBallManager->Add( 500, 200, 1, Ball::kDirectionRight );
-        }
-        else if ( levelNumber % 20 == 19 )
+        else if ( levelLayout == 18 )
         {
             m_pBallManager->Add( 200, 200, 3, Ball::kDirectionRight );
             m_pBallManager->Add( 250, 130, 4, Ball::kDirectionRight );
@@ -1933,7 +1937,7 @@ namespace PangMiniGame
             m_pBallManager->Add( 550, 130, 4, Ball::kDirectionRight );
             m_pBallManager->Add( 600, 200, 3, Ball::kDirectionRight );
         }
-        else if ( levelNumber % 20 == 20 )
+        else if ( levelLayout == 19 )
         {
             m_pBallManager->Add( 200, 200, 2, Ball::kDirectionRight );
             m_pBallManager->Add( 250, 130, 3, Ball::kDirectionRight );
