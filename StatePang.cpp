@@ -162,6 +162,77 @@ namespace PangMiniGame
         return m_IsUpDown == 1;
     }
 
+    // Based on top of the Penjin sound class, only this one supports the same sound playing multiple times.
+    class Sfx
+    {
+    public:
+
+                    Sfx( );
+
+        bool        Initialise( char const * const pFilename, int maxInstances = 1 );
+
+        bool        Destroy( );
+
+        bool        Play( );
+
+    private:
+
+        Sound **    m_ppSound;
+
+        int         m_Instances;
+    };
+
+    Sfx::Sfx( )
+    {
+        m_ppSound = NULL;
+    }
+
+    bool Sfx::Initialise( char const * const pFilename, int maxInstances /* = 1 */ )
+    {
+        m_Instances = maxInstances;
+
+        m_ppSound = new Sound * [ m_Instances ];
+
+        for ( int i = 0; i < m_Instances; ++i )
+        {
+            m_ppSound[ i ] = new Sound;
+
+            m_ppSound[ i ]->loadSound( pFilename );
+        }
+
+        return true;
+    }
+
+    bool Sfx::Destroy( )
+    {
+        if ( m_ppSound )
+        {
+            for ( int i = 0; i < m_Instances; ++i )
+            {
+                m_ppSound[ i ]->freeAll( );
+                delete m_ppSound[ i ];
+                m_ppSound[ i ] = NULL;
+            }
+            m_ppSound = NULL;
+        }
+    }
+
+    bool Sfx::Play( )
+    {
+        if ( m_ppSound )
+        {
+            for ( int i = 0; i < m_Instances; ++i )
+            {
+                if ( ! m_ppSound[ i ]->isPlaying( ) )
+                {
+                    m_ppSound[ i ]->play( );
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     class SurfaceResourceManager
     {
     public:
@@ -1297,6 +1368,20 @@ namespace PangMiniGame
             kLevelResourceImage_Num
         };
         Sprite *    m_pSprites[ kLevelResourceImage_Num ];
+
+        enum SoundResource
+        {
+            kSoundResource_BallSpearHit,
+            kSoundResource_Shoot,
+
+            kSoundResource_MAX
+        };
+
+        Sfx         m_Sfx[ kSoundResource_MAX ];
+
+        Music *     m_pMusic;
+
+        int         m_NumFramesElapsedSinceLevelStart;
     };
     PangGame::PangGame( )
     {
@@ -1316,6 +1401,8 @@ namespace PangMiniGame
         m_LevelFailed                       = false;
         m_LevelSuccessful                   = false;
         m_SettingsFileModifiedTime          = -1;
+        m_pMusic                            = NULL;
+        m_NumFramesElapsedSinceLevelStart   = 0;
     }
     PangGame::~PangGame( )
     {
@@ -1605,6 +1692,13 @@ namespace PangMiniGame
         (*m_ppPlayerCurrent)->SetX( ( m_pBackground->GetWidth( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetWidth( ) * 0.5f );
         (*m_ppPlayerCurrent)->SetY( ( kFLOOR - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f );
 
+        m_Sfx[ kSoundResource_BallSpearHit ].Initialise( "sounds/Pang/hit.wav", 5 );
+        m_Sfx[ kSoundResource_Shoot ].Initialise( "sounds/Pang/shoot.wav", 5 );
+
+        m_pMusic = new Music;
+        m_pMusic->loadMusic( "music/Pang/bg.wav" );
+        m_pMusic->setLooping( true );
+
         m_TimeLastFrame = SDL_GetTicks( );
         m_FrameTime     = m_TimeLastFrame;
 
@@ -1658,6 +1752,18 @@ namespace PangMiniGame
                 m_pPlayer[ i ] = NULL;
             }
         }
+        for ( int i = 0; i < kSoundResource_MAX; ++i )
+        {
+            m_Sfx[ i ].Destroy( );
+        }
+
+        if ( m_pMusic )
+        {
+            m_pMusic->freeAll( );
+            delete m_pMusic;
+            m_pMusic = NULL;
+        }
+
         return true;
     }
     bool PangGame::IsLevelSuccessful( )
@@ -1677,6 +1783,8 @@ namespace PangMiniGame
     }
     bool PangGame::StartLevel( int levelNumber )
     {
+        m_NumFramesElapsedSinceLevelStart = 0;
+
         kBALL_X_SPEED = kBALL_X_SPEED_INITIAL * ( 1 + ( ( levelNumber / 20 ) * 0.25f ) );
         kGRAVITY = kGRAVITY_INITIAL * ( 1 + ( ( levelNumber / 20 ) * 0.25f ) );
 
@@ -1847,6 +1955,13 @@ namespace PangMiniGame
         if ( g_Frozen )
             return true;
 
+        if ( m_NumFramesElapsedSinceLevelStart > 0 && ! m_pMusic->isPlaying( ) )
+        {
+            m_pMusic->play( );
+        }
+
+        m_NumFramesElapsedSinceLevelStart++;
+
         // Sort out framne time.
         float thisFrameTime = SDL_GetTicks( );
         m_FrameTime = ( thisFrameTime - m_TimeLastFrame ) / 1000.f;
@@ -1881,10 +1996,11 @@ namespace PangMiniGame
                 (*m_ppPlayerCurrent)->SetX( kSCREEN_WIDTH - (*m_ppPlayerCurrent)->GetWidth( ) );
         }
 
-        if ( Controls::IsUpHit( ))
+        if ( Controls::IsUpHit( ) )
         {
             if ( m_pSpearManager->CanAddSpear( ) )
             {
+                m_Sfx[ kSoundResource_Shoot ].Play( );
                 m_pSpearManager->Add( (*m_ppPlayerCurrent)->GetX( ) + 0.5f * (*m_ppPlayerCurrent)->GetWidth( ), (*m_ppPlayerCurrent)->GetY( ) - 0.5f * (*m_ppPlayerCurrent)->GetHeight( ) );
             }
         }
@@ -1922,6 +2038,7 @@ namespace PangMiniGame
                             ballHit = true;
                             pSpear->m_State = Spear::kState_HitBall;
                             pSpear->m_HitTime = kSPEAR_HOLD_TIME_AFTER_BALL_COLLISION;
+                            m_Sfx[ kSoundResource_BallSpearHit ].Play( );
                             break;
                         }
                     }
