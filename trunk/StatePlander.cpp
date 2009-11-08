@@ -52,7 +52,6 @@ void StatePlander::init()
     pad.setPosition(Vector2di(-25+getStateXResolution()*0.5f + Random::nextInt(-30,30),getStateYResolution()-123));
     initStars();
 
-
     fuelMeter[0].setPosition(*xRes * 0.1f,*yRes * 0.1f);
     fuelMeter[0].setDimensions(102,20);
     fuelMeter[0].setColour(WHITE);
@@ -65,6 +64,15 @@ void StatePlander::init()
     pauseText.setColour(WHITE);
 
     GFX::setClearColour(BLACK);
+
+    planet.loadSprite("images/RocketEscape/Planet.png");
+    int planetX = rand() % 672;
+    int planetY = rand() % 100;
+    planet.setPosition(planetX, planetY);
+
+    ground.loadSprite("images/RocketEscape/Ground.png");
+    ground.setTransparentColour(MAGENTA);
+    ground.setPosition(0, 360);
 }
 
 void StatePlander::initStars()
@@ -161,7 +169,8 @@ void StatePlander::render(SDL_Surface* screen)
 {
     GFX::clearScreen(screen);
     renderStars(screen);
-    floor.render(screen);
+    planet.render(screen);
+    ground.render(screen);
     collect.render(screen);
     rocket.render(screen);
     pad.render(screen);
@@ -268,7 +277,8 @@ void StatePlander::render()
 {
     GFX::clearScreen();
     renderStars();
-    floor.render();
+    planet.render();
+    ground.render();
     collect.render();
     rocket.render();
     pad.render();
