@@ -38,6 +38,8 @@ class StatePlander : public BaseState
         AnimatedSprite buttonSheet;
     // Twinkly Stars
         AnimatedSprite star;
+        Sprite planet;
+        Sprite ground;
         Pixel backStar;
         Vector2di starPos[numStars];
         Vector2di backStarPos[numBackStars];
