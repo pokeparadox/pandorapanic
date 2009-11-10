@@ -1,4 +1,10 @@
 10 November 2009
+   released version 1.2.1582 of PandoraPanic
+
+     Change log:
+        -Updated: BirthdayCake Only one candle at a time relights! Some other minor fixes.
+
+10 November 2009
    released version 1.2.1581 of PandoraPanic
 
      Change log:

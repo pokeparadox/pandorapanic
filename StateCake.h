@@ -133,6 +133,7 @@ class StateCake : public BaseState
                         position = oldPos;
                     stand = false;
                     blowing = false;
+                    canBlow = false;
                     blowSpr.setPosition(position.x+38,position.y +12);
                     blowSpr.setCurrentFrame(RIGHT);
                 }
@@ -145,6 +146,7 @@ class StateCake : public BaseState
                         position = oldPos;
                     stand = false;
                     blowing = false;
+                    canBlow = false;
                     blowSpr.setPosition(position.x+16,position.y - 2);
                     blowSpr.setCurrentFrame(1);
                 }
@@ -157,6 +159,7 @@ class StateCake : public BaseState
                         position = oldPos;
                     stand = false;
                     blowing = false;
+                    canBlow = false;
                     blowSpr.setPosition(position.x+16,position.y +24);
                     blowSpr.setCurrentFrame(0);
                 }
@@ -194,6 +197,7 @@ class StateCake : public BaseState
         CountDown timer;
         Text text;
         int relightInterval;
+        bool relight;
         int limit;
 };
 
