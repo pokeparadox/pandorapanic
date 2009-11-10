@@ -33,10 +33,15 @@ void StateCake::init()
 
     int level = variables[2].getInt();
     if(level > 5)
+    {
+        relight = true;
         relightInterval = (240/(float)level) +0.5f;
+    }
     else
+    {
         relightInterval = 30;
-
+        relight = false;
+    }
     if(level < 40)
         limit = 60 - level;
     else
@@ -114,8 +119,9 @@ void StateCake::update()
     {
         for(int i = NUM_CANDLES-1; i >=0; --i)
         {
-            if(!candles[i].isLit())
+            if(!candles[i].isLit() && relight)
             {
+                relight = false;
                 candles[i].light();
                 break;
             }
@@ -130,8 +136,11 @@ void StateCake::userInput()
         if(input->isQuit())
             nullifyState();
     #endif
-    if(input->isB())
+    if(input->isA())
+    {
+        relight = true;
         mariela.blow();
+    }
     else if(input->isUp())
         mariela.up();
     else if(input->isDown())
