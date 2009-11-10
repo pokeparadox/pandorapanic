@@ -285,6 +285,8 @@
 			<Option virtualFolder="MyGame/States/MiniGames/StateRocketEscape/" />
 		</Unit>
 		<Unit filename="SegWay.cpp">
+			<Option compile="0" />
+			<Option link="0" />
 			<Option virtualFolder="MyGame/States/MiniGames/StateSegWay/" />
 		</Unit>
 		<Unit filename="SegWay.h">
@@ -370,8 +372,12 @@
 		<Unit filename="StateMain.h">
 			<Option virtualFolder="MyGame/States/" />
 		</Unit>
-		<Unit filename="StateMaze.cpp" />
-		<Unit filename="StateMaze.h" />
+		<Unit filename="StateMaze.cpp">
+			<Option virtualFolder="MyGame/States/MiniGames/" />
+		</Unit>
+		<Unit filename="StateMaze.h">
+			<Option virtualFolder="MyGame/States/MiniGames/" />
+		</Unit>
 		<Unit filename="StateMemoryBlocks.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
@@ -585,6 +591,8 @@
 		<Unit filename="../PenjinBase/Command.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
+		<Unit filename="../PenjinBase/CountDown.cpp" />
+		<Unit filename="../PenjinBase/CountDown.h" />
 		<Unit filename="../PenjinBase/DoubleVector.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>

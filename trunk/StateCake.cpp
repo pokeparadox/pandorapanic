@@ -28,11 +28,22 @@ void StateCake::init()
     text.setBoundaries(Vector2di(0,0),Vector2di(getStateXResolution(),getStateYResolution()));
     text.setRelativity(false);
 
-    timer.setMode(MILLI_SECONDS);
-    timer.start();
-
-    firstVerse = true;
     mariela.down();
+    mariela.update();
+
+    int level = variables[2].getInt();
+    if(level > 5)
+        relightInterval = (240/(float)level) +0.5f;
+    else
+        relightInterval = 30;
+
+    if(level < 40)
+        limit = 60 - level;
+    else
+        limit = 15;
+
+    timer.setMode(MILLI_SECONDS);
+    timer.start(limit*1000);
 }
 
 void StateCake::render(SDL_Surface* screen)
@@ -51,7 +62,7 @@ void StateCake::render(SDL_Surface* screen)
         if(mariela.getHitRegion()->getY() == ypos)
             mariela.render(screen);
     }
-    int t = timer.getScaledTicks();
+    text.print(timer.getTimeLeft()*0.001f);
     /*
     TODO Varies time checks to relight the candles
     Timer count-down which you must blow the candles out in.
@@ -91,6 +102,24 @@ void StateCake::update()
     {
         variables[0].setInt(1);
         setNextState(STATE_MAIN);
+    }
+    else if(timer.hasFinished())
+    {
+        variables[0].setInt(0);
+        setNextState(STATE_MAIN);
+    }
+
+    // If player hasn't blown all the candles out try to relight some
+    if(NumberUtility::isMultiple((timer.getTicks()*0.001f),relightInterval))
+    {
+        for(int i = NUM_CANDLES-1; i >=0; --i)
+        {
+            if(!candles[i].isLit())
+            {
+                candles[i].light();
+                break;
+            }
+        }
     }
 }
 

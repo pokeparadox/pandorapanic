@@ -75,7 +75,7 @@ void StateMain::loadCommon()
 
 void StateMain::winLoseLoad()
 {
-    music.setLooping(false);
+    //music.setLooping(false);
     music.play();
     life.loadSprite("images/pp_life.png");
     #ifdef PENJIN_SDL
@@ -94,7 +94,7 @@ void StateMain::winLoseLoad()
 
 void StateMain::loadWin()
 {
-    music.loadMusic("music/PandoraPanic_Win.ogg");
+    music.loadSound("music/PandoraPanic_Win.ogg");
     loseWin.loadSprite("images/pp_win.png");
     loseWin.setPosition(getStateXResolution()/2.5f,getStateYResolution()/1.5f);
     winLoseLoad();
@@ -102,7 +102,7 @@ void StateMain::loadWin()
 
 void StateMain::loadLose()
 {
-    music.loadMusic("music/PandoraPanic_Loss.ogg");
+    music.loadSound("music/PandoraPanic_Loss.ogg");
     loseWin.loadSprite("images/pp_fail.png");
     loseWin.setPosition(getStateXResolution()/2.5f,getStateYResolution()/1.5f);
     #ifdef PENJIN_SDL
