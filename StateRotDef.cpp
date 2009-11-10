@@ -53,7 +53,7 @@ void StateRotDef::init()
         levelNumber = 61;
     levelNumber+=5;
     enemyVelocity *= (2.0f +  ((turretVec - enemyPosition).length()-240.0f)/120.0f);
-    enemyVelocity *= (levelNumber * 0.05f);
+    enemyVelocity *= (levelNumber * 0.04f);
     enemy.setPosition(enemyPosition.x, enemyPosition.y);
 
     turretDirection = rand() % (5*360);

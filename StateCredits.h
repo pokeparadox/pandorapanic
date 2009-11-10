@@ -16,7 +16,7 @@ Staff Roll/credits
 #include "BackBuffer.h"
 #include "Emitter.h"
 
-const static int CREDITS_SIZE = 56;
+const static int CREDITS_SIZE = 58;
 const static string CREDITS[]=
 {
     "PandoraPanic! [VERSION]",
@@ -71,6 +71,8 @@ const static string CREDITS[]=
     "Ben Monk - getting the ball rolling!",
     "Pickle - debugging on devboard",
     "SDL - easier cross-platform support",
+    "OpenPandora - Awesome OSS Handheld.",
+    "Mariela - I love youuuuuuuuuuuuuu <3!"
     "",
     "PandoraPanic! Engine - PokeParadox",
     "",

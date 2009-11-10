@@ -47,7 +47,7 @@ class StateMain : public BaseState
         Sprite lostLife;
         Background back;
         Colour backColour;
-        Music music;
+        Sound music;
 
         bool playWin;
         bool playFail;

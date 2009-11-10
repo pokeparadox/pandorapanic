@@ -9,6 +9,7 @@
 #include "CollisionMap.h"
 #include "HitRegion.h"
 #include "Text.h"
+#include "CountDown.h"
 
 class StateCake : public BaseState
 {
@@ -49,6 +50,7 @@ class StateCake : public BaseState
                 void render(SDL_Surface* screen){candle.render(screen);if(lit)flame.render(screen);}
                 void update(){if(lit)flame.update();}
                 void blow(){lit = false;}
+                void light(){lit = true;}
                 bool isLit()const{return lit;}
             private:
                 bool lit;
@@ -189,9 +191,10 @@ class StateCake : public BaseState
         Background back;
         Player mariela;
         Candle candles[NUM_CANDLES];
-        Timer timer;
+        CountDown timer;
         Text text;
-        bool firstVerse;
+        int relightInterval;
+        int limit;
 };
 
 #endif // STATECAKE_H

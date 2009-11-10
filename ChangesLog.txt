@@ -1,3 +1,11 @@
+10 November 2009
+   released version 1.2.1581 of PandoraPanic
+
+     Change log:
+        -Fixed: WinLose music cutoff on SelectionBox screen
+        -Updated: Tweaked difficulty of RotatingTurret.
+        -Added: Initial difficulties to Birthday Cake
+
 23 October 2009
    released version 1.2.1551 of PandoraPanic
 
