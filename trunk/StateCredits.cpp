@@ -515,7 +515,19 @@ void StateCredits::unlimitedUpdate()
             else if(strstr(CREDITS[currentLine].c_str(), "Bandit"))
             {
                 logo.clear();
+                logo.loadSprite(path+"OneButtonBandit/diamond"+ext);
+                logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "Mariela"))
+            {
+                logo.clear();
                 logo.loadSprite(path+"OneButtonBandit/heart"+ext);
+                logo.setTransparentColour(MAGENTA);
+            }
+            else if(strstr(CREDITS[currentLine].c_str(), "OpenPandora"))
+            {
+                logo.clear();
+                logo.loadSprite(path+"pandora"+ext);
                 //logo.setTransparentColour(MAGENTA);
             }
 			else
