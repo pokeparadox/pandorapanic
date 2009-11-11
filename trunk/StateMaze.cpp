@@ -34,7 +34,7 @@ void StateMaze::init()
 
 
 
-    text.loadFont("font/bip.ttf", 64);
+    text.loadFont("font/bip.ttf", 32);
     text.setColour(Colour(RED));
     text.setPosition(40,40);
 
@@ -592,8 +592,8 @@ void StateMaze::update()
 
         // Check if goal is reached
 
-        if (hero.getX() >  goal.getX() - 64 && hero.getX()  < goal.getX() + 64
-           && hero.getY() > goal.getY() -64 && hero.getY() < goal.getY() + 64)
+        if (hero.getX() >  goal.getX() - 32 && hero.getX()  < goal.getX() + 32
+           && hero.getY() > goal.getY() -32 && hero.getY() < goal.getY() + 32)
         {
             variables[0].setInt(1);
             setNextState(STATE_MAIN);
