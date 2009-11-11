@@ -1,15 +1,14 @@
-<PXML>  
-      	<title>Pandora Panic!</title>          
-      	<standalone>Yes</standalone>          
-      	<icon>images/pp_life.png</icon> 
-      	<description>
-                <en>
-			Pandora Panic! A frantic, frenetic and occasionally mind bending 
-			minigame collection created for Pandora by the GP32X community.
-		</en>
-		<nl> Pandora Panic! Een panische minigame collectie door leden van het GP32X Forum </nl>
-			                    
-        </description>
+<PXML>
+	<title>Pandora Panic!</title>          
+	<standalone>Yes</standalone>          
+	<icon>images/pp_life.png</icon> 
+	
+	<description>
+		<en>Pandora Panic! A frantic, frenetic and occasionally mind bending minigame collection created for Pandora by the GP32X community.</en>
+		<nl>Pandora Panic! Een panische minigame collectie door leden van het GP32X Forum </nl>    
+		<de>Pandora Panic! Eine wilde und abgedrehte Minispiel-Sammlung für die Pandora - erstellt von der GP32X-Community.</de>              
+    </description>
+	
 	<previewpic>
 		<pic1>./preview/PanicPreview1.png</pic1>
 		<pic2>./preview/PanicPreview2.png</pic2>
@@ -17,11 +16,12 @@
 		<pic4>./preview/PanicPreview4.png</pic4>
 		<pic5>./preview/PanicPreview5.png</pic5>
 		<pic6>./preview/PanicPreview6.png</pic6>
-	</previewpic
-        <author name = 'Minigames: the GP32X Community, Framework: PokeParadox and Pirate Games' website='http://projectinfinity.org.uk/doku.php/homebrew:games:pandorapanic' />
-        <version major='1' minor='0' release='1' build='1' />
-        <exec>PandoraPanic.pxf</exec>
-        <category>Games</category>          
-        <clockspeed>600</clockspeed>
+	</previewpic>
+	
+	<author name = 'Minigames: the GP32X Community, Framework: PokeParadox and Pirate Games' website='http://projectinfinity.org.uk/doku.php/homebrew:games:pandorapanic' />
+    <version major='1' minor='0' release='1' build='1' />
+    <exec>PandoraPanic.pxf</exec>
+    <category>Games</category>          
+    <clockspeed>600</clockspeed>
 </PXML> 
                 
