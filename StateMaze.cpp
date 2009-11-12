@@ -246,9 +246,9 @@ void StateMaze::userInput()
 
         text.setColour(WHITE);
         text.setPosition(50,180);
-        text.print(screen, "Jump towards the star to win");
+        text.print(screen, "Reach the door to safety and escape the maze!");
         text.setPosition(50,220);
-        text.print(screen, "Green blobs only kill you when they jump");
+        text.print(screen, "Watch out for the blobs!");
     }
 #else
     void StateMaze::pauseScreen()
@@ -328,6 +328,7 @@ void StateMaze::onResume()
 
         //text.print(screen, blobjump);
         //buttonPrompter.render();
+        text.setColour(RED);
         text.setPosition(30,30);
 
         if (hero.getX() > 96 || hero.getY() > 64){text.print(screen, (gamelength - teller.getScaledTicks()));}

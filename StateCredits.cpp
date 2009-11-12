@@ -102,7 +102,7 @@ void StateCredits::userInput()
             nullifyState();
     #endif
 	//	Skip current Credits item
-	if(input->isA() && currentLine < CREDITS_SIZE-1)
+	if(input->isA() && currentLine < NumberUtility::getSize(CREDITS)-1)
 	{
 		++currentLine;
 		input->resetKeys();
@@ -320,10 +320,10 @@ void StateCredits::renderPandora()
 void StateCredits::unlimitedUpdate()
 {
 //	camSprite.update();
-	if(timer.getScaledTicks() >= 120250/CREDITS_SIZE)
+	if(timer.getScaledTicks() >= 120250/NumberUtility::getSize(CREDITS))
 	{
 		//	Get the latest credit line from the file by increasing currentLine
-		if(currentLine < CREDITS_SIZE-1)
+		if(currentLine < NumberUtility::getSize(CREDITS)-1)
 		{
 			++currentLine;
 			string ext = ".png";
@@ -538,9 +538,9 @@ void StateCredits::unlimitedUpdate()
 			setNextState(STATE_TITLE);
 
         //	Check if it is the last credit item and begin to fade the music.
-        if(currentLine == CREDITS_SIZE-1)
+        if(currentLine == NumberUtility::getSize(CREDITS)-1)
         {
-            music.fade(120250/CREDITS_SIZE);
+            music.fade(120250/NumberUtility::getSize(CREDITS));
         }
         timer.start();
 	}

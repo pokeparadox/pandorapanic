@@ -16,7 +16,7 @@ StatePunchWrestler::StatePunchWrestler()
 
 
     //textobject for instructions
-    text.loadFont("font/bip.ttf", 24);
+    text.loadFont("font/bip.ttf", 32);
     text.setPosition(50,20);
 
 
@@ -136,10 +136,16 @@ void StatePunchWrestler::pauseScreen(SDL_Surface* screen)
 
     text.setPosition(52,182);
     text.setColour(Colour(WHITE));
-    text.print(screen, "Push the D-Pad button corresponding to the arrow on screen");
+    text.print(screen, "Push the D-Pad button");
+    text.setPosition(52,222);
+    text.setColour(Colour(WHITE));
+    text.print(screen, "corresponding to the arrow on screen");
     text.setPosition(50,180);
     text.setColour(Colour(BLACK));
-    text.print(screen, "Push the D-Pad button corresponding to the arrow on screen");
+    text.print(screen, "Push the D-Pad button");
+    text.setPosition(50,220);
+    text.setColour(Colour(BLACK));
+    text.print(screen, "corresponding to the arrow on screen");
 }
 #else
 void StatePunchWrestler::render()
@@ -149,13 +155,18 @@ void StatePunchWrestler::render()
 
 void StatePunchWrestler::pauseScreen()
 {
-    pauseSymbol();
     text.setPosition(52,182);
     text.setColour(Colour(WHITE));
-    text.print("Push the D-Pad button corresponding to the arrow on screen");
+    text.print("Push the D-Pad button");
+    text.setPosition(52,222);
+    text.setColour(Colour(WHITE));
+    text.print("corresponding to the arrow on screen");
     text.setPosition(50,180);
     text.setColour(Colour(BLACK));
-    text.print("Push the D-Pad button corresponding to the arrow on screen");
+    text.print("Push the D-Pad button");
+    text.setPosition(50,220);
+    text.setColour(Colour(BLACK));
+    text.print("corresponding to the arrow on screen");
 }
 #endif
 
