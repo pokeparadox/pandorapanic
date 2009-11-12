@@ -12,7 +12,7 @@
 //-----------------------------------------------------
 // Constructor & Destructor
 //-----------------------------------------------------
-ArenaMonster::ArenaMonster() : m_X(0), m_Y(0), m_DeathSpeedX(0), m_DeathSpeedY(0), m_Direction(0), m_HitRegionPtr(0)
+ArenaMonster::ArenaMonster() : m_X(0), m_Y(0), m_vX(0), m_vY(0), m_DeathSpeedX(0), m_DeathSpeedY(0), m_Direction(0), m_HitRegionPtr(0)
 {
     //------------------------
     // Standing
@@ -97,10 +97,13 @@ ArenaMonster::~ArenaMonster()
 //-----------------------------------------------------
 // Methodes
 //-----------------------------------------------------
-void ArenaMonster::init(int x, int y, int direction)
+void ArenaMonster::init(int x, int y, int vX, int vY, int direction)
 {
     m_X = x;
     m_Y = y;
+
+    m_vX = vX;
+    m_vY = vY;
 
     m_Direction = direction;
 
@@ -201,26 +204,26 @@ void ArenaMonster::HandleMovement()
         //UP
         if(m_Direction == DIR_UP)
         {
-            Move(0, -4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, 4);
+            Move(0, m_vY * -1);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, m_vY);
         }
         //DOWN
         else if(m_Direction == DIR_DOWN)
         {
-            Move(0, 4);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, -4);
+            Move(0, m_vY);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, m_vY * -1);
         }
         //LEFT
         else if(m_Direction == DIR_LEFT)
         {
-            Move(-4, 0);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(4, 0);
+            Move(m_vX * -1, 0);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(m_vX, 0);
         }
         //RIGHT
         else if(m_Direction == DIR_RIGHT)
         {
-            Move(4, 0);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-4, 0);
+            Move(m_vX, 0);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(m_vX * -1, 0);
         }
     }
 
@@ -329,7 +332,7 @@ void ArenaMonster::HandleAll()
      m_bmpCurrentPtr = &m_bmpSpinning;
 
     //----------------------------------------------------------
-    // Calculate the Speed - "Math-gic" by FoxBlock
+    // Calculate the Speed - "Math-gic" by foxblock
     //----------------------------------------------------------
 
      // Insert the desired moving speed here:

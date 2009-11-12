@@ -15,8 +15,8 @@ Staff Roll/credits
 #include "Colour.h"
 #include "BackBuffer.h"
 #include "Emitter.h"
+#include "NumberUtility.h"
 
-const static int CREDITS_SIZE = 57;
 const static string CREDITS[]=
 {
     "PandoraPanic! [VERSION]",
@@ -30,6 +30,7 @@ const static string CREDITS[]=
     "Mojo (Credits) - Rooster",
     "Windows (Badvista) - Gruso",
     "Whatever :P (Panic Attack) - Gruso",
+    "Quickdraw (SnatchABeer) - Gruso",
     "",
     "Graphics:",
     "GUI Concept and Art - Kagato",
@@ -72,7 +73,8 @@ const static string CREDITS[]=
     "Pickle - debugging on devboard",
     "SDL - easier cross-platform support",
     "OpenPandora - Awesome OSS Handheld.",
-    "Mariela - I love youuuuuuuuuuuuuu!"
+    "Mariela - I love youuuuuuuuuuuuuu!",
+    "foxblock - for being so fucking awesome",
     "",
     "PandoraPanic! Engine - PokeParadox",
     "",

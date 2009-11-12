@@ -33,7 +33,7 @@ public:
 	//-------------------------------------------------
 
 	//Main
-	void init(int x, int y, int direction);
+	void init(int x, int y, int vX, int vY, int direction);
     void render(SDL_Surface* screen);
     void update();
 
@@ -64,7 +64,7 @@ private:
 	//-------------------------------------------------
 	// Datamembers
 	//-------------------------------------------------
-    int m_X, m_Y, m_DeathSpeedX, m_DeathSpeedY, m_Direction, m_RandomDirection, m_RandCheckCounter;
+    int m_X, m_Y, m_vX, m_vY, m_DeathSpeedX, m_DeathSpeedY, m_Direction, m_RandomDirection, m_RandCheckCounter;
     bool m_IsWalking, m_CanWalk, m_IsDead, m_SmokeSlowdown;
     AnimatedSprite m_bmpStandingUp, m_bmpStandingDown, m_bmpStandingLeft, m_bmpStandingRight, m_bmpWalkingUp, m_bmpWalkingDown, m_bmpWalkingLeft, m_bmpWalkingRight, m_bmpSpinning;
     AnimatedSprite* m_bmpCurrentPtr;

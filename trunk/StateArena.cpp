@@ -9,6 +9,8 @@
 #define ENVIRONMENT (ArenaEnvironment::GetSingleton())
 #define EFFECTSYSTEM (ArenaEffectSystem::GetSingleton())
 
+#define DEFAULTSPEED 4
+
 //-----------------------------
 // Constructor & Destructor
 //-----------------------------
@@ -36,76 +38,123 @@ StateArena::~StateArena()
 //-----------------------------
 void StateArena::init()
 {
+    int level = variables[2].getInt();
+    int speedLevel = min(floor((level-7.0)/9.0),5.0);
+    int monsterLevel = (level-7)-speedLevel * 9;
+
     //Adding Monsters to the MonsterList
     ArenaMonster* tempmonsterPtr;
 
     //Row 1
     tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(300, 72, DIR_DOWN);
+    tempmonsterPtr->init(300, 72, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
     m_MonsterListPtr->Add(tempmonsterPtr);
 
     tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(380, 72, DIR_DOWN);
+    tempmonsterPtr->init(380, 72, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
     m_MonsterListPtr->Add(tempmonsterPtr);
 
 
     //Row 2
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(172, 136, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 5)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(172, 136, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(252, 136, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 3)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(252, 136, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(332, 136, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 1)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(332, 136, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(412, 136, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 2)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(412, 136, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(492, 136, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 4)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(492, 136, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(572, 136, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 6)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(572, 136, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
+
 
     //Row 3
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(92, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 7)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(92, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(172, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 5)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(172, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(252, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 3)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(252, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(332, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 1)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(332, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(412, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 0)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(412, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(492, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 2)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(492, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(572, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 4)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(572, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
-    tempmonsterPtr = new ArenaMonster();
-    tempmonsterPtr->init(652, 200, DIR_DOWN);
-    m_MonsterListPtr->Add(tempmonsterPtr);
+    if (level > 7 && monsterLevel > 6)
+    {
+        tempmonsterPtr = new ArenaMonster();
+        tempmonsterPtr->init(652, 200, DEFAULTSPEED + speedLevel, DEFAULTSPEED + speedLevel, DIR_DOWN);
+        m_MonsterListPtr->Add(tempmonsterPtr);
+    }
 
     if(variables.size()<SUBSTATE_TRIGGER)
     {
