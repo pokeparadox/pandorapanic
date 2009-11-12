@@ -142,7 +142,8 @@ void StateBallDrop::render(SDL_Surface *screen)
 void StateBallDrop::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    pauseSymbol(screen);
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     text.setPosition(300,216);
     text.setColour(WHITE);
     text.print(screen,"CATCH!");

@@ -165,7 +165,7 @@ void StatePanJoust::userInput()
 #ifdef PENJIN_SDL
 void StatePanJoust::pauseScreen(SDL_Surface* screen)
 {
-    pauseSymbol(screen);
+
     text.setColour(WHITE);
     text.setPosition(50,180);
     text.print(screen, "Fly! And land on the other birds to kill them!");

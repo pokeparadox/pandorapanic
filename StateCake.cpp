@@ -13,6 +13,7 @@ StateCake::~StateCake()
 void StateCake::init()
 {
     back.loadBackground("images/BirthdayCake/cake.png");
+    buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
 
     int i = -1;
     candles[++i].setPosition(Vector2df(390,15));
@@ -28,6 +29,7 @@ void StateCake::init()
     text.setBoundaries(Vector2di(0,0),Vector2di(getStateXResolution(),getStateYResolution()));
     text.setRelativity(false);
 
+    //  following is only to position the shadow and HitRegion in the correct place in the Preview image.
     mariela.down();
     mariela.update();
 
@@ -47,8 +49,8 @@ void StateCake::init()
     else
         limit = 15;
 
-    timer.setMode(MILLI_SECONDS);
-    timer.start(limit*1000);
+    timer.setMode(SECONDS);
+    timer.start(limit);
 }
 
 void StateCake::render(SDL_Surface* screen)
@@ -67,11 +69,7 @@ void StateCake::render(SDL_Surface* screen)
         if(mariela.getHitRegion()->getY() == ypos)
             mariela.render(screen);
     }
-    text.print(timer.getTimeLeft()*0.001f);
-    /*
-    TODO Varies time checks to relight the candles
-    Timer count-down which you must blow the candles out in.
-    */
+    text.print(timer.getTimeLeft());
 }
 
 void StateCake::update()
@@ -115,7 +113,7 @@ void StateCake::update()
     }
 
     // If player hasn't blown all the candles out try to relight some
-    if(NumberUtility::isMultiple((timer.getTicks()*0.001f),relightInterval))
+    if(NumberUtility::isMultiple((timer.getScaledTicks()),relightInterval))
     {
         for(int i = NUM_CANDLES-1; i >=0; --i)
         {
@@ -136,6 +134,11 @@ void StateCake::userInput()
         if(input->isQuit())
             nullifyState();
     #endif
+    if (input->isStart())
+    {
+        isPaused = !isPaused;
+        input->resetKeys();
+    }
     if(input->isA())
     {
         relight = true;
@@ -151,5 +154,33 @@ void StateCake::userInput()
         mariela.right();
     else
         mariela.stop();
+}
+
+void StateCake::pauseScreen(SDL_Surface* screen)
+{
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
+
+    text.setColour(BLUE);
+    text.setPosition(50,180);
+    text.print(screen, "Use the   s to move around.");
+    text.setPosition(50,220);
+    text.print(screen, "Press    to blow out all the candles!");
+    buttonSheet.setCurrentFrame(15);
+    buttonSheet.setPosition(140,180);
+    buttonSheet.render(screen);
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(120,220);
+    buttonSheet.render(screen);
+}
+
+void StateCake::onPause()
+{
+    timer.pause();
+}
+
+void StateCake::onResume()
+{
+    timer.unpause();
 }
 

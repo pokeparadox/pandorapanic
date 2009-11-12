@@ -139,7 +139,7 @@ void StatePong::userInput()
     void StatePong::pauseScreen(SDL_Surface* screen)
     {
         // Pause screen
-        pauseSymbol(screen);
+
         pauseText.setPosition(50,180);
         pauseText.print(screen, "Win a good, old game of Pong!");
         pauseText.setPosition(50,220);

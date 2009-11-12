@@ -164,7 +164,7 @@ void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
     recta.setDimensions(800,160);
     recta.setColour(BLACK);
     recta.render(screen);
-    pauseSymbol(screen);
+
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Memorize the symbols and rebuild the code!");
     pauseText.setPosition(50,220);

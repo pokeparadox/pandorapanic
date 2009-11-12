@@ -243,7 +243,7 @@ void StateMaze::userInput()
 #ifdef PENJIN_SDL
     void StateMaze::pauseScreen(SDL_Surface* screen)
     {
-        pauseSymbol(screen);
+
         text.setColour(WHITE);
         text.setPosition(50,180);
         text.print(screen, "Jump towards the star to win");

@@ -135,7 +135,7 @@ void StateSpaceInvaders::render(SDL_Surface *screen)
 
 void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
 {
-    pauseSymbol(screen);
+
     pauseText.setPosition(50,180);
     pauseText.setColour(WHITE);
     pauseText.print(screen, "Shoot the alien! press    to shoot.");
