@@ -1692,11 +1692,11 @@ namespace PangMiniGame
         (*m_ppPlayerCurrent)->SetX( ( m_pBackground->GetWidth( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetWidth( ) * 0.5f );
         (*m_ppPlayerCurrent)->SetY( ( kFLOOR - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f );
 
-        m_Sfx[ kSoundResource_BallSpearHit ].Initialise( "sounds/Pang/hit.wav", 5 );
-        m_Sfx[ kSoundResource_Shoot ].Initialise( "sounds/Pang/shoot.wav", 5 );
+        m_Sfx[ kSoundResource_BallSpearHit ].Initialise( "sounds/Pang/hit.ogg", 5 );
+        m_Sfx[ kSoundResource_Shoot ].Initialise( "sounds/Pang/shoot.ogg", 5 );
 
         m_pMusic = new Music;
-        m_pMusic->loadMusic( "music/Pang/bg.wav" );
+        m_pMusic->loadMusic( "music/Pang/bg.ogg" );
         m_pMusic->setLooping( true );
 
         m_TimeLastFrame = SDL_GetTicks( );
@@ -1706,7 +1706,7 @@ namespace PangMiniGame
     }
     bool PangGame::Destroy( )
     {
-        // Destroy all images recources that have been cached.
+        // Destroy all images resources that have been cached.
         for ( int i = 0; i < kLevelResourceImage_Num; ++i )
         {
             if ( m_pSprites[ i ] )
@@ -1972,7 +1972,7 @@ namespace PangMiniGame
         m_TimeLastFrame = thisFrameTime;
 
         // When capturing FMV...
-        m_FrameTime = 1/30.f;
+        //m_FrameTime = 1/30.f;
 
         // Sort out controls.
         Controls::Update( input );
