@@ -1,3 +1,9 @@
+12 November 2009
+   released version 1.2.1600 of PandoraPanic
+
+     Change log:
+        -Updated: Converted all wav files to ogg.
+
 10 November 2009
    released version 1.2.1582 of PandoraPanic
 

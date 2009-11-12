@@ -12,9 +12,9 @@ StatePong::StatePong()
     if(variables.size()<SUBSTATE_TRIGGER)
     {
         // Sound effects
-        bounceWallSound.loadSound(  "sounds/Pong/wall.wav");
-        bouncePaddleSound.loadSound("sounds/Pong/paddle.wav");
-        bounceOutSound.loadSound(   "sounds/Pong/out.wav");
+        bounceWallSound.loadSound(  "sounds/Pong/wall.ogg");
+        bouncePaddleSound.loadSound("sounds/Pong/paddle.ogg");
+        bounceOutSound.loadSound(   "sounds/Pong/out.ogg");
     }
 }
 

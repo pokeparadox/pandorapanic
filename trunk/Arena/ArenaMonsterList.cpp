@@ -19,7 +19,7 @@ ArenaMonsterList::ArenaMonsterList()
         m_MonsterArr[counter] = NULL;
     }
 
-    m_sndDie.loadSound("sounds/Arena/EnemyDie.wav");
+    m_sndDie.loadSound("sounds/Arena/EnemyDie.ogg");
 }
 ArenaMonsterList::~ArenaMonsterList()
 {

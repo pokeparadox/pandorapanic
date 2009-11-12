@@ -108,10 +108,10 @@ void StateTheCountJob::init()
     circle[4].loadSprite("images/TheCountJob/circle_g.png");
 
     /// sound
-    sTime1.loadSound("sounds/TheCountJob/clock_slow.wav");
-    sTime2.loadSound("sounds/TheCountJob/clock_fast.wav");
-    sAlarm.loadSound("sounds/TheCountJob/alarm_clock.wav");
-    sSelection.loadSound("sounds/TheCountJob/selection.wav");
+    sTime1.loadSound("sounds/TheCountJob/clock_slow.ogg");
+    sTime2.loadSound("sounds/TheCountJob/clock_fast.ogg");
+    sAlarm.loadSound("sounds/TheCountJob/alarm_clock.ogg");
+    sSelection.loadSound("sounds/TheCountJob/selection.ogg");
 
     // gogogo
     counter.start();

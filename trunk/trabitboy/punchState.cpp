@@ -102,9 +102,9 @@ void PunchState::init(int speed){
     left.setPosition(144,96);
     left2.setPosition(144,96);
 
-    mKick.loadSound("sounds/MadWrestlerPunch/pat.wav");
-    mLeft.loadSound("sounds/MadWrestlerPunch/bung.wav");
-    mRight.loadSound("sounds/MadWrestlerPunch/bung.wav");
+    mKick.loadSound("sounds/MadWrestlerPunch/pat.ogg");
+    mLeft.loadSound("sounds/MadWrestlerPunch/bung.ogg");
+    mRight.loadSound("sounds/MadWrestlerPunch/bung.ogg");
 
     image = false;
     timer = 0;

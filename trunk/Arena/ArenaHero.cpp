@@ -124,7 +124,7 @@ ArenaHero::ArenaHero() : m_X(312), m_Y(260), m_Direction(DIR_UP)
     m_SwordRegionPtr = NULL;
     m_SwordRegionPtr = new HitRegion();
 
-    m_sndSword.loadSound("sounds/Arena/SwordSwing.wav");
+    m_sndSword.loadSound("sounds/Arena/SwordSwing.ogg");
 
     m_bmpCurrentPtr->setPosition(m_X, m_Y);
     m_bmpShadow.setPosition(m_X, m_Y);
