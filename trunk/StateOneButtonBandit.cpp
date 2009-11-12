@@ -477,7 +477,7 @@ void StateOneButtonBandit::render(SDL_Surface *screen)
 
 void StateOneButtonBandit::pauseScreen(SDL_Surface* screen)
 {
-    pauseSymbol(screen);
+
     text.setColour(YELLOW);
     text.setPosition(50,200);
     text.print(screen, "Stop the rollers on the symbols you started with");

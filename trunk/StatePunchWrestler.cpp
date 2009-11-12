@@ -133,7 +133,7 @@ void StatePunchWrestler::render(SDL_Surface *screen)
 
 void StatePunchWrestler::pauseScreen(SDL_Surface* screen)
 {
-    pauseSymbol(screen);
+
     text.setPosition(52,182);
     text.setColour(Colour(WHITE));
     text.print(screen, "Push the D-Pad button corresponding to the arrow on screen");

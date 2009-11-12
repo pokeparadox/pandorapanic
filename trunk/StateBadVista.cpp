@@ -357,7 +357,8 @@ void StateBadVista::render(SDL_Surface *screen) {
 void StateBadVista::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    pauseSymbol(screen);
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Put Vista where it belongs!");
     pauseText.setPosition(50,220);

@@ -134,7 +134,7 @@ void StateReflex::render(SDL_Surface *screen)
 void StateReflex::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    pauseSymbol(screen);
+
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Quickly press the D-Pad");
     pauseText.setPosition(50,220);

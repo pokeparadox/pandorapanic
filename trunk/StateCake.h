@@ -21,6 +21,9 @@ class StateCake : public BaseState
         virtual void render(SDL_Surface* screen);
         virtual void userInput();
         virtual void update();
+        virtual void onPause();
+        virtual void onResume();
+        virtual void pauseScreen(SDL_Surface* screen);
 
     private:
         enum DIRECTION
@@ -196,6 +199,7 @@ class StateCake : public BaseState
         Candle candles[NUM_CANDLES];
         CountDown timer;
         Text text;
+        AnimatedSprite buttonSheet;
         int relightInterval;
         bool relight;
         int limit;

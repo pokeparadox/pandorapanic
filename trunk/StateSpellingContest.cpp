@@ -171,7 +171,7 @@ void StateSpellingContest::render(SDL_Surface *screen)
 void StateSpellingContest::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    pauseSymbol(screen);
+
     pauseText.setPosition(50,320);
     pauseText.print(screen, "Type the word in the time limit!");
     pauseText.setPosition(50,360);

@@ -228,7 +228,9 @@ void Fire::pauseScreen(SDL_Surface* screen)
     #define PAUSE_DELTA_X   20
     #define PAUSE_DELTA_Y   30
 
-    pauseSymbol(screen);
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
+    pauseText.setColour(BLACK);
     pauseText.setPosition(PAUSE_X,PAUSE_Y);
     pauseText.print(screen, "Put out all of the fires before any building burns down.");
     pauseText.setPosition(PAUSE_X,PAUSE_Y+PAUSE_DELTA_Y*1);

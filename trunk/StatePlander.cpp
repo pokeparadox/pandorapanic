@@ -179,7 +179,7 @@ void StatePlander::render(SDL_Surface* screen)
 void StatePlander::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    pauseSymbol(screen);
+
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Land on the platform!");
     pauseText.setPosition(50,220);

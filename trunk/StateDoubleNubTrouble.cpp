@@ -162,7 +162,8 @@ void StateDoubleNubTrouble::userInput()
 #ifdef PENJIN_SDL
 void StateDoubleNubTrouble::pauseScreen(SDL_Surface* screen)
 {
-    pauseSymbol(screen);
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     text.setPosition(40,200);
     text.setColour(WHITE);
     text.print(screen, "Shoot 2 birds with one shot or lose seconds");

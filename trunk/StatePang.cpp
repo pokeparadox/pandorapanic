@@ -2155,7 +2155,7 @@ void StatePang::render( )
 void StatePang::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    pauseSymbol(screen);
+
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Burst those balls, but don't let them hit you!");
     pauseText.setPosition(50,220);

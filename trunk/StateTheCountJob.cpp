@@ -244,7 +244,7 @@ void StateTheCountJob::render(SDL_Surface *screen)
 
 void StateTheCountJob::pauseScreen(SDL_Surface* screen)
 {
-    pauseSymbol(screen);
+
     pauseText.setPosition(50,180);
     if (pauseMayhem <= 95)
     {

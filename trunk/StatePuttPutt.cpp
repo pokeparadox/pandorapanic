@@ -204,7 +204,7 @@ void StatePuttPutt::render(SDL_Surface *screen)
 void StatePuttPutt::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    pauseSymbol(screen);
+
     pauseText.setPosition(20,180);
     pauseText.print(screen, "Stop the power meter within the green bar!");
     pauseText.setPosition(20,220);
