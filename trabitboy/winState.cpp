@@ -74,6 +74,6 @@ void WinState::init(int speed){
     image = false;
     timer = 0;
     nextStateTimer = 0;
-    uWin.loadMusic("music/MadWrestlerPunch/uwin.wav");
+    uWin.loadMusic("music/MadWrestlerPunch/uwin.ogg");
     uWin.setLooping(false);
 }

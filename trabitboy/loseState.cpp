@@ -73,6 +73,6 @@ void LoseState::init(int speed){
     image = false;
     timer = 0;
     nextStateTimer = 0;
-    falseMove.loadMusic("music/MadWrestlerPunch/falsemove.wav");
+    falseMove.loadMusic("music/MadWrestlerPunch/falsemove.ogg");
     falseMove.setLooping(false);
 }

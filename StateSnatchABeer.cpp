@@ -79,15 +79,15 @@ void StateSnatchABeer::init()
     barmusic.setLooping(true);
     barmusic.play();
         //sound
-    sGlassSlide.loadSound("sounds/SnatchABeer/glass_slide.wav");
-    sGlassBreak.loadSound("sounds/SnatchABeer/glass_break.wav");
-    sPlayer[0].loadSound("sounds/SnatchABeer/nice.wav");
-    sPlayer[1].loadSound("sounds/SnatchABeer/alright.wav");
-    sPlayer[2].loadSound("sounds/SnatchABeer/yeah.wav");
-    sPlayer[3].loadSound("sounds/SnatchABeer/chuckle.wav");
-    sEnemyPunch.loadSound("sounds/SnatchABeer/punch.wav");
-    sEnemyLaugh.loadSound("sounds/SnatchABeer/laugh.wav");
-    sEnemyWhat.loadSound("sounds/SnatchABeer/what.wav");
+    sGlassSlide.loadSound("sounds/SnatchABeer/glass_slide.ogg");
+    sGlassBreak.loadSound("sounds/SnatchABeer/glass_break.ogg");
+    sPlayer[0].loadSound("sounds/SnatchABeer/nice.ogg");
+    sPlayer[1].loadSound("sounds/SnatchABeer/alright.ogg");
+    sPlayer[2].loadSound("sounds/SnatchABeer/yeah.ogg");
+    sPlayer[3].loadSound("sounds/SnatchABeer/chuckle.ogg");
+    sEnemyPunch.loadSound("sounds/SnatchABeer/punch.ogg");
+    sEnemyLaugh.loadSound("sounds/SnatchABeer/laugh.ogg");
+    sEnemyWhat.loadSound("sounds/SnatchABeer/what.ogg");
 
         //sprites
     enemyAngry.loadFrames("images/SnatchABeer/enemyangry.png",3,1);
