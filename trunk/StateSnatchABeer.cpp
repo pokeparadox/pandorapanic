@@ -210,7 +210,7 @@ void StateSnatchABeer::userInput()
 
     if(input->isStart())//I wasnt sure what exit key was... - me neither
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 }
@@ -231,7 +231,8 @@ void StateSnatchABeer::render(SDL_Surface *screen)
 void StateSnatchABeer::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Press     at the right time to get the beer!");
     buttonSheet.setCurrentFrame(10);
@@ -436,5 +437,19 @@ void StateSnatchABeer::update()
     }
     if (status != IDLE) {
         animFrame++;
+    }
+}
+
+void StateSnatchABeer::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
     }
 }

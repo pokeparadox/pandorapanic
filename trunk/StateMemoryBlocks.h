@@ -1,12 +1,10 @@
 #ifndef STATEMEMORYBLOCKS_H_INCLUDED
 #define STATEMEMORYBLOCKS_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     B-ZaR's Rotating Turret mini game for Pandora Panic
 */
-
-
 #include "Background.h"
 #include "Image.h"
 #include "Sprite.h"
@@ -43,6 +41,7 @@ class StateMemoryBlocks : public BaseState
 
         virtual ~StateMemoryBlocks();
         virtual void userInput();
+        virtual void pauseInput();
 
         Text command;
         Text timer;

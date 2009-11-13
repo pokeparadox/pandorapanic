@@ -105,7 +105,7 @@ void StateRotDef::userInput()
 
     if(input->isStart())
     {
-        isPaused=!isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 }
@@ -143,7 +143,8 @@ void StateRotDef::render(SDL_Surface *screen)
 void StateRotDef::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(220,60);
     pauseText.print(screen, "Rotate the turret using    and");
     buttonSheet.setCurrentFrame(14);
@@ -219,5 +220,19 @@ void StateRotDef::update()
             SDL_Delay(1000);
         variables[0].setInt(0);
         setNextState(STATE_MAIN);
+    }
+}
+
+void StateRotDef::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
     }
 }

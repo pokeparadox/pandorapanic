@@ -1,7 +1,8 @@
 #ifndef STATEPANJOUST_H_INCLUDED
 #define STATEPANJOUST_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
+
 #include "Background.h"
 #include "Sprite.h"
 #include "TextDoc.h"
@@ -26,6 +27,7 @@ class StatePanJoust : public BaseState
         virtual void onPause();
         virtual void onResume();
         virtual void userInput();
+        virtual void pauseInput();
         virtual ~StatePanJoust();
 
     private:

@@ -1,7 +1,7 @@
 #ifndef STATEDOUBLENUBTROUBLE_H_INCLUDED
 #define STATEDOUBLENUBTROUBLE_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     nEW pROJECT
 

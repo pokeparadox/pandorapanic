@@ -133,7 +133,7 @@ void Fire::userInput()
 
     if (input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 
@@ -243,14 +243,6 @@ void Fire::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Z key or A button shoot water");
     pauseText.setPosition(PAUSE_X+PAUSE_DELTA_X*8,PAUSE_Y+PAUSE_DELTA_Y*6);
     pauseText.print(screen, "Press Enter/Start to continue");
-}
-
-void Fire::onPause()
-{
-}
-
-void Fire::onResume()
-{
 }
 
 void Fire::update()
@@ -973,4 +965,18 @@ int16_t Fire::RandomValue( int16_t low, int16_t high )
     // Return a random number between low and high
     num = rand() % (high - low + 1) + low;
     return num;
+}
+
+void Fire::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }

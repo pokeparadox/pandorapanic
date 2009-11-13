@@ -20,6 +20,7 @@ class StateCake : public BaseState
         virtual void init();
         virtual void render(SDL_Surface* screen);
         virtual void userInput();
+        virtual void pauseInput();
         virtual void update();
         virtual void onPause();
         virtual void onResume();
@@ -47,19 +48,29 @@ class StateCake : public BaseState
                     flame.loadFrames("images/BirthdayCake/flame.png",4,1);
                     candle.loadFrames("images/BirthdayCake/candles.png",4,1);
                     setPosition(Vector2df(50,50));
+                    timer.setMode(MILLI_SECONDS);
                 }
                 void setPosition(Vector2df pos){position = pos;candle.setPosition(pos);flame.setPosition(pos.x+6,pos.y-12);}
                 Vector2df getPosition()const{return position;}
                 void render(SDL_Surface* screen){candle.render(screen);if(lit)flame.render(screen);}
-                void update(){if(lit)flame.update();}
-                void blow(){lit = false;}
+                void update()
+                {
+                    timer.update();
+                    if(lit)
+                        flame.update();
+                    if(timer.hasFinished())
+                        light();
+                }
+                void blow(){lit = false;timer.start();}
                 void light(){lit = true;}
                 bool isLit()const{return lit;}
+                void setRelightLimit(CRint ms){timer.setLimit(ms);}
             private:
                 bool lit;
                 Vector2df position;
                 AnimatedSprite flame;
                 AnimatedSprite candle;
+                CountDown timer;
         };
         class Player
         {
@@ -200,8 +211,6 @@ class StateCake : public BaseState
         CountDown timer;
         Text text;
         AnimatedSprite buttonSheet;
-        int relightInterval;
-        bool relight;
         int limit;
 };
 

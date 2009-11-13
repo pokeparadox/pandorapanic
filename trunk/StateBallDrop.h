@@ -1,7 +1,7 @@
 #ifndef STATEBALLDROP_H_INCLUDED
 #define STATEBALLDROP_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     Zacaj's Balldrop mini game for Pandora Panic
     some modifications made by billykater
@@ -29,6 +29,7 @@ class StateBallDrop : public BaseState
 
         virtual ~StateBallDrop();
         virtual void userInput();
+        virtual void pauseInput();
 
         char r,g,b;
         float ballx,bally;

@@ -163,7 +163,7 @@ void StateJumper::userInput()
     input->update();
     if (input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 
@@ -190,7 +190,8 @@ void StateJumper::userInput()
 #ifdef PENJIN_SDL
     void StateJumper::pauseScreen(SDL_Surface* screen)
     {
-
+        if(variables.size()<SUBSTATE_TRIGGER)
+            pauseSymbol(screen);
         text.setColour(WHITE);
         text.setPosition(50,180);
         text.print(screen, "Jump towards the star to win");
@@ -497,5 +498,19 @@ void StateJumper::update()
             variables[0].setInt(0);
             setNextState(STATE_MAIN);
         }*/
+    }
+}
+
+void StateJumper::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
     }
 }

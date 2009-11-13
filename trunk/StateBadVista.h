@@ -1,7 +1,7 @@
 #ifndef STATEBADVISTA_H_INCLUDED
 #define STATEBADVISTA_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     BadVista minigame for Pandora Panic
     Release: 4 Oct 2009
@@ -47,6 +47,7 @@ class StateBadVista : public BaseState
     #endif
     virtual void update();
     virtual void userInput();
+    virtual void pauseInput();
 
   private:
     ButtonPrompter buttonPrompter;

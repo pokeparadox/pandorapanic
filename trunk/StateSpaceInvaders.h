@@ -1,7 +1,7 @@
 #ifndef STATESPACEINVADERS_H_INCLUDED
 #define STATESPACEINVADERS_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     pstudio's Space Invaders mini game for Pandora Panic
 */
@@ -30,6 +30,7 @@ class StateSpaceInvaders : public BaseState
 
         virtual ~StateSpaceInvaders();
         virtual void userInput();
+        virtual void pauseInput();
 
         Emitter emit;
         vector <Emitter> blast;

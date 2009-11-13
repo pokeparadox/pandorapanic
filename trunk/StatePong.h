@@ -1,7 +1,7 @@
 #ifndef STATEPONG_H_INCLUDED
 #define STATEPONG_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     Miggles' Pong game for Pandora Panic!
 */
@@ -27,6 +27,7 @@ class StatePong : public BaseState
 
         virtual ~StatePong();
         virtual void userInput();
+        virtual void pauseInput();
 
         Background background;
         Sprite  playerPaddle, cpuPaddle, ball;

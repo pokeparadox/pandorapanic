@@ -1,3 +1,10 @@
+13 November 2009
+   released version 1.2.1618 of PandoraPanic
+
+     Change log:
+        -Fixed: pauseSymbol missing in many games due to bad find/replace
+        -Fixed: counter moved to centre of screen after pausing.
+
 12 November 2009
    released version 1.2.1600 of PandoraPanic
 

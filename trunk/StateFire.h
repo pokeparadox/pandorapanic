@@ -2,17 +2,13 @@
 #ifndef FIRE_H_INCLUDED
 #define FIRE_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include <vector>
 #include "LUT.h"
 #include "Background.h"
 #include "Emitter.h"
 #include "Sprite.h"
-
-#ifdef PLATFORM_GP2X
-    #include "MMUHack.h"
-#endif
 
 #define     FIRE_FAIL                   0
 #define     FIRE_PASS                   1
@@ -97,15 +93,13 @@ class Fire : public BaseState
         virtual void pauseScreen();
 #endif
         virtual void update();
-        virtual void onPause();
-        virtual void onResume();
+        //virtual void onPause();
+        //virtual void onResume();
 
         virtual ~Fire();
         virtual void userInput();
+        virtual void pauseInput();
 
-#ifdef PLATFORM_GP2X
-		MMUHack hack;
-#endif
     private:
         Text                text;
         Text                pauseText;

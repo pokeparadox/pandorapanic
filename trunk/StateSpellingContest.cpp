@@ -73,7 +73,7 @@ void StateSpellingContest::userInput()
                 case SDL_KEYDOWN:
                     if(event.key.keysym.sym == SDLK_RETURN)
                     {
-                        isPaused = !isPaused;
+                        pauseToggle();
                     }
                     if ((event.key.keysym.unicode > 64 && event.key.keysym.unicode < 91)
                     ||(event.key.keysym.unicode > 96 && event.key.keysym.unicode < 123))
@@ -171,7 +171,8 @@ void StateSpellingContest::render(SDL_Surface *screen)
 void StateSpellingContest::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(50,320);
     pauseText.print(screen, "Type the word in the time limit!");
     pauseText.setPosition(50,360);
@@ -283,4 +284,18 @@ void StateSpellingContest::update()
 
     boy.update();
     girl.update();
+}
+
+void StateSpellingContest::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }

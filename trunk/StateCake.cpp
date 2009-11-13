@@ -34,20 +34,31 @@ void StateCake::init()
     mariela.update();
 
     int level = variables[2].getInt();
-    if(level > 5)
+    if(level < 5)
     {
-        relight = true;
-        relightInterval = (240/(float)level) +0.5f;
+        for(int i = NUM_CANDLES-1; i>= 0; --i)
+        {
+            candles[i].setRelightLimit(30000);
+        }
+    }
+    else if(level < 30)
+    {
+        for(int i = NUM_CANDLES-1; i>= 0; --i)
+        {
+            candles[i].setRelightLimit(((360/(float)level) +0.5f)*1000);
+        }
     }
     else
     {
-        relightInterval = 30;
-        relight = false;
+        for(int i = NUM_CANDLES-1; i>= 0; --i)
+        {
+            candles[i].setRelightLimit(((360/31.0f) +0.5f)*1000);
+        }
     }
-    if(level < 40)
+    if(level < 35)
         limit = 60 - level;
     else
-        limit = 15;
+        limit = 25;
 
     timer.setMode(SECONDS);
     timer.start(limit);
@@ -69,6 +80,7 @@ void StateCake::render(SDL_Surface* screen)
         if(mariela.getHitRegion()->getY() == ypos)
             mariela.render(screen);
     }
+    text.setPosition(30, 30);
     text.print(timer.getTimeLeft());
 }
 
@@ -111,20 +123,6 @@ void StateCake::update()
         variables[0].setInt(0);
         setNextState(STATE_MAIN);
     }
-
-    // If player hasn't blown all the candles out try to relight some
-    if(NumberUtility::isMultiple((timer.getScaledTicks()),relightInterval))
-    {
-        for(int i = NUM_CANDLES-1; i >=0; --i)
-        {
-            if(!candles[i].isLit() && relight)
-            {
-                relight = false;
-                candles[i].light();
-                break;
-            }
-        }
-    }
 }
 
 void StateCake::userInput()
@@ -136,12 +134,11 @@ void StateCake::userInput()
     #endif
     if (input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
     if(input->isA())
     {
-        relight = true;
         mariela.blow();
     }
     else if(input->isUp())
@@ -184,3 +181,16 @@ void StateCake::onResume()
     timer.unpause();
 }
 
+void StateCake::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
+}

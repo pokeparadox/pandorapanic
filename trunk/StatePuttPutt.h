@@ -1,7 +1,7 @@
 #ifndef STATEPUTTPUTT_H_INCLUDED
 #define STATEPUTTPUTT_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     DasFool's Putt Putt mini game for Pandora Panic
     * basis borrowed from pstudio's Space Invaders
@@ -31,6 +31,7 @@ class StatePuttPutt : public BaseState
 
         virtual ~StatePuttPutt();
         virtual void userInput();
+        virtual void pauseInput();
 
         Text text;
         Text command;

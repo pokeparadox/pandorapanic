@@ -1,7 +1,7 @@
 #ifndef STATEPUNCHWRESTLER_H_INCLUDED
 #define STATEPUNCHWRESTLER_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     PunchWrestler
 */
@@ -34,6 +34,7 @@ class StatePunchWrestler : public BaseState
 
         virtual ~StatePunchWrestler();
         virtual void userInput();
+        virtual void pauseInput();
 
 
         Text text;

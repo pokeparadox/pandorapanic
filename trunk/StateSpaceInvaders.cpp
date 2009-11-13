@@ -84,13 +84,13 @@ void StateSpaceInvaders::userInput()
     if(input->isLeft())
     {
         //ship.setX(ship.getX()-6);
-        shipVel -= 0.2;
+        shipVel -= 0.2f;
         //Input.resetKeys();
     }
     if(input->isRight())
     {
         //ship.setX(ship.getX()+6);
-        shipVel += 0.2;
+        shipVel += 0.2f;
         //Input.resetKeys();
     }
 
@@ -102,7 +102,7 @@ void StateSpaceInvaders::userInput()
 
     if(input->isStart())//I wasnt sure what exit key was...
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 }
@@ -135,7 +135,8 @@ void StateSpaceInvaders::render(SDL_Surface *screen)
 
 void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
 {
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.setColour(WHITE);
     pauseText.print(screen, "Shoot the alien! press    to shoot.");
@@ -255,4 +256,18 @@ void StateSpaceInvaders::update()
             variables[0].setInt(0);
             setNextState(STATE_MAIN);
         }
+}
+
+void StateSpaceInvaders::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }

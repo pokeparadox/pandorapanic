@@ -61,12 +61,6 @@ void StateDistractedMath::onResume()
 
 void StateDistractedMath::userInput()
 {
-    /*input->update();
-    if (input->isStart())
-    {
-        isPaused = !isPaused;
-        input->resetKeys();
-    }*/
 
         if (mathstate == 0)
         {
@@ -79,6 +73,10 @@ void StateDistractedMath::userInput()
                     case SDL_QUIT: nullifyState(); break;
                     #endif
                     case SDL_KEYDOWN:
+                        if(event.key.keysym.sym == SDLK_RETURN)
+                        {
+                            pauseToggle();
+                        }
                         MathInputUnicode =  (event.key.keysym.unicode); // unicode input
                         #ifdef PENJIN_FIXED
                             MathInputNumeric = MathInputUnicode.intValue<<16 - 48; // numeric is 48 ascii chars lower :)
@@ -162,6 +160,20 @@ void StateDistractedMath::userInput()
         }
 
 
+}
+
+void StateDistractedMath::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }
 
 #ifdef PENJIN_SDL
