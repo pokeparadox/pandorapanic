@@ -125,6 +125,13 @@ PENJIN_ERRORS MyGame::init()
 	#ifdef _DEBUG
         GFX::showVideoInfo();
 	#endif
+	#ifdef PENJIN_GL
+        #ifdef PENJIN3D
+            GFX::init3DRendering(xRes,yRes);
+        #else
+            GFX::init2DRendering(xRes,yRes);
+        #endif
+	#endif
 	return PENJIN_OK;
 }
 
