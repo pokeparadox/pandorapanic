@@ -43,10 +43,10 @@ namespace PangMiniGame
     static rconst float  kPLAYER_SPEED                           = 340.f;
 
     // How fast the spear travels once fired.
-    static rconst float  kSPEAR_SPEED                            = 10.f;
+    static rconst float  kSPEAR_SPEED                            = 300.f;
 
     // How fast the ball travels horizontally
-    static rconst float  kBALL_X_SPEED_INITIAL                   = 3.45f;
+    static rconst float  kBALL_X_SPEED_INITIAL                   = 103.5f;
     static float         kBALL_X_SPEED                           = kBALL_X_SPEED_INITIAL;
 
     // How long spears stay attached to ceiling for.
@@ -337,18 +337,6 @@ namespace PangMiniGame
                     // Lock surface if required...
                     if( SDL_MUSTLOCK( loadedImage ) )
                         SDL_LockSurface( loadedImage );
-
-                        #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                        Uint32 rmask = 0xff000000;
-                        Uint32 gmask = 0x00ff0000;
-                        Uint32 bmask = 0x0000ff00;
-                        Uint32 amask = 0x000000ff;
-                        #else
-                        Uint32 rmask = 0x000000ff;
-                        Uint32 gmask = 0x0000ff00;
-                        Uint32 bmask = 0x00ff0000;
-                        Uint32 amask = 0xff000000;
-                        #endif
 
                         SDL_Surface * newSurface = SDL_CreateRGBSurface(
                             loadedImage->flags,
@@ -1004,7 +992,7 @@ namespace PangMiniGame
             Ball * pBall = *ballIt;
 
             // Update X position/speed.
-            pBall->m_pSprite->SetX( pBall->m_pSprite->GetX( ) + pBall->m_SpeedX );
+            pBall->m_pSprite->SetX( pBall->m_pSprite->GetX( ) + pBall->m_SpeedX * frameTime );
             if ( pBall->m_pSprite->GetX( ) + pBall->m_pSprite->GetWidth( ) > kSCREEN_WIDTH )
             {
                 pBall->m_pSprite->SetX( kSCREEN_WIDTH - ( pBall->m_pSprite->GetWidth( ) ) );
@@ -1156,7 +1144,7 @@ namespace PangMiniGame
             {
                 if ( pSpear->m_State == Spear::kState_Active )
                 {
-                    pSpear->m_pSprite->SetY( pSpear->m_pSprite->GetY( ) - kSPEAR_SPEED );
+                    pSpear->m_pSprite->SetY( pSpear->m_pSprite->GetY( ) - kSPEAR_SPEED * frameTime );
                     if ( pSpear->m_pSprite->GetY( ) < 0.f )
                     {
                         pSpear->m_HoldTime = kSPEAR_HOLD_TIME;
@@ -1322,7 +1310,13 @@ namespace PangMiniGame
         bool            IsLevelSuccessful( );
         bool            IsLevelFailed( );
 
+        void            Pause( );
+
+        void            Resume( );
+
     private:
+
+        bool            IsPaused( ) const;
 
         enum kPlayerAnim
         {
@@ -1354,6 +1348,8 @@ namespace PangMiniGame
         bool                        m_LevelFailed;
         bool                        m_LevelSuccessful;
 
+        bool                        m_IsPaused;
+
         // Define the dynamic resources that might be deleted during game play, but shouldn't be unloaded...
         enum LevelResourceImage
         {
@@ -1383,6 +1379,18 @@ namespace PangMiniGame
 
         int         m_NumFramesElapsedSinceLevelStart;
     };
+    void PangGame::Pause( )
+    {
+        m_IsPaused = true;
+    }
+    void PangGame::Resume( )
+    {
+        m_IsPaused = false;
+    }
+    bool PangGame::IsPaused( ) const
+    {
+        return m_IsPaused;
+    }
     PangGame::PangGame( )
     {
         m_pBallManager                      = NULL;
@@ -1403,6 +1411,7 @@ namespace PangMiniGame
         m_SettingsFileModifiedTime          = -1;
         m_pMusic                            = NULL;
         m_NumFramesElapsedSinceLevelStart   = 0;
+        m_IsPaused                          = false;
     }
     PangGame::~PangGame( )
     {
@@ -1967,9 +1976,18 @@ namespace PangMiniGame
         m_NumFramesElapsedSinceLevelStart++;
 
         // Sort out framne time.
-        float thisFrameTime = SDL_GetTicks( );
-        m_FrameTime = ( thisFrameTime - m_TimeLastFrame ) / 1000.f;
-        m_TimeLastFrame = thisFrameTime;
+        float thisFrameTime;
+        if ( IsPaused( ) )
+        {
+            m_FrameTime     = 0.f;
+            m_TimeLastFrame = SDL_GetTicks( );
+        }
+        else
+        {
+            thisFrameTime = SDL_GetTicks( );
+            m_FrameTime = ( thisFrameTime - m_TimeLastFrame ) / 1000.f;
+            m_TimeLastFrame = thisFrameTime;
+        }
 
         // When capturing FMV...
         //m_FrameTime = 1/30.f;
@@ -2154,6 +2172,8 @@ void StatePang::render( )
 #ifdef PENJIN_SDL
 void StatePang::pauseScreen(SDL_Surface* screen)
 {
+    m_pPangGame->Update( input );
+
     // Pause screen
     if(variables.size()<SUBSTATE_TRIGGER)
         pauseSymbol(screen);
@@ -2171,6 +2191,8 @@ void StatePang::pauseScreen(SDL_Surface* screen)
 #else
 void StatePang::pauseScreen()
 {
+    m_pPangGame->Update( input );
+
     // Pause screen
     pauseSymbol();
     pauseText.setPosition(50,180);
@@ -2199,7 +2221,14 @@ void StatePang::update( )
         MiniGameComplete( false );
     }
 }
-
+void StatePang::onPause( )
+{
+    m_pPangGame->Pause( );
+}
+void StatePang::onResume( )
+{
+    m_pPangGame->Resume( );
+}
 StatePang::~StatePang( )
 {
     if ( m_pPangGame )

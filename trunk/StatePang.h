@@ -31,6 +31,10 @@ class StatePang : public BaseState
         virtual void userInput();
         virtual void pauseInput();
 
+        virtual void onPause();
+
+        virtual void onResume();
+
     private:
 
         void    MiniGameComplete( bool success );
