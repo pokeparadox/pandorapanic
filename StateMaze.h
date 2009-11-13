@@ -1,9 +1,7 @@
 #ifndef STATEMAZE_H_INCLUDED
 #define STATEMAZE_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
-
-
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include "Background.h"
 #include "Sprite.h"
@@ -65,6 +63,7 @@ class StateMaze : public BaseState
         virtual void onResume();
 
         virtual void userInput();
+        virtual void pauseInput();
         virtual ~StateMaze();
 
     private:

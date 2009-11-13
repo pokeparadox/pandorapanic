@@ -1,7 +1,8 @@
 #ifndef STATEPLANDER_H
 #define STATEPLANDER_H
 
-#include "userStates.h"
+#include "PenjinStates.h"
+
 #include "RocketEscape/Rocket.h"
 #include "RocketEscape/LandingPad.h"
 #include "RocketEscape/Collectible.h"
@@ -24,6 +25,7 @@ class StatePlander : public BaseState
         #endif
         virtual void update();
         virtual void userInput();
+        virtual void pauseInput();
 
     private:
         enum

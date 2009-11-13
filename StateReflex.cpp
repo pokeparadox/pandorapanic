@@ -56,7 +56,7 @@ void StateReflex::userInput()
     if (input->isStart())
     {
 
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 
@@ -134,7 +134,8 @@ void StateReflex::render(SDL_Surface *screen)
 void StateReflex::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Quickly press the D-Pad");
     pauseText.setPosition(50,220);
@@ -217,5 +218,19 @@ void StateReflex::update()
     {
         variables[0].setInt(0); // Fail
         setNextState(STATE_MAIN);
+    }
+}
+
+void StateReflex::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
     }
 }

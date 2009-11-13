@@ -1,7 +1,7 @@
 #ifndef STATEPANG_H_INCLUDED
 #define STATEPANG_H_INCLUDED
 
-#include "userStates.h"
+#include "PenjinStates.h"
 
 #include "AnimatedSprite.h"
 #include "Text.h"
@@ -29,6 +29,7 @@ class StatePang : public BaseState
         virtual void update();
 
         virtual void userInput();
+        virtual void pauseInput();
 
     private:
 
@@ -54,7 +55,7 @@ inline void StatePang::userInput( )
     #endif
     if(input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 }

@@ -100,7 +100,7 @@ void StatePunchWrestler::userInput()
     // The pausecheck
     if (input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 
@@ -133,7 +133,8 @@ void StatePunchWrestler::render(SDL_Surface *screen)
 
 void StatePunchWrestler::pauseScreen(SDL_Surface* screen)
 {
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     text.setPosition(52,182);
     text.setColour(Colour(WHITE));
     text.print(screen, "Push the D-Pad button");
@@ -173,4 +174,18 @@ void StatePunchWrestler::pauseScreen()
 void StatePunchWrestler::update()
 {
     current->update(this);
+}
+
+void StatePunchWrestler::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }

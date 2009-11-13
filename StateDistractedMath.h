@@ -1,7 +1,7 @@
 #ifndef STATEDISTRACTEDMATH_H_INCLUDED
 #define STATEDISTRACTEDMATH_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     Distracted Math by MarkoeZ for the Pandora panic project
 
@@ -31,6 +31,7 @@ class StateDistractedMath : public BaseState
     #endif
         virtual void update();
         virtual void userInput();
+        virtual void pauseInput();
         virtual void onPause();
         virtual void onResume();
         virtual ~StateDistractedMath();

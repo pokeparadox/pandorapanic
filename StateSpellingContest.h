@@ -1,7 +1,7 @@
 #ifndef STATESPELLINGCONTEST_H_INCLUDED
 #define STATESPELLINGCONTEST_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     pstudio's Spelling Contest mini game for Pandora Panic
 */
@@ -32,6 +32,7 @@ class StateSpellingContest : public BaseState
 
         virtual ~StateSpellingContest();
         virtual void userInput();
+        virtual void pauseInput();
         // We do our own input handling in this mini game
 
     private:

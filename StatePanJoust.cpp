@@ -110,7 +110,7 @@ void StatePanJoust::userInput()
     input->update();
     if (input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
     if(input->isA() && youdead == 0)
@@ -165,7 +165,8 @@ void StatePanJoust::userInput()
 #ifdef PENJIN_SDL
 void StatePanJoust::pauseScreen(SDL_Surface* screen)
 {
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     text.setColour(WHITE);
     text.setPosition(50,180);
     text.print(screen, "Fly! And land on the other birds to kill them!");
@@ -250,6 +251,7 @@ void StatePanJoust::render(SDL_Surface *screen)
         //text.print(screen, gamelength - teller.getScaledTicks());
         //text.print(screen, panic); //testing
     }
+    text.setColour(Colour(GREEN));
     if (youdead && !youwin)
     {
         text.setPosition(320,210);
@@ -557,5 +559,19 @@ void StatePanJoust::update()
         enemy[enemynumber-1].setX(800);
         enemy[enemynumber-1].setY(350);
         panic = true;
+    }
+}
+
+void StatePanJoust::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
     }
 }

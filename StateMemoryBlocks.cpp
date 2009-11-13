@@ -150,7 +150,7 @@ void StateMemoryBlocks::userInput()
 
     if(input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 }
@@ -158,6 +158,8 @@ void StateMemoryBlocks::userInput()
 #ifdef PENJIN_SDL
 void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
 {
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     background.render(screen);
     Rectangle recta;
     recta.setPosition(0,168);
@@ -332,4 +334,18 @@ void StateMemoryBlocks::update()
         setNextState(STATE_MAIN);
     }
     cursor.update();
+}
+
+void StateMemoryBlocks::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }

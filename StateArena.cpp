@@ -191,10 +191,25 @@ void StateArena::userInput()
     }
     if (input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 }
+
+void StateArena::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
+}
+
 void StateArena::render(SDL_Surface *screen)
 {
     ENVIRONMENT->render(screen);
@@ -220,14 +235,7 @@ void StateArena::pauseScreen(SDL_Surface* screen)
     buttonSheet.setPosition(130,220);
     buttonSheet.render(screen);
 }
-void StateArena::onPause()
-{
 
-}
-void StateArena::onResume()
-{
-
-}
 void StateArena::update()
 {
     if(!isPaused)

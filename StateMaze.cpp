@@ -174,9 +174,13 @@ void StateMaze::init()
 void StateMaze::userInput()
 {
     input->update();
+    #ifdef PLATFORM_PC
+    if(input->isQuit())
+        nullifyState();
+    #endif
     if (input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 
@@ -243,7 +247,8 @@ void StateMaze::userInput()
 #ifdef PENJIN_SDL
     void StateMaze::pauseScreen(SDL_Surface* screen)
     {
-
+        if(variables.size()<SUBSTATE_TRIGGER)
+            pauseSymbol(screen);
         text.setColour(WHITE);
         text.setPosition(50,180);
         text.print(screen, "Reach the door to safety and escape the maze!");
@@ -331,7 +336,7 @@ void StateMaze::onResume()
         text.setColour(RED);
         text.setPosition(30,30);
 
-        if (hero.getX() > 96 || hero.getY() > 64){text.print(screen, (gamelength - teller.getScaledTicks()));}
+        if (hero.getX() > 96 || hero.getY() > 64){text.setColour(Colour(RED));text.print(screen, (gamelength - teller.getScaledTicks()));}
     }
 #else
     void StateMaze::render()
@@ -386,12 +391,6 @@ void StateMaze::onResume()
 
 void StateMaze::update()
 {
-    #ifdef PLATFORM_PC
-    if(input->isQuit())
-    nullifyState();
-    #endif
-    if (!isPaused)
-    {
         //hero.update();
         //if (hero.getYvel() > 0
         //hero.setYvel(hero.getYvel() + 15); Undo gravity
@@ -612,5 +611,18 @@ void StateMaze::update()
             variables[0].setInt(0);
             setNextState(STATE_MAIN);
         }
+}
+
+void StateMaze::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
     }
 }

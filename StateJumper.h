@@ -1,9 +1,7 @@
 #ifndef STATEJUMPER_H_INCLUDED
 #define STATEJUMPER_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
-
-
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include "Background.h"
 #include "Sprite.h"
@@ -64,6 +62,7 @@ class StateJumper : public BaseState
         virtual void onResume();
 
         virtual void userInput();
+        virtual void pauseInput();
         virtual ~StateJumper();
 
     private:

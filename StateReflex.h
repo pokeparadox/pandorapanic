@@ -1,7 +1,7 @@
 #ifndef STATEREFLEX_H_INCLUDED
 #define STATEREFLEX_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     oclbdk's Rhythm mini game for Pandora Panic
 */
@@ -24,6 +24,7 @@ class StateReflex : public BaseState
 
         virtual ~StateReflex();
         virtual void userInput();
+        virtual void pauseInput();
 
         Text text;
         Text pauseText;

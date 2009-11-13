@@ -1,7 +1,7 @@
 #ifndef STATEONEBUTTONBANDIT_H_INCLUDED
 #define STATEONEBUTTONBANDIT_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     Miggles' Pokies game for Pandora Panic!
 */
@@ -77,6 +77,7 @@ class StateOneButtonBandit : public BaseState
         #endif
         virtual void update();
         virtual void userInput();
+        virtual void pauseInput();
         virtual void unlimitedUpdate();
         virtual void onPause();
         virtual void onResume();

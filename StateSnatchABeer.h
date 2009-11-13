@@ -1,7 +1,7 @@
 #ifndef STATESNATCHABEER_H_INCLUDED
 #define STATESNATCHABEER_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
    foxblock's attemt to create a minigame for PandoraPanic
 */
@@ -40,6 +40,7 @@ class StateSnatchABeer : public BaseState
         virtual void onResume();
 
         virtual void userInput();
+        virtual void pauseInput();
 
         AnimatedSprite enemyIdle;
         AnimatedSprite enemyAngry;

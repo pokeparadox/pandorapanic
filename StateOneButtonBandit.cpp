@@ -417,11 +417,10 @@ void StateOneButtonBandit::userInput() {
     // The pausecheck
     if (input->isStart())
     {
-            isPaused = !isPaused;
+            pauseToggle();
             input->resetKeys();
     }
-if(!isPaused)
-{
+
     // Only check for user input when the game has become playable
     if (currentState == 3) {
         if (waitForButtonLift) {
@@ -463,7 +462,6 @@ if(!isPaused)
         }
     }
 }
-}
 
 #ifdef PENJIN_SDL
 void StateOneButtonBandit::render(SDL_Surface *screen)
@@ -477,7 +475,8 @@ void StateOneButtonBandit::render(SDL_Surface *screen)
 
 void StateOneButtonBandit::pauseScreen(SDL_Surface* screen)
 {
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     text.setColour(YELLOW);
     text.setPosition(50,200);
     text.print(screen, "Stop the rollers on the symbols you started with");
@@ -633,3 +632,16 @@ void StateOneButtonBandit::update() {
         rightColumn.update(currentGlobalRate);
 }
 
+void StateOneButtonBandit::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
+}

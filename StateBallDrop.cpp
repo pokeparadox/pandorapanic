@@ -81,7 +81,7 @@ void StateBallDrop::userInput()
 
     if(input->isStart())//I wasnt sure what exit key was...
     {
-        isPaused = !isPaused;
+        pauseToggle();
         music.playPause();
         input->resetKeys();
     }
@@ -228,4 +228,18 @@ void StateBallDrop::update()
 {
     if(gotoNext)
         setNextState(STATE_MAIN);
+}
+
+void StateBallDrop::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }

@@ -113,7 +113,7 @@ void StatePanicAttack::userInput()
 
   if(input->isStart())//I wasnt sure what exit key was...
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
   // End Framework stuff -----------------------------
@@ -236,7 +236,8 @@ void StatePanicAttack::update()
 #ifdef PENJIN_SDL
 void StatePanicAttack::pauseScreen(SDL_Surface* screen)
 {
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(52,182);
     pauseText.setColour(WHITE);
     pauseText.print(screen, "Press the prompted buttons within the timelimit!");
@@ -333,3 +334,17 @@ void StatePanicAttack::renderPanics(SDL_Surface *screen) {
         panics.renderImage(panicsCurrent, 302, 28);
     }
 #endif
+
+void StatePanicAttack::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
+}

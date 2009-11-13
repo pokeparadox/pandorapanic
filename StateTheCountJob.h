@@ -1,7 +1,7 @@
 #ifndef STATETHECOUNTJOB_H_INCLUDED
 #define STATETHECOUNTJOB_H_INCLUDED
 
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     foxblock got interested in C++ programming, so fear his second creation
 */
@@ -31,6 +31,7 @@ class StateTheCountJob : public BaseState
         virtual void onPause();
         virtual void onResume();
         virtual void userInput();
+        virtual void pauseInput();
 
         virtual bool checkPos(vector<Vector2df>::iterator curr, int arr);
 

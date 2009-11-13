@@ -7,7 +7,8 @@
 //-----------------------------------------------------
 // Include Files
 //-----------------------------------------------------
-#include "userStates.h"     // Make sure your state is listed in this include.
+#include "PenjinStates.h"     // Make sure your state is listed in this include.
+
 #include "Arena/ArenaEnvironment.h"
 #include "Arena/ArenaEffectSystem.h"
 #include "Arena/ArenaHero.h"
@@ -35,10 +36,9 @@ public:
     virtual void init();
     virtual void render(SDL_Surface *screen);
     virtual void update();
-    virtual void onPause();
-    virtual void onResume();
     virtual void pauseScreen(SDL_Surface* screen);
     virtual void userInput();
+    virtual void pauseInput();
 
     //-------------------------------------------------
 	// Datamembers

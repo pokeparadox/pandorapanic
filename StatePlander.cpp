@@ -179,7 +179,8 @@ void StatePlander::render(SDL_Surface* screen)
 void StatePlander::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Land on the platform!");
     pauseText.setPosition(50,220);
@@ -383,27 +384,40 @@ void StatePlander::userInput()
     if(input->isQuit())
         nullifyState();
 #endif
-    if(!isPaused)
+
+    if(input->isLeft() || (input->isL() && !input->isR()) || input->isA())
+        rocket.rotateLeft();
+    else if(input->isRight() || (input->isR() && !input->isL()) || input->isB())
+        rocket.rotateRight();
+
+    if(input->isUp() || input->isY() || (input->isL() && input->isR()))
+        rocket.thrustIncrease();
+    else if (input->isDown() || input->isX())
+        rocket.thrustDecrease();
+    else
+        rocket.thrustKill();
+    /*else    //  Checl analog
     {
-        if(input->isLeft() || (input->isL() && !input->isR()) || input->isA())
-            rocket.rotateLeft();
-        else if(input->isRight() || (input->isR() && !input->isL()) || input->isB())
-            rocket.rotateRight();
 
-        if(input->isUp() || input->isY() || (input->isL() && input->isR()))
-            rocket.thrustIncrease();
-        else if (input->isDown() || input->isX())
-            rocket.thrustDecrease();
-        else
-            rocket.thrustKill();
-        /*else    //  Checl analog
-        {
+    }*/
 
-        }*/
-    }
     if(input->isStart())
     {
-        isPaused = !isPaused;
+        pauseToggle();
+        input->resetKeys();
+    }
+}
+
+void StatePlander::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
         input->resetKeys();
     }
 }

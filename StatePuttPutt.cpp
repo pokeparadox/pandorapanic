@@ -99,7 +99,7 @@ void StatePuttPutt::userInput()
 
     if(input->isStart())//I wasnt sure what exit key was...
     {
-        isPaused = !isPaused;
+        pauseToggle();
         input->resetKeys();
     }
 }
@@ -204,7 +204,8 @@ void StatePuttPutt::render(SDL_Surface *screen)
 void StatePuttPutt::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(20,180);
     pauseText.print(screen, "Stop the power meter within the green bar!");
     pauseText.setPosition(20,220);
@@ -407,4 +408,18 @@ void StatePuttPutt::update()
             variables[0].setInt(0);
             setNextState(STATE_MAIN);
         }
+}
+
+void StatePuttPutt::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }

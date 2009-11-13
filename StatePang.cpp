@@ -2155,7 +2155,8 @@ void StatePang::render( )
 void StatePang::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-
+    if(variables.size()<SUBSTATE_TRIGGER)
+        pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Burst those balls, but don't let them hit you!");
     pauseText.setPosition(50,220);
@@ -2217,5 +2218,19 @@ void StatePang::MiniGameComplete( bool success )
 {
     variables[ 0 ].setInt( success ? 1 : 0 );
     setNextState( STATE_MAIN );
+}
+
+void StatePang::pauseInput()
+{
+    input->update();
+    #ifdef PLATFORM_PC
+        if(input->isQuit())
+            nullifyState();
+    #endif
+    if (input->isStart())
+    {
+        pauseToggle();
+        input->resetKeys();
+    }
 }
 // --------------------------------------------------------------
