@@ -41,18 +41,18 @@ void StateCake::init()
             candles[i].setRelightLimit(30000);
         }
     }
-    else if(level < 30)
+    else if(level < 16)
     {
         for(int i = NUM_CANDLES-1; i>= 0; --i)
         {
-            candles[i].setRelightLimit(((360/(float)level) +0.5f)*1000);
+            candles[i].setRelightLimit(((180/(float)level) +0.5f)*1000);
         }
     }
     else
     {
         for(int i = NUM_CANDLES-1; i>= 0; --i)
         {
-            candles[i].setRelightLimit(((360/31.0f) +0.5f)*1000);
+            candles[i].setRelightLimit(((180/16.0f) +0.5f)*1000);
         }
     }
     if(level < 35)
