@@ -12,7 +12,7 @@ delete [] platform;
 
 void StatePanJoust::init()
 {
-    background.loadBackground("images/PanJoust/background.png");
+    background.loadBackground("images/PanJoust/background2.png");
     if(variables.size()<SUBSTATE_TRIGGER)
     {
         joustmusic.loadMusic("music/PanJoust/joustmusic.ogg");

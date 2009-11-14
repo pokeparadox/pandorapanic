@@ -52,8 +52,7 @@ void StateMaze::init()
     blobevil.setTransparentColour(MAGENTA);
     */
 
-    cloudnumber = variables[2].getInt()/12
-     + 3 ;
+    cloudnumber = variables[2].getInt()/15  + 3 ;
 
     for (int i = 0; i< cloudnumber;i++)
     {
@@ -79,12 +78,12 @@ void StateMaze::init()
 
     }
      cloud[0].setPosition(252,420);
-     cloud[1].setPosition(512,64);
-     cloud[2].setPosition(712,420);
-     cloud[3].setPosition(512,400);
-     cloud[4].setPosition(252,64);
-     cloud[5].setPosition(452,64);
-     cloud[6].setPosition(252,128);
+     cloud[1].setPosition(512,400);
+     cloud[2].setPosition(712,220);
+     cloud[3].setPosition(150,64);
+     cloud[4].setPosition(452,64);
+     cloud[5].setPosition(306,128);
+     cloud[6].setPosition(452,420);
      cloud[7].setPosition(712,264);
      cloud[8].setPosition(452,128);
      cloud[9].setPosition(452,420);
@@ -112,8 +111,9 @@ void StateMaze::init()
 
     gamelength = 20;
 
-
-    filename = "scripts/Maze/maze.map";
+    willekeur = rand()%2;
+    if (willekeur == 0){filename = "scripts/Maze/maze.map";}
+    else {filename = "scripts/Maze/maze2.map";}
 
     ifstream tilemap (filename);
 
@@ -397,16 +397,16 @@ void StateMaze::update()
         hero.setX(hero.getX() + (hero.getXvel()*0.11f));
         hero.setY(hero.getY() + (hero.getYvel()*0.11f));
 
-        if (hero.getXvel() > 18 + variables[2].getInt()/4)
+        if (hero.getXvel() > 20 + variables[2].getInt()/4)
         {
-            hero.setXvel(18 + variables[2].getInt()/4);
+            hero.setXvel(20 + variables[2].getInt()/4);
         }
-        if (hero.getXvel() < -18 - variables[2].getInt()/4)
+        if (hero.getXvel() < -20 - variables[2].getInt()/4)
         {
-            hero.setXvel(-18 - variables[2].getInt()/4);
+            hero.setXvel(-20 - variables[2].getInt()/4);
         }
-        if (hero.getYvel() > 18 + variables[2].getInt()/4) {hero.setYvel(18 + + variables[2].getInt()/4);}
-        if (hero.getYvel() < -18 - variables[2].getInt()/4) {hero.setYvel(-18 - variables[2].getInt()/4);}
+        if (hero.getYvel() > 20 + variables[2].getInt()/4) {hero.setYvel(18 + + variables[2].getInt()/4);}
+        if (hero.getYvel() < -20 - variables[2].getInt()/4) {hero.setYvel(-18 - variables[2].getInt()/4);}
 
         //hero.ontile = 0;
         for (int i = 0;i< cloudnumber;i++)
