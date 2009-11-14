@@ -370,8 +370,8 @@ void StateJumper::update()
 
             // collision checking with tile and hero
 
-            if (hero.getY() + 64 >= blok[i].getY() + blok[i].getYMovement() && hero.getY() + 50 < blok[i].getY() + blok[i].getYMovement()
-                && hero.getX()  > blok[i].getX() + blok[i].getXMovement() - 56 && hero.getX()  < blok[i].getX() + blok[i].getXMovement()+ 16)
+            if (hero.getY() + 64 >= blok[i].getY() + blok[i].getYMovement() && hero.getY() + 48 < blok[i].getY() + blok[i].getYMovement()
+                && hero.getX()  > blok[i].getX() + blok[i].getXMovement() - 50 && hero.getX()  < blok[i].getX() + blok[i].getXMovement()+ 13)
             {
                 if (hero.getYvel() > 0){hero.setYvel(0);}
                 hero.setY(blok[i].getY() + blok[i].getYMovement() - 64);
