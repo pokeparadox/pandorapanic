@@ -68,22 +68,6 @@ void StatePanJoust::init()
         enemy[i].update();
     }
 
-    /*
-    platform[0].setPosition(420,460);
-    platform[1].setPosition(180,460);
-    platform[2].setPosition(205,340);
-    platform[3].setPosition(620,280);
-    platform[4].setPosition(-185,280);
-    platform[5].setPosition(300,150);
-    platform[6].setPosition(-150,110);
-    platform[7].setPosition(700,110);
-    platform[8].setPosition(660,460);
-    platform[9].setPosition(-50,460);
-    */
-
-
-
-
     for (int i = 0; i < enemynumber; i++)
     {
         int j = (rand()%5) + 2;
@@ -104,7 +88,7 @@ void StatePanJoust::init()
             enemy[i].setCurrentFrame(i);
         }
         enemy[i].setFrameRate(DECI_SECONDS);
-        enemy[i].setPosition(platform[j].getX() + 100, platform[j].getY()-42);
+        enemy[i].setPosition(platform[i].getX() + 100, platform[j].getY()-42);
     }
     enemy[1].setCurrentFrame(15);
     enemyvel[1].x = 2;
