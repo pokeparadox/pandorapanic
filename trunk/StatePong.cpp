@@ -6,8 +6,11 @@ StatePong::StatePong()
 
     // Sprites
     ball.loadSprite(            "images/Pong/ball.png");
+    ball.setTransparentColour(MAGENTA);
     playerPaddle.loadSprite(    "images/Pong/paddle.png");
+    playerPaddle.setTransparentColour(MAGENTA);
     cpuPaddle.loadSprite(       "images/Pong/paddle.png");
+    cpuPaddle.setTransparentColour(MAGENTA);
 
     if(variables.size()<SUBSTATE_TRIGGER)
     {
