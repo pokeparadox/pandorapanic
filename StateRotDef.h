@@ -41,6 +41,7 @@ class StateRotDef : public BaseState
         Sound endSound;
         bool shooting;
         int turretDirection;
+        uchar turnSpeed;
         Vector2df shotPosition;
         Vector2df shotVelocity;
         Vector2df enemyPosition;

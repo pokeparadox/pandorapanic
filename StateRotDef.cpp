@@ -41,22 +41,26 @@ void StateRotDef::init()
 
     shooting = false;
 
-    float enemyDirection = rand() % 360;
-    uchar enemDir = degreeToBrad(enemyDirection);
+    uchar enemDir = rand()%256;
     enemyPosition = Vector2df(400 + 360*Lcos(enemDir),240 + 200*Lsin(enemDir));
     Vector2df turretVec = Vector2df(turret.getX() + turret.getWidth()*0.5f,
                                   turret.getY() + turret.getHeight()*0.5f);
     enemyVelocity = (turretVec - enemyPosition);
     enemyVelocity.normalise();
     int levelNumber = variables[2].getInt();
+    turnSpeed = 1;
+    if(levelNumber>30)
+        turnSpeed = 2;
     if(levelNumber>60)
+    {
         levelNumber = 61;
+    }
     levelNumber+=5;
     enemyVelocity *= (2.0f +  ((turretVec - enemyPosition).length()-240.0f)/120.0f);
     enemyVelocity *= (levelNumber * 0.04f);
     enemy.setPosition(enemyPosition.x, enemyPosition.y);
 
-    turretDirection = rand() % (5*360);
+    turretDirection = rand() % (5*256);
 
     counter.start();
 }
@@ -72,13 +76,13 @@ void StateRotDef::userInput()
 
     if(input->isLeft())
     {
-        ++turretDirection;
+        turretDirection+=turnSpeed;
         if(!rotateSound.isPlaying())
             rotateSound.play();
     }
     else if(input->isRight())
     {
-        --turretDirection;
+        turretDirection-=turnSpeed;
         if(!rotateSound.isPlaying())
             rotateSound.play();
     }

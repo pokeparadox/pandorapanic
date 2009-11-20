@@ -436,6 +436,7 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"sdl.gif");
+                logo.setTransparentColour(MAGENTA);
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Rocket"))
             {
