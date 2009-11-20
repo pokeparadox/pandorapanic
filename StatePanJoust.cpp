@@ -53,12 +53,22 @@ void StatePanJoust::init()
     {
         platform[i].loadSprite("images/PanJoust/platform.png");
         platform[i].setTransparentColour(MAGENTA);
-
+        if (i==0){platform[0].setPosition(420,460);}
+        if (i==1){platform[1].setPosition(180,460);}
+        if (i==2){platform[2].setPosition(205,340);}
+        if (i==3){platform[3].setPosition(620,280);}
+        if (i==4){platform[4].setPosition(-185,280);}
+        if (i==5){platform[5].setPosition(300,150);}
+        if (i==6){platform[6].setPosition(-150,110);}
+        if (i==7){platform[7].setPosition(700,110);}
+        if (i==8){platform[8].setPosition(660,460);}
+        if (i==9){platform[9].setPosition(-50,460);}
         enemyonplatform[i] = 0;
         enemybelowplatform[i] = 0;
         enemy[i].update();
     }
 
+    /*
     platform[0].setPosition(420,460);
     platform[1].setPosition(180,460);
     platform[2].setPosition(205,340);
@@ -69,7 +79,7 @@ void StatePanJoust::init()
     platform[7].setPosition(700,110);
     platform[8].setPosition(660,460);
     platform[9].setPosition(-50,460);
-
+    */
 
 
 
