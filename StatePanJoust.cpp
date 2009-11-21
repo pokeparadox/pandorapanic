@@ -132,12 +132,12 @@ void StatePanJoust::userInput()
             if (input->isLeft())
             {
                 hero1.setDirection(0);
-                hero1.changeXVelocity(-1.25f);
+                hero1.changeXVelocity(-7.25f);
             }
             if (input->isRight())
             {
                  hero1.setDirection(1);
-                hero1.changeXVelocity(+1.25f);
+                hero1.changeXVelocity(+7.25f);
            }
         }
         else
@@ -145,12 +145,12 @@ void StatePanJoust::userInput()
                 if (input->isLeft())
                 {
                     hero1.setDirection(0);
-                    hero1.changeXVelocity(-0.50f);
+                    hero1.changeXVelocity(-4.50f);
                 }
                 if (input->isRight())
                 {
                     hero1.setDirection(1);
-                    hero1.changeXVelocity(+0.50f);
+                    hero1.changeXVelocity(+4.50f);
                 }
         }
     }
