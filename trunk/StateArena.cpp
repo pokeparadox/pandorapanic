@@ -14,7 +14,7 @@
 //-----------------------------
 // Constructor & Destructor
 //-----------------------------
-StateArena::StateArena() : m_FrameRateCounter(0), m_EndCounter(0)
+StateArena::StateArena() : m_EndCounter(0)
 {
     m_HeroPtr = NULL;
     m_HeroPtr = new ArenaHero();
@@ -171,13 +171,7 @@ void StateArena::userInput()
             nullifyState();
     #endif
 
-    if(m_FrameRateCounter == 0)
-    {
-        m_HeroPtr->userInput(input);
-        m_FrameRateCounter += 1;
-    }
-    else if (m_FrameRateCounter == 12) m_FrameRateCounter = 0;
-    else m_FrameRateCounter += 1;
+    m_HeroPtr->userInput(input);
 
     //Collision
     if(m_HeroPtr->GetSwinging() && !m_HeroPtr->GetDying())

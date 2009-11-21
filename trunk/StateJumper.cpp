@@ -169,12 +169,12 @@ void StateJumper::userInput()
 
         if (input->isRight())
         {
-            hero.setXvel(hero.getXvel() + 1);
+            hero.setXvel(hero.getXvel() + 15);
 
         }
         if (input->isLeft())
         {
-            hero.setXvel(hero.getXvel() - 1);
+            hero.setXvel(hero.getXvel() - 15);
 
         }
     if (inputlimiter.getScaledTicks() > 15)

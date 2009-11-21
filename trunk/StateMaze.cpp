@@ -186,7 +186,7 @@ void StateMaze::userInput()
 
         if (input->isRight())
         {
-            hero.setXvel(hero.getXvel() + 3);
+            hero.setXvel(hero.getXvel() + 45);
             /*if (hero.getYvel() > 0)
             {
                 hero.setYvel(hero.getYvel() - 1);
@@ -198,7 +198,7 @@ void StateMaze::userInput()
         }
         if (input->isLeft())
         {
-            hero.setXvel(hero.getXvel() - 3);
+            hero.setXvel(hero.getXvel() - 45);
             /*
             if (hero.getYvel() < 0){hero.setYvel(hero.getYvel() - 1);}
             else
@@ -210,7 +210,7 @@ void StateMaze::userInput()
 
         if (input->isDown())
         {
-            hero.setYvel(hero.getYvel() + 3);
+            hero.setYvel(hero.getYvel() + 45);
             /*
             if (hero.getXvel() > 0){hero.setXvel(hero.getXvel() - 1);}
             else
@@ -221,7 +221,7 @@ void StateMaze::userInput()
         }
         if (input->isUp())
         {
-            hero.setYvel(hero.getYvel() - 3);
+            hero.setYvel(hero.getYvel() - 45);
             /*
             if (hero.getXvel() > 0){hero.setXvel(hero.getXvel() - 1);}
             else

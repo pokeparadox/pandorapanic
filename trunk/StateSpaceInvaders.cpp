@@ -84,13 +84,13 @@ void StateSpaceInvaders::userInput()
     if(input->isLeft())
     {
         //ship.setX(ship.getX()-6);
-        shipVel -= 0.2f;
+        shipVel -= 2.0f;
         //Input.resetKeys();
     }
     if(input->isRight())
     {
         //ship.setX(ship.getX()+6);
-        shipVel += 0.2f;
+        shipVel += 2.0f;
         //Input.resetKeys();
     }
 
