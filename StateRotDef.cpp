@@ -48,9 +48,9 @@ void StateRotDef::init()
     enemyVelocity = (turretVec - enemyPosition);
     enemyVelocity.normalise();
     int levelNumber = variables[2].getInt();
-    turnSpeed = 1;
+    turnSpeed = 10;
     if(levelNumber>30)
-        turnSpeed = 2;
+        turnSpeed = 20;
     if(levelNumber>60)
     {
         levelNumber = 61;

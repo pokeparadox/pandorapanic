@@ -44,7 +44,7 @@ public:
 	// Datamembers
 	//-------------------------------------------------
 
-	int m_FrameRateCounter, m_EndCounter;
+	int m_EndCounter;
 
     ArenaHero* m_HeroPtr;
     ArenaMonsterList* m_MonsterListPtr;

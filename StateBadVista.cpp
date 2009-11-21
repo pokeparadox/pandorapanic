@@ -82,7 +82,7 @@ void StateBadVista::init()
   pwned = false;
   pwned_count = 0;
   armAngle = 1;
-  armIncrement = 4;
+  armIncrement = 12;
   numBounces = 0;
   arm.setPosition((int)ARM_INIT_X, (int)ARM_INIT_Y);
   logo.setPosition((int)LOGO_INIT_X, (int)LOGO_INIT_Y);

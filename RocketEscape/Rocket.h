@@ -60,10 +60,10 @@ class Rocket
         void invertVelocityX(){velocity.x = -velocity.x*0.6f;angle = 0-angle;acceleration.x = 0;hit.play();}
         void invertVelocityY(){velocity.y = -velocity.y*0.4f;angle = 0;acceleration.y = 0;if(abs(velocity.y)>0.4f){hit.play();}}
 
-        void rotateLeft(){if(angle<MAX_ANGLE){angle+=0.1f;}}
-        void rotateRight(){if(angle+45> 0){angle-=0.1f;}}
+        void rotateLeft(){if(angle<MAX_ANGLE){angle+=3.0f;}}
+        void rotateRight(){if(angle+45> 0){angle-=3.0f;}}
         void rotateZero();
-        void thrustIncrease(){if(thrust < MAX_ACCEL){thrust+=0.025f;}}
+        void thrustIncrease(){if(thrust < MAX_ACCEL){thrust+=0.2f;}}
         void thrustDecrease(){if(thrust > 0){thrust-=0.025f;}}
         void thrustKill(){thrust = 0.0f;}
 
