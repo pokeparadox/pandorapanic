@@ -48,7 +48,7 @@ class StateBallDrop : public BaseState
         /////////////////////////////
         //Added by billykater
         float BALL_SPEED;
-        const static int CUP_SPEED = 1;
+        const static int CUP_SPEED = 12;
         /////////////////////////////
 };
 

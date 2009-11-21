@@ -127,7 +127,7 @@ class StateCake : public BaseState
                 void left()
                 {
                     direction = LEFT;
-                    position.x -= 0.1f;
+                    position.x -= 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
                     if(hitRegion->hitTest(&map))
                         position = oldPos;
@@ -140,7 +140,7 @@ class StateCake : public BaseState
                 void right()
                 {
                     direction = RIGHT;
-                    position.x += 0.1f;
+                    position.x += 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
                     Colour c = hitRegion->colourTest(&map);
                     if(hitRegion->hitTest(&map))
@@ -154,7 +154,7 @@ class StateCake : public BaseState
                 void up()
                 {
                     direction = UP;
-                    position.y -= 0.1f;
+                    position.y -= 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
                     if(hitRegion->hitTest(&map))
                         position = oldPos;
@@ -167,7 +167,7 @@ class StateCake : public BaseState
                 void down()
                 {
                     direction = DOWN;
-                    position.y += 0.1f;
+                    position.y += 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
                     if(hitRegion->hitTest(&map))
                         position = oldPos;

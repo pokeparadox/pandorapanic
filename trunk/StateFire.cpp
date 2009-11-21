@@ -21,8 +21,8 @@
 #define     CANNON_ANGLE_MAX        45 // in both directions -45 to +45
 #endif
 #define     CANNON_CHGRATE_MAX      10
-#define     CANNON_ANGLE_CHGRATE    1
-#define     CANNON_POWER_CHGRATE    1
+#define     CANNON_ANGLE_CHGRATE    8
+#define     CANNON_POWER_CHGRATE    5
 #define     CANNON_POWER_MIN		5
 #define     CANNON_POWER_MAX		40
 #define     WATER_MAX		        2000
