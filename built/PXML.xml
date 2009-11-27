@@ -1,27 +1,32 @@
-<PXML>
-	<title>Pandora Panic!</title>          
-	<standalone>Yes</standalone>          
-	<icon>images/pp_life.png</icon> 
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PXML id="pandorapanic101" xmlns="http://openpandora.org/namespaces/PXML" >  
+      	<title>Pandora Panic!</title>          
+      	         
+      	<icon src="./images/ppicon.png"/> 
+      	<description lang="en_US">
+                
+			Pandora Panic! A frantic, frenetic and occasionally mind bending 
+			minigame collection created for Pandora by the GP32X community.
+	</description>
+	<description lang="nl_NL"> Pandora Panic! Een panische minigame collectie voor de pandora door leden van het GP32X Forum</description>
 	
-	<description>
-		<en>Pandora Panic! A frantic, frenetic and occasionally mind bending minigame collection created for Pandora by the GP32X community.</en>
-		<nl>Pandora Panic! Een panische minigame collectie door leden van het GP32X Forum </nl>    
-		<de>Pandora Panic! Eine wilde und abgedrehte Minispiel-Sammlung für die Pandora - erstellt von der GP32X-Community.</de>              
-    </description>
-	
-	<previewpic>
-		<pic1>./preview/PanicPreview1.png</pic1>
-		<pic2>./preview/PanicPreview2.png</pic2>
-		<pic3>./preview/PanicPreview3.png</pic3>
-		<pic4>./preview/PanicPreview4.png</pic4>
-		<pic5>./preview/PanicPreview5.png</pic5>
-		<pic6>./preview/PanicPreview6.png</pic6>
-	</previewpic>
-	
-	<author name = 'Minigames: the GP32X Community, Framework: PokeParadox and Pirate Games' website='http://projectinfinity.org.uk/doku.php/homebrew:games:pandorapanic' />
-    <version major='1' minor='0' release='1' build='1' />
-    <exec>PandoraPanic.pxf</exec>
-    <category>Games</category>          
-    <clockspeed>600</clockspeed>
+	<exec background="false" standalone="true" command="./PandoraPanic.pxf"/ >                    
+        
+	<previewpics>
+		<pic src="./preview/PanicPreview1.png"/>
+		<pic src="./preview/PanicPreview2.png"/>
+		<pic src="./preview/PanicPreview3.png"/>
+		<pic src="./preview/PanicPreview4.png"/>
+		<pic src="./preview/PanicPreview5.png"/>
+		<pic src="./preview/PanicPreview6.png"/>
+		
+	</previewpics"
+        <author name="Minigames: the GP32X Community, Framework: PokeParadox and Pirate Games" website='http://projectinfinity.org.uk/doku.php/homebrew:games:pandorapanic" />
+        <version major="1" minor="1" release="1" build="1" />
+        <categories>
+        <category name="Games">
+	</categories>          
+        
 </PXML> 
                 

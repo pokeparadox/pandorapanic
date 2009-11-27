@@ -63,6 +63,8 @@ You now just need to add your minigames here and it should work!
         state = new Fire;
     else if (next == STATE_CAKE)
         state = new StateCake;
+    /*else if (next == STATE_DARKTREASURE)
+        state = new StateDarkTreasure;*/
 
 
     /*else if(next == STATE_ROCKETESCAPE)

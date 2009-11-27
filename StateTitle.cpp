@@ -50,7 +50,7 @@ void StateTitle::init()
     const string ext = ".png";
     emit.loadSprite(path+"pp_star"+ext);
     #ifdef PENJIN_SDL
-        emit.setUseHardware(false);
+        emit.setUseHardware(true);
     #elif PENJIN_GL
         GFX::init2DRendering(*xRes,*yRes);
     #endif
@@ -233,6 +233,7 @@ void StateTitle::update()
                     GFX::clearScreen(bgBuffer);
                     back.render(bgBuffer);
                 #else
+                    GFX::clearScreen();
                     back.render();
                 #endif
             }
