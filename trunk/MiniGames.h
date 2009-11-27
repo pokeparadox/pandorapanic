@@ -5,7 +5,7 @@ enum
 {
     MAX_GAMES = 23,              //  The number of minigames we have
     EXTRA_LIFE_STAGES = 10,      //  The number of stages we need to pass for an extra life to be added.
-    SUBSTATE_TRIGGER = 9
+    SUBSTATE_TRIGGER = 9         //  A number that signifies that a state is being loaded within another state.
 };
 enum MINIGAMES_LIST
 {
@@ -33,6 +33,7 @@ enum MINIGAMES_LIST
     GAME_COUNTJOB,
     GAME_FIRE,
     GAME_CAKE,
+    //GAME_DARKTREASURE,
     //GAME_BARRELROLL,
     //GAME_PANDORAPANIC,
     GAME_TILEEDITOR,
@@ -64,6 +65,7 @@ static string MINIGAMES_NAMES[]=
     "The Count Job",
     "Fire",
     "Birthday Cake",
+    //"Dark Treasure",
     //"Do A Barrel Roll!",
     //"Pandora Panic!",
     "Tile Editor",

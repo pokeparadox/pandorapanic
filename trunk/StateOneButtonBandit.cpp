@@ -16,9 +16,11 @@ void OBBShapes::addShape(string s) {
     shapes[shapeCount] = new Sprite;
     shapes[shapeCount]->loadSprite("images/OneButtonBandit/" + s + ".png");
     shapes[shapeCount]->setTransparentColour(WHITE);
+    shapes[shapeCount]->setUseHardware(true);
     guides[shapeCount] = new Sprite;
     guides[shapeCount]->loadSprite("images/OneButtonBandit/" + s + "_guide.png");
     guides[shapeCount]->setTransparentColour(WHITE);
+    guides[shapeCount]->setUseHardware(true);
     shapeCount++;
 }
 
@@ -382,6 +384,7 @@ void StateOneButtonBandit::init() {
 
     // Load the background graphic
     background.loadBackground("images/OneButtonBandit/background.png");
+    background.setUseHardware(true);
     shading.loadImageNoKey("images/OneButtonBandit/shading.png");
 
     // Load the sound effects
@@ -537,7 +540,7 @@ void StateOneButtonBandit::unlimitedUpdate() {
                     gameTimer.start();
 
                     // Next step is to go backwards
-                    currentGlobalRate = -0.2;
+                    currentGlobalRate = -0.2f;
                 }
                 break;
 
@@ -549,7 +552,7 @@ void StateOneButtonBandit::unlimitedUpdate() {
                     gameTimer.start();
 
                     // Next step is start spinning
-                    currentGlobalRate = 0.0;
+                    currentGlobalRate = 0.0f;
                 }
                 break;
 
@@ -613,12 +616,12 @@ void StateOneButtonBandit::update() {
             // Have to have this phase to get the currently lined up
             // items off the guides
             case 2:
-                currentGlobalRate = (gameTimer.getScaledTicks() * 1.0)/15 * startGlobalRate;
+                currentGlobalRate = (gameTimer.getScaledTicks() * 1.0f)/15 * startGlobalRate;
                 break;
 
             // Playable
             case 3:
-                currentGlobalRate *= 1.005;
+                currentGlobalRate *= 1.005f;
                 if (currentGlobalRate > maxGlobalRate) {
                     currentGlobalRate = maxGlobalRate;
                 }

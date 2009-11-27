@@ -44,7 +44,7 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-O3" />
 					<Add option="`sdl-config --cflags`" />
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-D_WIN32" />
@@ -100,7 +100,7 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-O3" />
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-D_LINUX" />
 					<Add option="-DPENJIN_SDL" />
@@ -113,6 +113,7 @@
 					<Add option="-lSDL_image" />
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_gfx" />
+					<Add option="--disable-checking" />
 					<Add directory="../PenjinBase/obj/lin/Release" />
 				</Linker>
 			</Target>
@@ -154,7 +155,7 @@
 				<Option type="0" />
 				<Option compiler="pandora" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-O3" />
 					<Add option="-msoft-float" />
 					<Add option="-DPLATFORM_PANDORA" />
 					<Add option="-DPENJIN_SDL" />
@@ -328,6 +329,11 @@
 		<Unit filename="StateCredits.h">
 			<Option virtualFolder="MyGame/States/" />
 		</Unit>
+		<Unit filename="StateDarkTreasure.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="StateDarkTreasure.h" />
 		<Unit filename="StateDistractedMath.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
@@ -821,6 +827,11 @@
 		<Unit filename="../PenjinBase/Random.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
+		<Unit filename="../PenjinBase/Raycast.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="../PenjinBase/Raycast.h" />
 		<Unit filename="../PenjinBase/Rectangle.cpp">
 			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
 		</Unit>
