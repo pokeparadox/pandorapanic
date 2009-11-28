@@ -34,7 +34,6 @@ class StateTitle : public BaseState
             virtual void render();
         #endif
         virtual void update();
-        virtual void unlimitedUpdate();
         virtual void userInput();
 
     private:
@@ -51,6 +50,7 @@ class StateTitle : public BaseState
         Colour newColour;
         Menu menu;
         int choice;
+        bool showPrompt;
         bool splashDone;
         bool gradual;
         uint gradualScaler;

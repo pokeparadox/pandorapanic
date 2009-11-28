@@ -44,13 +44,13 @@ void StateTitle::init()
 
     GFX::setClearColour(backColour);
     newColour = backColour;
-    emit.setMax(500);
-    emit.setInvisible(400);
+    emit.setMax(200);
+    emit.setInvisible(150);
     const string path = "images/";
     const string ext = ".png";
     emit.loadSprite(path+"pp_star"+ext);
     #ifdef PENJIN_SDL
-        emit.setUseHardware(true);
+        emit.setUseHardware(false);
     #elif PENJIN_GL
         GFX::init2DRendering(*xRes,*yRes);
     #endif
@@ -114,6 +114,7 @@ void StateTitle::init()
 void StateTitle::setupMainMenu()
 {
     choice = -1;
+    showPrompt = false;
     menu.clear();
     menu.setMenuStart(getStateXResolution()*0.25f - 15,50);
     menu.setSelection(1);
@@ -255,6 +256,11 @@ void StateTitle::update()
     {
         menu.update();
         mainMenu();
+        if(timer.getScaledTicks() > 500 && showPrompt == false)
+        {
+            showPrompt = true;
+            prompt.display();
+        }
     }
     else
     {
@@ -270,21 +276,13 @@ void StateTitle::update()
                 scaleDelta.y = rand.nextFloat(0,1)/10;
 */
             scale.x = scale.x + scaleDelta.x;
-            splash.setScaleX(scale.x);
-            splash.setScaleY(scale.x);
+            splash.setScale(scale.x);
         }
         if(spinLogo)
         {
             angle+=angleDelta;
             splash.setRotation(angle);
         }
-    }
-}
-
-void StateTitle::unlimitedUpdate()
-{
-    if(!splashDone)
-    {
         if(startTimer.getScaledTicks() > 451)
         {
             startTimer.start();
@@ -304,7 +302,7 @@ void StateTitle::unlimitedUpdate()
 #ifdef PENJIN_SDL
 void StateTitle::render(SDL_Surface* screen)
 {
-    /// Clear Screen
+    /// Clear Screen with prerendered background
     SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
     emit.render(screen);
     if(splashDone)
@@ -395,15 +393,15 @@ void StateTitle::userInput()
         {
             menu.menuUp();
             input->resetKeys();
-            if(prompt.getNumEvents()<1)
-                prompt.display();
+            timer.start();
+            showPrompt = false;
         }
         else if(input->isDown())
         {
             menu.menuDown();
             input->resetKeys();
-            if(prompt.getNumEvents()<1)
-                prompt.display();
+            timer.start();
+            showPrompt = false;
         }
         if(returnToCentre)
         {

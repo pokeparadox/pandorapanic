@@ -1,3 +1,10 @@
+28 November 2009
+   released version 1.3.1734 of PandoraPanic
+
+     Change log:
+        -Added: now there is a delay to the helper button being displayed on StateTitle
+        -Fixed: Now the name entry screen asks you to confirm the name when there are enough letters.
+
 13 November 2009
    released version 1.2.1618 of PandoraPanic
 
