@@ -76,7 +76,8 @@ class StateMaze : public BaseState
         Sprite tilesprite[10];
         Sprite blobevil;
         Charac cloud[32];
-        //AnimatedSprite robotright;
+
+        AnimatedSprite animatedcloud[32];
         //AnimatedSprite robotleft;
         Charac hero;
 

@@ -204,6 +204,7 @@ void StateTileEditor::render(SDL_Surface *screen)
             {
             tilesprite.setPosition(blok[i].getX(), blok[i].getY());
             tilesprite.render(screen);
+
             }
             if (blok[i].moving == 1)
             {
