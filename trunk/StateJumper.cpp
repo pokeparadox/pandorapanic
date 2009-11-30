@@ -135,9 +135,9 @@ void StateJumper::init()
            blobnumber++;
         }
 
-        if (blok[j].moving == 1){blok[j].setYMovement(rand()%50);}
+        if (blok[j].moving == 1){blok[j].setYMovement(20);}
         if (blok[j].moving == 2){blok[j].setYMovement(50);}
-        if (blok[j].moving == 3){blok[j].setXMovement(rand()%40);}
+        if (blok[j].moving == 3){blok[j].setXMovement(20);}
         if (blok[j].moving == 4){blok[j].setXMovement(40);}
         tilenumber = j;
         j++;
