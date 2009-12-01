@@ -15,6 +15,9 @@ StateRotDef::StateRotDef()
     turret.loadSprite("images/RotDef/turret_top.png");
     turretBase.loadSprite("images/RotDef/turret_base.png");
     shot.loadSprite("images/RotDef/bullet.png");
+    explosion.loadFrames("images/RotDef/explosion.png", 5, 1);
+    explosion.setFrameRate(DECI_SECONDS);
+    explosion.setLooping(false);
     background.loadBackground("images/RotDef/battlefield.png");
     LUT::init();
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
@@ -40,6 +43,9 @@ void StateRotDef::init()
     turretBase.setPosition(turret.getX(), turret.getY());
 
     shooting = false;
+    enemyKilled = false;
+    playerKilled = false;
+    gameEnd = false;
 
     uchar enemDir = rand()%256;
     enemyPosition = Vector2df(400 + 360*Lcos(enemDir),240 + 200*Lsin(enemDir));
@@ -129,12 +135,12 @@ void StateRotDef::render(SDL_Surface *screen)
 {
 	background.render(screen);
 
-    enemy.render(screen);
+    if(!enemyKilled && !playerKilled) enemy.render(screen);
     turretBase.render(screen);
     turret.setRotation(turretDirection/5.0);
     turret.render(screen);
 
-    if(shooting)
+    if(shooting && !enemyKilled)
     {
         shot.render(screen);
     }
@@ -142,6 +148,12 @@ void StateRotDef::render(SDL_Surface *screen)
     if(counter.getTicks() <= 500)
     {
         command.print(screen, "Shoot!");
+    }
+
+    if((enemyKilled || playerKilled) && !explosion.hasFinished()) explosion.render(screen);
+    if(explosion.hasFinished())
+    {
+        gameEnd = true;
     }
 }
 void StateRotDef::pauseScreen(SDL_Surface* screen)
@@ -168,12 +180,12 @@ void StateRotDef::render()
 {
 	background.render();
 
-    enemy.render();
+    if(!enemyKilled) enemy.render();
     turretBase.render();
     turret.setRotation(turretDirection/5.0f);
     turret.render();
 
-    if(shooting)
+    if(shooting && !enemyKilled)
     {
         shot.render();
     }
@@ -182,14 +194,30 @@ void StateRotDef::render()
     {
         command.print("Shoot!");
     }
+
+    if((enemyKilled || playerKilled) && !explosion.hasFinished()) explosion.render(screen);
+    if(explosion.hasFinished())
+    {
+        gameEnd = true;
+    }
 }
 #endif
 
 void StateRotDef::update()
 {
+    if(gameEnd)
+    {
+        SDL_Delay(1000);
+        if(enemyKilled) variables[0].setInt(1);
+        else variables[0].setInt(0);
+        setNextState(STATE_MAIN);
+    }
+
+    if(enemyKilled || playerKilled) explosion.update();
+
     enemyPosition += enemyVelocity;
     enemy.setPosition(enemyPosition.x, enemyPosition.y);
-    if(shooting)
+    if(shooting && !enemyKilled)
     {
         shotPosition += shotVelocity;
         shot.setPosition(shotPosition.x, shotPosition.y);
@@ -207,9 +235,8 @@ void StateRotDef::update()
         {
             endSound.loadSound("sounds/RotDef/WIN.ogg");
             endSound.play();
-            SDL_Delay(1000);
-            variables[0].setInt(1);
-            setNextState(STATE_MAIN);
+            explosion.setPosition(enemy.getX() - 84, enemy.getY() - 84);
+            enemyKilled = true;
         }
 
     }
@@ -219,11 +246,10 @@ void StateRotDef::update()
        enemy.getY()+(int)enemy.getHeight()*0.5f >= turretBase.getY() &&
        enemy.getY()+(int)enemy.getHeight()*0.5f <= turretBase.getY()+(int)turretBase.getHeight() )
     {
-            endSound.loadSound("sounds/RotDef/LOSE.ogg");
-            endSound.play();
-            SDL_Delay(1000);
-        variables[0].setInt(0);
-        setNextState(STATE_MAIN);
+        endSound.loadSound("sounds/RotDef/LOSE.ogg");
+        endSound.play();
+        explosion.setPosition(turretBase.getX() - 29, turretBase.getY() - 29);
+        playerKilled = true;
     }
 }
 

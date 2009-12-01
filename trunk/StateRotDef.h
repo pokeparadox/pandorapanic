@@ -8,6 +8,7 @@
 
 #include "Background.h"
 #include "Sprite.h"
+#include "AnimatedSprite.h"
 #include "Sound.h"
 #include "LUT.h"
 
@@ -36,10 +37,14 @@ class StateRotDef : public BaseState
         Sprite turretBase;
         Sprite enemy;
         Sprite shot;
+        AnimatedSprite explosion;
         Sound rotateSound;
         Sound shotSound;
         Sound endSound;
         bool shooting;
+        bool enemyKilled;
+        bool playerKilled;
+        bool gameEnd;
         int turretDirection;
         uchar turnSpeed;
         Vector2df shotPosition;
