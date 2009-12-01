@@ -16,13 +16,13 @@
 
 // Game Parameters
 #ifdef PENJIN_FIXED
-#define     CANNON_ANGLE_MAX        (Fixed)(45)
+#define     CANNON_ANGLE_MAX        (Fixed)(32)
 #else
-#define     CANNON_ANGLE_MAX        45 // in both directions -45 to +45
+#define     CANNON_ANGLE_MAX        32 // in both directions -45 to +45
 #endif
 #define     CANNON_CHGRATE_MAX      10
-#define     CANNON_ANGLE_CHGRATE    8
-#define     CANNON_POWER_CHGRATE    5
+#define     CANNON_ANGLE_CHGRATE    4
+#define     CANNON_POWER_CHGRATE    2
 #define     CANNON_POWER_MIN		5
 #define     CANNON_POWER_MAX		40
 #define     WATER_MAX		        2000
@@ -77,6 +77,8 @@ Fire::Fire()
 	imgPickle.loadImageSheet(  "images/Fire/pickle.png", PICKLE_SPRITE_FRAMES, PICKLE_SPRITE_ROWS );
 
 	printf( "Fire: Images loaded\n" );
+	inputLimiter.setMode(MILLI_SECONDS);
+	inputLimiter.start();
 }
 
 Fire::~Fire()
@@ -123,8 +125,14 @@ void Fire::init()
     printf( "Fire: Init complete loading level %d\n", current_level );
 }
 
-void Fire::userInput()
+void Fire::unlimitedUpdate()
 {
+    //  Stop input refresh if we are here early
+    if(inputLimiter.getScaledTicks() <= 5)
+        return;
+    else
+        inputLimiter.start();
+
     input->update();
 #ifdef PLATFORM_PC
     if (input->isQuit())
@@ -857,8 +865,7 @@ void Fire::RenderSprites( SDL_Surface* screen )
 void Fire::RenderCannon( SDL_Surface* screen )
 {
     char cannon_label[20];
-
-	sprCannon.setRotation(cannon.angle);
+	sprCannon.setRotation(LUT::bradToDegree(cannon.angle));
 	sprCannon.render(screen);
 
 #ifdef PENJIN_FIXED

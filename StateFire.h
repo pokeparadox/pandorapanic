@@ -93,11 +93,10 @@ class Fire : public BaseState
         virtual void pauseScreen();
 #endif
         virtual void update();
-        //virtual void onPause();
-        //virtual void onResume();
+        virtual void unlimitedUpdate();
 
         virtual ~Fire();
-        virtual void userInput();
+        virtual void userInput(){;}
         virtual void pauseInput();
 
     private:
@@ -117,6 +116,7 @@ class Fire : public BaseState
         bool                firstrun;
         int16_t             screen_width;
         int16_t             screen_height;
+        Timer               inputLimiter;
 
 #if FIRE_DEBUG
         #define DEBUG_STRING_MAX 100
