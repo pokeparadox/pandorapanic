@@ -67,14 +67,19 @@ void StateSpellingContest::userInput()
             {
 
                 #ifdef PLATFORM_PC
-                case SDL_QUIT: nullifyState(); break;
+                    case SDL_QUIT: nullifyState(); break;
+                    case SDL_KEYDOWN:
+                        if(event.key.keysym.sym == SDLK_RETURN)
+                            pauseToggle();
+                        break;
+                #elif PLATFORM_PANDORA
+                    SDL_JOYBUTTONDOWN:
+                    if(Event.jbutton.button == 5)// Pandora start button
+                        pauseToggle();
+                    break;
                 #endif
 
-                case SDL_KEYDOWN:
-                    if(event.key.keysym.sym == SDLK_RETURN)
-                    {
-                        pauseToggle();
-                    }
+
                     if ((event.key.keysym.unicode > 64 && event.key.keysym.unicode < 91)
                     ||(event.key.keysym.unicode > 96 && event.key.keysym.unicode < 123))
                     {

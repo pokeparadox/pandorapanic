@@ -70,13 +70,17 @@ void StateDistractedMath::userInput()
                 switch(event.type)
                 {
                     #ifdef PLATFORM_PC
-                    case SDL_QUIT: nullifyState(); break;
-                    #endif
-                    case SDL_KEYDOWN:
-                        if(event.key.keysym.sym == SDLK_RETURN)
-                        {
+                        case SDL_QUIT: nullifyState(); break;
+                        case SDL_KEYDOWN:
+                            if(event.key.keysym.sym == SDLK_RETURN)
+                                pauseToggle();
+                            break;
+                    #elif PLATFORM_PANDORA
+                        SDL_JOYBUTTONDOWN:
+                        if(Event.jbutton.button == 5)// Pandora start button
                             pauseToggle();
-                        }
+                        break;
+                    #endif
                         MathInputUnicode =  (event.key.keysym.unicode); // unicode input
                         #ifdef PENJIN_FIXED
                             MathInputNumeric = MathInputUnicode.intValue<<16 - 48; // numeric is 48 ascii chars lower :)

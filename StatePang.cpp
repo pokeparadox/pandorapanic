@@ -2172,7 +2172,7 @@ void StatePang::render( )
 #ifdef PENJIN_SDL
 void StatePang::pauseScreen(SDL_Surface* screen)
 {
-    m_pPangGame->Update( input );
+    //m_pPangGame->Update( input );
 
     // Pause screen
     if(variables.size()<SUBSTATE_TRIGGER)
@@ -2191,7 +2191,7 @@ void StatePang::pauseScreen(SDL_Surface* screen)
 #else
 void StatePang::pauseScreen()
 {
-    m_pPangGame->Update( input );
+    //m_pPangGame->Update( input );
 
     // Pause screen
     pauseSymbol();
