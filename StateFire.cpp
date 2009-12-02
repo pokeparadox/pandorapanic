@@ -332,25 +332,33 @@ void Fire::SetupGame( int8_t lvl )
         towers[i].fire.regentimer   = FIRE_REGENTIMER_MAX;
         towers[i].fire.frame        = 0;
 
-        towers[i].smokeblack.setShouldStopNew(true);
         towers[i].smokeblack.setMax(SMOKE_PARTICLES);
         towers[i].smokeblack.loadSprite( "images/Fire/bsmoke.png" );
-        towers[i].smokeblack.setPosition(Vector2di(towers[i].fire.x+(imgFloor.getWidth()/2), towers[i].fire.y));
-        towers[i].smokeblack.setInvisible(0);
+        towers[i].smokeblack.setPosition(Vector2di(-10000,-10000));
+        towers[i].smokeblack.setBoundaries(Vector2di(0,0),Vector2di(getStateXResolution(),getStateYResolution()));
+        towers[i].smokeblack.setInvisible(SMOKE_PARTICLES-10);
         towers[i].smokeblack.setMaxVelocity(Vector2df(SMOKE_MAX_VEL_UP, SMOKE_MAX_VEL_DN));
         towers[i].smokeblack.setLifeTime(SMOKE_LIFETIME);
         towers[i].smokeblack.setGravity(SMOKE_GRAVITY);
         smoke_position = towers[i].smokeblack.getPosition();
 
-        towers[i].smokewhite.setShouldStopNew(true);
+        //towers[i].smokewhite.setParticlesType(SPRITE_PARTICLE);
+
         towers[i].smokewhite.setMax(SMOKE_PARTICLES);
         towers[i].smokewhite.loadSprite( "images/Fire/wsmoke.png" );
-        towers[i].smokewhite.setPosition(Vector2di(towers[i].fire.x+(imgFloor.getWidth()/2), towers[i].fire.y));
-        towers[i].smokewhite.setInvisible(0);
+        towers[i].smokewhite.setPosition(Vector2di(-10000,-10000));
+        towers[i].smokewhite.setBoundaries(Vector2di(0,0),Vector2di(getStateXResolution(),getStateYResolution()));
+        towers[i].smokewhite.setInvisible(SMOKE_PARTICLES-10);
         towers[i].smokewhite.setMaxVelocity(Vector2df(SMOKE_MAX_VEL_UP, SMOKE_MAX_VEL_DN));
         towers[i].smokewhite.setLifeTime(SMOKE_LIFETIME);
         towers[i].smokewhite.setGravity(SMOKE_GRAVITY);
         towers[i].smoketimer = 0;
+
+        //  Pre-advance particles to avoid floating bits
+        towers[i].smokewhite.advanceUpdate(1);
+        towers[i].smokeblack.advanceUpdate(1);
+        towers[i].smokeblack.setShouldStopNew(true);
+        towers[i].smokewhite.setShouldStopNew(true);
 
         printf( "Fire: Tower #%d with %d floors at %dx%d\n", i, towers[i].floors.size(), towers[i].x, towers[i].y );
         printf( "Fire:       with Fire at  %dx%d\n", towers[i].fire.x, towers[i].fire.y );
@@ -705,6 +713,9 @@ void Fire::MoveParticles( void )
             {
                 if (towers[i].fire.size > 0)
                 {
+                    //  default that smoke should move if there is fire
+                    towers[i].smokeblack.setShouldStopNew(false);
+                    towers[i].smokewhite.setShouldStopNew(false);
                     fire_box.x = towers[i].fire.x;
                     fire_box.y = towers[i].fire.y;
 
@@ -749,7 +760,10 @@ void Fire::MoveParticles( void )
 
     for (i=0; i<FIRE_MAX_TOWERS; i++)
     {
+        towers[i].smokeblack.setPosition(Vector2di(towers[i].fire.x+(imgFloor.getWidth()/2), towers[i].fire.y));
+        towers[i].smokewhite.setPosition(Vector2di(towers[i].fire.x+(imgFloor.getWidth()/2), towers[i].fire.y));
         towers[i].smokeblack.update();
+        towers[i].smokewhite.update();
     }
 }
 
@@ -865,7 +879,8 @@ void Fire::RenderSprites( SDL_Surface* screen )
 void Fire::RenderCannon( SDL_Surface* screen )
 {
     char cannon_label[20];
-	sprCannon.setRotation(LUT::bradToDegree(cannon.angle));
+    int deg = LUT::bradToDegree(cannon.angle);
+	sprCannon.setRotation(deg);
 	sprCannon.render(screen);
 
 #ifdef PENJIN_FIXED
@@ -879,8 +894,11 @@ void Fire::RenderCannon( SDL_Surface* screen )
     #define CANNON_LABEL_X      500
     #define CANNON_LABEL_Y      10
     #define CANNON_LABEL_DELTAY 30
-
-    sprintf( cannon_label, "Angle: %2d deg",  cannon.angle );
+    //  fix for angle scaling
+    if(deg > 45)
+        deg-=360;
+    deg = -deg;
+    sprintf( cannon_label, "Angle: %2d deg",  deg );
     pauseText.setPosition(CANNON_LABEL_X,CANNON_LABEL_Y);
     pauseText.print(screen, cannon_label);
 

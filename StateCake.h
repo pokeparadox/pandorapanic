@@ -212,6 +212,7 @@ class StateCake : public BaseState
         Text text;
         AnimatedSprite buttonSheet;
         int limit;
+        Music mus;
 };
 
 #endif // STATECAKE_H
