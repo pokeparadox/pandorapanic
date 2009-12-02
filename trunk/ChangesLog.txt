@@ -1,4 +1,10 @@
 02 December 2009
+   released version 1.3.1789 of PandoraPanic
+
+     Change log:
+        -Fixed: segfault when displaying help screen for Pang
+
+02 December 2009
    released version 1.3.1786 of PandoraPanic
 
      Change log:
