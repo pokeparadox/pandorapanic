@@ -32,36 +32,41 @@ void StateCake::init()
     //  following is only to position the shadow and HitRegion in the correct place in the Preview image.
     mariela.down();
     mariela.update();
+    if(variables.size()<SUBSTATE_TRIGGER)
+    {
+        mus.loadMusic("music/BirthdayCake/Indication.ogg");
+        mus.setLooping(true);
+        mus.play();
+        int level = variables[2].getInt();
+        if(level < 5)
+        {
+            for(int i = NUM_CANDLES-1; i>= 0; --i)
+            {
+                candles[i].setRelightLimit(30000);
+            }
+        }
+        else if(level < 15)
+        {
+            for(int i = NUM_CANDLES-1; i>= 0; --i)
+            {
+                candles[i].setRelightLimit(((180/(float)level) +0.5f)*1000);
+            }
+        }
+        else
+        {
+            for(int i = NUM_CANDLES-1; i>= 0; --i)
+            {
+                candles[i].setRelightLimit(((180/15.0f) +0.5f)*1000);
+            }
+        }
+        if(level < 35)
+            limit = 60 - level;
+        else
+            limit = 25;
 
-    int level = variables[2].getInt();
-    if(level < 5)
-    {
-        for(int i = NUM_CANDLES-1; i>= 0; --i)
-        {
-            candles[i].setRelightLimit(30000);
-        }
+        timer.setMode(SECONDS);
+        timer.start(limit);
     }
-    else if(level < 15)
-    {
-        for(int i = NUM_CANDLES-1; i>= 0; --i)
-        {
-            candles[i].setRelightLimit(((180/(float)level) +0.5f)*1000);
-        }
-    }
-    else
-    {
-        for(int i = NUM_CANDLES-1; i>= 0; --i)
-        {
-            candles[i].setRelightLimit(((180/15.0f) +0.5f)*1000);
-        }
-    }
-    if(level < 35)
-        limit = 60 - level;
-    else
-        limit = 25;
-
-    timer.setMode(SECONDS);
-    timer.start(limit);
 }
 
 void StateCake::render(SDL_Surface* screen)

@@ -266,10 +266,15 @@ void StateTitle::update()
     {
         if(scaleLogo)
         {
-            if(scale.x > 2.2f)
+            if(scale.x > 1.4f)
                 scaleDelta.x = -((Random::nextFloat(0,1)/15)-0.01f);
-            else if(scale.x <= 0)
+            else if(scale.x < 0)
                 scaleDelta.x = (Random::nextFloat(0,1)*0.1f)-0.01f;
+            else if(scale.x == 0)
+            {
+                scale.x =0.001f;
+                scaleDelta.x = (Random::nextFloat(0,1)*0.1f)-0.01f;
+            }
             /*if(scale.y > 2.5f)
                 scaleDelta.y = -rand.nextFloat(0,1)/10;
             if(scale.y <= 0)
