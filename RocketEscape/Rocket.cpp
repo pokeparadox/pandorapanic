@@ -16,14 +16,20 @@ Rocket::Rocket()
     const int MAX_ONE = 500;
     const int MAX_TWO = MAX_ONE * 0.66f;
     const int MAX_THREE = MAX_ONE * 0.33f;
+    //  TODO: remove hardcoded bounds workaround.
+    Vector2di b;
+    b.x = 800;
+    b.y = 480;
     leftThruster[t].setMax(MAX_ONE);
     leftThruster[t].setInvisible(MAX_ONE-INVISIBLE);
     leftThruster[t].setColour(YELLOW);
     leftThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
     leftThruster[t].setLifeTime(100);
     leftThruster[t].setGravity(GRAVITY);
-    leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
-    leftThruster[t].setShouldStopNew(false);
+    //leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
+    leftThruster[t].setPosition(Vector2di(-10000, -10000));
+    leftThruster[t].setBoundaries(Vector2di(0,0),b);
+    leftThruster[t].advanceUpdate(1);
 
     leftThruster[++t].setMax(MAX_TWO);
     leftThruster[t].setInvisible(MAX_TWO-INVISIBLE);
@@ -31,8 +37,10 @@ Rocket::Rocket()
     leftThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
     leftThruster[t].setLifeTime(90);
     leftThruster[t].setGravity(GRAVITY);
-    leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
-    leftThruster[t].setShouldStopNew(false);
+    //leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
+    leftThruster[t].setPosition(Vector2di(-10000, -10000));
+    leftThruster[t].setBoundaries(Vector2di(0,0),b);
+    leftThruster[t].advanceUpdate(1);
 
     leftThruster[++t].setMax(MAX_THREE);
     leftThruster[t].setInvisible(MAX_THREE-INVISIBLE);
@@ -40,8 +48,10 @@ Rocket::Rocket()
     leftThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
     leftThruster[t].setLifeTime(80);
     leftThruster[t].setGravity(GRAVITY);
-    leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
-    leftThruster[t].setShouldStopNew(false);
+    //leftThruster[t].setPosition(Vector2di(startPos.x + 16, startPos.y+64));
+    leftThruster[t].setPosition(Vector2di(-10000, -10000));
+    leftThruster[t].setBoundaries(Vector2di(0,0),b);
+    leftThruster[t].advanceUpdate(1);
 
     t = 0;
     rightThruster[t].setMax(MAX_ONE);
@@ -50,8 +60,10 @@ Rocket::Rocket()
     rightThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
     rightThruster[t].setLifeTime(100);
     rightThruster[t].setGravity(GRAVITY);
-    rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
-    rightThruster[t].setShouldStopNew(false);
+    //rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
+    rightThruster[t].setPosition(Vector2di(-10000, -10000));
+    rightThruster[t].setBoundaries(Vector2di(0,0),b);
+    rightThruster[t].advanceUpdate(1);
 
     rightThruster[++t].setMax(MAX_TWO);
     rightThruster[t].setInvisible(MAX_TWO-INVISIBLE);
@@ -59,8 +71,10 @@ Rocket::Rocket()
     rightThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
     rightThruster[t].setLifeTime(90);
     rightThruster[t].setGravity(GRAVITY);
-    rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
-    rightThruster[t].setShouldStopNew(false);
+    //rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
+    rightThruster[t].setPosition(Vector2di(-10000, -10000));
+    rightThruster[t].setBoundaries(Vector2di(0,0),b);
+    rightThruster[t].advanceUpdate(1);
 
     rightThruster[++t].setMax(MAX_THREE);
     rightThruster[t].setInvisible(MAX_THREE-INVISIBLE);
@@ -68,8 +82,12 @@ Rocket::Rocket()
     rightThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
     rightThruster[t].setLifeTime(80);
     rightThruster[t].setGravity(GRAVITY);
-    rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
-    rightThruster[t].setShouldStopNew(false);
+    //rightThruster[t].setPosition(Vector2di(startPos.x + 48, startPos.y+64));
+    rightThruster[t].setPosition(Vector2di(-10000, -10000));
+    rightThruster[t].setBoundaries(Vector2di(0,0),b);
+    rightThruster[t].advanceUpdate(1);
+
+    startThrusters(false);
 
     /// Setup Ship Sprite
     sprite.loadSprite("images/RocketEscape/rocket.png");
