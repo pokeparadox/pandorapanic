@@ -74,7 +74,7 @@ void StateSpellingContest::userInput()
                         break;
                 #elif PLATFORM_PANDORA
                     SDL_JOYBUTTONDOWN:
-                    if(Event.jbutton.button == 5)// Pandora start button
+                    if(event.jbutton.button == 5)// Pandora start button
                         pauseToggle();
                     break;
                 #endif
