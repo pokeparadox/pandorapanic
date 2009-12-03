@@ -698,6 +698,33 @@ void Fire::MoveParticles( void )
     fire_box.w = imgFire.getWidth();
     fire_box.h = imgFire.getHeight();
 
+    for (i=0; i<FIRE_MAX_TOWERS; i++)
+    {
+        if (towers[i].fire.size > 0)
+        {
+            //  default that smoke should move if there is fire
+            towers[i].smokeblack.setShouldStopNew(false);
+            towers[i].smokewhite.setShouldStopNew(false);
+
+            if (towers[i].smoketimer > 0)
+            {
+                towers[i].smoketimer--;
+                towers[i].smokewhite.setShouldStopNew(false);
+            }
+            else
+            {
+                towers[i].smoketimer = 0;
+                towers[i].smokewhite.setShouldStopNew(true);
+            }
+        }
+        else
+        {
+            // No fire no smoke
+            towers[i].smokeblack.setShouldStopNew(true);
+            towers[i].smokewhite.setShouldStopNew(true);
+        }
+    }
+
     if (water.size() > 0)
     {
         for (iter = water.end()-1; iter >= water.begin(); iter--)
@@ -713,9 +740,6 @@ void Fire::MoveParticles( void )
             {
                 if (towers[i].fire.size > 0)
                 {
-                    //  default that smoke should move if there is fire
-                    towers[i].smokeblack.setShouldStopNew(false);
-                    towers[i].smokewhite.setShouldStopNew(false);
                     fire_box.x = towers[i].fire.x;
                     fire_box.y = towers[i].fire.y;
 
@@ -736,23 +760,6 @@ void Fire::MoveParticles( void )
                             break;
                         }
                     }
-
-                    if (towers[i].smoketimer > 0)
-                    {
-                        towers[i].smoketimer--;
-                        towers[i].smokewhite.setShouldStopNew(false);
-                    }
-                    else
-                    {
-                        towers[i].smoketimer = 0;
-                        towers[i].smokewhite.setShouldStopNew(true);
-                    }
-                }
-                else
-                {
-                    // No fire no smoke
-                    towers[i].smokeblack.setShouldStopNew(true);
-                    towers[i].smokewhite.setShouldStopNew(true);
                 }
             }
         }
