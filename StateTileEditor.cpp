@@ -37,7 +37,7 @@ void StateTileEditor::init()
 
     // load level
 
-    ifstream tilemap ("scripts/Jumper/nogeen.map");
+    ifstream tilemap ("scripts/Jumper/fourth.map");
     tilenumber = 0;
 
     getline(tilemap,testingx);
@@ -151,10 +151,16 @@ void StateTileEditor::userInput()
             else if (withblob == 2){withblob = 0;}
             inputlimiter.start();
         }
+        if (input->isL()) // quit
+        {
+            variables[0].setInt(1);
+            setNextState(STATE_MAIN);
+        }
+
         if (input->isStart()) // Save
         {
 
-            ofstream tilemap ("scripts/Jumper/nogeen.map");
+            ofstream tilemap ("scripts/Jumper/fourth.map");
             if (tilemap.is_open())
             {
 
@@ -267,19 +273,19 @@ void StateTileEditor::render(SDL_Surface *screen)
     }
     if (temptiletype == 1)
     {
-        test.print(screen, "Vertical Random moving tiles");
+        test.print(screen, "Vertical moving tile type 1");
     }
     if (temptiletype == 2)
     {
-        test.print(screen, "Vertical in sync tiles");
+        test.print(screen, "Vertical moving tile type 2");
     }
     if (temptiletype == 3)
     {
-        test.print(screen, "Horizontal Random moving tiles");
+        test.print(screen, "Horizontal moving tile type 1");
     }
     if (temptiletype == 4)
     {
-        test.print(screen, "Horizontal platform tiles");
+        test.print(screen, "Horizontal moving tile type 2");
     }
     test.setPosition(20,420);
     if (withblob == 0)

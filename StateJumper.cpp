@@ -74,11 +74,13 @@ void StateJumper::init()
     teller.start();
     tilesprite.loadSprite("images/Jumper/tile1.png");
     if ((variables[2].getInt()/10) == 0)
-        filename = "scripts/Jumper/testing.map";
+        filename = "scripts/Jumper/first.map";
     else if ((variables[2].getInt()/10) == 1)
-        filename = "scripts/Jumper/third.map";
-    else if ((variables[2].getInt()/10) >= 2)
+        filename = "scripts/Jumper/second.map";
+    else if ((variables[2].getInt()/10) == 2)
         filename = "scripts/Jumper/nogeen.map";
+    else if ((variables[2].getInt()/10) >= 3)
+        filename = "scripts/Jumper/fourth.map";
 
     ifstream tilemap (filename);
 
@@ -378,7 +380,7 @@ void StateJumper::update()
                 hero.ontile = hero.ontile + 1;
             }
             if (hero.getX() > blok[i].getX() + blok[i].getXMovement() - 56 && hero.getX() < blok[i].getX() + blok[i].getXMovement() - 35
-                && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 64 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight())
+                && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 62 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight() - 4)
             {
                 hero.setXvel(0);
                 hero.setXvel(-22);
@@ -460,12 +462,12 @@ void StateJumper::update()
                     if (blob[i].offset == 0){blob[i].setYvel(0);}
                     blob[i].setX(blok[blob[i].connecttotile].getX() + blok[blob[i].connecttotile].getXMovement());
                 }
-                if (hero.getX() > blob[i].getX() - 48 && hero.getX() < blob[i].getX() + 16
-                && hero.getY() > blob[i].getY() - 64 && hero.getY() < blob[i].getY() + 16)
-            {
+                if (hero.getX() > blob[i].getX() - 40 && hero.getX() < blob[i].getX() + 16
+                && hero.getY() > blob[i].getY() - 48 && hero.getY() < blob[i].getY() + 16)
+                {
                 variables[0].setInt(0);
                 setNextState(STATE_MAIN);
-            }
+                }
 
             }
 
@@ -479,8 +481,8 @@ void StateJumper::update()
 
         // Check if goal is reached
 
-        if (hero.getX() >  goal.getX() - 64 && hero.getX()  < goal.getX() + 64
-           && hero.getY() > goal.getY() -64 && hero.getY() < goal.getY() + 64)
+        if (hero.getX() >  goal.getX() - 32 && hero.getX()  < goal.getX() + 32
+           && hero.getY() > goal.getY() - 32 && hero.getY() < goal.getY() + 32)
         {
             variables[0].setInt(1);
             setNextState(STATE_MAIN);
