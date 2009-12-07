@@ -1981,6 +1981,8 @@ namespace PangMiniGame
         {
             m_FrameTime     = 0.f;
             m_TimeLastFrame = SDL_GetTicks( );
+            //  No need to process rest of game when paused!
+            return true;
         }
         else
         {
@@ -2252,6 +2254,7 @@ void StatePang::MiniGameComplete( bool success )
 void StatePang::pauseInput()
 {
     input->update();
+    m_pPangGame->Update( input );
     #ifdef PLATFORM_PC
         if(input->isQuit())
             nullifyState();
@@ -2259,6 +2262,7 @@ void StatePang::pauseInput()
     if (input->isStart())
     {
         pauseToggle();
+        m_pPangGame->Resume();
         input->resetKeys();
     }
 }
