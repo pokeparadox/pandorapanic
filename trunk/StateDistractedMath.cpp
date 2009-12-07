@@ -74,12 +74,10 @@ void StateDistractedMath::userInput()
                         case SDL_KEYDOWN:
                             if(event.key.keysym.sym == SDLK_RETURN)
                                 pauseToggle();
-                            break;
                     #elif PLATFORM_PANDORA
                         SDL_JOYBUTTONDOWN:
                         if(event.jbutton.button == 5)// Pandora start button
                             pauseToggle();
-                        break;
                     #endif
                         MathInputUnicode =  (event.key.keysym.unicode); // unicode input
                         #ifdef PENJIN_FIXED

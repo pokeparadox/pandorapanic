@@ -51,13 +51,12 @@ inline void StatePang::userInput( )
 {
     // Pump input.
     input->update( );
-
     #ifdef PLATFORM_PC
-    // Not sure what this is all about, but without it, closing the GFX window doesn't work...
-    if(input->isQuit())
-        nullifyState();
+        // Not sure what this is all about, but without it, closing the GFX window doesn't work...
+        if(input->isQuit())
+            nullifyState();
     #endif
-    if(input->isStart())
+    if (input->isStart())
     {
         pauseToggle();
         input->resetKeys();
