@@ -173,7 +173,12 @@ void StateMain::init()
     else if (variables[0].getInt() == 1)// PASS
     {
         if(variables[6].getInt() != 1)
+        {
             playWin = true;
+            #ifdef USE_ACHIEVEMENTS
+            ACHIEVEMENTS->logEvent("WIN",1);
+            #endif
+        }
 
         if(playWin)
             loadWin();
