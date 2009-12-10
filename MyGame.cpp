@@ -52,6 +52,9 @@ MyGame::~MyGame()
 			execl("/usr/gp2x/gp2xmenu", "/usr/gp2x/gp2xmenu", NULL);
 		}
 	#endif
+	#ifdef USE_ACHIEVEMENTS
+        ACHIEVEMENTS->save("achieve.ach");
+	#endif
 }
 
 PENJIN_ERRORS MyGame::init()
@@ -151,6 +154,10 @@ PENJIN_ERRORS MyGame::init()
     temp2->setDescription("Hit 3 enemies at once in Arena");
     temp2->setIcon("images/test.png");
     ACHIEVEMENTS->addAchievement(temp2);
+
+    // first try to load achievment file
+    if(ACHIEVEMENTS->load("achieve.ach") != PENJIN_OK)
+        ACHIEVEMENTS->save("achieve.ach");
 #endif
 
 	return PENJIN_OK;
