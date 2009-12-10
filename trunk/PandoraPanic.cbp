@@ -81,6 +81,7 @@
 					<Add option="-D_DEBUG" />
 					<Add option="-D_LINUX" />
 					<Add option="-DPENJIN_SDL" />
+					<Add option="-DUSE_ACHIEVEMENTS" />
 				</Compiler>
 				<Linker>
 					<Add option="`sdl-config --libs`" />
@@ -528,6 +529,16 @@
 		<Unit filename="version.h">
 			<Option virtualFolder="MyGame/" />
 		</Unit>
+		<Unit filename="../PenjinBase/Achievement.cpp" />
+		<Unit filename="../PenjinBase/Achievement.h" />
+		<Unit filename="../PenjinBase/AchievementBoolean.cpp" />
+		<Unit filename="../PenjinBase/AchievementBoolean.h" />
+		<Unit filename="../PenjinBase/AchievementCount.cpp" />
+		<Unit filename="../PenjinBase/AchievementCount.h" />
+		<Unit filename="../PenjinBase/AchievementSystem.cpp" />
+		<Unit filename="../PenjinBase/AchievementSystem.h" />
+		<Unit filename="../PenjinBase/AchievementUtility.cpp" />
+		<Unit filename="../PenjinBase/AchievementUtility.h" />
 		<Unit filename="../PenjinBase/AnimatedParticle.cpp">
 			<Option virtualFolder="PenjinBase/Particle/Particles/" />
 		</Unit>
