@@ -132,6 +132,27 @@ PENJIN_ERRORS MyGame::init()
             GFX::init2DRendering(xRes,yRes);
         #endif
 	#endif
+
+#ifdef USE_ACHIEVEMENTS
+    ACHIEVEMENTS->setOffset(500,0);
+
+    AchievementCount* temp = new AchievementCount;
+    temp->addEvent("WIN",0,coGREATER,acINCREASE);
+    temp->setLimit(3);
+    temp->setName("Tester");
+    temp->setDescription("Successfully test the achievement system!");
+    temp->setIcon("images/test.png");
+    ACHIEVEMENTS->addAchievement(temp);
+
+    AchievementBoolean* temp2 = new AchievementBoolean;
+    temp2->addEvent("ARENA_HIT_ENEMY",3,coGREATER,acINCREASE);
+    temp2->setLimit(1);
+    temp2->setName("Slasher");
+    temp2->setDescription("Hit 3 enemies at once in Arena");
+    temp2->setIcon("images/test.png");
+    ACHIEVEMENTS->addAchievement(temp2);
+#endif
+
 	return PENJIN_OK;
 }
 
