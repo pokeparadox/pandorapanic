@@ -176,7 +176,11 @@ void StateMain::init()
         {
             playWin = true;
             #ifdef USE_ACHIEVEMENTS
-            ACHIEVEMENTS->logEvent("WIN",1);
+            vector<SpecialProperty> temp;
+            temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
+            temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
+            temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
+            ACHIEVEMENTS->logEventSpecial("WIN",temp);
             #endif
         }
 
