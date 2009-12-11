@@ -138,13 +138,16 @@ PENJIN_ERRORS MyGame::init()
 
 #ifdef USE_ACHIEVEMENTS
     ACHIEVEMENTS->setOffset(500,0);
+    ACHIEVEMENTS->setPopupPosition(ppBOTTOMCENTER);
+    ACHIEVEMENTS->setPopupFadeTime(500);
+    ACHIEVEMENTS->setPopupShowTime(2000);
 
     AchievementCount* temp = new AchievementCount;
     temp->addEvent("WIN",0,coGREATER,acINCREASE);
     temp->setLimit(3);
     temp->setName("Tester");
     temp->setDescription("Successfully test the achievement system!");
-    temp->setIcon("images/test.png");
+    temp->setIcon("images/Achievements/test.png");
     ACHIEVEMENTS->addAchievement(temp);
 
     AchievementBoolean* temp2 = new AchievementBoolean;
@@ -152,7 +155,7 @@ PENJIN_ERRORS MyGame::init()
     temp2->setLimit(1);
     temp2->setName("Slasher");
     temp2->setDescription("Hit 3 enemies at once in Arena");
-    temp2->setIcon("images/test.png");
+    temp2->setIcon("images/Achievements/test.png");
     ACHIEVEMENTS->addAchievement(temp2);
 
     // first try to load achievment file
