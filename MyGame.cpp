@@ -150,13 +150,15 @@ PENJIN_ERRORS MyGame::init()
     temp->setIcon("images/Achievements/test.png");
     ACHIEVEMENTS->addAchievement(temp);
 
-    AchievementBoolean* temp2 = new AchievementBoolean;
-    temp2->addEvent("ARENA_HIT_ENEMY",3,coGREATER,acINCREASE);
-    temp2->setLimit(1);
-    temp2->setName("Slasher");
-    temp2->setDescription("Hit 3 enemies at once in Arena");
-    temp2->setIcon("images/Achievements/test.png");
-    ACHIEVEMENTS->addAchievement(temp2);
+    temp = NULL;
+    temp = new AchievementCount;
+    temp->addEvent("ARENA_HIT_ENEMY",0,coGREATER,acINCREASE);
+    temp->setLimit(3);
+    temp->setName("Slasher");
+    temp->setDescription("Hit 3 enemies at once in Arena");
+    temp->setIcon("images/Achievements/test.png");
+    temp->setTimeLimit(250);
+    ACHIEVEMENTS->addAchievement(temp);
 
     // first try to load achievment file
     if(ACHIEVEMENTS->load("achieve.ach") != PENJIN_OK)
