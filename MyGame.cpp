@@ -137,32 +137,7 @@ PENJIN_ERRORS MyGame::init()
 	#endif
 
 #ifdef USE_ACHIEVEMENTS
-    ACHIEVEMENTS->setOffset(500,0);
-    ACHIEVEMENTS->setPopupPosition(ppBOTTOMCENTER);
-    ACHIEVEMENTS->setPopupFadeTime(500);
-    ACHIEVEMENTS->setPopupShowTime(2000);
-
-    AchievementCount* temp = new AchievementCount;
-    temp->addEvent("WIN",0,coGREATER,acINCREASE);
-    temp->setLimit(3);
-    temp->setName("Tester");
-    temp->setDescription("Successfully test the achievement system!");
-    temp->setIcon("images/Achievements/test.png");
-    ACHIEVEMENTS->addAchievement(temp);
-
-    temp = NULL;
-    temp = new AchievementCount;
-    temp->addEvent("ARENA_HIT_ENEMY",0,coGREATER,acINCREASE);
-    temp->setLimit(3);
-    temp->setName("Slasher");
-    temp->setDescription("Hit 3 enemies at once in Arena");
-    temp->setIcon("images/Achievements/test.png");
-    temp->setTimeLimit(250);
-    ACHIEVEMENTS->addAchievement(temp);
-
-    // first try to load achievment file
-    if(ACHIEVEMENTS->load("achieve.ach") != PENJIN_OK)
-        ACHIEVEMENTS->save("achieve.ach");
+    #include "AchievementSetup.h"
 #endif
 
 	return PENJIN_OK;
