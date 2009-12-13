@@ -12,6 +12,9 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 
 #include "BaseState.h"
 #include "StateCredits.h"
+#ifdef USE_ACHIEVEMENTS
+#include "StateAchievements.h"
+#endif
 #include "StateGameover.h"
 #include "StateGameoverOrdered.h"
 #include "StateTitle.h"
@@ -38,6 +41,7 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 #include "StateSnatchABeer.h"
 #include "StateTheCountJob.h"
 #include "StateFire.h"
+//#include "StatePeePeesBigAdventure.h"
 #include "StateCake.h"
 
 #include "StateTileEditor.h"
@@ -76,9 +80,13 @@ enum STATE_MODES
     STATE_FIRE,
     STATE_CAKE,
     //STATE_DARKTREASURE,
+    //STATE_PEEPEESBIGADVENTURE,
 
     //STATE_BARRELROLL,
     /// Other stuff
+#ifdef USE_ACHIEVEMENTS
+    STATE_ACHIEVEMENTS,
+#endif
 	STATE_CREDITS,
 	STATE_GAMEOVER,
 	STATE_GAMEOVERORDERED,

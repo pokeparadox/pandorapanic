@@ -65,6 +65,8 @@ You now just need to add your minigames here and it should work!
         state = new StateCake;
     /*else if (next == STATE_DARKTREASURE)
         state = new StateDarkTreasure;*/
+    /*else if (next == STATE_PEEPEESBIGADVENTURE)
+        state = new StatePeePeesBigAdventure;*/
 
 
     /*else if(next == STATE_ROCKETESCAPE)
@@ -75,11 +77,15 @@ You now just need to add your minigames here and it should work!
 /*    else if (next == STATE_BARRELROLL)
         state = new StateBarrelRoll;*/
 
-    else if(next == STATE_CREDITS)
+#ifdef USE_ACHIEVEMENTS
+    else if (next == STATE_ACHIEVEMENTS)
+        state = new StateAchievements;
+#endif
+    else if (next == STATE_CREDITS)
         state = new StateCredits;
-    else if(next == STATE_GAMEOVER)
+    else if (next == STATE_GAMEOVER)
         state = new StateGameover;
-    else if(next == STATE_GAMEOVERORDERED)
+    else if (next == STATE_GAMEOVERORDERED)
         state = new StateGameoverOrdered;
     else
     {

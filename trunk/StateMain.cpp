@@ -128,6 +128,13 @@ void StateMain::init()
     loadCommon();
     if(variables[0].getInt() == 0)//    FAIL
     {
+        #ifdef USE_ACHIEVEMENTS
+        vector<SpecialProperty> temp;
+        temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
+        temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
+        temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
+        ACHIEVEMENTS->logEventSpecial("FAIL",temp);
+        #endif
         loadLose();
         playFail = true;
         int mode = variables[1].getInt();

@@ -65,21 +65,33 @@ void StateReflex::userInput()
     {
         correct=true;
         leftSound.play();
+        #ifdef USE_ACHIEVEMENTS
+        ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        #endif
     }
     else if(input->isRight() && currDirection==RIGHT)
     {
         correct=true;
         rightSound.play();
+        #ifdef USE_ACHIEVEMENTS
+        ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        #endif
     }
     else if(input->isDown() && currDirection==DOWN)
     {
         correct=true;
         downSound.play();
+        #ifdef USE_ACHIEVEMENTS
+        ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        #endif
     }
     else if(input->isUp() && currDirection==UP)
     {
         correct=true;
         upSound.play();
+        #ifdef USE_ACHIEVEMENTS
+        ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        #endif
     }
     else if(input->isLeft() || input->isRight() || input->isDown() || input->isUp())
     {
