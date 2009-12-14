@@ -37,6 +37,8 @@ void StatePanJoust::init()
     jet.setGravity(RIGHT_HOOK);
     jet.setLifeTime(150);
 
+    touchedplatform = false;
+
     hero1.setPosition(380,380);
     platformnumber = 10 - (variables[2].getInt()/10);
     youdead = 0;
@@ -479,6 +481,7 @@ void StatePanJoust::update()
         {
             hero1.setYVelocity(0);
             hero1.setOnPlatform();
+            if (teller.getScaledTicks() > 2){touchedplatform = true;}
             hero1.setY(platform[i].getY() - 64);
         }
 
@@ -530,6 +533,7 @@ void StatePanJoust::update()
     }
     if (teller.getScaledTicks() == 2 && youwin == 1)
     {
+        if (touchedplatform == false){ACHIEVEMENTS->logEvent("JOUST_FINISH");}
         variables[0].setInt(1);
         setNextState(STATE_MAIN);
     }

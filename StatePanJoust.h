@@ -55,7 +55,9 @@ class StatePanJoust : public BaseState
         bool youdead;
         bool youwin;
         bool panic;
+        bool touchedplatform;
         Emitter jet;
+
 
         int platformnumber;
         //ButtonPrompter buttonPrompter;

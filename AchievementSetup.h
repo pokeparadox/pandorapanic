@@ -28,6 +28,15 @@
     tempC->setLimit(3);
     ACHIEVEMENTS->addAchievement(tempC);
 
+    tempC = new AchievementCount;
+    tempC->setName("High Flyer");
+    tempC->setDescription("Complete Joust without hitting the ground");
+    tempC->setIcon("images/Achievements/test.png");
+    tempC->setTimeLimit(250);
+    tempC->addEvent("JOUST_FINISH",0,coGREATER,acINCREASE);
+    tempC->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempC);
+
     tempR = new AchievementReset;
     tempR->setName("Reflex-man!");
     tempR->setDescription("Get a %l hit-streak in Reflex");
