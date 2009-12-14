@@ -37,7 +37,7 @@ void StateTileEditor::init()
 
     // load level
 
-    ifstream tilemap ("scripts/Jumper/fourth.map");
+    ifstream tilemap ("scripts/Jumper/fifth.map");
     tilenumber = 0;
 
     getline(tilemap,testingx);
@@ -160,7 +160,7 @@ void StateTileEditor::userInput()
         if (input->isStart()) // Save
         {
 
-            ofstream tilemap ("scripts/Jumper/fourth.map");
+            ofstream tilemap ("scripts/Jumper/fifth.map");
             if (tilemap.is_open())
             {
 

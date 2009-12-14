@@ -78,11 +78,11 @@ void StateJumper::init()
     else if ((variables[2].getInt()/10) == 1)
         filename = "scripts/Jumper/second.map";
     else if ((variables[2].getInt()/10) == 2)
-        filename = "scripts/Jumper/nogeen.map";
-    else if ((variables[2].getInt()/10) == 3)
-        filename = "scripts/Jumper/fourth.map";
-        else if ((variables[2].getInt()/10) >= 4)
         filename = "scripts/Jumper/fifth.map";
+    else if ((variables[2].getInt()/10) == 3)
+        filename = "scripts/Jumper/nogeen.map";
+        else if ((variables[2].getInt()/10) >= 4)
+        filename = "scripts/Jumper/fourth.map";
 
     ifstream tilemap (filename);
 
@@ -388,7 +388,7 @@ void StateJumper::update()
                 hero.setXvel(-22);
             }
             if (hero.getX() > blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 30 && hero.getX() < blok[i].getX() + blok[i].getXMovement() + blok[i].getWidth() - 10
-                && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 64 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight() )
+                && hero.getY() > blok[i].getY() + blok[i].getYMovement() - 62 && hero.getY() < blok[i].getY() + blok[i].getYMovement() + blok[i].getHeight() )
             {
                 hero.setXvel(0);
                 hero.setXvel(22);
