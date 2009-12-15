@@ -47,7 +47,7 @@ void StateCredits::init()
     logo.setPosition((bounds.w - logo.getWidth()) *0.5f,bounds.h * 0.66f);
 
 	//	Setup SDL Text Handler
-	text.loadFont("font/foo.ttf", 28);
+	text.loadFont("font/foo.ttf", 26);
 	text.setRelativity(false);	//	We will control all positions of text manually
 	text.setBoundaries(bounds);
 	text.setCentreText(true);

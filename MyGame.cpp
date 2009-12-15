@@ -93,7 +93,7 @@ PENJIN_ERRORS MyGame::init()
     #endif
         flags = SDL_OPENGL;
 #else
-        flags = SDL_SWSURFACE;
+        flags = SDL_HWSURFACE;
 #endif
 	if(fullScreen)
 		flags = flags | SDL_FULLSCREEN;
