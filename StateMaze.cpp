@@ -106,6 +106,9 @@ void StateMaze::init()
         tilesprite[1].setTransparentColour(MAGENTA);
         tilesprite[2].loadSprite("images/Maze/mazewire3.png");
         tilesprite[2].setTransparentColour(MAGENTA);
+        tilesprite[3].loadSprite("images/Maze/mazewire4.png");
+        tilesprite[3].setTransparentColour(MAGENTA);
+
 
     youdead = false;
 
@@ -138,7 +141,7 @@ void StateMaze::init()
         getline(tilemap,tiletype);
         getline(tilemap,withblob);
 
-        bloksprite[j] = rand()%3;
+        bloksprite[j] = rand()%4;
 
         blok[j].setDimensions(32,32);
         blok[j].setPosition(stringToInt(testingx),stringToInt(testingy));
@@ -296,6 +299,12 @@ void StateMaze::onResume()
                tilesprite[2].setX(blok[i].getX() + blok[i].getXMovement());
                 tilesprite[2].setY(blok[i].getY() + blok[i].getYMovement());
                tilesprite[2].render(screen);
+            }
+            else if (bloksprite[i] == 3)
+           {
+               tilesprite[3].setX(blok[i].getX() + blok[i].getXMovement());
+                tilesprite[3].setY(blok[i].getY() + blok[i].getYMovement());
+               tilesprite[3].render(screen);
             }
         }
 

@@ -45,7 +45,7 @@ void StateJumper::init()
     buttonPrompter.display(ButtonPrompter::BUTTON_A, 200, 300);
 
 
-
+    jumpcount = 0;
 
     blobevil.loadSprite("images/Jumper/blobevil.png");
     blobevil.setTransparentColour(MAGENTA);
@@ -181,10 +181,11 @@ void StateJumper::userInput()
             hero.setXvel(hero.getXvel() - 15);
 
         }
-    if (inputlimiter.getScaledTicks() > 15)
+    if (inputlimiter.getScaledTicks() > 30)
     {
         if (input->isA() && hero.ontile > 0 && hero.getYvel() == 0)
         {
+            jumpcount = jumpcount + 1;
             hero.setYvel(- 180);
             inputlimiter.start();
         }
@@ -273,7 +274,7 @@ void StateJumper::onResume()
             }
         }
 
-        //text.print(screen, blobjump);
+        text.print(screen, jumpcount);
         buttonPrompter.render();
     }
 #else
@@ -327,7 +328,7 @@ void StateJumper::onResume()
             }
         }
 
-        //text.print(screen, blobjump);
+        text.print(screen, jumpcount);
         buttonPrompter.render();
     }
 #endif
@@ -486,6 +487,18 @@ void StateJumper::update()
         if (hero.getX() >  goal.getX() - 32 && hero.getX()  < goal.getX() + 32
            && hero.getY() > goal.getY() - 32 && hero.getY() < goal.getY() + 32)
         {
+
+            if ((variables[2].getInt()/10) == 0)
+                {if (jumpcount <= 3){ACHIEVEMENTS->logEvent("JUMPER1");};}
+            else if ((variables[2].getInt()/10) == 1)
+                {if (jumpcount <= 2){ACHIEVEMENTS->logEvent("JUMPER2");};}
+            else if ((variables[2].getInt()/10) == 2)
+                {if (jumpcount <= 11){ACHIEVEMENTS->logEvent("JUMPER3");};}
+            else if ((variables[2].getInt()/10) == 3)
+                {if (jumpcount <= 6){ACHIEVEMENTS->logEvent("JUMPER4");};}
+            else if ((variables[2].getInt()/10) >= 4)
+                {if (jumpcount <= 11){ACHIEVEMENTS->logEvent("JUMPER5");};}
+
             variables[0].setInt(1);
             setNextState(STATE_MAIN);
         }
