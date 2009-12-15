@@ -88,6 +88,7 @@ class StateJumper : public BaseState
         string tiletype;
         int testx;
         int testy;
+        int jumpcount;
         Text text;
         Tile goal;
         int tilenumber;

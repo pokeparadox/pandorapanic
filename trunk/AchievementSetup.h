@@ -31,11 +31,57 @@
     tempC = new AchievementCount;
     tempC->setName("High Flyer");
     tempC->setDescription("Complete Joust without hitting the ground");
-    tempC->setIcon("images/Achievements/test.png");
+    tempC->setIcon("images/Achievements/highflyer.png");
     tempC->setTimeLimit(250);
     tempC->addEvent("JOUST_FINISH",0,coGREATER,acINCREASE);
     tempC->setLimit(1);
     ACHIEVEMENTS->addAchievement(tempC);
+
+    tempC = new AchievementCount;
+    tempC->setName("First Minimal Jump Goal");
+    tempC->setDescription("Finish the first Jumper map in minimal jumps");
+    tempC->setIcon("images/Achievements/test.png");
+    tempC->setTimeLimit(250);
+    tempC->addEvent("JUMPER1",0,coGREATER,acINCREASE);
+    tempC->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempC);
+
+    tempC = new AchievementCount;
+    tempC->setName("Second Minimal Jump Goal");
+    tempC->setDescription("Finish the second Jumper map in minimal jumps");
+    tempC->setIcon("images/Achievements/test.png");
+    tempC->setTimeLimit(250);
+    tempC->addEvent("JUMPER2",0,coGREATER,acINCREASE);
+    tempC->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempC);
+
+    tempC = new AchievementCount;
+    tempC->setName("third Minimal Jump Goal");
+    tempC->setDescription("Finish the third Jumper map in minimal jumps");
+    tempC->setIcon("images/Achievements/test.png");
+    tempC->setTimeLimit(250);
+    tempC->addEvent("JUMPER3",0,coGREATER,acINCREASE);
+    tempC->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempC);
+
+    tempC = new AchievementCount;
+    tempC->setName("fourth Minimal Jump Goal");
+    tempC->setDescription("Finish the fourth Jumper map in minimal jumps");
+    tempC->setIcon("images/Achievements/test.png");
+    tempC->setTimeLimit(250);
+    tempC->addEvent("JUMPER4",0,coGREATER,acINCREASE);
+    tempC->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempC);
+
+    tempC = new AchievementCount;
+    tempC->setName("Fifth Minimal Jump Goal");
+    tempC->setDescription("Finish the last Jumper map in minimal jumps");
+    tempC->setIcon("images/Achievements/test.png");
+    tempC->setTimeLimit(250);
+    tempC->addEvent("JUMPER5",0,coGREATER,acINCREASE);
+    tempC->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempC);
+
 
     tempR = new AchievementReset;
     tempR->setName("Reflex-man!");
