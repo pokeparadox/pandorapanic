@@ -133,6 +133,7 @@ void StateTitle::setupMainMenu()
     const int spacing = 5;
     menu.setSpacing(spacing);
     menu.setHorizontalOffset(110);
+    menu.setTextCenteringCorrection(-42);
     #ifdef PENJIN_SDL
         menu.setUseHardware(true);
     #endif
@@ -383,20 +384,10 @@ void StateTitle::getReady()
     r.h = getStateYResolution();
     t.setBoundaries(r);
     t.setRelativity(false);
-    #ifdef PENJIN_SDL
-        t.print(NULL,"Get Ready!");
-    #else
-        t.print("Get Ready!");
-    #endif
-    t.setPosition((r.w-t.getWidth())*0.5f,0.7f*r.h);
-
-    //t.setCentreText(true);
-    #ifdef PENJIN_SDL
-        t.print(NULL,"Get Ready!");
-        SDL_Flip(screen);
-    #else
-        t.print("Get Ready!");
-    #endif
+    t.setPosition(0,0.7f*r.h);
+    t.setCentreText(true);
+    t.print("Get Ready!");
+    GFX::forceBlit();
     SDL_Delay(1500);
 }
 
