@@ -15,6 +15,7 @@ keyPressLimiter(false)
     command.setPosition(220,150);
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(WHITE);
+    pauseText.setBgColour(BLACK);
     counter.setMode(SECONDS);
 
     timer.loadFont("font/chromo.ttf",60);
@@ -202,18 +203,18 @@ void StateMemoryBlocks::pauseScreen()
     pauseText.setPosition(50,220);
     pauseText.print("Press     or     to navigate through the code.");
     buttonSheet.setCurrentFrame(14);
-    buttonSheet.setPosition(130,220);
+    buttonSheet.setPosition(135,220);
     buttonSheet.render();
     buttonSheet.setCurrentFrame(15);
-    buttonSheet.setPosition(215,220);
+    buttonSheet.setPosition(220,220);
     buttonSheet.render();
     pauseText.setPosition(50,260);
     pauseText.print("Use     or     to change the symbol!");
     buttonSheet.setCurrentFrame(16);
-    buttonSheet.setPosition(100,260);
+    buttonSheet.setPosition(110,260);
     buttonSheet.render();
     buttonSheet.setCurrentFrame(17);
-    buttonSheet.setPosition(185,260);
+    buttonSheet.setPosition(195,260);
     buttonSheet.render();
 }
 #endif

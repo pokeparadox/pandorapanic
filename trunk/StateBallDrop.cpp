@@ -11,6 +11,7 @@ StateBallDrop::StateBallDrop()
     dir=rand()%4-2;
     text.loadFont("font/origami.ttf", 48);
     text.setColour(Colour(BLACK));
+    text.setBgColour(WHITE);
     yadd=-8;
     buttonPrompter.display(ButtonPrompter::BUTTON_RIGHT, 385, 370);
     buttonPrompter.display(ButtonPrompter::BUTTON_LEFT, 350, 370);
@@ -19,6 +20,7 @@ StateBallDrop::StateBallDrop()
 
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(BLACK);
+    pauseText.setBgColour(WHITE);
 }
 
 void StateBallDrop::init()
@@ -152,8 +154,8 @@ void StateBallDrop::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Catch the ball!");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Use     and     to navigate!");
-    buttonPrompter.renderImage(14,100,220);
-    buttonPrompter.renderImage(15,200,220);
+    buttonPrompter.renderImage(14,102,220);
+    buttonPrompter.renderImage(15,215,220);
 }
 #else
 void StateBallDrop::render()
