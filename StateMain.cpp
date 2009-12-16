@@ -395,6 +395,7 @@ void StateMain::render(SDL_Surface* screen)
     /// Clear Screen
     SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
     text.setPosition(15,20);
+    text.setRenderMode(GlyphClass::QUICK);
     if(!gotoNext)
     {
         text.print(screen,(string)MINIGAMES_NAMES[selection]);
@@ -419,6 +420,7 @@ void StateMain::render(SDL_Surface* screen)
         bar.render(screen);
         Vector2di pos(bar.getX(),bar.getY()+3);
         text.setPosition(pos.x+40,pos.y);
+        text.setBgColour(BLACK);
         text.print(screen, "Stage: ");text.print(screen, variables[2].getInt());
         text.setPosition(pos.x+230,pos.y);
         text.print(screen, "Lives: ");text.print(screen, variables[4].getInt()+1);
