@@ -31,7 +31,7 @@ MyGame::MyGame(CRstring appName, CRint xRes, CRint yRes, CRbool fullScreen)
 
 MyGame::~MyGame()
 {
-    TTF_Quit();
+    TextClass::deInit();
 	Mix_CloseAudio();							// sutdown SDL_mixer
 	if(state)
 	{
@@ -43,6 +43,9 @@ MyGame::~MyGame()
         delete input;
         input = NULL;
 	}
+	#ifdef USE_ACHIEVEMENTS
+        ACHIEVEMENTS->save("achieve.ach");
+	#endif
 	#ifdef PLATFORM_GP2X
 		MMUHack hack;
 		hack.closeHack();
@@ -52,9 +55,7 @@ MyGame::~MyGame()
 			execl("/usr/gp2x/gp2xmenu", "/usr/gp2x/gp2xmenu", NULL);
 		}
 	#endif
-	#ifdef USE_ACHIEVEMENTS
-        ACHIEVEMENTS->save("achieve.ach");
-	#endif
+
 }
 
 PENJIN_ERRORS MyGame::init()
@@ -116,7 +117,7 @@ PENJIN_ERRORS MyGame::init()
 
 	SDL_JoystickEventState(SDL_ENABLE);
 
-	TTF_Init();
+	TextClass::init();
 	Sound().init();
 	setInitialState(STATE_TITLE);
 	gameTimer.start();

@@ -125,6 +125,7 @@ void StateTitle::setupMainMenu()
     menu.loadFont("font/foo.ttf", 28);
     menu.setTextColour(Colour(YELLOW));
     menu.setTextSelectionColour(Colour(WHITE));
+    menu.setTextBgColour(RED);
     menu.addItem(MENU_IMAGE_ITEM);
     menu.setIsSelectable(false);
     const string path = "images/menu/pp_";
