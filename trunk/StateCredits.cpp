@@ -50,7 +50,7 @@ void StateCredits::init()
 	text.loadFont("font/foo.ttf", 26);
 	text.setRelativity(false);	//	We will control all positions of text manually
 	text.setBoundaries(bounds);
-	text.setCentreText(true);
+	text.setAlignment(TextClass::CENTRED);
 	text.setPosition(0,bounds.h*0.5f);
 	text.setColour(Colour(WHITE));
 

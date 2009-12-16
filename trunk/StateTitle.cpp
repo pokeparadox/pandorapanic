@@ -385,7 +385,7 @@ void StateTitle::getReady()
     t.setBoundaries(r);
     t.setRelativity(false);
     t.setPosition(0,0.7f*r.h);
-    t.setCentreText(true);
+    t.setAlignment(TextClass::CENTRED);
     t.print("Get Ready!");
     GFX::forceBlit();
     SDL_Delay(1500);
