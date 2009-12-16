@@ -6,7 +6,7 @@
 		<Option pch_mode="2" />
 		<Option default_target="Lin Release" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="MyGame/;MyGame/States/;PenjinBase/;PenjinBase/Sprite/;PenjinBase/Particle/;PenjinBase/Menu/;PenjinBase/PlatformSpecific/;PenjinBase/PlatformSpecific/GP2X/;PenjinBase/PlatformSpecific/Wii/;MyGame/States/MiniGames/;MyGame/States/MiniGames/StatePunchWrestler/;PenjinBase/PlatformSpecific/Pandora/;PenjinBase/Input/;PenjinBase/Scoring/;MyGame/States/MiniGames/StateRocketEscape/;PenjinBase/Input/KeyMapper/;MyGame/States/MiniGames/StatePanJoust/;PenjinBase/Draw/;PenjinBase/Particle/Collidables/;PenjinBase/Particle/Effects/;PenjinBase/3D/;PenjinBase/Sound/;PenjinBase/Particle/Particles/;PenjinBase/Menu/MenuItems/;PenjinBase/Draw/Primitives/;PenjinBase/Physics/;MyGame/States/MiniGames/StateSegWay/;PenjinBase/Draw/3D/;PenjinBase/Physics/Vectors/old/;PenjinBase/Physics/Vectors/;PenjinBase/Physics/Vectors/Trenki/;MyGame/States/MiniGames/StateArena/;" />
+		<Option virtualFolders="MyGame/;MyGame/States/;PenjinBase/;PenjinBase/Sprite/;PenjinBase/Particle/;PenjinBase/Menu/;PenjinBase/PlatformSpecific/;PenjinBase/PlatformSpecific/GP2X/;PenjinBase/PlatformSpecific/Wii/;MyGame/States/MiniGames/;MyGame/States/MiniGames/StatePunchWrestler/;PenjinBase/PlatformSpecific/Pandora/;PenjinBase/Input/;PenjinBase/Scoring/;MyGame/States/MiniGames/StateRocketEscape/;PenjinBase/Input/KeyMapper/;MyGame/States/MiniGames/StatePanJoust/;PenjinBase/Draw/;PenjinBase/Particle/Collidables/;PenjinBase/Particle/Effects/;PenjinBase/Sound/;PenjinBase/Particle/Particles/;PenjinBase/Menu/MenuItems/;PenjinBase/Draw/Primitives/;PenjinBase/Physics/;MyGame/States/MiniGames/StateSegWay/;PenjinBase/Draw/3D/;PenjinBase/Physics/Vectors/old/;PenjinBase/Physics/Vectors/;PenjinBase/Physics/Vectors/Trenki/;MyGame/States/MiniGames/StateArena/;PenjinBase/Text/;PenjinBase/Achievements/;PenjinBase/Timers/;" />
 		<Build>
 			<Target title="W32 Debug">
 				<Option platforms="Windows;" />
@@ -105,6 +105,7 @@
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-D_LINUX" />
 					<Add option="-DPENJIN_SDL" />
+					<Add option="-DUSE_ACHIEVEMENTS" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -294,8 +295,12 @@
 		<Unit filename="SegWay.h">
 			<Option virtualFolder="MyGame/States/MiniGames/StateSegWay/" />
 		</Unit>
-		<Unit filename="StateAchievements.cpp" />
-		<Unit filename="StateAchievements.h" />
+		<Unit filename="StateAchievements.cpp">
+			<Option virtualFolder="MyGame/States/" />
+		</Unit>
+		<Unit filename="StateAchievements.h">
+			<Option virtualFolder="MyGame/States/" />
+		</Unit>
 		<Unit filename="StateArena.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
@@ -531,20 +536,48 @@
 		<Unit filename="version.h">
 			<Option virtualFolder="MyGame/" />
 		</Unit>
-		<Unit filename="../PenjinBase/Achievement.cpp" />
-		<Unit filename="../PenjinBase/Achievement.h" />
-		<Unit filename="../PenjinBase/AchievementBoolean.cpp" />
-		<Unit filename="../PenjinBase/AchievementBoolean.h" />
-		<Unit filename="../PenjinBase/AchievementCount.cpp" />
-		<Unit filename="../PenjinBase/AchievementCount.h" />
-		<Unit filename="../PenjinBase/AchievementReset.cpp" />
-		<Unit filename="../PenjinBase/AchievementReset.h" />
-		<Unit filename="../PenjinBase/AchievementReset2.cpp" />
-		<Unit filename="../PenjinBase/AchievementReset2.h" />
-		<Unit filename="../PenjinBase/AchievementSystem.cpp" />
-		<Unit filename="../PenjinBase/AchievementSystem.h" />
-		<Unit filename="../PenjinBase/AchievementUtility.cpp" />
-		<Unit filename="../PenjinBase/AchievementUtility.h" />
+		<Unit filename="../PenjinBase/Achievement.cpp">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/Achievement.h">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementBoolean.cpp">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementBoolean.h">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementCount.cpp">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementCount.h">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementReset.cpp">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementReset.h">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementReset2.cpp">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementReset2.h">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementSystem.cpp">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementSystem.h">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementUtility.cpp">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
+		<Unit filename="../PenjinBase/AchievementUtility.h">
+			<Option virtualFolder="PenjinBase/Achievements/" />
+		</Unit>
 		<Unit filename="../PenjinBase/AnimatedParticle.cpp">
 			<Option virtualFolder="PenjinBase/Particle/Particles/" />
 		</Unit>
@@ -611,8 +644,12 @@
 		<Unit filename="../PenjinBase/Command.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
-		<Unit filename="../PenjinBase/CountDown.cpp" />
-		<Unit filename="../PenjinBase/CountDown.h" />
+		<Unit filename="../PenjinBase/CountDown.cpp">
+			<Option virtualFolder="PenjinBase/Timers/" />
+		</Unit>
+		<Unit filename="../PenjinBase/CountDown.h">
+			<Option virtualFolder="PenjinBase/Timers/" />
+		</Unit>
 		<Unit filename="../PenjinBase/DoubleVector.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
@@ -643,8 +680,12 @@
 		<Unit filename="../PenjinBase/GFX.h">
 			<Option virtualFolder="PenjinBase/Draw/" />
 		</Unit>
-		<Unit filename="../PenjinBase/Glyph.cpp" />
-		<Unit filename="../PenjinBase/Glyph.h" />
+		<Unit filename="../PenjinBase/Glyph.cpp">
+			<Option virtualFolder="PenjinBase/Text/" />
+		</Unit>
+		<Unit filename="../PenjinBase/Glyph.h">
+			<Option virtualFolder="PenjinBase/Text/" />
+		</Unit>
 		<Unit filename="../PenjinBase/HiScore.cpp">
 			<Option virtualFolder="PenjinBase/Scoring/" />
 		</Unit>
@@ -849,8 +890,11 @@
 		<Unit filename="../PenjinBase/Raycast.cpp">
 			<Option compile="0" />
 			<Option link="0" />
+			<Option virtualFolder="PenjinBase/" />
 		</Unit>
-		<Unit filename="../PenjinBase/Raycast.h" />
+		<Unit filename="../PenjinBase/Raycast.h">
+			<Option virtualFolder="PenjinBase/" />
+		</Unit>
 		<Unit filename="../PenjinBase/Rectangle.cpp">
 			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
 		</Unit>
@@ -918,10 +962,10 @@
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
 		<Unit filename="../PenjinBase/Text.cpp">
-			<Option virtualFolder="PenjinBase/" />
+			<Option virtualFolder="PenjinBase/Text/" />
 		</Unit>
 		<Unit filename="../PenjinBase/Text.h">
-			<Option virtualFolder="PenjinBase/" />
+			<Option virtualFolder="PenjinBase/Text/" />
 		</Unit>
 		<Unit filename="../PenjinBase/TextDoc.cpp">
 			<Option virtualFolder="PenjinBase/" />
@@ -942,10 +986,10 @@
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
 		<Unit filename="../PenjinBase/Timer.cpp">
-			<Option virtualFolder="PenjinBase/" />
+			<Option virtualFolder="PenjinBase/Timers/" />
 		</Unit>
 		<Unit filename="../PenjinBase/Timer.h">
-			<Option virtualFolder="PenjinBase/" />
+			<Option virtualFolder="PenjinBase/Timers/" />
 		</Unit>
 		<Unit filename="../PenjinBase/Variable.cpp">
 			<Option virtualFolder="PenjinBase/" />
