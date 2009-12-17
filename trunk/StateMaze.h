@@ -71,6 +71,7 @@ class StateMaze : public BaseState
         Background background0;
         Timer teller;
         Timer inputlimiter;
+        Timer achievementtimer;
         const char* filename;
         Sprite mysprite;
         Sprite tilesprite[10];

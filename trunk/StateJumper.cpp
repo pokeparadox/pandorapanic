@@ -507,6 +507,7 @@ void StateJumper::update()
 
         if(hero.getY() > 490)
         {
+
             variables[0].setInt(0);
             setNextState(STATE_MAIN);
         }

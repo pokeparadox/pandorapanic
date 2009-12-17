@@ -99,6 +99,8 @@ void StateMaze::init()
     inputlimiter.start();
     teller.setMode(SECONDS);
     teller.start();
+    achievementtimer.setMode(SECONDS);
+
 
         tilesprite[0].loadSprite("images/Maze/mazewire.png");
         tilesprite[0].setTransparentColour(MAGENTA);
@@ -417,7 +419,7 @@ void StateMaze::update()
         if (hero.getYvel() > 20 + variables[2].getInt()/4) {hero.setYvel(18 + + variables[2].getInt()/4);}
         if (hero.getYvel() < -20 - variables[2].getInt()/4) {hero.setYvel(-18 - variables[2].getInt()/4);}
 
-        //hero.ontile = 0;
+
         for (int i = 0;i< cloudnumber;i++)
         {
         cloud[i].setX(cloud[i].getX() + (cloud[i].getXvel()*0.2f));
@@ -572,6 +574,14 @@ void StateMaze::update()
             {
                youdead = true;
             }
+            if (cloud[j].getX() > hero.getX() - 16 && cloud[j].getX() < hero.getX() + 16
+            && cloud[j].getY() > hero.getY() - 16 && cloud[j].getY() < hero.getY() + 16 && youdead == false)
+            {
+                if (hero.getXvel() > 8 || hero.getXvel() < -8 || hero.getYvel() > 8 || hero.getYvel() < -8)
+                {
+                    achievementtimer.start();
+                }
+            }
             }
         }
 
@@ -590,13 +600,6 @@ void StateMaze::update()
         if (hero.getYvel() < -3) {hero.setYvel(hero.getYvel() + 3);}
         if (hero.getYvel() > 3) {hero.setYvel(hero.getYvel() - 3);}
         if (hero.getYvel() <= 3 && hero.getYvel() >= -3){hero.setYvel(0);}
-
-        // The blob updates
-
-
-
-        //robotright.update();
-        //robotleft.update();
 
 
         // Check if goal is reached
@@ -620,7 +623,15 @@ void StateMaze::update()
             variables[0].setInt(0);
             setNextState(STATE_MAIN);
         }
+        if(achievementtimer.getScaledTicks() > 1 && youdead == false)
+        {
+            #ifdef USE_ACHIEVEMENTS
+            ACHIEVEMENTS->logEvent("MAZE_SNEAKTHROUGH");
+            #endif
+        }
 }
+
+
 
 void StateMaze::pauseInput()
 {
