@@ -33,6 +33,8 @@ StateDistractedMath::~StateDistractedMath()
 
 void StateDistractedMath::init()
 {
+    ACHIEVEMENTS->logEvent("MATH_START");
+
     if(variables.size()<SUBSTATE_TRIGGER)
     {
         backsound.loadMusic("music/DistractedMaths/RickKelsall_Nervous.mp3");
@@ -257,6 +259,7 @@ void StateDistractedMath::render(SDL_Surface *screen)
     }
     if (mathstate == 4)
     {
+        ACHIEVEMENTS->logEvent("MATH_WIN");
         text.setPosition(100,150);
         text.print(screen,"Congratulations...");
     }
@@ -421,6 +424,7 @@ void StateDistractedMath::update()
         }
         if(hasWon)
         {
+
             variables[0].setInt(1);
             SDL_EnableUNICODE(tv);
             setNextState(STATE_MAIN);
