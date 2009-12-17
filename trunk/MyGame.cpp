@@ -118,7 +118,7 @@ PENJIN_ERRORS MyGame::init()
 	SDL_JoystickEventState(SDL_ENABLE);
 
 	TextClass::init();
-	Sound().init();
+	SoundClass::init();
 	setInitialState(STATE_TITLE);
 	gameTimer.start();
 
