@@ -181,9 +181,7 @@ void StateArena::userInput()
         {
             EFFECTSYSTEM->SetEffect(monsterhitPtr->GetX(), monsterhitPtr->GetY(), FX_MONSTERHIT);
             monsterhitPtr->SetDead(m_HeroPtr->GetX(), m_HeroPtr->GetY());
-            #ifdef USE_ACHIEVEMENTS
             ACHIEVEMENTS->logEvent("ARENA_HIT_ENEMY");
-            #endif
         }
     }
     if (input->isStart())

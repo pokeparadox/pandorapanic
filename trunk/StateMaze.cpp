@@ -625,9 +625,7 @@ void StateMaze::update()
         }
         if(achievementtimer.getScaledTicks() > 1 && youdead == false)
         {
-            #ifdef USE_ACHIEVEMENTS
             ACHIEVEMENTS->logEvent("MAZE_SNEAKTHROUGH");
-            #endif
         }
 }
 

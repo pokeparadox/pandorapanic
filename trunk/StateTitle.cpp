@@ -116,11 +116,7 @@ void StateTitle::setupMainMenu()
     choice = -1;
     showPrompt = false;
     menu.clear();
-#ifdef USE_ACHIEVEMENTS
     menu.setMenuStart(getStateXResolution()*0.25f - 15,12);
-#else
-    menu.setMenuStart(getStateXResolution()*0.25f - 15,50);
-#endif
     menu.setSelection(1);
     menu.loadFont("font/foo.ttf", 28);
     menu.setTextColour(Colour(YELLOW));
@@ -162,14 +158,12 @@ void StateTitle::setupMainMenu()
     menu.loadImage(path+"menu"+ext);
     menu.loadSelectionImage(path+"menu_selected"+ext);
     menu.setSpacing(spacing);
-#ifdef USE_ACHIEVEMENTS
     menu.addItem(MENU_IMAGE_STRING_ITEM);
     menu.setIsSelectable(true);
     menu.setMenuItemText("Achievements!");
     menu.loadImage(path+"menu"+ext);
     menu.loadSelectionImage(path+"menu_selected"+ext);
     menu.setSpacing(spacing);
-#endif
 
     menu.addItem(MENU_IMAGE_STRING_ITEM);
     menu.setIsSelectable(true);
@@ -215,19 +209,12 @@ void StateTitle::mainMenu()
     }
     else if (choice == 4)   /// HiScores screen
         setNextState(STATE_GAMEOVER);
-#ifdef USE_ACHIEVEMENTS
     else if (choice == 5)   /// Achievements screen
         setNextState(STATE_ACHIEVEMENTS);
     else if (choice == 6)   /// Credits screen
         setNextState(STATE_CREDITS);
     else if(choice == 7)    /// Quit
         nullifyState();
-#else
-    else if (choice == 5)   /// Credits screen
-        setNextState(STATE_CREDITS);
-    else if(choice == 6)    /// Quit
-        nullifyState();
-#endif
 }
 
 void StateTitle::update()
