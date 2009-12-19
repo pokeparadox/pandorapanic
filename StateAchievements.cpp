@@ -1,4 +1,3 @@
-#ifdef USE_ACHIEVEMENTS
 #include "StateAchievements.h"
 
 StateAchievements::StateAchievements()
@@ -104,5 +103,3 @@ void StateAchievements::update()
 {
 
 }
-#endif
-

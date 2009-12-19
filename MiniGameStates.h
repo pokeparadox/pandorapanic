@@ -77,10 +77,8 @@ You now just need to add your minigames here and it should work!
 /*    else if (next == STATE_BARRELROLL)
         state = new StateBarrelRoll;*/
 
-#ifdef USE_ACHIEVEMENTS
     else if (next == STATE_ACHIEVEMENTS)
         state = new StateAchievements;
-#endif
     else if (next == STATE_CREDITS)
         state = new StateCredits;
     else if (next == STATE_GAMEOVER)

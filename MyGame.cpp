@@ -43,9 +43,7 @@ MyGame::~MyGame()
         delete input;
         input = NULL;
 	}
-	#ifdef USE_ACHIEVEMENTS
-        ACHIEVEMENTS->save("achieve.ach");
-	#endif
+    ACHIEVEMENTS->save("achieve.ach");
 	#ifdef PLATFORM_GP2X
 		MMUHack hack;
 		hack.closeHack();
@@ -137,9 +135,7 @@ PENJIN_ERRORS MyGame::init()
         #endif
 	#endif
 
-#ifdef USE_ACHIEVEMENTS
     #include "AchievementSetup.h"
-#endif
 
 	return PENJIN_OK;
 }

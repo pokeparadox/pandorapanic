@@ -23,14 +23,47 @@
     tempC->setLimit(1000);
     ACHIEVEMENTS->addAchievement(tempC);
 
-    tempC = new AchievementCount;
-    tempC->setName("Slasher");
-    tempC->setDescription("Hit %l enemies at once in Arena");
-    tempC->setIcon("images/Achievements/test.png");
-    tempC->setTimeLimit(250);
-    tempC->addEvent("ARENA_HIT_ENEMY",0,coGREATER,acINCREASE);
-    tempC->setLimit(3);
-    ACHIEVEMENTS->addAchievement(tempC);
+    tempR = new AchievementReset;
+    tempR->setName("Only lucky");
+    tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
+    tempR->setIcon("images/Achievements/test.png");
+    prop = new vector<SpecialProperty>;
+    prop->push_back(special("GAMEMODE",2,coSMALLER));
+    tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
+    tempR->setLimit(10);
+    ACHIEVEMENTS->addAchievement(tempR);
+
+    tempR = new AchievementReset;
+    tempR->setName("Getting better");
+    tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
+    tempR->setIcon("images/Achievements/test.png");
+    prop = new vector<SpecialProperty>;
+    prop->push_back(special("GAMEMODE",2,coSMALLER));
+    tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
+    tempR->setLimit(20);
+    ACHIEVEMENTS->addAchievement(tempR);
+
+    tempR = new AchievementReset;
+    tempR->setName("AWESOME!");
+    tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
+    tempR->setIcon("images/Achievements/test.png");
+    prop = new vector<SpecialProperty>;
+    prop->push_back(special("GAMEMODE",2,coSMALLER));
+    tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
+    tempR->setLimit(30);
+    ACHIEVEMENTS->addAchievement(tempR);
+
+    tempB = new AchievementBoolean;
+    tempB->setName("Slasher");
+    tempB->setDescription("Hit %l enemies at once in Arena");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->setTimeLimit(250);
+    tempB->addEvent("ARENA_HIT_ENEMY",0,coGREATER,acINCREASE);
+    tempB->setLimit(3);
+    ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
     tempB->setName("Joust High Flyer");
@@ -46,63 +79,72 @@
     tempB->addEvent("MAZE_SNEAKTHROUGH",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
-    tempC = new AchievementCount;
-    tempC->setName("First Jumper Goal");
-    tempC->setDescription("first map in minimal jumps");
-    tempC->setIcon("images/Achievements/test.png");
-    tempC->addEvent("JUMPER1",1,coEQUAL,acINCREASE);
-    tempC->setLimit(1);
-    ACHIEVEMENTS->addAchievement(tempC);
+    tempB = new AchievementBoolean;
+    tempB->setName("First Jumper Goal");
+    tempB->setDescription("first map in minimal jumps");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("JUMPER1",1,coEQUAL,acINCREASE);
+    tempB->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempB);
 
-    tempC = new AchievementCount;
-    tempC->setName("Second Jumper Goal");
-    tempC->setDescription("Second map in minimal jumps");
-    tempC->setIcon("images/Achievements/test.png");
-    tempC->addEvent("JUMPER2",1,coEQUAL,acINCREASE);
-    tempC->setLimit(1);
-    ACHIEVEMENTS->addAchievement(tempC);
+    tempB = new AchievementBoolean;
+    tempB->setName("Second Jumper Goal");
+    tempB->setDescription("Second map in minimal jumps");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("JUMPER2",1,coEQUAL,acINCREASE);
+    tempB->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempB);
 
-    tempC = new AchievementCount;
-    tempC->setName("Third Jumper Goal");
-    tempC->setDescription("Third map in minimal jumps");
-    tempC->setIcon("images/Achievements/test.png");
-    tempC->addEvent("JUMPER3",1,coEQUAL,acINCREASE);
-    tempC->setLimit(1);
-    ACHIEVEMENTS->addAchievement(tempC);
+    tempB = new AchievementBoolean;
+    tempB->setName("Third Jumper Goal");
+    tempB->setDescription("Third map in minimal jumps");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("JUMPER3",1,coEQUAL,acINCREASE);
+    tempB->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempB);
 
-    tempC = new AchievementCount;
-    tempC->setName("Fourth Jumper Goal");
-    tempC->setDescription("Fourth map in minimal jumps");
-    tempC->setIcon("images/Achievements/test.png");
-    tempC->addEvent("JUMPER4",1,coEQUAL,acINCREASE);
-    tempC->setLimit(1);
-    ACHIEVEMENTS->addAchievement(tempC);
+    tempB = new AchievementBoolean;
+    tempB->setName("Fourth Jumper Goal");
+    tempB->setDescription("Fourth map in minimal jumps");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("JUMPER4",1,coEQUAL,acINCREASE);
+    tempB->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempB);
 
-    tempC = new AchievementCount;
-    tempC->setName("Fifth Jumper Goal");
-    tempC->setDescription("Last map in minimal jumps");
-    tempC->setIcon("images/Achievements/test.png");
-    tempC->addEvent("JUMPER5",1,coEQUAL,acINCREASE);
-    tempC->setLimit(1);
-    ACHIEVEMENTS->addAchievement(tempC);
+    tempB = new AchievementBoolean;
+    tempB->setName("Fifth Jumper Goal");
+    tempB->setDescription("Last map in minimal jumps");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("JUMPER5",1,coEQUAL,acINCREASE);
+    tempB->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempB);
 
+    tempB = new AchievementBoolean;
+    tempB->setName("Close call");
+    tempB->setDescription("Land on the pad with no fuel left");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("PLANDER_FUEL_WIN",0,coEQUAL,acINCREASE);
+    tempB->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempB);
 
     tempR = new AchievementReset;
     tempR->setName("Reflex-man!");
     tempR->setDescription("Get a %l hit-streak in Reflex");
     tempR->setIcon("images/Achievements/test.png");
     tempR->addEvent("REFLEX_HIT",0,coGREATER,acINCREASE_COUNT);
-    tempR->addEvent("GAME_WIN",1,coEQUAL,acRESET);
-    tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
+    tempR->addEvent("GAME_START",1,coEQUAL,acRESET);
+    tempR->setShowProgress(false);
     tempR->setLimit(12);
     ACHIEVEMENTS->addAchievement(tempR);
+
+    // secret achievements
 
     tempR2 = new AchievementReset2;
     tempR2->setName("Collectible-love");
     tempR2->setDescription("Get the collectible, but lose the level");
     tempR2->setIcon("images/Achievements/test.png");
     tempR2->setSecret(true);
-    tempR2->addEvent("ROCKET_COLLECTIBLE_GET",1,coEQUAL,acINCREASE);
+    tempR2->addEvent("PLANDER_COLLECTIBLE_GET",1,coEQUAL,acINCREASE);
     tempR2->addEvent("GAME_FAIL",1,coEQUAL,acINCREASE);
     tempR2->addEvent("GAME_START",1,coEQUAL,acRESET);
     tempR2->setLimit(1);

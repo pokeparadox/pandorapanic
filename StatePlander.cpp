@@ -347,9 +347,7 @@ void StatePlander::update()
     rocket.update();
     if(rocket.checkCollectible())
     {
-        #ifdef USE_ACHIEVEMENTS
-        ACHIEVEMENTS->logEvent("ROCKET_COLLECTIBLE_GET");
-        #endif
+        ACHIEVEMENTS->logEvent("PLANDER_COLLECTIBLE_GET");
         collect.setPosition(-100,-100); // move it out of the way
         float colFuel = rocket.getFuel() + collect.getReward();
         if(colFuel>100)
@@ -368,6 +366,7 @@ void StatePlander::update()
     pad.update();
     if(pad.hasRocketLanded())
     {
+        ACHIEVEMENTS->logEvent("PLANDER_FUEL_WIN",rocket.getFuel());
         variables[0].setInt(1);
         setNextState(STATE_MAIN);
     }

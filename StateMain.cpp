@@ -182,13 +182,11 @@ void StateMain::init()
         if(variables[6].getInt() != 1)
         {
             playWin = true;
-            #ifdef USE_ACHIEVEMENTS
             vector<SpecialProperty> temp;
             temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
             temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
             temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
             ACHIEVEMENTS->logEventSpecial("GAME_WIN",temp);
-            #endif
         }
 
         if(playWin)
@@ -378,13 +376,11 @@ void StateMain::update()
         if(variables[6].getInt() == 1)
             variables[6].setInt(0);
         input->resetKeys(); //  prevent rogue keys in next minigame
-        #ifdef USE_ACHIEVEMENTS
-            vector<SpecialProperty> temp;
-            temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
-            temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
-            temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
-            ACHIEVEMENTS->logEventSpecial("GAME_START",temp);
-        #endif
+        vector<SpecialProperty> temp;
+        temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
+        temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
+        temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
+        ACHIEVEMENTS->logEventSpecial("GAME_START",temp);
         setNextState(variables[3].getInt()+3);
     }
 }
