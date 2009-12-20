@@ -158,7 +158,15 @@ void StateTheCountJob::userInput()
         {
             int arr[5] = {pos[0].size(), pos[1].size(), pos[2].size(), pos[3].size(), pos[4].size()};
             if (NumberUtility::isGreatest(arr,selected))
+            {
                 variables[0].setInt(1);
+                vector<SpecialProperty> prop;
+                prop.push_back(special("CIRCLELEVEL",circleLevel,coEQUAL));
+                prop.push_back(special("DIFFLEVEL",diffLevel,coEQUAL));
+                prop.push_back(special("TIMELEVEL",showTime,coEQUAL));
+                prop.push_back(special("COLOURBLIND",colourBlind,coEQUAL));
+                ACHIEVEMENTS->logEventSpecial("COUNT_WIN",prop);
+            }
             else
                 variables[0].setInt(0);
 

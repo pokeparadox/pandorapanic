@@ -255,6 +255,8 @@ void StatePong::update()
 
             // Use this value to modify the ballUp value
             ballUp = collision / (collisionDeflection * 1.0f);
+
+            ACHIEVEMENTS->logEvent("PONG_HIT");
         }
     }
 

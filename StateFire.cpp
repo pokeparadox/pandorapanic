@@ -959,6 +959,8 @@ void Fire::ShootWater()
     shot.vel_y = -abs(cannon.acceleration.y);
 
     water.push_back(shot);
+
+    ACHIEVEMENTS->logEvent("FIRE_SHOOT");
 }
 
 bool Fire::CheckRectCollision( SDL_Rect* boxA, SDL_Rect* boxB )
