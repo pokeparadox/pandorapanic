@@ -131,7 +131,8 @@ void StateMain::init()
         #ifdef USE_ACHIEVEMENTS
         vector<SpecialProperty> temp;
         temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
-        temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
+        temp.push_back(special("LEVELNUMBER",variables[2].getInt(),0));
+        temp.push_back(special("MINIGAME",variables[3].getInt(),0));
         temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
         ACHIEVEMENTS->logEventSpecial("GAME_FAIL",temp);
         #endif
@@ -184,7 +185,8 @@ void StateMain::init()
             playWin = true;
             vector<SpecialProperty> temp;
             temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
-            temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
+            temp.push_back(special("LEVELNUMBER",variables[2].getInt(),0));
+            temp.push_back(special("MINIGAME",variables[3].getInt(),0));
             temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
             ACHIEVEMENTS->logEventSpecial("GAME_WIN",temp);
         }
@@ -376,11 +378,15 @@ void StateMain::update()
         if(variables[6].getInt() == 1)
             variables[6].setInt(0);
         input->resetKeys(); //  prevent rogue keys in next minigame
-        vector<SpecialProperty> temp;
-        temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
-        temp.push_back(special("LEVELNUMBER",variables[3].getInt(),0));
-        temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
-        ACHIEVEMENTS->logEventSpecial("GAME_START",temp);
+        if (variables[3].getInt() >= 0)
+        {
+            vector<SpecialProperty> temp;
+            temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
+            temp.push_back(special("LEVELNUMBER",variables[2].getInt(),0));
+            temp.push_back(special("MINIGAME",variables[3].getInt(),0));
+            temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
+            ACHIEVEMENTS->logEventSpecial("GAME_START",temp);
+        }
         setNextState(variables[3].getInt()+3);
     }
 }

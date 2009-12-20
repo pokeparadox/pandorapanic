@@ -181,6 +181,7 @@ void StateSnatchABeer::userInput()
     if(input->isA() && started) {
         if (status == MISSCLOSE) {
             if (secondChance) {
+                ACHIEVEMENTS->logEvent("SNATCH_SECOND");
                 animFrame = 0;
                 status = WIN2;
                 playOnce = true;
