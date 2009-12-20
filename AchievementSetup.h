@@ -3,7 +3,7 @@
 
 #include "AchievementSystem.h"
 
-    ACHIEVEMENTS->setOffset(250,35);
+    ACHIEVEMENTS->setOffset(250,50);
     ACHIEVEMENTS->setSpacing(3);
     ACHIEVEMENTS->setPopupPosition(ppBOTTOMCENTER);
     ACHIEVEMENTS->setPopupFadeTime(500);
@@ -11,7 +11,7 @@
 
     AchievementBoolean* tempB = NULL;
     AchievementReset* tempR = NULL;
-    AchievementReset2* tempR2 = NULL;
+    AchievementList* tempL = NULL;
     AchievementCount* tempC = NULL;
     vector<SpecialProperty>* prop = NULL;
 
@@ -66,22 +66,22 @@
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
-    tempB->setName("Joust High Flyer");
-    tempB->setDescription("Don't land on a platform and win");
+    tempB->setName("High Flyer");
+    tempB->setDescription("Don't land on a platform and win Joust");
     tempB->setIcon("images/Achievements/highflyer.png");
     tempB->addEvent("JOUST_FINISH",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
-    tempB->setName("Maze Sneakthrough");
-    tempB->setDescription("Close ghost pass at high speed");
+    tempB->setName("Sneakthrough");
+    tempB->setDescription("Close ghost pass at high speed in Maze");
     tempB->setIcon("images/Achievements/test.png");
     tempB->addEvent("MAZE_SNEAKTHROUGH",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
     tempB->setName("First Jumper Goal");
-    tempB->setDescription("first map in minimal jumps");
+    tempB->setDescription("Finish the first map in minimal jumps");
     tempB->setIcon("images/Achievements/test.png");
     tempB->addEvent("JUMPER1",1,coEQUAL,acINCREASE);
     tempB->setLimit(1);
@@ -89,7 +89,7 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Second Jumper Goal");
-    tempB->setDescription("Second map in minimal jumps");
+    tempB->setDescription("Finish the second map in minimal jumps");
     tempB->setIcon("images/Achievements/test.png");
     tempB->addEvent("JUMPER2",1,coEQUAL,acINCREASE);
     tempB->setLimit(1);
@@ -97,7 +97,7 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Third Jumper Goal");
-    tempB->setDescription("Third map in minimal jumps");
+    tempB->setDescription("Finish the third map in minimal jumps");
     tempB->setIcon("images/Achievements/test.png");
     tempB->addEvent("JUMPER3",1,coEQUAL,acINCREASE);
     tempB->setLimit(1);
@@ -105,7 +105,7 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Fourth Jumper Goal");
-    tempB->setDescription("Fourth map in minimal jumps");
+    tempB->setDescription("Finish the fourth map in minimal jumps");
     tempB->setIcon("images/Achievements/test.png");
     tempB->addEvent("JUMPER4",1,coEQUAL,acINCREASE);
     tempB->setLimit(1);
@@ -113,7 +113,7 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Fifth Jumper Goal");
-    tempB->setDescription("Last map in minimal jumps");
+    tempB->setDescription("Finish the last map in minimal jumps");
     tempB->setIcon("images/Achievements/test.png");
     tempB->addEvent("JUMPER5",1,coEQUAL,acINCREASE);
     tempB->setLimit(1);
@@ -130,7 +130,7 @@
     tempR = new AchievementReset;
     tempR->setName("Reflex-man!");
     tempR->setDescription("Get a %l hit-streak in Reflex");
-    tempR->setIcon("images/Achievements/test.png");
+    tempR->setIcon("images/Achievements/reflex-man.png");
     tempR->addEvent("REFLEX_HIT",0,coGREATER,acINCREASE_COUNT);
     tempR->addEvent("GAME_START",1,coEQUAL,acRESET);
     tempR->setShowProgress(false);
@@ -139,16 +139,16 @@
 
     // secret achievements
 
-    tempR2 = new AchievementReset2;
-    tempR2->setName("Collectible-love");
-    tempR2->setDescription("Get the collectible, but lose the level");
-    tempR2->setIcon("images/Achievements/test.png");
-    tempR2->setSecret(true);
-    tempR2->addEvent("PLANDER_COLLECTIBLE_GET",1,coEQUAL,acINCREASE);
-    tempR2->addEvent("GAME_FAIL",1,coEQUAL,acINCREASE);
-    tempR2->addEvent("GAME_START",1,coEQUAL,acRESET);
-    tempR2->setLimit(1);
-    ACHIEVEMENTS->addAchievement(tempR2);
+    tempL = new AchievementList;
+    tempL->setName("Collectible-love");
+    tempL->setDescription("Get the collectible, but lose the level");
+    tempL->setIcon("images/Achievements/collectible-love.png");
+    tempL->setSecret(true);
+    tempL->addEvent("PLANDER_COLLECTIBLE_GET",1,coEQUAL,acINCREASE);
+    tempL->addEvent("GAME_FAIL",1,coEQUAL,acINCREASE);
+    tempL->addEvent("GAME_START",1,coEQUAL,acRESET);
+    tempL->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempL);
 
     // first try to load achievment file
     if(ACHIEVEMENTS->load("achieve.ach") != PENJIN_OK)
