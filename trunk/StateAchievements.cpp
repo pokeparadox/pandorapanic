@@ -75,19 +75,25 @@ void StateAchievements::userInput()
         if (offset > 0)
         {
             buttonSheet.setCurrentFrame(16);
-            buttonSheet.setPosition(565,10);
+            buttonSheet.setPosition(540,50);
             buttonSheet.render(screen);
         }
         if (offset < ACHIEVEMENTS->achievementCount()-ACHIEVEMENTS->getListSize())
         {
             buttonSheet.setCurrentFrame(17);
-            buttonSheet.setPosition(565,438);
+            buttonSheet.setPosition(540,403);
             buttonSheet.render(screen);
         }
         buttonSheet.setCurrentFrame(11);
         buttonSheet.setPosition(0,440);
         buttonSheet.render(screen);
+        text.setBoundaries(Vector2di(0,0),Vector2di(screen->w,screen->h));
+        text.setPosition(0,5);
+        text.setAlignment(TextClass::CENTRED);
+        string temp = "Achievements unlocked: " + StringUtility::intToString(ACHIEVEMENTS->unlockedCount()) + "/" + StringUtility::intToString(ACHIEVEMENTS->achievementCount());
+        text.print(screen,temp);
         text.setPosition(50,440);
+        text.setAlignment(TextClass::LEFT_JUSTIFIED);
         text.print(screen,"Go Back");
         ACHIEVEMENTS->renderList(screen,offset);
     }

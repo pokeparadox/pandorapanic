@@ -10,6 +10,7 @@
 #include "Random.h"
 #include "Text.h"
 #include "AnimatedSprite.h"
+#include "StringUtility.h"
 
 class StateAchievements : public BaseState
 {
