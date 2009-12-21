@@ -274,7 +274,7 @@ void StateJumper::onResume()
             }
         }
 
-        text.print(screen, jumpcount);
+        //text.print(screen, jumpcount);
         buttonPrompter.render();
     }
 #else
