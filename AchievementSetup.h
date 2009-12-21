@@ -181,6 +181,14 @@
     tempL->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
     ACHIEVEMENTS->addAchievement(tempL);
 
+    tempB = new AchievementBoolean;
+    tempB->setName("Perfect Putt");
+    tempB->setDescription("Shoot exactly at the center of the green block");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("PERFECT_PUTT",140,coSMALLER,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
+
+
     // secret achievements
 
     tempL = new AchievementList;
@@ -193,6 +201,8 @@
     tempL->addEvent("GAME_START",1,coEQUAL,acRESET);
     tempL->setLimit(1);
     ACHIEVEMENTS->addAchievement(tempL);
+
+
 
     // first try to load achievment file
     if(ACHIEVEMENTS->load("achieve.ach") != PENJIN_OK)

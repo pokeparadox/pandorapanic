@@ -318,6 +318,10 @@ void StatePuttPutt::update()
         }
         if(putting)
         {
+            if(focusY  >= sweetY + (sweetH / 2) - 1 and focusY <= sweetY + (sweetH / 2) + 1)  //perfect
+            {
+                ACHIEVEMENTS->logEvent("PERFECT_PUTT");
+            }
             if(focusY + focusH >= sweetY and focusY <= sweetY + sweetH)  //ball in
             {
                 travelState = 0;
