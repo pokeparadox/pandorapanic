@@ -39,7 +39,7 @@ StateMain::~StateMain()
 void StateMain::loadCommon()
 {
     logo.loadSprite("images/menu/pp_logo_small.png");
-    logo.setPosition(Vector2di(getStateXResolution()/2.5f,getStateYResolution()/14));
+    logo.setPosition(Vector2di(GFX::getXResolution()/2.5f,GFX::getYResolution()/14));
     #ifdef PENJIN_SDL
         logo.setUseHardware(true);
     #endif
@@ -47,8 +47,8 @@ void StateMain::loadCommon()
     text.setColour(Colour(WHITE));
 
     SDL_Rect bounds;
-    bounds.h = getStateYResolution();
-    bounds.w = getStateXResolution();
+    bounds.h = GFX::getYResolution();
+    bounds.w = GFX::getXResolution();
     bounds.x = bounds.y = 0;
     text.setBoundaries(bounds);
     text.setPosition(15,20);
@@ -58,7 +58,7 @@ void StateMain::loadCommon()
         back.setUseHardware(false);
     #endif
     SDL_Surface* t = SDL_GetVideoSurface();
-    bgBuffer = SDL_CreateRGBSurface(t->flags,getStateXResolution(), getStateYResolution(), t->format->BitsPerPixel, 0, 0, 0, 0);
+    bgBuffer = SDL_CreateRGBSurface(t->flags,GFX::getXResolution(), GFX::getYResolution(), t->format->BitsPerPixel, 0, 0, 0, 0);
     Random::setLimits(0,255);
     backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
     SDL_FillRect(bgBuffer, NULL, SDL_MapRGB(bgBuffer->format,backColour.red,backColour.green,backColour.blue));
@@ -86,7 +86,7 @@ void StateMain::winLoseLoad()
         lostLife.setUseHardware(true);
     #endif
     bar.loadSprite("images/pp_level_info.png");
-    bar.setPosition(getStateXResolution()/3.6f,getStateYResolution()*0.5f);
+    bar.setPosition(GFX::getXResolution()/3.6f,GFX::getYResolution()*0.5f);
     #ifdef PENJIN_SDL
         bar.setUseHardware(true);
     #endif
@@ -96,7 +96,7 @@ void StateMain::loadWin()
 {
     music.loadSound("music/PandoraPanic_Win.ogg");
     loseWin.loadSprite("images/pp_win.png");
-    loseWin.setPosition(getStateXResolution()/2.5f,getStateYResolution()/1.5f);
+    loseWin.setPosition(GFX::getXResolution()/2.5f,GFX::getYResolution()/1.5f);
     winLoseLoad();
 }
 
@@ -104,7 +104,7 @@ void StateMain::loadLose()
 {
     music.loadSound("music/PandoraPanic_Loss.ogg");
     loseWin.loadSprite("images/pp_fail.png");
-    loseWin.setPosition(getStateXResolution()/2.5f,getStateYResolution()/1.5f);
+    loseWin.setPosition(GFX::getXResolution()/2.5f,GFX::getYResolution()/1.5f);
     #ifdef PENJIN_SDL
         loseWin.setUseHardware(true);
     #endif
@@ -253,7 +253,6 @@ void StateMain::genPreview(uint next)
     /// Render and scale down image
     state->variables = this->variables;
     state->variables.resize(SUBSTATE_TRIGGER);
-    state->setStateResolution(xRes,yRes);
     state->init();
 
 #ifdef PENJIN_SDL
@@ -263,8 +262,8 @@ void StateMain::genPreview(uint next)
         state->pauseScreen(t);
     preview = rotozoomSurfaceXY(t, 0, 0.6f, 0.6f, SMOOTHING_ON);
     SDL_Rect trect;
-    trect.x = *xRes*0.23f;
-    trect.y = *yRes*0.3f;
+    trect.x = t->w*0.23f;
+    trect.y = t->h*0.3f;
     trect.w=preview->w;
     trect.h=preview->h;
     SDL_BlitSurface(preview,NULL,bgBuffer,&trect);

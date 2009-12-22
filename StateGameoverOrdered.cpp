@@ -21,8 +21,8 @@ void StateGameoverOrdered::init()
 {
 	SDL_Rect bounds;
 	bounds.x = bounds.y = 0;
-	bounds.w = getStateXResolution();
-	bounds.h = getStateYResolution();
+	bounds.w = GFX::getXResolution();
+	bounds.h = GFX::getYResolution();
 	scoreScreen.setBoundaries(bounds);
 	scoreScreen.setScoreFile("pandordered.scr");
 	scoreScreen.setTableTitle("Pandordered! Pros!");
@@ -57,7 +57,8 @@ void StateGameoverOrdered::init()
 	buff.update();
 
 	#ifdef PENJIN_SDL
-        bgBuffer = SDL_CreateRGBSurface(screen->flags,getStateXResolution(), getStateYResolution(), screen->format->BitsPerPixel, 0, 0, 0, 0);
+        SDL_Surface* screen = GFX::getVideoSurface();
+        bgBuffer = SDL_CreateRGBSurface(screen->flags,GFX::getXResolution(), GFX::getYResolution(), screen->format->BitsPerPixel, 0, 0, 0, 0);
         Random::setLimits(0,255);
         SDL_FillRect(bgBuffer, NULL, SDL_MapRGB(bgBuffer->format,Random::nextInt(),Random::nextInt(),Random::nextInt()));
         SDL_FillRect(screen, NULL, NULL);
@@ -68,7 +69,7 @@ void StateGameoverOrdered::init()
         back.setUseHardware(false);
     #endif
     logo.loadSprite("images/pp_logo_large.png");
-    logo.setPosition(Vector2di(getStateXResolution()*0.25f,getStateYResolution()/3));
+    logo.setPosition(Vector2di(GFX::getXResolution()*0.25f,GFX::getYResolution()/3));
     #ifdef PENJIN_SDL
         back.render(bgBuffer);
     #else

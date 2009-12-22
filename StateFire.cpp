@@ -335,7 +335,7 @@ void Fire::SetupGame( int8_t lvl )
         towers[i].smokeblack.setMax(SMOKE_PARTICLES);
         towers[i].smokeblack.loadSprite( "images/Fire/bsmoke.png" );
         towers[i].smokeblack.setPosition(Vector2di(-10000,-10000));
-        towers[i].smokeblack.setBoundaries(Vector2di(0,0),Vector2di(getStateXResolution(),getStateYResolution()));
+        towers[i].smokeblack.setBoundaries(Vector2di(0,0),Vector2di(GFX::getXResolution(),GFX::getYResolution()));
         towers[i].smokeblack.setInvisible(SMOKE_PARTICLES-10);
         towers[i].smokeblack.setMaxVelocity(Vector2df(SMOKE_MAX_VEL_UP, SMOKE_MAX_VEL_DN));
         towers[i].smokeblack.setLifeTime(SMOKE_LIFETIME);
@@ -347,7 +347,7 @@ void Fire::SetupGame( int8_t lvl )
         towers[i].smokewhite.setMax(SMOKE_PARTICLES);
         towers[i].smokewhite.loadSprite( "images/Fire/wsmoke.png" );
         towers[i].smokewhite.setPosition(Vector2di(-10000,-10000));
-        towers[i].smokewhite.setBoundaries(Vector2di(0,0),Vector2di(getStateXResolution(),getStateYResolution()));
+        towers[i].smokewhite.setBoundaries(Vector2di(0,0),Vector2di(GFX::getXResolution(),GFX::getYResolution()));
         towers[i].smokewhite.setInvisible(SMOKE_PARTICLES-10);
         towers[i].smokewhite.setMaxVelocity(Vector2df(SMOKE_MAX_VEL_UP, SMOKE_MAX_VEL_DN));
         towers[i].smokewhite.setLifeTime(SMOKE_LIFETIME);
@@ -690,8 +690,8 @@ void Fire::MoveParticles( void )
 
     screen_box.x = 0;
     screen_box.y = 0;
-    screen_box.w = screen->w;
-    screen_box.h = screen->h;
+    screen_box.w = GFX::getXResolution();
+    screen_box.h = GFX::getYResolution();
 
     water_box.w = sprWater.getWidth();
     water_box.h = sprWater.getHeight();

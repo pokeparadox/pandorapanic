@@ -19,7 +19,8 @@ void StateAchievements::init()
 {
 	#ifdef PENJIN_SDL
         buff.update();
-        bgBuffer = SDL_CreateRGBSurface(screen->flags,getStateXResolution(), getStateYResolution(), screen->format->BitsPerPixel, 0, 0, 0, 0);
+        SDL_Surface* screen = GFX::getVideoSurface();
+        bgBuffer = SDL_CreateRGBSurface(screen->flags,GFX::getXResolution(), GFX::getYResolution(), screen->format->BitsPerPixel, 0, 0, 0, 0);
         Random::setLimits(0,255);
         SDL_FillRect(bgBuffer, NULL, SDL_MapRGB(bgBuffer->format,Random::nextInt(),Random::nextInt(),Random::nextInt()));
         SDL_FillRect(screen, NULL, NULL);

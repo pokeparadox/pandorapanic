@@ -40,8 +40,8 @@ void StateCredits::init()
 
     SDL_Rect bounds;
     bounds.x = bounds.y = 0;
-    bounds.w = getStateXResolution();
-    bounds.h = getStateYResolution();
+    bounds.w = GFX::getXResolution();
+    bounds.h = GFX::getYResolution();
     pandStartPos = Vector2di((bounds.w - 196) *0.5f,bounds.h * 0.1f);
     initPandora(pandStartPos);
     logo.setPosition((bounds.w - logo.getWidth()) *0.5f,bounds.h * 0.66f);
@@ -242,7 +242,7 @@ void StateCredits::render(SDL_Surface *screen)
         tempString = "PandoraPanic! V" + (string)AutoVersion::FULLVERSION_STRING;
     logo.render(screen);
     renderPandora(screen);
-    text.setPosition(0,getStateYResolution()*0.5f);
+    text.setPosition(0,GFX::getYResolution()*0.5f);
 	text.print(screen,tempString);
 	buff.update();
 	buff.setAlpha(240);
@@ -533,7 +533,7 @@ void StateCredits::unlimitedUpdate()
             }
 			else
                 logo.setAlpha(0);
-            logo.setPosition((getStateXResolution() - logo.getWidth())*0.5f,getStateYResolution() * 0.66f);
+            logo.setPosition((GFX::getXResolution() - logo.getWidth())*0.5f,GFX::getYResolution() * 0.66f);
 		}
 		else
 			setNextState(STATE_TITLE);
