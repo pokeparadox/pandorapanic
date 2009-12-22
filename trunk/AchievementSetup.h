@@ -18,7 +18,7 @@
     tempC = new AchievementCount;
     tempC->setName("Winner");
     tempC->setDescription("Win one thousand games!");
-    tempC->setIcon("images/Achievements/test.png");
+    tempC->setIcon("images/Achievements/win1000.png");
     tempC->addEvent("GAME_WIN",1,coEQUAL,acINCREASE);
     tempC->setLimit(1000);
     ACHIEVEMENTS->addAchievement(tempC);
@@ -142,7 +142,7 @@
     tempB = new AchievementBoolean;
     tempB->setName("Eagle-eye");
     tempB->setDescription("Win TheCountJob %l times in highest level and colourblind mode");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/eagle-eye.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(special("CIRCLELEVEL",5,coEQUAL));
     prop->push_back(special("DIFFLEVEL",10,coEQUAL));
@@ -164,14 +164,14 @@
     tempB = new AchievementBoolean;
     tempB->setName("In the nick of time");
     tempB->setDescription("In RotatingTurrent shoot the bomb very close to your turret");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/nick-of-time.png");
     tempB->addEvent("ROTDEF_WIN",140,coSMALLER,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempL = new AchievementList;
     tempL->setName("Second hand beer");
     tempL->setDescription("Snatch the beer in the second chance (level 20 minimum)");
-    tempL->setIcon("images/Achievements/test.png");
+    tempL->setIcon("images/Achievements/second-hand-snatch.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(special("LEVELNUMBER",19,coGREATER));
     prop->push_back(special("MINIGAME",20,coEQUAL));
@@ -185,7 +185,7 @@
     tempB->setName("Perfect Putt");
     tempB->setDescription("Shoot exactly at the center of the green block");
     tempB->setIcon("images/Achievements/test.png");
-    tempB->addEvent("PERFECT_PUTT",140,coSMALLER,acINCREASE);
+    tempB->addEvent("PERFECT_PUTT",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
 
