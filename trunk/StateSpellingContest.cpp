@@ -31,8 +31,8 @@ void StateSpellingContest::init()
 {
     SDL_Rect bounds;
     bounds.x = bounds.y = 0;
-    bounds.w = getStateXResolution();
-    bounds.h = getStateYResolution();
+    bounds.w = GFX::getXResolution();
+    bounds.h = GFX::getYResolution();
     text.setBoundaries(bounds);
 
     boy.setPosition(350,200);

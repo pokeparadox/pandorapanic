@@ -617,16 +617,12 @@
 		<Unit filename="../PenjinBase/AchievementCount.h">
 			<Option virtualFolder="PenjinBase/Achievements/" />
 		</Unit>
+		<Unit filename="../PenjinBase/AchievementList.cpp" />
+		<Unit filename="../PenjinBase/AchievementList.h" />
 		<Unit filename="../PenjinBase/AchievementReset.cpp">
 			<Option virtualFolder="PenjinBase/Achievements/" />
 		</Unit>
 		<Unit filename="../PenjinBase/AchievementReset.h">
-			<Option virtualFolder="PenjinBase/Achievements/" />
-		</Unit>
-		<Unit filename="../PenjinBase/AchievementReset2.cpp">
-			<Option virtualFolder="PenjinBase/Achievements/" />
-		</Unit>
-		<Unit filename="../PenjinBase/AchievementReset2.h">
 			<Option virtualFolder="PenjinBase/Achievements/" />
 		</Unit>
 		<Unit filename="../PenjinBase/AchievementSystem.cpp">
@@ -920,6 +916,8 @@
 		<Unit filename="../PenjinBase/ParticleMirror.h">
 			<Option virtualFolder="PenjinBase/Particle/Collidables/" />
 		</Unit>
+		<Unit filename="../PenjinBase/Penjin.cpp" />
+		<Unit filename="../PenjinBase/Penjin.h" />
 		<Unit filename="../PenjinBase/PenjinErrors.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>

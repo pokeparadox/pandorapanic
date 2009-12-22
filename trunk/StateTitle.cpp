@@ -54,8 +54,8 @@ void StateTitle::init()
     #elif PENJIN_GL
         GFX::init2DRendering(*xRes,*yRes);
     #endif
-    emit.setPosition(Vector2di(getStateXResolution()*0.5f,getStateYResolution()*0.5f));
-    emit.setBoundaries(Vector2di(-64,-64),Vector2di(getStateXResolution(),getStateYResolution()));
+    emit.setPosition(Vector2di(GFX::getXResolution()*0.5f,GFX::getYResolution()*0.5f));
+    emit.setBoundaries(Vector2di(-64,-64),Vector2di(GFX::getXResolution(),GFX::getYResolution()));
     emit.setMaxVelocity(Vector2df(6,6));
     emit.setLifeTime(6000);
     emit.shouldFadeColour(true);
@@ -65,7 +65,7 @@ void StateTitle::init()
     #ifdef PENJIN_SDL
         back.setUseHardware(false);
         SDL_Surface* t = SDL_GetVideoSurface();
-        bgBuffer = SDL_CreateRGBSurface(t->flags,getStateXResolution(), getStateYResolution(), t->format->BitsPerPixel, 0, 0, 0, 0);
+        bgBuffer = SDL_CreateRGBSurface(t->flags,GFX::getXResolution(), GFX::getYResolution(), t->format->BitsPerPixel, 0, 0, 0, 0);
         GFX::clearScreen(bgBuffer);
     #endif
 
@@ -75,10 +75,10 @@ void StateTitle::init()
         back.render();
     #endif
     splash.loadSprite(path+"pp_logo_large"+ext);
-    splash.setPosition(Vector2di(getStateXResolution()*0.25f,getStateYResolution()*0.33f));
+    splash.setPosition(Vector2di(GFX::getXResolution()*0.25f,GFX::getYResolution()*0.33f));
     //splash.setUseHardware(true);
     startButton.loadSprite(path+"pp_start"+ext);
-    startButton.setPosition(Vector2di(getStateXResolution()/2.8f,getStateYResolution()/1.5f));
+    startButton.setPosition(Vector2di(GFX::getXResolution()/2.8f,GFX::getYResolution()/1.5f));
     #ifdef PENJIN_SDL
         startButton.setUseHardware(true);
     #endif
@@ -116,7 +116,7 @@ void StateTitle::setupMainMenu()
     choice = -1;
     showPrompt = false;
     menu.clear();
-    menu.setMenuStart(getStateXResolution()*0.25f - 15,12);
+    menu.setMenuStart(GFX::getXResolution()*0.25f - 15,12);
     menu.setSelection(1);
     menu.loadFont("font/foo.ttf", 28);
     menu.setTextColour(Colour(YELLOW));
@@ -368,8 +368,8 @@ void StateTitle::getReady()
     t.loadFont("font/foo.ttf", 28);
     SDL_Rect r;
     r.x = r.y = 0;
-    r.w = getStateXResolution();
-    r.h = getStateYResolution();
+    r.w = GFX::getXResolution();
+    r.h = GFX::getYResolution();
     t.setBoundaries(r);
     t.setRelativity(false);
     t.setPosition(0,0.7f*r.h);

@@ -42,8 +42,8 @@ void StatePong::init()
     ballWidth    = ballHeight = 16;
     paddleWidth               = 16;
     paddleHeight              = 60;
-    screenHeight              = getStateYResolution();
-    screenWidth               = getStateXResolution();
+    screenHeight              = GFX::getYResolution();
+    screenWidth               = GFX::getXResolution();
     collision                 = 0;
     collisionDeflection       = paddleHeight*0.5f + ballHeight*0.33f;
 

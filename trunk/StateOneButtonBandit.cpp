@@ -306,8 +306,8 @@ void StateOneButtonBandit::init() {
     inputlimiter.start();
 
     // Define some useful variables
-    config.screenX = getStateXResolution();
-    config.screenY = getStateYResolution();
+    config.screenX = GFX::getXResolution();
+    config.screenY = GFX::getYResolution();
     config.shapeX = 192;
     config.shapeY = 192;
     config.shapeGapX = 20;

@@ -26,7 +26,7 @@ void StateCake::init()
     text.loadFont("font/unispace.ttf",18);
     text.setPosition(30, 30);
     text.setColour(BLUE);
-    text.setBoundaries(Vector2di(0,0),Vector2di(getStateXResolution(),getStateYResolution()));
+    text.setBoundaries(Vector2di(0,0),Vector2di(GFX::getXResolution(),GFX::getYResolution()));
     text.setRelativity(false);
 
     //  following is only to position the shadow and HitRegion in the correct place in the Preview image.

@@ -22,14 +22,14 @@ void StatePlander::init()
     SDL_Rect bounds;
     bounds.x = 0;
     bounds.y = -500;
-    bounds.w = getStateXResolution();
-    bounds.h = getStateYResolution();
+    bounds.w = GFX::getXResolution();
+    bounds.h = GFX::getYResolution();
     collect.loadFrames("images/RocketEscape/treasure.png",4,1);
     collect.setFrameRate(DECI_SECONDS);
     int jitter = Random::nextInt(-30,30);
     rocket.setBounds(bounds);
-    rocket.setStartPosition(Vector2di(getStateXResolution()*0.2f+jitter, getStateYResolution()-100));
-    rocket.setPosition(Vector2di(getStateXResolution()*0.2f+jitter, getStateYResolution()-164));
+    rocket.setStartPosition(Vector2di(GFX::getXResolution()*0.2f+jitter, GFX::getYResolution()-100));
+    rocket.setPosition(Vector2di(GFX::getXResolution()*0.2f+jitter, GFX::getYResolution()-164));
     rocket.setWrapSides(true);
     rocket.linkCollectible(&collect);
     pad.linkRocket(&rocket);
@@ -42,20 +42,20 @@ void StatePlander::init()
         pad.linkEmitter(rocket.getRightThruster(i));
     }
 
-    floor.setPosition(Vector2di(0,getStateYResolution()-100));
-    floor.setDimensions(Vector2di(getStateXResolution(),100));
+    floor.setPosition(Vector2di(0,GFX::getYResolution()-100));
+    floor.setDimensions(Vector2di(GFX::getXResolution(),100));
     floor.setColour(Colour(128,128,128));
     float width = 60/(float)variables[2].getInt();
     pad.setWidth(NumberUtility::limit((int)width,1,15));
     rocket.setFuel(NumberUtility::limit((width/30.0f)*100,5.0f,100.0f));
     collect.setReward((variables[2].getInt()*1.2f)+0.5f);
-    pad.setPosition(Vector2di(-25+getStateXResolution()*0.5f + Random::nextInt(-30,30),getStateYResolution()-123));
+    pad.setPosition(Vector2di(-25+GFX::getXResolution()*0.5f + Random::nextInt(-30,30),GFX::getYResolution()-123));
     initStars();
 
-    fuelMeter[0].setPosition(*xRes * 0.1f,*yRes * 0.1f);
+    fuelMeter[0].setPosition(GFX::getXResolution() * 0.1f,GFX::getYResolution() * 0.1f);
     fuelMeter[0].setDimensions(102,20);
     fuelMeter[0].setColour(WHITE);
-    fuelMeter[1].setPosition((*xRes * 0.1f)+1,(*yRes * 0.1f)+1);
+    fuelMeter[1].setPosition((GFX::getXResolution() * 0.1f)+1,(GFX::getYResolution() * 0.1f)+1);
     fuelMeter[1].setDimensions(rocket.getFuel()+0.5f,18);
     fuelMeter[1].setColour(RED);
 
@@ -81,43 +81,45 @@ void StatePlander::initStars()
     star.setLooping(true);
     star.setPosition(-100,-100);
     // set random X coords
-    Random::setLimits(20,*xRes*0.5f);
+    Random::setLimits(20,GFX::getXResolution()*0.5f);
     starPos[numStars-1].x = Random::nextInt();
+    uint xRes = GFX::getXResolution();
+    uint yRes = GFX::getYResolution();
     for(int i = numStars-2; i>=0; --i)
     {
         starPos[i].x = starPos[i+1].x + Random::nextInt() + star.getWidth();
-        if(starPos[i].x > *xRes)
-            starPos[i].x -= *xRes;
+        if(starPos[i].x > xRes)
+            starPos[i].x -= xRes;
     }
     // set random Y coords
-    Random::setLimits(20,*yRes*0.5f);
+    Random::setLimits(20,yRes*0.5f);
     starPos[numStars-1].y = Random::nextInt() + star.getHeight();
     for(int i = numStars-2; i>=0; --i)
     {
         starPos[i].y = starPos[i+1].y + Random::nextInt();
-        if(starPos[i].y > *yRes-150)
-            starPos[i].y -= *yRes-150;
+        if(starPos[i].y > yRes-150)
+            starPos[i].y -= yRes-150;
     }
 
     /// Setup other stars
     //backStar.setPosition(-100,-100);
     // set random X coords
-    Random::setLimits(20,*xRes*0.5f);
+    Random::setLimits(20,xRes*0.5f);
     backStarPos[numBackStars-1].x = Random::nextInt();
     for(int i = numBackStars-2; i>=0; --i)
     {
         backStarPos[i].x = backStarPos[i+1].x + Random::nextInt();
-        if(backStarPos[i].x > *xRes)
-            backStarPos[i].x -= *xRes;
+        if(backStarPos[i].x > xRes)
+            backStarPos[i].x -= xRes;
     }
     // set random Y coords
-    Random::setLimits(20,*yRes*0.5f);
+    Random::setLimits(20,yRes*0.5f);
     backStarPos[numBackStars-1].y = Random::nextInt();
     for(int i = numBackStars-2; i>=0; --i)
     {
         backStarPos[i].y = backStarPos[i+1].y + Random::nextInt();
-        if(backStarPos[i].y > *yRes-150)
-            backStarPos[i].y -= *yRes-150;
+        if(backStarPos[i].y > yRes-150)
+            backStarPos[i].y -= yRes-150;
     }
 }
 
