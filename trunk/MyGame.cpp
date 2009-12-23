@@ -3,7 +3,7 @@
 MyGame::MyGame()
 {
 	//	Default constructor
-	appName = "Pandora Panic!";
+	Penjin::setApplicationName("PandoraPanic");
 }
 
 MyGame::~MyGame()

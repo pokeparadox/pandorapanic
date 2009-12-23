@@ -228,7 +228,6 @@
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-DPENJIN_SDL" />
 					<Add directory="$(#mingw.include)" />
-					<Add directory="$(#default.include)" />
 				</Compiler>
 				<Linker>
 					<Add option="`i586-mingw32msvc-sdl-config --libs`" />
@@ -239,7 +238,6 @@
 					<Add option="-lSDLmain" />
 					<Add option="-lSDL" />
 					<Add directory="$(#mingw.lib)" />
-					<Add directory="$(#default.lib)" />
 				</Linker>
 			</Target>
 			<Target title="Cross-W32 Release">
@@ -253,18 +251,18 @@
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-D_WIN32" />
 					<Add option="-DPENJIN_SDL" />
-					<Add directory="$(#MINGW32.include)" />
+					<Add directory="$(#mingw.include)" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="$(MINGW32.lib)/SDL_ttf.lib" />
-					<Add library="$(MINGW32.lib)/libmingw32.a" />
-					<Add library="$(MINGW32.lib)/libSDLmain.a" />
-					<Add library="$(MINGW32.lib)/libSDL.dll.a" />
-					<Add library="$(MINGW32.lib)/sdlgfx.lib" />
-					<Add library="$(MINGW32.lib)/SDL_image.lib" />
-					<Add library="$(MINGW32.lib)/SDL_mixer.lib" />
-					<Add directory="$(#MINGW32.lib)" />
+					<Add option="`i586-mingw32msvc-sdl-config --libs`" />
+					<Add option="-lSDL_gfx" />
+					<Add option="-lSDL_image" />
+					<Add option="-lSDL_mixer" />
+					<Add option="-lSDL_ttf" />
+					<Add option="-lSDLmain" />
+					<Add option="-lSDL" />
+					<Add directory="$(#mingw.lib)" />
 				</Linker>
 			</Target>
 		</Build>
