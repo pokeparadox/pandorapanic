@@ -21,6 +21,9 @@
     tempC->setIcon("images/Achievements/win1000.png");
     tempC->addEvent("GAME_WIN",1,coEQUAL,acINCREASE);
     tempC->setLimit(1000);
+    tempC->addMilestone(250);
+    tempC->addMilestone(500);
+    tempC->addMilestone(750);
     ACHIEVEMENTS->addAchievement(tempC);
 
     tempR = new AchievementReset;
@@ -137,6 +140,9 @@
     tempC->setIcon("images/Achievements/test.png");
     tempC->addEvent("FIRE_SHOOT",0,coGREATER,acINCREASE_COUNT);
     tempC->setLimit(20000);
+    tempC->addMilestone(5000);
+    tempC->addMilestone(10000);
+    tempC->addMilestone(15000);
     ACHIEVEMENTS->addAchievement(tempC);
 
     tempB = new AchievementBoolean;
@@ -150,6 +156,7 @@
     prop->push_back(special("COLOURBLIND",1,coEQUAL));
     tempB->addEventSpecial("COUNT_WIN",*prop,1,coEQUAL,acINCREASE);
     tempB->setLimit(10);
+    tempB->addMilestone(5);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempR = new AchievementReset;
@@ -159,6 +166,8 @@
     tempR->addEvent("PONG_HIT",1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_START",1,coEQUAL,acRESET);
     tempR->setLimit(25);
+    tempR->addMilestone(10);
+    tempR->addMilestone(20);
     ACHIEVEMENTS->addAchievement(tempR);
 
     tempB = new AchievementBoolean;
