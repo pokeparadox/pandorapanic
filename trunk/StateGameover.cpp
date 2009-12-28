@@ -32,11 +32,10 @@ void StateGameover::init()
     const static uint SCORE = 2;
 	//	The game over state is normally triggered by death in the main game
 	//	Because of this we should check the variable cache for the player details
-	if(variables.size()>SCORE)
+	if(variables.size()>SCORE && variables[SCORE].hasInt() && variables[SCORE].getInt() != 0)
 	{
-		if(variables[SCORE].hasInt())
-		    if(variables[SCORE].getInt() != 0)
-                scoreScreen.setScore(variables[SCORE].getInt());
+        scoreScreen.setScore(variables[SCORE].getInt());
+        ACHIEVEMENTS->logEvent("GAME_SCORE",variables[SCORE].getInt());
 	}
 	scoreScreen.init();
 	if(scoreScreen.inNameEntryScreen())
