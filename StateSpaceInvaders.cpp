@@ -219,6 +219,8 @@ void StateSpaceInvaders::update()
             if(shot.getX()-8 >= alien.getX() && shot.getX() <= alien.getX()+64
             && shot.getY()-16 >= alien.getY() && shot.getY() <= alien.getY()+64)
             {
+                if (alien.getY() == 0)
+                    ACHIEVEMENTS->logEvent("SPACE_WIN");
                 variables[0].setInt(1);
                 setNextState(STATE_MAIN);
             }

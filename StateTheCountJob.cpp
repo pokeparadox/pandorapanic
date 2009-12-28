@@ -38,15 +38,16 @@ bool StateTheCountJob::checkPos(vector<Vector2df>::iterator curr, int arr)
 
 void StateTheCountJob::init()
 {
-    text.loadFont("font/bip.ttf", 48);
+    text.loadFont("font/bip.ttf", 47);
     text.setColour(Colour(BLACK));
+    text.setBoundaries(Vector2di(-100,0),Vector2di(900,480));
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(MAGENTA);
     pauseMayhem = rand()%100;
 
     GFX::setClearColour(WHITE);
 
-    // The following gets only triggert in a real game
+    // The following gets only triggered in a real game
     if(variables.size()<SUBSTATE_TRIGGER) {
 
     /// vars

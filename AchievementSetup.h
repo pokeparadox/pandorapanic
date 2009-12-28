@@ -26,6 +26,14 @@
     tempC->addMilestone(750);
     ACHIEVEMENTS->addAchievement(tempC);
 
+    tempB = new AchievementBoolean;
+    tempB->setName("Hi-hi-hiiiighscore");
+    tempB->setDescription("Get a score of at least 50 points");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("GAME_SCORE",49,coGREATER,acINCREASE);
+    tempB->setLimit(1);
+    ACHIEVEMENTS->addAchievement(tempB);
+
     tempR = new AchievementReset;
     tempR->setName("Only lucky");
     tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
@@ -34,7 +42,7 @@
     prop->push_back(special("GAMEMODE",2,coSMALLER));
     tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
-    tempR->setLimit(10);
+    tempR->setLimit(5);
     ACHIEVEMENTS->addAchievement(tempR);
 
     tempR = new AchievementReset;
@@ -45,7 +53,7 @@
     prop->push_back(special("GAMEMODE",2,coSMALLER));
     tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
-    tempR->setLimit(20);
+    tempR->setLimit(10);
     ACHIEVEMENTS->addAchievement(tempR);
 
     tempR = new AchievementReset;
@@ -56,7 +64,7 @@
     prop->push_back(special("GAMEMODE",2,coSMALLER));
     tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
-    tempR->setLimit(30);
+    tempR->setLimit(15);
     ACHIEVEMENTS->addAchievement(tempR);
 
     tempB = new AchievementBoolean;
@@ -147,7 +155,7 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Eagle-eye");
-    tempB->setDescription("Win TheCountJob %l times in highest level and colourblind mode");
+    tempB->setDescription("Win TheCountJob %l times in highest level (>30) and colourblind mode");
     tempB->setIcon("images/Achievements/eagle-eye.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(special("CIRCLELEVEL",5,coEQUAL));
@@ -197,6 +205,13 @@
     tempB->addEvent("PERFECT_PUTT",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
+    tempB = new AchievementBoolean;
+    tempB->setName("Superior species?");
+    tempB->setDescription("Shoot the alien before it can advance a row");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->addEvent("SPACE_WIN",1,coEQUAL,acRESET);
+    ACHIEVEMENTS->addAchievement(tempB);
+
 
     // secret achievements
 
@@ -208,7 +223,6 @@
     tempL->addEvent("PLANDER_COLLECTIBLE_GET",1,coEQUAL,acINCREASE);
     tempL->addEvent("GAME_FAIL",1,coEQUAL,acINCREASE);
     tempL->addEvent("GAME_START",1,coEQUAL,acRESET);
-    tempL->setLimit(1);
     ACHIEVEMENTS->addAchievement(tempL);
 
 
