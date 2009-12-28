@@ -56,7 +56,6 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add option="-ming32" />
 					<Add option="`sdl-config --libs`" />
 					<Add library="C:/Program Files/CodeBlocks/MinGW/lib/libmingw32.a" />
 					<Add library="C:/Program Files/CodeBlocks/MinGW/lib/libSDLmain.a" />
@@ -65,7 +64,6 @@
 					<Add library="C:/Program Files/CodeBlocks/MinGW/lib/SDL_image.lib" />
 					<Add library="C:/Program Files/CodeBlocks/MinGW/lib/SDL_mixer.lib" />
 					<Add library="C:/Program Files/CodeBlocks/MinGW/lib/SDL_ttf.lib" />
-					<Add directory="../PenjinBase/obj/W32/Release" />
 				</Linker>
 			</Target>
 			<Target title="Lin Debug">
@@ -90,7 +88,6 @@
 					<Add option="-lSDL_image" />
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_gfx" />
-					<Add directory="../PenjinBase/obj/lin/Debug" />
 				</Linker>
 			</Target>
 			<Target title="Lin Release">
@@ -116,7 +113,6 @@
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_gfx" />
 					<Add option="--disable-checking" />
-					<Add directory="../PenjinBase/obj/lin/Release" />
 				</Linker>
 			</Target>
 			<Target title="Pandora Debug">
@@ -167,9 +163,6 @@
 					<Add option="-DPLATFORM_PANDORA" />
 					<Add option="-DPENJIN_SDL" />
 					<Add directory="$(#PANDORA_SDK.include)" />
-					<Add directory="../PandoraPanic" />
-					<Add directory="../PenjinBase/include" />
-					<Add directory="../PenjinBase" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -212,7 +205,6 @@
 					<Add option="-lSDL_image" />
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_gfx" />
-					<Add directory="../PenjinBase/obj/lin/Debug" />
 				</Linker>
 			</Target>
 			<Target title="Cross-W32 Debug">
@@ -231,11 +223,11 @@
 				</Compiler>
 				<Linker>
 					<Add option="`i586-mingw32msvc-sdl-config --libs`" />
-					<Add option="-lSDL_gfx" />
 					<Add option="-lSDL_image" />
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_ttf" />
 					<Add option="-lSDLmain" />
+					<Add option="-lSDL_gfx" />
 					<Add option="-lSDL" />
 					<Add directory="$(#mingw.lib)" />
 				</Linker>
@@ -265,14 +257,72 @@
 					<Add directory="$(#mingw.lib)" />
 				</Linker>
 			</Target>
+			<Target title="GP2X Debug">
+				<Option output="bin/GP2X/PandoraPanic_D" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="built" />
+				<Option object_output="obj/GP2X/Debug/" />
+				<Option type="1" />
+				<Option compiler="gp2x" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-msoft-float" />
+					<Add option="-g" />
+					<Add option="-DPLATFORM_GP2X" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DPENJIN_SDL" />
+					<Add directory="$(#gp2x_sdk.include)" />
+				</Compiler>
+				<Linker>
+					<Add option="-lm -lg -lpthread -lSDL" />
+					<Add option="`$(#gp2x_sdk)/bin/sdl-config --static-libs`" />
+					<Add option="-lSDL_ttf" />
+					<Add option="-lSDL_mixer" />
+					<Add option="-lSDL_image" />
+					<Add option="-lSDL_gfx" />
+					<Add option="-lpng" />
+					<Add option="-lfreetype" />
+					<Add option="-lz" />
+					<Add option="-lsmpeg" />
+					<Add option="-ljpeg" />
+					<Add directory="$(#gp2x_sdk.lib)" />
+				</Linker>
+			</Target>
+			<Target title="GP2X Release">
+				<Option output="bin/GP2X/PandoraPanic_R" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="built" />
+				<Option object_output="obj/GP2X/Release/" />
+				<Option type="0" />
+				<Option compiler="gp2x" />
+				<Compiler>
+					<Add option="-msoft-float" />
+					<Add option="-O3" />
+					<Add option="-Wall" />
+					<Add option="-DPLATFORM_GP2X" />
+					<Add option="-DPENJIN_SDL" />
+					<Add directory="$(#gp2x_sdk.include)" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lm -lg -lpthread -lSDL" />
+					<Add option="`$(#gp2x_sdk)/bin/sdl-config --static-libs`" />
+					<Add option="-lSDL_ttf" />
+					<Add option="-lSDL_mixer" />
+					<Add option="-lSDL_image" />
+					<Add option="-lSDL_gfx" />
+					<Add option="-lpng" />
+					<Add option="-lfreetype" />
+					<Add option="-lz" />
+					<Add option="-lsmpeg" />
+					<Add option="-ljpeg" />
+					<Add directory="$(#gp2x_sdk.lib)" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="`sdl-config --cflags`" />
 			<Add option="-DUSE_ACHIEVEMENTS" />
-			<Add directory="../PandoraPanic" />
-			<Add directory="../PenjinBase/include" />
 			<Add directory="../PenjinBase" />
+			<Add directory="./" />
 		</Compiler>
 		<Unit filename="Arena/ArenaEffect.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
@@ -1103,6 +1153,10 @@
 		</Unit>
 		<Unit filename="../PenjinBase/WiiJoy.h">
 			<Option virtualFolder="PenjinBase/PlatformSpecific/Wii/" />
+		</Unit>
+		<Unit filename="../PenjinBase/mmuhack/flush_uppermem_cache.s">
+			<Option target="GP2X Debug" />
+			<Option target="GP2X Release" />
 		</Unit>
 		<Unit filename="../PenjinBase/trenki/fixed_class.h">
 			<Option virtualFolder="PenjinBase/Physics/Vectors/Trenki/" />

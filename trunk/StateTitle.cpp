@@ -16,8 +16,13 @@ StateTitle::StateTitle()
     showStart = 0;
     gradual = Random::nextBool();
     gradualScaler = Random::nextInt(4,16);
-    spinLogo = Random::nextBool();
-    scaleLogo = Random::nextBool();
+    #ifdef PLATFORM_GP2X
+        spinLogo = false;
+        scaleLogo = false;
+    #else
+        spinLogo = Random::nextBool();
+        scaleLogo = Random::nextBool();
+    #endif
     angle = 0.0f;
     angleDelta = Random::nextFloat(0,15)*0.1f;
     scaleDelta.x = 0.1f;
