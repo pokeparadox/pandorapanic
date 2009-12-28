@@ -57,18 +57,7 @@ class StateTileEditor : public BaseState
         string testingy;
         string hasblob;
         string soort;
-
-
-
         Text test;
-
-
-
-
-    #ifdef PLATFORM_GP2X
-		MMUHack hack;
-	#endif
-
 };
 
 #endif // STATETILEEDITOR_H_INCLUDED
