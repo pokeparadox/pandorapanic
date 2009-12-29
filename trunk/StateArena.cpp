@@ -227,7 +227,7 @@ void StateArena::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press     to swing your sword!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(130,220);
+    buttonSheet.setPosition(134,220);
     buttonSheet.render(screen);
 }
 

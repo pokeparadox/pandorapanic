@@ -169,7 +169,7 @@ void StatePanJoust::pauseScreen(SDL_Surface* screen)
     text.setPosition(50,220);
     text.print(screen, "Press     repeatedly to stay in the air!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(130,220);
+    buttonSheet.setPosition(136,220);
     buttonSheet.render(screen);
 }
 #else

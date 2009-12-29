@@ -363,7 +363,7 @@ void StateBadVista::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Put Vista where it belongs!");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press and hold     to throw!");
-    buttonPrompter.renderImage(10,260,220);
+    buttonPrompter.renderImage(10,268,220);
 }
 #else
 void StateBadVista::render()

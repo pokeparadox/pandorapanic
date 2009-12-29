@@ -2184,10 +2184,10 @@ void StatePang::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press     or     to shoot your spear!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(130,220);
+    buttonSheet.setPosition(134,220);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(16);
-    buttonSheet.setPosition(210,220);
+    buttonSheet.setPosition(224,220);
     buttonSheet.render(screen);
 }
 #else
@@ -2202,10 +2202,10 @@ void StatePang::pauseScreen()
     pauseText.setPosition(50,220);
     pauseText.print("Press     or     to shoot your spear!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(130,220);
+    buttonSheet.setPosition(136,220);
     buttonSheet.render();
     buttonSheet.setCurrentFrame(16);
-    buttonSheet.setPosition(210,220);
+    buttonSheet.setPosition(226,220);
     buttonSheet.render();
 }
 #endif

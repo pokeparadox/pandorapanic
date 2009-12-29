@@ -164,15 +164,15 @@ void StateRotDef::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(220,60);
     pauseText.print(screen, "Rotate the turret using    and");
     buttonSheet.setCurrentFrame(14);
-    buttonSheet.setPosition(556,60);
+    buttonSheet.setPosition(560,60);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(15);
-    buttonSheet.setPosition(648,60);
+    buttonSheet.setPosition(666,60);
     buttonSheet.render(screen);
     pauseText.setPosition(220,100);
     pauseText.print(screen, "Press     to shoot the bomb!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(300,100);
+    buttonSheet.setPosition(304,100);
     buttonSheet.render(screen);
 }
 #else

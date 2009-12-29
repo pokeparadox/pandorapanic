@@ -141,7 +141,7 @@ void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
     pauseText.setColour(WHITE);
     pauseText.print(screen, "Shoot the alien! press    to shoot.");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(365,180);
+    buttonSheet.setPosition(375,180);
     buttonSheet.render(screen);
 }
 #else
