@@ -47,7 +47,7 @@ void StateCredits::init()
     logo.setPosition((bounds.w - logo.getWidth()) *0.5f,bounds.h * 0.66f);
 
 	//	Setup SDL Text Handler
-	text.loadFont("font/foo.ttf", 26);
+	text.loadFont("font/foo.ttf", 24);
 	text.setRelativity(false);	//	We will control all positions of text manually
 	text.setBoundaries(bounds);
 	text.setAlignment(TextClass::CENTRED);
@@ -246,7 +246,8 @@ void StateCredits::render(SDL_Surface *screen)
 	text.print(screen,tempString);
 	buff.update();
 	buff.setAlpha(240);
-	SDL_FillRect(screen,NULL, NULL);
+	//SDL_FillRect(screen,NULL, NULL);
+	GFX::clearScreen(screen);
 	buff.render();
 }
 #else

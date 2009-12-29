@@ -211,7 +211,7 @@ void StatePuttPutt::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(20,220);
     pauseText.print(screen, "Press     to make the putt!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(100,220);
+    buttonSheet.setPosition(104,220);
     buttonSheet.render(screen);
 }
 #else
