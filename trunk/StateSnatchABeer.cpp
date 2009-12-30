@@ -237,7 +237,7 @@ void StateSnatchABeer::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Press     at the right time to get the beer!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(130,180);
+    buttonSheet.setPosition(134,180);
     buttonSheet.render(screen);
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Hint: You might get a 2nd chance");

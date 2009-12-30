@@ -482,16 +482,16 @@ void StateOneButtonBandit::pauseScreen(SDL_Surface* screen)
         pauseSymbol(screen);
     text.setColour(YELLOW);
     text.setPosition(50,200);
-    text.print(screen, "Stop the rollers on the symbols you started with");
+    text.print(screen, "Stop the rollers on the outlined symbols!");
     text.setColour(BLACK);
     text.setPosition(52,202);
-    text.print(screen, "Stop the rollers on the symbols you started with");
-    text.setColour(BLACK);
-    text.setPosition(50,240);
-    text.print(screen, "(outlines give an indication too)");
-    text.setColour(WHITE);
-    text.setPosition(52,242);
-    text.print(screen, "(outlines give an indication too)");
+    text.print(screen, "Stop the rollers on the outlined symbols!");
+//    text.setColour(BLACK);
+//    text.setPosition(50,240);
+//    text.print(screen, "(outlines give an indication too)");
+//    text.setColour(WHITE);
+//    text.setPosition(52,242);
+//    text.print(screen, "(outlines give an indication too)");
 }
 #else
     void StateOneButtonBandit::render()
