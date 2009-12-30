@@ -13,11 +13,7 @@ MyGame::~MyGame()
 
 PENJIN_ERRORS MyGame::init()
 {
-    #ifdef PLATFORM_GP2X
-        GFX::setResolution(320,240);
-    #else
-        GFX::setResolution(800,480);    // Pandora resolution on all platforms!
-    #endif
+    GFX::setResolution(800,480);    // Pandora resolution on all platforms!
     PENJIN_ERRORS e = GFX::resetScreen();
     #include "AchievementSetup.h"
     setInitialState(STATE_TITLE);

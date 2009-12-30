@@ -54,6 +54,7 @@ void StateTitle::init()
     const string path = "images/";
     const string ext = ".png";
     emit.loadSprite(path+"pp_star"+ext);
+    emit.shouldFadeColour(false);
     #ifdef PENJIN_SDL
         emit.setUseHardware(false);
     #elif PENJIN_GL

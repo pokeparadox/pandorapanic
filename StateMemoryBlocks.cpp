@@ -173,18 +173,18 @@ void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press     or     to navigate through the code.");
     buttonSheet.setCurrentFrame(14);
-    buttonSheet.setPosition(130,220);
+    buttonSheet.setPosition(132,220);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(15);
-    buttonSheet.setPosition(215,220);
+    buttonSheet.setPosition(224,220);
     buttonSheet.render(screen);
     pauseText.setPosition(50,260);
     pauseText.print(screen, "Use     or     to change the symbol!");
     buttonSheet.setCurrentFrame(16);
-    buttonSheet.setPosition(100,260);
+    buttonSheet.setPosition(102,260);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(17);
-    buttonSheet.setPosition(185,260);
+    buttonSheet.setPosition(198,260);
     buttonSheet.render(screen);
 }
 
@@ -206,7 +206,7 @@ void StateMemoryBlocks::pauseScreen()
     buttonSheet.setPosition(135,220);
     buttonSheet.render();
     buttonSheet.setCurrentFrame(15);
-    buttonSheet.setPosition(220,220);
+    buttonSheet.setPosition(226,220);
     buttonSheet.render();
     pauseText.setPosition(50,260);
     pauseText.print("Use     or     to change the symbol!");
@@ -214,7 +214,7 @@ void StateMemoryBlocks::pauseScreen()
     buttonSheet.setPosition(110,260);
     buttonSheet.render();
     buttonSheet.setCurrentFrame(17);
-    buttonSheet.setPosition(195,260);
+    buttonSheet.setPosition(200,260);
     buttonSheet.render();
 }
 #endif

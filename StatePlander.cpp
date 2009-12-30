@@ -190,46 +190,46 @@ void StatePlander::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,260);
     pauseText.print(screen, "   ,     or        +        for forward thrust."); // Up, Y, L+R
     buttonSheet.setCurrentFrame(16);
-    buttonSheet.setPosition(30,260);
+    buttonSheet.setPosition(32,260);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(13);
-    buttonSheet.setPosition(80,260);
+    buttonSheet.setPosition(88,260);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(18);
-    buttonSheet.setPosition(180,260);
+    buttonSheet.setPosition(198,260);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(19);
-    buttonSheet.setPosition(270,260);
+    buttonSheet.setPosition(304,260);
     buttonSheet.render(screen);
     pauseText.setPosition(50,300);
     pauseText.print(screen, "    or     to decrease thrust."); // Down, X
     buttonSheet.setCurrentFrame(17);
-    buttonSheet.setPosition(30,300);
+    buttonSheet.setPosition(32,300);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(12);
-    buttonSheet.setPosition(115,300);
+    buttonSheet.setPosition(120,300);
     buttonSheet.render(screen);
     pauseText.setPosition(50,340);
     pauseText.print(screen, "   ,     or        to rotate left."); // Left, A, L
     buttonSheet.setCurrentFrame(14);
-    buttonSheet.setPosition(30,340);
+    buttonSheet.setPosition(32,340);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(80,340);
+    buttonSheet.setPosition(92,340);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(18);
-    buttonSheet.setPosition(180,340);
+    buttonSheet.setPosition(198,340);
     buttonSheet.render(screen);
     pauseText.setPosition(50,380);
     pauseText.print(screen, "   ,     or        to rotate right."); // Right, B, R
     buttonSheet.setCurrentFrame(15);
-    buttonSheet.setPosition(30,380);
+    buttonSheet.setPosition(32,380);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(11);
-    buttonSheet.setPosition(80,380);
+    buttonSheet.setPosition(92,380);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(19);
-    buttonSheet.setPosition(180,380);
+    buttonSheet.setPosition(198,380);
     buttonSheet.render(screen);
 }
 #else

@@ -97,7 +97,7 @@ void StateCake::update()
         // find the nearest candle
         Vector2df mPos = mariela.getPosition();
         int shortD = 999999999;
-        uint shortIndex;
+        uint shortIndex=0;
         for(int i = NUM_CANDLES-1; i >=0; --i)
         {
             Vector2df tPos = candles[i].getPosition();
