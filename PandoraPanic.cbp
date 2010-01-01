@@ -94,6 +94,7 @@
 				<Option compiler="linux" />
 				<Compiler>
 					<Add option="-O3" />
+					<Add option="`sdl-config --cflags`" />
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-D_LINUX" />
 					<Add option="-DPENJIN_SDL" />
