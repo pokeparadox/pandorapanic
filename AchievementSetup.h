@@ -29,9 +29,8 @@
     tempB = new AchievementBoolean;
     tempB->setName("Hi-hi-hiiiighscore");
     tempB->setDescription("Get a score of at least 50 points");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/highscore.png");
     tempB->addEvent("GAME_SCORE",49,coGREATER,acINCREASE);
-    tempB->setLimit(1);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempR = new AchievementReset;
@@ -64,7 +63,7 @@
     prop->push_back(special("GAMEMODE",2,coSMALLER));
     tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
-    tempR->setLimit(15);
+    tempR->setLimit(20);
     ACHIEVEMENTS->addAchievement(tempR);
 
     tempB = new AchievementBoolean;
@@ -208,7 +207,7 @@
     tempB = new AchievementBoolean;
     tempB->setName("Superior species?");
     tempB->setDescription("Shoot the alien before it can advance a row");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/superior-species.png");
     tempB->addEvent("SPACE_WIN",1,coEQUAL,acRESET);
     ACHIEVEMENTS->addAchievement(tempB);
 

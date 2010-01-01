@@ -40,7 +40,8 @@ void StateTheCountJob::init()
 {
     text.loadFont("font/bip.ttf", 47);
     text.setColour(Colour(BLACK));
-    text.setBoundaries(Vector2di(-100,0),Vector2di(900,480));
+    //text.setBoundaries(Vector2di(-100,0),Vector2di(900,480));
+    text.setWrapping(false);
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(MAGENTA);
     pauseMayhem = rand()%100;
@@ -385,7 +386,7 @@ void StateTheCountJob::pauseScreen()
     {
         pauseText.print("There is nothing to look at here.");
         pauseText.setPosition(50,220);
-        pauseText.print("Would you kindly move on to the game.");
+        pauseText.print("Would you kindly move on to the actual game.");
     }
     else if (pauseMayhem == 99)
     {
