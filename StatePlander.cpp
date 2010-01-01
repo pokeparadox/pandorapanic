@@ -361,6 +361,7 @@ void StatePlander::update()
                 variables[4].setInt(lives);
             }
             fuelMeter[1].setColour(BLUE);
+            ACHIEVEMENTS->logEvent("PLANDER_OVERFILL");
         }
         else
             rocket.setFuel(colFuel);

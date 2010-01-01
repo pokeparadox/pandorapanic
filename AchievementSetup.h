@@ -125,13 +125,6 @@
     tempB->addEvent("JUMPER5",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
-    tempB = new AchievementBoolean;
-    tempB->setName("Close call");
-    tempB->setDescription("Land on the pad with no fuel left (Plander)");
-    tempB->setIcon("images/Achievements/test.png");
-    tempB->addEvent("PLANDER_FUEL_WIN",0,coEQUAL,acINCREASE);
-    ACHIEVEMENTS->addAchievement(tempB);
-
     tempR = new AchievementReset;
     tempR->setName("Reflex-man!");
     tempR->setDescription("Get a %l hit-streak in Reflex");
@@ -146,10 +139,16 @@
     tempC->setDescription("Shoot %l litres of water in Fire");
     tempC->setIcon("images/Achievements/test.png");
     tempC->addEvent("FIRE_SHOOT",0,coGREATER,acINCREASE_COUNT);
-    tempC->setLimit(20000);
-    tempC->addMilestone(5000);
+    tempC->setLimit(100000);
     tempC->addMilestone(10000);
-    tempC->addMilestone(15000);
+    tempC->addMilestone(20000);
+    tempC->addMilestone(30000);
+    tempC->addMilestone(40000);
+    tempC->addMilestone(50000);
+    tempC->addMilestone(60000);
+    tempC->addMilestone(70000);
+    tempC->addMilestone(80000);
+    tempC->addMilestone(90000);
     ACHIEVEMENTS->addAchievement(tempC);
 
     tempB = new AchievementBoolean;
@@ -176,13 +175,6 @@
     tempR->addMilestone(10);
     tempR->addMilestone(20);
     ACHIEVEMENTS->addAchievement(tempR);
-
-    tempB = new AchievementBoolean;
-    tempB->setName("In the nick of time");
-    tempB->setDescription("In RotatingTurrent shoot the bomb very close to your turret");
-    tempB->setIcon("images/Achievements/nick-of-time.png");
-    tempB->addEvent("ROTDEF_WIN",140,coSMALLER,acINCREASE);
-    ACHIEVEMENTS->addAchievement(tempB);
 
     tempL = new AchievementList;
     tempL->setName("Second hand beer");
@@ -224,6 +216,29 @@
     tempL->addEvent("GAME_START",1,coEQUAL,acRESET);
     ACHIEVEMENTS->addAchievement(tempL);
 
+    tempB = new AchievementBoolean;
+    tempB->setName("Close call");
+    tempB->setDescription("Land on the pad with no fuel left (Plander)");
+    tempB->setIcon("images/Achievements/test.png");
+    tempB->setSecret(true);
+    tempB->addEvent("PLANDER_FUEL_WIN",0,coEQUAL,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
+
+    tempB = new AchievementBoolean;
+    tempB->setName("In the nick of time");
+    tempB->setDescription("In RotatingTurrent shoot the bomb very close to your turret");
+    tempB->setIcon("images/Achievements/nick-of-time.png");
+    tempB->setSecret(true);
+    tempB->addEvent("ROTDEF_WIN",140,coSMALLER,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
+
+    tempB = new AchievementBoolean;
+    tempB->setName("Rocket science");
+    tempB->setDescription("Overfill the fuel-meter and get an extra life");
+    tempB->setIcon("images/Achievements/rocket-science.png");
+    tempB->setSecret(true);
+    tempB->addEvent("PLANDER_OVERFILL",1,coEQUAL,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
 
 
     // first try to load achievment file
