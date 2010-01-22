@@ -78,13 +78,13 @@ void StateSpellingContest::userInput()
                 #endif
 
 
-                    if ((event.key.keysym.unicode > 64 && event.key.keysym.unicode < 91)
+                    if (((event.key.keysym.unicode > 64 && event.key.keysym.unicode < 91)
                     ||(event.key.keysym.unicode > 96 && event.key.keysym.unicode < 123))
+                    && status == 1)
                     {
                         if(word[correctChars] == (char)StringUtility::lower(event.key.keysym.unicode))
                         {
                             correctChars++;
-
                         }
                         else
                         {

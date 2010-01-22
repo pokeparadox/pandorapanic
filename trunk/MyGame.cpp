@@ -14,6 +14,7 @@ MyGame::~MyGame()
 PENJIN_ERRORS MyGame::init()
 {
     GFX::setResolution(800,480);    // Pandora resolution on all platforms!
+    //  We have to setup the screen beforehand since code in the h file below tries to get screen res.
     PENJIN_ERRORS e = GFX::resetScreen();
     #include "AchievementSetup.h"
     setInitialState(STATE_TITLE);
