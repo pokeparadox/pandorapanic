@@ -236,6 +236,8 @@ void OBBColumn::update(float &rate) {
                         moveY = 3;
                     }
                 }
+                else if(finalMatchNode->yPos > config.guideYPos)   //  SafeGuard is to move every single pixel so that it will at least stop.
+                    moveY = 1;
             }
             break;
 
