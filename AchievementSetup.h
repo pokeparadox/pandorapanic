@@ -36,7 +36,7 @@
     tempR = new AchievementReset;
     tempR->setName("Only lucky");
     tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
-    tempR->setIcon("images/Achievements/test.png");
+    tempR->setIcon("images/Achievements/only-lucky.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(special("GAMEMODE",2,coSMALLER));
     tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
@@ -47,7 +47,7 @@
     tempR = new AchievementReset;
     tempR->setName("Getting better");
     tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
-    tempR->setIcon("images/Achievements/test.png");
+    tempR->setIcon("images/Achievements/getting-better.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(special("GAMEMODE",2,coSMALLER));
     tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
@@ -58,7 +58,7 @@
     tempR = new AchievementReset;
     tempR->setName("AWESOME!");
     tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
-    tempR->setIcon("images/Achievements/test.png");
+    tempR->setIcon("images/Achievements/awesome.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(special("GAMEMODE",2,coSMALLER));
     tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
