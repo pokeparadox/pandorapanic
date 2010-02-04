@@ -137,7 +137,7 @@
     tempC = new AchievementCount;
     tempC->setName("Firefighter");
     tempC->setDescription("Shoot %l litres of water in Fire");
-    tempC->setIcon("images/Achievements/test.png");
+    tempC->setIcon("images/Achievements/firefighter.png");
     tempC->addEvent("FIRE_SHOOT",0,coGREATER,acINCREASE_COUNT);
     tempC->setLimit(100000);
     tempC->addMilestone(10000);
