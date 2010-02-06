@@ -86,42 +86,42 @@
     tempB = new AchievementBoolean;
     tempB->setName("Sneakthrough");
     tempB->setDescription("Close ghost pass at high speed in Maze");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/sneakthrough.png");
     tempB->addEvent("MAZE_SNEAKTHROUGH",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
     tempB->setName("First Jumper Goal");
     tempB->setDescription("Finish the first map in minimal jumps");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/jumper-1.png");
     tempB->addEvent("JUMPER1",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
     tempB->setName("Second Jumper Goal");
     tempB->setDescription("Finish the second map in minimal jumps");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/jumper-1.png");
     tempB->addEvent("JUMPER2",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
     tempB->setName("Third Jumper Goal");
     tempB->setDescription("Finish the third map in minimal jumps");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/jumper-1.png");
     tempB->addEvent("JUMPER3",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
     tempB->setName("Fourth Jumper Goal");
     tempB->setDescription("Finish the fourth map in minimal jumps");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/jumper-1.png");
     tempB->addEvent("JUMPER4",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
     tempB->setName("Fifth Jumper Goal");
     tempB->setDescription("Finish the last map in minimal jumps");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/jumper-1.png");
     tempB->addEvent("JUMPER5",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
