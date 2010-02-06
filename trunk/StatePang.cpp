@@ -113,41 +113,11 @@ namespace PangMiniGame
     void Controls::Update( SimpleJoy * joy )
     {
         // Left.
-        if ( joy->isLeft( ) )
-        {
-            if ( m_IsLeftDown == 0 )
-                m_IsLeftDown = 1;
-            else
-                m_IsLeftDown = 2;
-        }
-        else
-        {
-            m_IsLeftDown = 0;
-        }
+        m_IsLeftDown = (uint)joy->isLeft();
         // Right.
-        if ( joy->isRight( ) )
-        {
-            if ( m_IsRightDown == 0 )
-                m_IsRightDown = 1;
-            else
-                m_IsRightDown = 2;
-        }
-        else
-        {
-            m_IsRightDown = 0;
-        }
+        m_IsRightDown = (uint)joy->isRight();
         // Up.
-        if ( joy->isUp( ) || joy->isA())
-        {
-            if ( m_IsUpDown == 0 )
-                m_IsUpDown = 1;
-            else
-                m_IsUpDown = 2;
-        }
-        else
-        {
-            m_IsUpDown = 0;
-        }
+        m_IsUpDown = (uint)joy->isUp();
     }
     bool Controls::IsLeftPressed( )
     {
