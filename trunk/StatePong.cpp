@@ -225,7 +225,7 @@ void StatePong::update()
     // Bouncing off the ceiling? Here, have some downers.
     // Bouncing off the floor? Here, have some uppers.
     // What, the pills don't work anymore?
-    if (ball.getY() <= 0 || ball.getY() >= (screenHeight - ballHeight)) {
+    if ((ball.getY() <= 0) && (ballUp < 0) || (ball.getY() >= (screenHeight - ballHeight)) && (ballUp > 0)) {
         bounceWall = true;
         ballUp *= -1;
     }

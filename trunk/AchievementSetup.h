@@ -192,7 +192,7 @@
     tempB = new AchievementBoolean;
     tempB->setName("Perfect Putt");
     tempB->setDescription("Shoot exactly at the center of the green block");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/perfect-putt.png");
     tempB->addEvent("PERFECT_PUTT",1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
@@ -219,7 +219,7 @@
     tempB = new AchievementBoolean;
     tempB->setName("Close call");
     tempB->setDescription("Land on the pad with no fuel left (Plander)");
-    tempB->setIcon("images/Achievements/test.png");
+    tempB->setIcon("images/Achievements/close-call.png");
     tempB->setSecret(true);
     tempB->addEvent("PLANDER_FUEL_WIN",0,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
