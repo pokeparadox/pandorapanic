@@ -166,20 +166,6 @@ void StateDistractedMath::userInput()
 
 }
 
-void StateDistractedMath::pauseInput()
-{
-    input->update();
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
-    if (input->isStart())
-    {
-        pauseToggle();
-        input->resetKeys();
-    }
-}
-
 #ifdef PENJIN_SDL
 void StateDistractedMath::render(SDL_Surface *screen)
 {

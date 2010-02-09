@@ -1,6 +1,7 @@
 #ifndef STATECAKE_H
 #define STATECAKE_H
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"
 
 #include "AnimatedSprite.h"
@@ -20,7 +21,6 @@ class StateCake : public BaseState
         virtual void init();
         virtual void render(SDL_Surface* screen);
         virtual void userInput();
-        virtual void pauseInput();
         virtual void update();
         virtual void onPause();
         virtual void onResume();

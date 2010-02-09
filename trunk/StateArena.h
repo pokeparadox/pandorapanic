@@ -7,8 +7,8 @@
 //-----------------------------------------------------
 // Include Files
 //-----------------------------------------------------
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
-
 #include "Arena/ArenaEnvironment.h"
 #include "Arena/ArenaEffectSystem.h"
 #include "Arena/ArenaHero.h"
@@ -23,7 +23,7 @@
 //-----------------------------------------------------
 // Arena Class
 //-----------------------------------------------------
-class StateArena : public BaseState
+class StateArena : public mgBaseState
 {
 public:
     StateArena();   // Constructor
@@ -38,7 +38,7 @@ public:
     virtual void update();
     virtual void pauseScreen(SDL_Surface* screen);
     virtual void userInput();
-    virtual void pauseInput();
+    //virtual void pauseInput();
 
     //-------------------------------------------------
 	// Datamembers
@@ -51,9 +51,8 @@ public:
 
     Music m_Music;
 
-    AnimatedSprite buttonSheet;
-    Text pauseText;
-
+    //AnimatedSprite buttonSheet;
+    //Text pauseText;
 };
 
 #endif // STATEARENA_H_INCLUDED

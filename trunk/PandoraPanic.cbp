@@ -377,12 +377,6 @@
 		<Unit filename="StateBallDrop.h">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
-		<Unit filename="StateBarrelRoll.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
-		</Unit>
-		<Unit filename="StateBarrelRoll.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
-		</Unit>
 		<Unit filename="StateCake.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
@@ -561,6 +555,8 @@
 		<Unit filename="_main.cpp">
 			<Option virtualFolder="MyGame/" />
 		</Unit>
+		<Unit filename="mgBaseState.cpp" />
+		<Unit filename="mgBaseState.h" />
 		<Unit filename="trabitboy/activeGameSubState.h">
 			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
 		</Unit>

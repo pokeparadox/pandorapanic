@@ -1,6 +1,7 @@
 #ifndef STATEMAZE_H_INCLUDED
 #define STATEMAZE_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include "Background.h"
@@ -46,7 +47,7 @@ class Charac : public Sprite
 
 
 
-class StateMaze : public BaseState
+class StateMaze : public mgBaseState
 {
     public:
         StateMaze();
@@ -63,7 +64,6 @@ class StateMaze : public BaseState
         virtual void onResume();
 
         virtual void userInput();
-        virtual void pauseInput();
         virtual ~StateMaze();
 
     private:
@@ -113,8 +113,4 @@ class StateMaze : public BaseState
 
         int cloudnumber;
 };
-//The tile
-
-
-
 #endif // STATEMAZE_H_INCLUDED

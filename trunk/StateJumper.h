@@ -1,6 +1,7 @@
 #ifndef STATEJUMPER_H_INCLUDED
 #define STATEJUMPER_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include "Background.h"
@@ -45,7 +46,7 @@ class Character : public Sprite
 
 
 
-class StateJumper : public BaseState
+class StateJumper : public mgBaseState
 {
     public:
         StateJumper();
@@ -62,7 +63,6 @@ class StateJumper : public BaseState
         virtual void onResume();
 
         virtual void userInput();
-        virtual void pauseInput();
         virtual ~StateJumper();
 
     private:

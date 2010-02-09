@@ -10,7 +10,7 @@ STATE_TITLE is considered the default state, so you are strongly advised to leav
 NOTE: Be sure to #include ALL state headers which correspond to these modes.
 */
 
-#include "BaseState.h"
+//#include "mgBaseState.h"
 #include "StateCredits.h"
 #include "StateAchievements.h"
 #include "StateGameover.h"

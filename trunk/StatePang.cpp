@@ -2237,6 +2237,16 @@ void StatePang::pauseInput()
         if(input->isQuit())
             nullifyState();
     #endif
+    if(input->isL() && input->isX())
+        quit();
+    else if(input->isL() && input->isY())
+        quitToTitle();
+
+    if(input->isR())
+    {
+        muteToggle();
+        input->resetKeys();
+    }
     if (input->isStart())
     {
         pauseToggle();

@@ -11,6 +11,7 @@
 #ifndef STATEPANICATTACK_H_INCLUDED
 #define STATEPANICATTACK_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include "Background.h"
@@ -48,7 +49,7 @@ class Debounce {
 };
 
 
-class StatePanicAttack : public BaseState
+class StatePanicAttack : public mgBaseState
 {
   public:
     StatePanicAttack();
@@ -64,7 +65,6 @@ class StatePanicAttack : public BaseState
 
     virtual void update();
     virtual void userInput();
-    virtual void pauseInput();
     virtual void onPause();
     virtual void onResume();
 

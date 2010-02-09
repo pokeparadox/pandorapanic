@@ -1,6 +1,7 @@
 #ifndef STATEROTDEF_H_INCLUDED
 #define STATEROTDEF_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     B-ZaR's Rotating Turret mini game for Pandora Panic
@@ -12,7 +13,7 @@
 #include "Sound.h"
 #include "LUT.h"
 
-class StateRotDef : public BaseState
+class StateRotDef : public mgBaseState
 {
     public:
         StateRotDef();
@@ -28,7 +29,6 @@ class StateRotDef : public BaseState
         virtual void onResume();
         virtual ~StateRotDef();
         virtual void userInput();
-        virtual void pauseInput();
 
         Text command;
         Timer counter;
@@ -51,8 +51,6 @@ class StateRotDef : public BaseState
         Vector2df shotVelocity;
         Vector2df enemyPosition;
         Vector2df enemyVelocity;
-        Text pauseText;
-        AnimatedSprite buttonSheet;
 };
 
 #endif // STATESPACEINVADERS_H_INCLUDED
