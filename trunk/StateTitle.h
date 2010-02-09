@@ -67,6 +67,7 @@ class StateTitle : public BaseState
         Timer timer;
         Timer startTimer;
         ButtonPrompter prompt;
+        AnimatedSprite mute;
 };
 
 #endif // STATETITLE_H

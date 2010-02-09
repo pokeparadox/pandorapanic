@@ -46,6 +46,10 @@ void StateTitle::init()
     prompt.setDefaultY(400);
     prompt.setFlashQuantity(4);
     backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
+    mute.loadFrames("images/menu/mute.png",2,1);
+    mute.setFrameRate(SECONDS);
+    mute.setPosition(700,440);
+    mute.setTransparentColour(MAGENTA);
 
     GFX::setClearColour(backColour);
     newColour = backColour;
@@ -225,6 +229,7 @@ void StateTitle::mainMenu()
 
 void StateTitle::update()
 {
+    mute.update();
     emit.update();
     if(backColour != newColour && !splashDone)
     {
@@ -325,6 +330,7 @@ void StateTitle::render(SDL_Surface* screen)
 {
     /// Clear Screen with prerendered background
     SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
+    mute.render(screen);
     emit.render(screen);
     if(splashDone)
     {
