@@ -117,7 +117,15 @@ namespace PangMiniGame
         // Right.
         m_IsRightDown = (uint)joy->isRight();
         // Up.
-        m_IsUpDown = (uint)joy->isUp();
+        if(joy->isUp() || joy->isA())
+        {
+            if(m_IsUpDown == 0)
+                m_IsUpDown = 1;
+            else
+                m_IsUpDown = 2;
+        }
+        else
+            m_IsUpDown = 0;
     }
     bool Controls::IsLeftPressed( )
     {
