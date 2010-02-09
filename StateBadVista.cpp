@@ -389,17 +389,3 @@ void StateBadVista::pauseScreen()
     buttonPrompter.renderImage(10,260,220);
 }
 #endif
-
-void StateBadVista::pauseInput()
-{
-    input->update();
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
-    if (input->isStart())
-    {
-        pauseToggle();
-        input->resetKeys();
-    }
-}

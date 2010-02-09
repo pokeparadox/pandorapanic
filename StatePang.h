@@ -1,6 +1,7 @@
 #ifndef STATEPANG_H_INCLUDED
 #define STATEPANG_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"
 
 #include "AnimatedSprite.h"
@@ -11,7 +12,7 @@ namespace PangMiniGame
     class PangGame;
 };
 
-class StatePang : public BaseState
+class StatePang : public mgBaseState
 {
     public:
         StatePang();

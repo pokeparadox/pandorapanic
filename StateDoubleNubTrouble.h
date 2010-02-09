@@ -1,6 +1,7 @@
 #ifndef STATEDOUBLENUBTROUBLE_H_INCLUDED
 #define STATEDOUBLENUBTROUBLE_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     nEW pROJECT

@@ -1,6 +1,7 @@
 #ifndef STATESPACEINVADERS_H_INCLUDED
 #define STATESPACEINVADERS_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     pstudio's Space Invaders mini game for Pandora Panic
@@ -11,7 +12,7 @@
 #include "Sprite.h"
 #include "Emitter.h"
 #include "AnimatedSprite.h"
-class StateSpaceInvaders : public BaseState
+class StateSpaceInvaders : public mgBaseState
 {
     public:
         StateSpaceInvaders();
@@ -30,7 +31,6 @@ class StateSpaceInvaders : public BaseState
 
         virtual ~StateSpaceInvaders();
         virtual void userInput();
-        virtual void pauseInput();
 
         Emitter emit;
         vector <Emitter> blast;
@@ -45,8 +45,6 @@ class StateSpaceInvaders : public BaseState
         bool shooting;
         float alienDir;
         float shipVel;
-        Text pauseText;
-        AnimatedSprite buttonSheet;
 };
 
 #endif // STATESPACEINVADERS_H_INCLUDED

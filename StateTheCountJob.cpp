@@ -463,17 +463,3 @@ void StateTheCountJob::update()
     if (counter.getScaledTicks() >= 10+showTime)
         selection.setX(round((800.0 - (circleLevel - 1.0) * 125.0) / 2.0) + 125 * selected - 8 - 25); // it works... somehow
 }
-
-void StateTheCountJob::pauseInput()
-{
-    input->update();
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
-    if (input->isStart())
-    {
-        pauseToggle();
-        input->resetKeys();
-    }
-}

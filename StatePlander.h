@@ -1,6 +1,7 @@
 #ifndef STATEPLANDER_H
 #define STATEPLANDER_H
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"
 
 #include "RocketEscape/Rocket.h"
@@ -10,7 +11,7 @@
 #include "Music.h"
 #include "Rectangle.h"
 
-class StatePlander : public BaseState
+class StatePlander : public mgBaseState
 {
     public:
         StatePlander();
@@ -25,7 +26,6 @@ class StatePlander : public BaseState
         #endif
         virtual void update();
         virtual void userInput();
-        virtual void pauseInput();
 
     private:
         enum
@@ -36,8 +36,6 @@ class StatePlander : public BaseState
         Music ambient;
         Rocket rocket;
         ParticleMirror floor;
-        Text pauseText;
-        AnimatedSprite buttonSheet;
     // Twinkly Stars
         AnimatedSprite star;
         Sprite planet;

@@ -2,6 +2,7 @@
 #ifndef FIRE_H_INCLUDED
 #define FIRE_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include <vector>
@@ -80,7 +81,7 @@ struct sPickle {
     sFire   fire;
 };
 
-class Fire : public BaseState
+class Fire : public mgBaseState
 {
     public:
         Fire();
@@ -97,11 +98,9 @@ class Fire : public BaseState
 
         virtual ~Fire();
         virtual void userInput(){;}
-        virtual void pauseInput();
 
     private:
         Text                text;
-        Text                pauseText;
         Text                debugText;
         vector<sWater>      water;
         Background			background;

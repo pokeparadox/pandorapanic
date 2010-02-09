@@ -1,9 +1,10 @@
 #ifndef STATEMEMORYBLOCKS_H_INCLUDED
 #define STATEMEMORYBLOCKS_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
-    B-ZaR's Rotating Turret mini game for Pandora Panic
+    MemoryBlocks game
 */
 #include "Background.h"
 #include "Image.h"
@@ -13,7 +14,7 @@
 #include <vector>
 #include <string>
 
-class StateMemoryBlocks : public BaseState
+class StateMemoryBlocks : public mgBaseState
 {
     public:
 
@@ -41,11 +42,9 @@ class StateMemoryBlocks : public BaseState
 
         virtual ~StateMemoryBlocks();
         virtual void userInput();
-        virtual void pauseInput();
 
         Text command;
         Text timer;
-        Text pauseText;
         Timer counter;
         Background background;
         std::vector<BlockSlot> combination;
@@ -53,7 +52,6 @@ class StateMemoryBlocks : public BaseState
         std::vector<Image*> blocks;
         Image slot;
         AnimatedSprite cursor;
-        AnimatedSprite buttonSheet;
         int currentSlot;
         bool keyPressLimiter;
 };

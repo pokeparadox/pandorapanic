@@ -1,6 +1,7 @@
 #ifndef STATESNATCHABEER_H_INCLUDED
 #define STATESNATCHABEER_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
    foxblock's attemt to create a minigame for PandoraPanic
@@ -10,7 +11,7 @@
 #include "Background.h"
 #include "Sprite.h"
 
-class StateSnatchABeer : public BaseState
+class StateSnatchABeer : public mgBaseState
 {
     public:
         enum GameStates {
@@ -40,7 +41,6 @@ class StateSnatchABeer : public BaseState
         virtual void onResume();
 
         virtual void userInput();
-        virtual void pauseInput();
 
         AnimatedSprite enemyIdle;
         AnimatedSprite enemyAngry;
@@ -72,7 +72,6 @@ class StateSnatchABeer : public BaseState
         Sound sEnemyWhat;
         Sound sPlayer[4];
 
-        Text pauseText;
         Background background;
         Timer counter;
 

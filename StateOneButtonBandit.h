@@ -1,6 +1,7 @@
 #ifndef STATEONEBUTTONBANDIT_H_INCLUDED
 #define STATEONEBUTTONBANDIT_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     Miggles' Pokies game for Pandora Panic!
@@ -62,7 +63,7 @@ class OBBColumn {
         OBBShapeNode *shapeNode, *lastShapeNode, *tempNode, *finalMatchNode;
 };
 
-class StateOneButtonBandit : public BaseState
+class StateOneButtonBandit : public mgBaseState
 {
     public:
 //        StateOneButtonBandit();
@@ -77,7 +78,6 @@ class StateOneButtonBandit : public BaseState
         #endif
         virtual void update();
         virtual void userInput();
-        virtual void pauseInput();
         virtual void unlimitedUpdate();
         virtual void onPause();
         virtual void onResume();

@@ -1,6 +1,7 @@
 #ifndef STATEPUNCHWRESTLER_H_INCLUDED
 #define STATEPUNCHWRESTLER_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     PunchWrestler
@@ -16,7 +17,7 @@
 #include "trabitboy/winState.h"
 #include "trabitboy/loseState.h"
 
-class StatePunchWrestler : public BaseState
+class StatePunchWrestler : public mgBaseState
 {
     public:
         StatePunchWrestler();
@@ -34,8 +35,6 @@ class StatePunchWrestler : public BaseState
 
         virtual ~StatePunchWrestler();
         virtual void userInput();
-        virtual void pauseInput();
-
 
         Text text;
 

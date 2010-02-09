@@ -1000,17 +1000,3 @@ int16_t Fire::RandomValue( int16_t low, int16_t high )
     num = rand() % (high - low + 1) + low;
     return num;
 }
-
-void Fire::pauseInput()
-{
-    input->update();
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
-    if (input->isStart())
-    {
-        pauseToggle();
-        input->resetKeys();
-    }
-}

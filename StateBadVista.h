@@ -1,6 +1,7 @@
 #ifndef STATEBADVISTA_H_INCLUDED
 #define STATEBADVISTA_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     BadVista minigame for Pandora Panic
@@ -33,7 +34,7 @@ class SimpleRegion {
 
 
 
-class StateBadVista : public BaseState
+class StateBadVista : public mgBaseState
 {
   public:
     StateBadVista();
@@ -47,7 +48,7 @@ class StateBadVista : public BaseState
     #endif
     virtual void update();
     virtual void userInput();
-    virtual void pauseInput();
+    //virtual void pauseInput();
 
   private:
     ButtonPrompter buttonPrompter;
@@ -61,8 +62,6 @@ class StateBadVista : public BaseState
 
     Music backsound;
     Sound bounce;
-
-    Text pauseText;
 
     const static int LOSER_DELAY = 4;
     const static int END_DELAY = 1;

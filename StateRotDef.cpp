@@ -253,17 +253,3 @@ void StateRotDef::update()
         playerKilled = true;
     }
 }
-
-void StateRotDef::pauseInput()
-{
-    input->update();
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
-    if (input->isStart())
-    {
-        pauseToggle();
-        input->resetKeys();
-    }
-}

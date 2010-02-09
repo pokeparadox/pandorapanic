@@ -1,6 +1,7 @@
 #ifndef STATETHECOUNTJOB_H_INCLUDED
 #define STATETHECOUNTJOB_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 /*
     foxblock got interested in C++ programming, so fear his second creation
@@ -14,7 +15,7 @@
 /// const
 #define INSTRUCTIONS_TIME 10
 
-class StateTheCountJob : public BaseState
+class StateTheCountJob : public mgBaseState
 {
     public:
         StateTheCountJob();
@@ -31,12 +32,10 @@ class StateTheCountJob : public BaseState
         virtual void onPause();
         virtual void onResume();
         virtual void userInput();
-        virtual void pauseInput();
 
         virtual bool checkPos(vector<Vector2df>::iterator curr, int arr);
 
         /// visuals
-        Text pauseText;
         Text text;
         Timer counter;
         Sprite circle[5];

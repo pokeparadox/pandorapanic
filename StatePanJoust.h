@@ -1,6 +1,7 @@
 #ifndef STATEPANJOUST_H_INCLUDED
 #define STATEPANJOUST_H_INCLUDED
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"     // Make sure your state is listed in this include.
 
 #include "Background.h"
@@ -11,7 +12,7 @@
 #include "PanJoust/HeroBird.h"
 #include "Emitter.h"
 
-class StatePanJoust : public BaseState
+class StatePanJoust : public mgBaseState
 {
     public:
         StatePanJoust();
@@ -27,12 +28,10 @@ class StatePanJoust : public BaseState
         virtual void onPause();
         virtual void onResume();
         virtual void userInput();
-        virtual void pauseInput();
         virtual ~StatePanJoust();
 
     private:
         AnimatedSprite enemy[40];
-        AnimatedSprite buttonSheet;
         Text text;
         Timer teller;
         Timer inputlimiter;
