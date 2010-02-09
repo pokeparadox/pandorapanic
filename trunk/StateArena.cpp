@@ -38,6 +38,8 @@ StateArena::~StateArena()
 //-----------------------------
 void StateArena::init()
 {
+    m_HeroPtr->setInput(input);
+
     int level = variables[2].getInt();
     int speedLevel = min(floor((level-7.0)/9.0),5.0);
     int monsterLevel = (level-7)-speedLevel * 9;
@@ -171,7 +173,7 @@ void StateArena::userInput()
             nullifyState();
     #endif
 
-    m_HeroPtr->userInput(input);
+    m_HeroPtr->userInput();
 
     //Collision
     if(m_HeroPtr->GetSwinging() && !m_HeroPtr->GetDying())
