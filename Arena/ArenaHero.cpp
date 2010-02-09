@@ -132,6 +132,7 @@ ArenaHero::ArenaHero() : m_X(312), m_Y(260), m_Direction(DIR_UP)
 ArenaHero::~ArenaHero()
 {
     m_bmpCurrentPtr = 0;
+    input = 0;
 
     if(m_HitRegionPtr)
         delete m_HitRegionPtr;
@@ -175,15 +176,14 @@ void ArenaHero::render(SDL_Surface* screen)
     //m_HitRegionPtr->render(screen);
     //m_SwordRegionPtr->render(screen);
 }
-void ArenaHero::userInput(SimpleJoy* input)
+void ArenaHero::userInput()
 {
     if(!m_IsDying)
     {
         if(!m_IsSwinging)
         {
-            HandleFacing(input);
-            HandleCurrentImage(input);
-
+            HandleFacing();
+            HandleCurrentImage();
 
             //-----------------------------------------------------
             // Sword swinging
@@ -216,6 +216,7 @@ void ArenaHero::userInput(SimpleJoy* input)
                 }
 
                 m_bmpCurrentPtr->setCurrentFrame(0);
+                input->resetA();
             }
 
             //-----------------------------------------------------
@@ -223,7 +224,7 @@ void ArenaHero::userInput(SimpleJoy* input)
             //-----------------------------------------------------
 
             //UP
-            else if(input->isUp() && !input->isDown() && !input->isLeft() && !input->isRight())
+            if(input->isUp() && !input->isDown() && !input->isLeft() && !input->isRight())
             {
                 Move(0, -8);
                 if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, 8);
@@ -280,7 +281,7 @@ void ArenaHero::userInput(SimpleJoy* input)
         }
     }
 }
-void ArenaHero::HandleFacing(SimpleJoy* input)
+void ArenaHero::HandleFacing()
 {
     //UP
     if(input->isUp())
@@ -306,7 +307,7 @@ void ArenaHero::HandleFacing(SimpleJoy* input)
         m_Direction = DIR_RIGHT;
     }
 }
-void ArenaHero::HandleCurrentImage(SimpleJoy* input)
+void ArenaHero::HandleCurrentImage()
 {
     //-----------------------------
     // Standing

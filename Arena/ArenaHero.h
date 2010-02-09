@@ -32,10 +32,11 @@ public:
 	// Public Methods
 	//-------------------------------------------------
     void render(SDL_Surface* screen);
-    void userInput(SimpleJoy* input);
+    void userInput();
     void update();
     HitRegion* GetHitRegion();
     HitRegion* GetSwordRegion();
+    void setInput(SimpleJoy* joy){input = joy;}
 
     int GetX();
     int GetY();
@@ -46,8 +47,8 @@ public:
     //-------------------------------------------------
 	// Private Methods
 	//-------------------------------------------------
-    void HandleFacing(SimpleJoy* input);
-    void HandleCurrentImage(SimpleJoy* input);
+    void HandleFacing();
+    void HandleCurrentImage();
     void Move(int x, int y);
     void SetDead();
 
@@ -67,6 +68,8 @@ private:
     HitRegion *m_HitRegionPtr, *m_SwordRegionPtr;
 
     Sound m_sndSword;
+
+    SimpleJoy* input;
 
 };
 
