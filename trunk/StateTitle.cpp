@@ -42,14 +42,12 @@ StateTitle::~StateTitle()
 
 void StateTitle::init()
 {
-    prompt.setDefaultX(700);
-    prompt.setDefaultY(400);
+    uint xRes = GFX::getXResolution();
+    uint yRes = GFX::getYResolution();
+    prompt.setDefaultX(xRes/8 * 7);//700);
+    prompt.setDefaultY(yRes * 0.833333333f);//400);
     prompt.setFlashQuantity(4);
     backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
-    mute.loadFrames("images/menu/mute.png",2,1);
-    mute.setFrameRate(SECONDS);
-    mute.setPosition(700,440);
-    mute.setTransparentColour(MAGENTA);
 
     GFX::setClearColour(backColour);
     newColour = backColour;
@@ -64,8 +62,8 @@ void StateTitle::init()
     #elif PENJIN_GL
         GFX::init2DRendering(*xRes,*yRes);
     #endif
-    emit.setPosition(Vector2di(GFX::getXResolution()*0.5f,GFX::getYResolution()*0.5f));
-    emit.setBoundaries(Vector2di(-64,-64),Vector2di(GFX::getXResolution(),GFX::getYResolution()));
+    emit.setPosition(Vector2di(xRes*0.5f,yRes*0.5f));
+    emit.setBoundaries(Vector2di(-64,-64),Vector2di(xRes,yRes));
     emit.setMaxVelocity(Vector2df(6,6));
     emit.setLifeTime(6000);
     emit.shouldFadeColour(true);
@@ -229,7 +227,6 @@ void StateTitle::mainMenu()
 
 void StateTitle::update()
 {
-    mute.update();
     emit.update();
     if(backColour != newColour && !splashDone)
     {
@@ -330,12 +327,12 @@ void StateTitle::render(SDL_Surface* screen)
 {
     /// Clear Screen with prerendered background
     SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
-    mute.render(screen);
     emit.render(screen);
     if(splashDone)
     {
         menu.render(screen);
         prompt.render();
+        muteSprite.render();
     }
     else
     {
@@ -353,7 +350,9 @@ void StateTitle::render()
     back.render();
     emit.render();
     if(splashDone)
+    {
         menu.render();
+    }
     else
     {
         splash.render();
@@ -435,6 +434,13 @@ void StateTitle::userInput()
         }
         else if(!input->isLeftStick())
             returnToCentre = true;
+
+        //  Mute button
+        if(input->isR())
+        {
+            muteToggle();
+            input->resetR();
+        }
     }
     else
     {
