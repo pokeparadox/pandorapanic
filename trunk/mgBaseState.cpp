@@ -32,6 +32,7 @@ void mgBaseState::buttonsOverlay(SDL_Surface* screen)
         buttonSheet.setPosition(muteSprite.getX()-buttonSheet.getWidth()-2,muteSprite.getY());
         buttonSheet.setCurrentFrame(19); // R
         buttonSheet.render(screen);
+        muteSprite.setCurrentFrame(mixer.getGlobalVolume() == 0);
         muteSprite.render(screen);
 
         buttonSheet.setPosition(exitSprite.getX()-2*buttonSheet.getWidth(),exitSprite.getY());
