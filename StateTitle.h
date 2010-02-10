@@ -1,6 +1,7 @@
 #ifndef STATETITLE_H
 #define STATETITLE_H
 
+#include "mgBaseState.h"
 #include "PenjinStates.h"
 
 /*
@@ -21,7 +22,7 @@ SelectionBox - play individual minigames
 #include "Timer.h"
 #include "ButtonPrompter.h"
 
-class StateTitle : public BaseState
+class StateTitle : public mgBaseState
 {
     public:
         StateTitle();
@@ -46,6 +47,7 @@ class StateTitle : public BaseState
         Background back;
         Sprite splash;
         Sprite  startButton;
+
         Colour backColour;
         Colour newColour;
         Menu menu;
@@ -67,7 +69,6 @@ class StateTitle : public BaseState
         Timer timer;
         Timer startTimer;
         ButtonPrompter prompt;
-        AnimatedSprite mute;
 };
 
 #endif // STATETITLE_H
