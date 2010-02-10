@@ -181,7 +181,7 @@ void StatePlander::render(SDL_Surface* screen)
 void StatePlander::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Land on the platform!");
@@ -231,6 +231,7 @@ void StatePlander::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(19);
     buttonSheet.setPosition(198,380);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 #else
 void StatePlander::renderStars()

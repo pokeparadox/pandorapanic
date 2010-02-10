@@ -236,7 +236,7 @@ void StatePanicAttack::update()
 #ifdef PENJIN_SDL
 void StatePanicAttack::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(52,182);
     pauseText.setColour(WHITE);
@@ -244,6 +244,7 @@ void StatePanicAttack::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,180);
     pauseText.setColour(BLACK);
     pauseText.print(screen, "Press the prompted buttons within the timelimit!");
+    buttonsOverlay(screen);
 }
 
 void StatePanicAttack::render(SDL_Surface *screen) {

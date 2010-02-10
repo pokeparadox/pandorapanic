@@ -204,7 +204,7 @@ void StatePuttPutt::render(SDL_Surface *screen)
 void StatePuttPutt::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(20,180);
     pauseText.print(screen, "Stop the power meter within the green bar!");
@@ -213,6 +213,7 @@ void StatePuttPutt::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(10);
     buttonSheet.setPosition(104,220);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 #else
     void StatePuttPutt::render()

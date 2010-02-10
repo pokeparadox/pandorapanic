@@ -160,7 +160,7 @@ void StateCake::userInput()
 
 void StateCake::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
 
     text.setColour(BLUE);
@@ -174,6 +174,7 @@ void StateCake::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(10);
     buttonSheet.setPosition(120,220);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 
 void StateCake::onPause()

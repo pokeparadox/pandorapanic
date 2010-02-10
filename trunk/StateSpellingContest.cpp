@@ -174,12 +174,13 @@ void StateSpellingContest::render(SDL_Surface *screen)
 void StateSpellingContest::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,320);
     pauseText.print(screen, "Type the word in the time limit!");
     pauseText.setPosition(50,360);
     pauseText.print(screen, "Don't press the wrong key!");
+    buttonsOverlay(screen);
 }
 #else
     void StateSpellingContest::renderInfo()

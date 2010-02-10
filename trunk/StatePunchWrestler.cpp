@@ -133,7 +133,7 @@ void StatePunchWrestler::render(SDL_Surface *screen)
 
 void StatePunchWrestler::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     text.setPosition(52,182);
     text.setColour(Colour(WHITE));
@@ -147,6 +147,7 @@ void StatePunchWrestler::pauseScreen(SDL_Surface* screen)
     text.setPosition(50,220);
     text.setColour(Colour(BLACK));
     text.print(screen, "corresponding to the arrow on screen");
+    buttonsOverlay(screen);
 }
 #else
 void StatePunchWrestler::render()

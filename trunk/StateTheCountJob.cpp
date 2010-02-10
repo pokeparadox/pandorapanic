@@ -254,7 +254,7 @@ void StateTheCountJob::render(SDL_Surface *screen)
 
 void StateTheCountJob::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     if (pauseMayhem <= 95)
@@ -269,7 +269,7 @@ void StateTheCountJob::pauseScreen(SDL_Surface* screen)
     }
     else if (pauseMayhem == 97)
     {
-        pauseText.print(screen, "Everyone reading this text is a dumb prick!");
+        pauseText.print(screen, "Everyone reading this text is a dummy!");
     }
     else if (pauseMayhem == 98)
     {
@@ -308,6 +308,7 @@ void StateTheCountJob::pauseScreen(SDL_Surface* screen)
         pauseText.print(screen, "We apologise for the fault in the instructions.");
         pauseText.setPosition(80,430);
         pauseText.print(screen, "Those responsible have been sacked.");
+        buttonsOverlay(screen);
     }
 }
 #else
