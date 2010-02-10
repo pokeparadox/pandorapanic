@@ -48,6 +48,7 @@ void StateTitle::init()
     prompt.setDefaultY(yRes * 0.833333333f);//400);
     prompt.setFlashQuantity(4);
     backColour.setColour((uchar)Random::nextInt(),Random::nextInt(),Random::nextInt());
+    muteSprite.setCurrentFrame(mixer.getGlobalVolume() == 0);
 
     GFX::setClearColour(backColour);
     newColour = backColour;
