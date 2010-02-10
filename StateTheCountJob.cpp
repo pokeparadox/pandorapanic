@@ -308,8 +308,8 @@ void StateTheCountJob::pauseScreen(SDL_Surface* screen)
         pauseText.print(screen, "We apologise for the fault in the instructions.");
         pauseText.setPosition(80,430);
         pauseText.print(screen, "Those responsible have been sacked.");
-        buttonsOverlay(screen);
     }
+    buttonsOverlay(screen);
 }
 #else
 void StateTheCountJob::render()
