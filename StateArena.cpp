@@ -208,7 +208,7 @@ void StateArena::render(SDL_Surface *screen)
 void StateArena::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Kill all the monsters but don't get hit!");
@@ -217,6 +217,7 @@ void StateArena::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(10);
     buttonSheet.setPosition(134,220);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 
 void StateArena::update()

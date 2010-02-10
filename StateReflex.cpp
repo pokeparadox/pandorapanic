@@ -138,12 +138,13 @@ void StateReflex::render(SDL_Surface *screen)
 void StateReflex::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Quickly press the D-Pad");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "matching the direction on screen!");
+    buttonsOverlay(screen);
 }
 #else
     void StateReflex::render()

@@ -1,6 +1,7 @@
 #ifndef MINIGAMES_H_INCLUDED
 #define MINIGAMES_H_INCLUDED
-
+#include <string>
+using std::string;
 enum
 {
     MAX_GAMES = 23,              //  The number of minigames we have

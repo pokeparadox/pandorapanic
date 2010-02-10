@@ -12,7 +12,7 @@
 #include "Text.h"
 #include "CountDown.h"
 
-class StateCake : public BaseState
+class StateCake : public mgBaseState
 {
     public:
         StateCake();

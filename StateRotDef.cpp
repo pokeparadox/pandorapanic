@@ -159,7 +159,7 @@ void StateRotDef::render(SDL_Surface *screen)
 void StateRotDef::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(220,60);
     pauseText.print(screen, "Rotate the turret using    and");
@@ -174,6 +174,7 @@ void StateRotDef::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(10);
     buttonSheet.setPosition(304,100);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 #else
 void StateRotDef::render()

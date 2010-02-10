@@ -480,7 +480,7 @@ void StateOneButtonBandit::render(SDL_Surface *screen)
 
 void StateOneButtonBandit::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     text.setColour(YELLOW);
     text.setPosition(50,200);
@@ -494,6 +494,7 @@ void StateOneButtonBandit::pauseScreen(SDL_Surface* screen)
 //    text.setColour(WHITE);
 //    text.setPosition(52,242);
 //    text.print(screen, "(outlines give an indication too)");
+    buttonsOverlay(screen);
 }
 #else
     void StateOneButtonBandit::render()

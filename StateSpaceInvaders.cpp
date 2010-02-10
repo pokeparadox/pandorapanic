@@ -135,7 +135,7 @@ void StateSpaceInvaders::render(SDL_Surface *screen)
 
 void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.setColour(WHITE);
@@ -143,6 +143,7 @@ void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(10);
     buttonSheet.setPosition(375,180);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 #else
     void StateSpaceInvaders::render()

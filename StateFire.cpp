@@ -236,7 +236,7 @@ void Fire::pauseScreen(SDL_Surface* screen)
     #define PAUSE_DELTA_X   20
     #define PAUSE_DELTA_Y   30
 
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setColour(BLACK);
     pauseText.setPosition(PAUSE_X,PAUSE_Y);
@@ -251,6 +251,7 @@ void Fire::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Z key or A button shoot water");
     pauseText.setPosition(PAUSE_X+PAUSE_DELTA_X*8,PAUSE_Y+PAUSE_DELTA_Y*6);
     pauseText.print(screen, "Press Enter/Start to continue");
+    buttonsOverlay(screen);
 }
 
 void Fire::update()

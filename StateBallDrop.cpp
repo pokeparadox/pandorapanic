@@ -144,7 +144,7 @@ void StateBallDrop::render(SDL_Surface *screen)
 void StateBallDrop::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     text.setPosition(300,216);
     text.setColour(WHITE);
@@ -156,6 +156,7 @@ void StateBallDrop::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Use     and     to navigate!");
     buttonPrompter.renderImage(14,102,220);
     buttonPrompter.renderImage(15,215,220);
+    buttonsOverlay(screen);
 }
 #else
 void StateBallDrop::render()

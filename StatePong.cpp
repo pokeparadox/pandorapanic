@@ -142,12 +142,13 @@ void StatePong::userInput()
     void StatePong::pauseScreen(SDL_Surface* screen)
     {
         // Pause screen
-        if(variables.size()<SUBSTATE_TRIGGER)
+        if(!isSubState())
             pauseSymbol(screen);
         pauseText.setPosition(50,180);
         pauseText.print(screen, "Win a good, old game of Pong!");
         pauseText.setPosition(50,220);
         pauseText.print(screen, "Caution: It's sudden death!");
+        buttonsOverlay(screen);
     }
 #else
     void StatePong::render()

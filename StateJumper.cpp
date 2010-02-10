@@ -195,13 +195,14 @@ void StateJumper::userInput()
 #ifdef PENJIN_SDL
     void StateJumper::pauseScreen(SDL_Surface* screen)
     {
-        if(variables.size()<SUBSTATE_TRIGGER)
+        if(!isSubState())
             pauseSymbol(screen);
         text.setColour(WHITE);
         text.setPosition(50,180);
         text.print(screen, "Jump towards the star to win");
         text.setPosition(50,220);
         text.print(screen, "Green blobs only kill you when they jump");
+        buttonsOverlay(screen);
     }
 #else
     void StateJumper::pauseScreen()

@@ -357,13 +357,14 @@ void StateBadVista::render(SDL_Surface *screen) {
 void StateBadVista::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Put Vista where it belongs!");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press and hold     to throw!");
     buttonPrompter.renderImage(10,268,220);
+    buttonsOverlay(screen);
 }
 #else
 void StateBadVista::render()

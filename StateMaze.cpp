@@ -252,13 +252,14 @@ void StateMaze::userInput()
 #ifdef PENJIN_SDL
     void StateMaze::pauseScreen(SDL_Surface* screen)
     {
-        if(variables.size()<SUBSTATE_TRIGGER)
+        if(!isSubState())
             pauseSymbol(screen);
         text.setColour(WHITE);
         text.setPosition(50,180);
         text.print(screen, "Reach the door to safety and escape the maze!");
         text.setPosition(50,220);
         text.print(screen, "Watch out for the blobs!");
+        buttonsOverlay(screen);
     }
 #else
     void StateMaze::pauseScreen()

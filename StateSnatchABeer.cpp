@@ -232,7 +232,7 @@ void StateSnatchABeer::render(SDL_Surface *screen)
 void StateSnatchABeer::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Press     at the right time to get the beer!");
@@ -243,6 +243,7 @@ void StateSnatchABeer::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Hint: You might get a 2nd chance");
     pauseText.setPosition(50,260);
     pauseText.print(screen, "if you miss the first time.");
+    buttonsOverlay(screen);
 }
 #else
 void StateSnatchABeer::render()

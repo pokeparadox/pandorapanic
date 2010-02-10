@@ -2152,10 +2152,8 @@ void StatePang::render( )
 #ifdef PENJIN_SDL
 void StatePang::pauseScreen(SDL_Surface* screen)
 {
-    //m_pPangGame->Update( input );
-
     // Pause screen
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Burst those balls, but don't let them hit you!");
@@ -2167,6 +2165,7 @@ void StatePang::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(16);
     buttonSheet.setPosition(224,220);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 #else
 void StatePang::pauseScreen()

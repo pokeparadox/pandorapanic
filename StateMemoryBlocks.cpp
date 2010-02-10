@@ -159,7 +159,7 @@ void StateMemoryBlocks::userInput()
 #ifdef PENJIN_SDL
 void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     background.render(screen);
     Rectangle recta;
@@ -186,6 +186,7 @@ void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(17);
     buttonSheet.setPosition(198,260);
     buttonSheet.render(screen);
+    buttonsOverlay(screen);
 }
 
 #else

@@ -257,12 +257,13 @@ void StateDistractedMath::render(SDL_Surface *screen)
 }
 void StateDistractedMath::pauseScreen(SDL_Surface* screen)
 {
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Use your math magic and the numeric keys");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "to correctly solve the given problems.");
+    buttonsOverlay(screen);
 }
 #else
 void StateDistractedMath::render()
