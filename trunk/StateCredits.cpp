@@ -391,7 +391,7 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"MadWrestlerPunch/kick"+ext);
-                logo.setTransparentColour(WHITE);
+                //logo.setTransparentColour(WHITE);
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Pong"))
             {
@@ -403,7 +403,7 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"Pang/player"+ext);
-                logo.setTransparentColour(BLACK);
+                //logo.setTransparentColour(BLACK);
             }
             /*else if(strstr(CREDITS[currentLine].c_str(), "DoubleNub"))
             {
@@ -415,7 +415,7 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"PanJoust/heroframe"+ext);
-                logo.setTransparentColour(MAGENTA);
+                //logo.setTransparentColour(MAGENTA);
             }
             else if(strstr(CREDITS[currentLine].c_str(), "PanJoust"))
             {
@@ -426,7 +426,7 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"DistractedMaths/4"+ext);
-                logo.setTransparentColour(MAGENTA);
+                //logo.setTransparentColour(Vector2di(0,0));
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Reflex"))
             {
@@ -437,7 +437,7 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"sdl.gif");
-                logo.setTransparentColour(MAGENTA);
+                logo.disableTransparentColour();
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Rocket"))
             {
@@ -448,19 +448,19 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"Jumper/robot"+ext);
-                logo.setTransparentColour(MAGENTA);
+                //logo.setTransparentColour(MAGENTA);
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Jumper - MarkoeZ"))
             {
                 logo.clear();
                 logo.loadSprite(path+"Jumper/blobevil"+ext);
-                logo.setTransparentColour(MAGENTA);
+                //logo.setTransparentColour(MAGENTA);
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Maze"))
             {
                 logo.clear();
                 logo.loadSprite(path+"Maze/hero"+ext);
-                logo.setTransparentColour(MAGENTA);
+                //logo.setTransparentColour(MAGENTA);
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Plander - Poke"))
             {
@@ -518,13 +518,13 @@ void StateCredits::unlimitedUpdate()
             {
                 logo.clear();
                 logo.loadSprite(path+"OneButtonBandit/diamond"+ext);
-                logo.setTransparentColour(MAGENTA);
+                //logo.setTransparentColour(Vector2di(0,0));
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Mariela"))
             {
                 logo.clear();
                 logo.loadSprite(path+"OneButtonBandit/heart"+ext);
-                logo.setTransparentColour(MAGENTA);
+                //logo.setTransparentColour(Vector2di(0,0));
             }
             else if(strstr(CREDITS[currentLine].c_str(), "OpenPandora"))
             {
