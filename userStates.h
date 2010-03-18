@@ -41,10 +41,11 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 #include "StateFire.h"
 //#include "StatePeePeesBigAdventure.h"
 #include "StateCake.h"
+#include "StatePlander.h"
+#include "StateTestSight.h"
 
 #include "StateTileEditor.h"
 //#include "StateBarrelRoll.h"
-#include "StatePlander.h"
 //#include "StateDarkTreasure.h"
 //	STATE_NULL		//	Exit the program, this is defined in the BaseState
 //	STATE_BASE		//	Template state, does nothing particularly useful
@@ -77,6 +78,7 @@ enum STATE_MODES
     STATE_COUNTJOB,
     STATE_FIRE,
     STATE_CAKE,
+    STATE_TESTSIGHT,
     //STATE_DARKTREASURE,
     //STATE_PEEPEESBIGADVENTURE,
 
