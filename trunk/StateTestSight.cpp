@@ -125,9 +125,9 @@ void StateTestSight::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Follow the path of the cup hiding the coin!");
     pauseText.setPosition(50,260);
-    pauseText.print(screen, "Press     to select your destiny!");
+    pauseText.print(screen, "Press    to select your destiny!");
     buttonSheet.setCurrentFrame(10);
-    buttonSheet.setPosition(134,220);
+    buttonSheet.setPosition(134,260);
     buttonSheet.render(screen);
 }
 #else
