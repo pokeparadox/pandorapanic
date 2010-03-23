@@ -133,13 +133,13 @@
 					<Add option="-ldl" />
 					<Add option="-lpthread" />
 					<Add option="-lSDL_mixer" />
-					<Add option="-lSDL" />
 					<Add option="-lSDL_ttf" />
 					<Add option="-lfreetype" />
 					<Add option="-lvorbisidec" />
+					<Add option="-lmad" />
 					<Add option="-lSDL_gfx" />
 					<Add option="-lSDL_image" />
-					<Add option="-lSDLmain" />
+					<Add option="-lSDL" />
 					<Add option="-lts" />
 					<Add option="-lpng" />
 					<Add option="-lz" />
@@ -172,9 +172,9 @@
 					<Add option="-lSDL_ttf" />
 					<Add option="-lfreetype" />
 					<Add option="-lvorbisidec" />
+					<Add option="-lmad" />
 					<Add option="-lSDL_gfx" />
 					<Add option="-lSDL_image" />
-					<Add option="-lSDLmain" />
 					<Add option="-lts" />
 					<Add option="-lpng" />
 					<Add option="-lz" />
@@ -534,6 +534,8 @@
 		<Unit filename="StateSpellingContest.h">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
+		<Unit filename="StateTestSight.cpp" />
+		<Unit filename="StateTestSight.h" />
 		<Unit filename="StateTheCountJob.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/" />
 		</Unit>
