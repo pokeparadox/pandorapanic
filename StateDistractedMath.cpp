@@ -45,7 +45,7 @@ void StateDistractedMath::init()
     mathstate = 5;
     oper = 1;
     round = 1;
-    tv = SDL_EnableUNICODE(1); //enables unicode and saves the previous state
+    //tv = SDL_EnableUNICODE(1); //enables unicode and saves the previous state
     inputlimiter.setMode(MILLI_SECONDS);
     inputlimiter.start();
     teller.start();
@@ -77,11 +77,11 @@ void StateDistractedMath::userInput()
                             if(event.key.keysym.sym == SDLK_RETURN)
                                 pauseToggle();
                     #elif PLATFORM_PANDORA
-                        SDL_JOYBUTTONDOWN:
-                        if(event.jbutton.button == 5)// Pandora start button
-                            pauseToggle();
+                        case SDL_KEYDOWN:
+                            if(event.key.keysym.sym == SDLK_LCTRL)
+                                pauseToggle();
                     #endif
-                        MathInputUnicode =  (event.key.keysym.unicode); // unicode input
+                        MathInputUnicode =  (event.key.keysym.sym); // unicode input
                         #ifdef PENJIN_FIXED
                             MathInputNumeric = MathInputUnicode.intValue<<16 - 48; // numeric is 48 ascii chars lower :)
                         #else
@@ -405,7 +405,7 @@ void StateDistractedMath::update()
             else
             {
                 variables[0].setInt(0);
-                SDL_EnableUNICODE(tv);
+                //SDL_EnableUNICODE(tv);
                 setNextState(STATE_MAIN);
             }
         }
@@ -413,7 +413,7 @@ void StateDistractedMath::update()
         {
 
             variables[0].setInt(1);
-            SDL_EnableUNICODE(tv);
+            //SDL_EnableUNICODE(tv);
             setNextState(STATE_MAIN);
         }
 }

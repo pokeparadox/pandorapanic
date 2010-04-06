@@ -208,10 +208,12 @@ void StateRotDef::update()
 {
     if(gameEnd)
     {
-        SDL_Delay(1000);
-        if(enemyKilled) variables[0].setInt(1);
-        else variables[0].setInt(0);
-        setNextState(STATE_MAIN);
+        if(!endSound.isPlaying());
+        {
+            if(enemyKilled) variables[0].setInt(1);
+            else variables[0].setInt(0);
+            setNextState(STATE_MAIN);
+        }
     }
 
     if(enemyKilled || playerKilled) explosion.update();
@@ -234,11 +236,14 @@ void StateRotDef::update()
            shot.getY()+(int)shot.getHeight()*0.5f >= enemy.getY() &&
            shot.getY()+(int)shot.getHeight()*0.5f <= enemy.getY()+(int)enemy.getHeight() )
         {
-            endSound.loadSound("sounds/RotDef/WIN.ogg");
-            endSound.play();
-            explosion.setPosition(enemy.getX() - 84, enemy.getY() - 84);
-            enemyKilled = true;
-            ACHIEVEMENTS->logEvent("ROTDEF_WIN",round(sqrt(pow(turret.getX()-enemy.getX(),2)+pow(turret.getY()-enemy.getY(),2))));
+            if(!enemyKilled)
+            {
+                endSound.loadSound("sounds/RotDef/WIN.ogg");
+                endSound.play();
+                explosion.setPosition(enemy.getX() - 84, enemy.getY() - 84);
+                enemyKilled = true;
+                ACHIEVEMENTS->logEvent("ROTDEF_WIN",round(sqrt(pow(turret.getX()-enemy.getX(),2)+pow(turret.getY()-enemy.getY(),2))));
+            }
         }
 
     }
@@ -248,9 +253,12 @@ void StateRotDef::update()
        enemy.getY()+(int)enemy.getHeight()*0.5f >= turretBase.getY() &&
        enemy.getY()+(int)enemy.getHeight()*0.5f <= turretBase.getY()+(int)turretBase.getHeight() )
     {
-        endSound.loadSound("sounds/RotDef/LOSE.ogg");
-        endSound.play();
-        explosion.setPosition(turretBase.getX() - 29, turretBase.getY() - 29);
-        playerKilled = true;
+        if(!playerKilled)
+        {
+            endSound.loadSound("sounds/RotDef/LOSE.ogg");
+            endSound.play();
+            explosion.setPosition(turretBase.getX() - 29, turretBase.getY() - 29);
+            playerKilled = true;
+        }
     }
 }
