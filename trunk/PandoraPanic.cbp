@@ -130,6 +130,7 @@
 					<Add directory="$(#PANDORA_SDK.include)" />
 				</Compiler>
 				<Linker>
+					<Add option="-lstdc++" />
 					<Add option="-ldl" />
 					<Add option="-lpthread" />
 					<Add option="-lSDL_mixer" />
@@ -153,28 +154,29 @@
 				<Option type="0" />
 				<Option compiler="pandora" />
 				<Compiler>
-					<Add option="-msoft-float" />
 					<Add option="-O3" />
 					<Add option="-mcpu=cortex-a8 -mfpu=neon" />
 					<Add option="-ftree-vectorize -mfloat-abi=softfp" />
 					<Add option="-ffast-math" />
 					<Add option="-fsingle-precision-constant" />
+					<Add option="-fno-inline" />
 					<Add option="-DPLATFORM_PANDORA" />
 					<Add option="-DPENJIN_SDL" />
 					<Add directory="$(#PANDORA_SDK.include)" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-lstdc++" />
 					<Add option="-ldl" />
 					<Add option="-lpthread" />
 					<Add option="-lSDL_mixer" />
-					<Add option="-lSDL" />
 					<Add option="-lSDL_ttf" />
 					<Add option="-lfreetype" />
 					<Add option="-lvorbisidec" />
 					<Add option="-lmad" />
 					<Add option="-lSDL_gfx" />
 					<Add option="-lSDL_image" />
+					<Add option="-lSDL" />
 					<Add option="-lts" />
 					<Add option="-lpng" />
 					<Add option="-lz" />

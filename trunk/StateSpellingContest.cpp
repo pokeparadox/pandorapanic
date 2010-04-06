@@ -49,7 +49,7 @@ void StateSpellingContest::init()
     correctChars = 0;
     sTime = 2 + wordLength / 2;
 
-    pv = SDL_EnableUNICODE(1); //enables unicode and saves the previous state
+    //pv = SDL_EnableUNICODE(1); //enables unicode and saves the previous state
 
     status = 0; //show info
     counter.start();
@@ -72,17 +72,17 @@ void StateSpellingContest::userInput()
                         if(event.key.keysym.sym == SDLK_RETURN)
                             pauseToggle();
                 #elif PLATFORM_PANDORA
-                    SDL_JOYBUTTONDOWN:
-                    if(event.jbutton.button == 5)// Pandora start button
-                        pauseToggle();
+                    case SDL_KEYDOWN:
+                        if(event.key.keysym.sym == SDLK_LCTRL)
+                            pauseToggle();
                 #endif
 
 
-                    if (((event.key.keysym.unicode > 64 && event.key.keysym.unicode < 91)
-                    ||(event.key.keysym.unicode > 96 && event.key.keysym.unicode < 123))
+                    if (((event.key.keysym.sym > 64 && event.key.keysym.sym < 91)
+                    ||(event.key.keysym.sym > 96 && event.key.keysym.sym < 123))
                     && status == 1)
                     {
-                        if(word[correctChars] == (char)StringUtility::lower(event.key.keysym.unicode))
+                        if(word[correctChars] == (char)StringUtility::lower(event.key.keysym.sym))
                         {
                             correctChars++;
                         }
@@ -272,7 +272,7 @@ void StateSpellingContest::updateEnd()
     {
         if(sound.isPlaying())
             sound.stop();
-        SDL_EnableUNICODE(pv); //restore previous configuration
+        //SDL_EnableUNICODE(pv); //restore previous configuration
         setNextState(STATE_MAIN);
     }
 }

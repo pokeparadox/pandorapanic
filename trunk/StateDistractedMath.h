@@ -61,7 +61,7 @@ class StateDistractedMath : public mgBaseState
         int number;
         int number2;
         int number3;
-        int tv;
+        //int tv;
         int round;
         int quickrand;
         int victory;

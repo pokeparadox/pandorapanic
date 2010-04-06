@@ -38,7 +38,7 @@ class StateSpellingContest : public mgBaseState
         string word;
         uint wordLength;
         uint correctChars;
-        int pv;
+        //int pv;
 
         Text text;
         Timer counter;
