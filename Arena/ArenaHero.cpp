@@ -227,56 +227,56 @@ void ArenaHero::userInput()
             if(input->isUp() && !input->isDown() && !input->isLeft() && !input->isRight())
             {
                 Move(0, -8);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, 8);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(0, 8);
             }
 
             //UPRIGHT
             else if(input->isUpRight() || (input->isUp() && input->isRight()))
             {
                 Move(8, -8);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-8, 8);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(-8, 8);
             }
 
             //RIGHT
             else if(input->isRight() && !input->isUp() && !input->isDown() && !input->isLeft())
             {
                 Move(8, 0);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-8, 0);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(-8, 0);
             }
 
             //DOWNRIGHT
             else if(input->isDownRight() || (input->isDown() && input->isRight()))
             {
                 Move(8, 8);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(-8, -8);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(-8, -8);
             }
 
             //DOWN
             else if(input->isDown() && !input->isUp() && !input->isLeft() && !input->isRight())
             {
                 Move(0, 8);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, -8);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(0, -8);
             }
 
             //DOWNLEFT
             else if(input->isDownLeft() || (input->isDown() && (input->isLeft())))
             {
                 Move(-8, 8);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(8, -8);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(8, -8);
             }
 
             //LEFT
             else if(input->isLeft() && !input->isUp() && !input->isDown() && !input->isRight())
             {
                 Move(-8, 0);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(8, 0);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(8, 0);
             }
 
             //UPLEFT
             else if(input->isUpLeft() || (input->isUp() && input->isLeft()))
             {
                 Move(-8, -8);
-                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(8, 8);
+                if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(8, 8);
             }
         }
     }
