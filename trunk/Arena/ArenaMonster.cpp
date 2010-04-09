@@ -205,25 +205,25 @@ void ArenaMonster::HandleMovement()
         if(m_Direction == DIR_UP)
         {
             Move(0, m_vY * -1);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, m_vY);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(0, m_vY);
         }
         //DOWN
         else if(m_Direction == DIR_DOWN)
         {
             Move(0, m_vY);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(0, m_vY * -1);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(0, m_vY * -1);
         }
         //LEFT
         else if(m_Direction == DIR_LEFT)
         {
             Move(m_vX * -1, 0);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(m_vX, 0);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(m_vX, 0);
         }
         //RIGHT
         else if(m_Direction == DIR_RIGHT)
         {
             Move(m_vX, 0);
-            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap())) Move(m_vX * -1, 0);
+            if(m_HitRegionPtr->hitTest(ENVIRONMENT->GetCollisionMap(),0,0)) Move(m_vX * -1, 0);
         }
     }
 
@@ -245,7 +245,7 @@ bool ArenaMonster::HitTest(HitRegion* regionPtr)
 }
 bool ArenaMonster::HitTest(CollisionMap* mapPtr)
 {
-    return m_HitRegionPtr->hitTest(mapPtr);
+    return m_HitRegionPtr->hitTest(mapPtr,0,0);
 }
 int ArenaMonster::GetDirection()
 {

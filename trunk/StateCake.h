@@ -129,7 +129,7 @@ class StateCake : public mgBaseState
                     direction = LEFT;
                     position.x -= 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
-                    if(hitRegion->hitTest(&map))
+                    if(hitRegion->hitTest(&map,0,0))
                         position = oldPos;
                     stand = false;
                     blowing = false;
@@ -143,7 +143,7 @@ class StateCake : public mgBaseState
                     position.x += 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
                     Colour c = hitRegion->colourTest(&map);
-                    if(hitRegion->hitTest(&map))
+                    if(hitRegion->hitTest(&map,0,0))
                         position = oldPos;
                     stand = false;
                     blowing = false;
@@ -156,7 +156,7 @@ class StateCake : public mgBaseState
                     direction = UP;
                     position.y -= 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
-                    if(hitRegion->hitTest(&map))
+                    if(hitRegion->hitTest(&map,0,0))
                         position = oldPos;
                     stand = false;
                     blowing = false;
@@ -169,7 +169,7 @@ class StateCake : public mgBaseState
                     direction = DOWN;
                     position.y += 3.0f;
                     hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
-                    if(hitRegion->hitTest(&map))
+                    if(hitRegion->hitTest(&map,0,0))
                         position = oldPos;
                     stand = false;
                     blowing = false;
