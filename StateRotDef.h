@@ -7,6 +7,10 @@
     B-ZaR's Rotating Turret mini game for Pandora Panic
 */
 
+#ifdef _DEBUG
+#define     ROTDEF_DEBUG  1
+#endif
+
 #include "Background.h"
 #include "Sprite.h"
 #include "AnimatedSprite.h"
@@ -21,8 +25,14 @@ class StateRotDef : public mgBaseState
         #ifdef PENJIN_SDL
             virtual void render(SDL_Surface *screen);
             virtual void pauseScreen(SDL_Surface* screen);
+            #if ROTDEF_DEBUG
+            void RenderDebug( SDL_Surface* screen );
+            #endif
         #else
             virtual void render();
+            #if ROTDEF_DEBUG
+            void RenderDebug();
+            #endif
         #endif
         virtual void update();
         virtual void onPause();
@@ -45,12 +55,17 @@ class StateRotDef : public mgBaseState
         bool enemyKilled;
         bool playerKilled;
         bool gameEnd;
-        int turretDirection;
+        float turretDirection;
         uchar turnSpeed;
         Vector2df shotPosition;
         Vector2df shotVelocity;
         Vector2df enemyPosition;
         Vector2df enemyVelocity;
+#if ROTDEF_DEBUG
+        #define DEBUG_STRING_MAX 100
+        Text debugText;
+        char debug_bulletstats[DEBUG_STRING_MAX];
+#endif
 };
 
 #endif // STATESPACEINVADERS_H_INCLUDED

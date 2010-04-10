@@ -23,6 +23,11 @@ StateRotDef::StateRotDef()
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(WHITE);
+
+#if ROTDEF_DEBUG
+    debugText.loadFont("font/unispace.ttf", 12);
+    debugText.setColour(WHITE);
+#endif
 }
 
 
@@ -66,13 +71,14 @@ void StateRotDef::init()
     enemyVelocity *= (levelNumber * 0.04f);
     enemy.setPosition(enemyPosition.x, enemyPosition.y);
 
-    turretDirection = rand() % (5*256);
+    turretDirection = rand() % (5*360); //256
 
     counter.start();
 }
 
 void StateRotDef::userInput()
 {
+    float angle;
 
     input->update();
     #ifdef PLATFORM_PC
@@ -83,12 +89,20 @@ void StateRotDef::userInput()
     if(input->isLeft())
     {
         turretDirection+=turnSpeed;
+
+        if(turretDirection>(360*5))
+            turretDirection = (turretDirection-(360*5));
+
         if(!rotateSound.isPlaying())
             rotateSound.play();
     }
     else if(input->isRight())
     {
         turretDirection-=turnSpeed;
+
+        if(turretDirection<0)
+            turretDirection = ((360*5)+turretDirection);
+
         if(!rotateSound.isPlaying())
             rotateSound.play();
     }
@@ -99,13 +113,21 @@ void StateRotDef::userInput()
     if(input->isA() && !shooting)
     {
         shotSound.play();
-        uchar turrDir = degreeToBrad(turretDirection/5.0 - 90);
+
+        angle = (turretDirection/5.0) - 90;
+
+        if( angle<0)
+             angle = 360 +  angle;
+
+        uchar turrDir = degreeToBrad(angle);
         float shotDirX = -Lcos(turrDir);
         float shotDirY = Lsin(turrDir);
 
         shooting = true;
-        shotPosition = Vector2df(static_cast<int> (turret.getX() + turret.getWidth()*0.5f + turret.getHeight()*0.5f * shotDirX - shot.getWidth()*0.5f),
-                         static_cast<int> (turret.getY() + turret.getHeight()*0.5f + turret.getHeight()*0.5f * shotDirY - shot.getHeight()*0.5f));
+//        shotPosition = Vector2df(static_cast<int> (turret.getX() + turret.getWidth()*0.5f + turret.getHeight()*0.5f * shotDirX - shot.getWidth()*0.5f),
+                         //static_cast<int> (turret.getY() + turret.getHeight()*0.5f + turret.getHeight()*0.5f * shotDirY - shot.getHeight()*0.5f));
+        shotPosition = Vector2df((turret.getX() + turret.getWidth()*0.5f + turret.getHeight()*0.5f * shotDirX - shot.getWidth()*0.5f),
+                         (turret.getY() + turret.getHeight()*0.5f + turret.getHeight()*0.5f * shotDirY - shot.getHeight()*0.5f));
         shot.setPosition(shotPosition.x, shotPosition.y);
         shot.setRotation(turretDirection/5.0);
         shotVelocity = Vector2df(-Lcos(turrDir),
@@ -155,7 +177,12 @@ void StateRotDef::render(SDL_Surface *screen)
     {
         gameEnd = true;
     }
+
+#if ROTDEF_DEBUG
+    RenderDebug(screen);
+#endif
 }
+
 void StateRotDef::pauseScreen(SDL_Surface* screen)
 {
     // Pause screen
@@ -201,6 +228,10 @@ void StateRotDef::render()
     {
         gameEnd = true;
     }
+
+#if ROTDEF_DEBUG
+    RenderDebug();
+#endif
 }
 #endif
 
@@ -262,3 +293,18 @@ void StateRotDef::update()
         }
     }
 }
+
+#if ROTDEF_DEBUG
+void StateRotDef::RenderDebug( SDL_Surface* screen )
+{
+    #define DEBUG_TEXT_X1       10
+    #define DEBUG_TEXT_X2       200
+    #define DEBUG_TEXT_Y1       0
+    #define DEBUG_TEXT_Y2       150
+    #define DEBUG_TEXT_DELTAY   10
+
+    sprintf( debug_bulletstats, "Turn %f X %.3f Y %.3f Xv %.3f Yv %.3f\n", turretDirection, shotPosition.x, shotPosition.y, shotVelocity.x, shotVelocity.y );
+    debugText.setPosition(DEBUG_TEXT_X1,DEBUG_TEXT_Y2);
+    debugText.print(screen, debug_bulletstats);
+}
+#endif
