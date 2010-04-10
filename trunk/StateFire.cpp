@@ -76,7 +76,9 @@ Fire::Fire()
 	imgFloor.loadImageSheet(   "images/Fire/floor.png", FLOOR_SPRITE_FRAMES, FLOOR_SPRITE_ROWS );
 	imgPickle.loadImageSheet(  "images/Fire/pickle.png", PICKLE_SPRITE_FRAMES, PICKLE_SPRITE_ROWS );
 
+#if FIRE_DEBUG
 	printf( "Fire: Images loaded\n" );
+#endif
 	inputLimiter.setMode(MILLI_SECONDS);
 	inputLimiter.start();
 }
@@ -95,13 +97,17 @@ void Fire::init()
     screen = SDL_GetVideoSurface();
     if (screen)
     {
+#if FIRE_DEBUG
         printf( "Fire: Screen size of %dx%d detected\n", screen->w, screen->h );
+#endif
         screen_width  = screen->w;
         screen_height = screen->h;
     }
     else
     {
+#if FIRE_DEBUG
         printf( "Fire: Error getting screen\n" );
+#endif
         screen_width  = SCREEN_WIDTH_DEFAULT;
         screen_height = SCREEN_HEIGHT_DEFAULT;
     }
@@ -122,7 +128,9 @@ void Fire::init()
 
     water.clear();
 
+#if FIRE_DEBUG
     printf( "Fire: Init complete loading level %d\n", current_level );
+#endif
 }
 
 void Fire::unlimitedUpdate()
@@ -157,7 +165,9 @@ void Fire::unlimitedUpdate()
 			if (cannon.water < 0)
 			{
 				cannon.water = 0;
+#if FIRE_DEBUG
                 printf( "Fire: Water depleted\n" );
+#endif
 			}
         }
 	}
@@ -268,12 +278,16 @@ void Fire::update()
     {
         if (GameResult(result) == FIRE_PASS)
         {
+#if FIRE_DEBUG
             printf( "Fire: Player Pass\n" );
+#endif
             variables[0].setInt(1);
         }
         else
         {
+#if FIRE_DEBUG
             printf( "Fire: Player Fail\n" );
+#endif
             variables[0].setInt(0);
         }
         setNextState(STATE_MAIN);
@@ -361,11 +375,11 @@ void Fire::SetupGame( int8_t lvl )
         towers[i].smokeblack.setShouldStopNew(true);
         towers[i].smokewhite.setShouldStopNew(true);
 
+#if FIRE_DEBUG
         printf( "Fire: Tower #%d with %d floors at %dx%d\n", i, towers[i].floors.size(), towers[i].x, towers[i].y );
         printf( "Fire:       with Fire at  %dx%d\n", towers[i].fire.x, towers[i].fire.y );
         printf( "Fire:       with Smoke at %fx%f\n", smoke_position.x, smoke_position.y );
 
-#if FIRE_DEBUG
         strncpy( debug_firestats[i], "Empty\n", DEBUG_STRING_MAX );
         strncpy( debug_floorstats[i], "Empty\n", DEBUG_STRING_MAX );
 #endif
@@ -417,19 +431,27 @@ int8_t Fire::GameResult( results_t result )
 	switch (result)
 	{
 		case RESULT_NOWATER:
+#if FIRE_DEBUG
             printf( "Fire: Fail no water left\n" );
+#endif
 			final_result = FIRE_FAIL;
 			break;
 		case RESULT_NOFIRES:
+#if FIRE_DEBUG
             printf( "Fire: Pass no fires left\n" );
+#endif
 			final_result = FIRE_PASS;
 			break;
 		case RESULT_NOFLOOR:
+#if FIRE_DEBUG
             printf( "Fire: Fail a building burned down\n" );
+#endif
 			final_result = FIRE_FAIL;
 			break;
 		default:
+#if FIRE_DEBUG
             printf( "Fire: Fail you shouldnt be here\n" );
+#endif
 			final_result = FIRE_FAIL;
 	}
 	return final_result;
@@ -508,14 +530,18 @@ void Fire::FloorBurn( void )
                     }
                     else
                     {
+#if FIRE_DEBUG
                         printf( "Fire: Fire size was out of range tower: %d value: %d\n", i, towers[i].fire.size );
+#endif
                         towers[i].floors.at(currentfloor) -= FIRE_DAMAGE_SMALL;
                     }
 
                     // Floor has no more life
                     if (towers[i].floors.at(currentfloor) <= 0)
                     {
+#if FIRE_DEBUG
                         printf( "Fire: Tower #%d Floor #%d has burned out\n", i, currentfloor );
+#endif
                         towers[i].floors.at(currentfloor) = 0;
                         // Move fire down
                         towers[i].fire.y = towers[i].y - (currentfloor-1) * imgFloor.getHeight();
@@ -677,7 +703,9 @@ void Fire::PickleAI( void )
             }
             break;
         default:
+#if FIRE_DEBUG
             printf( "Fire: Unknown pickle state %d\n", pickle.state );
+#endif
             pickle.state = STATE_INACTIVE;
             break;
     }
@@ -806,7 +834,9 @@ void Fire::RenderSprites( SDL_Surface* screen )
 			}
 			else
 			{
+#if FIRE_DEBUG
                 printf( "Fire: Floor life was out of range tower: %d floor: %d value: %d\n", i, j, towers[i].floors.at(j) );
+#endif
                 tile = 0;
 			}
 			imgFloor.renderImage( tile, screen, towers[i].x, towers[i].y-imgFloor.getHeight()*j );
@@ -837,7 +867,9 @@ void Fire::RenderSprites( SDL_Surface* screen )
             }
 			else
 			{
+#if FIRE_DEBUG
                 printf( "Fire: Fire size was out of range tower: %d value: %d\n", i, towers[i].fire.size );
+#endif
                 tile = 0;
 			}
             imgFire.renderImage( tile, screen, towers[i].fire.x, towers[i].fire.y );
