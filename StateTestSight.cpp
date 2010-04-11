@@ -279,6 +279,10 @@ bool StateTestSight::hasFinished(CRint index) const
         else
             return (cups[index][ciCurrentPos] <= cups[index][ciDestination]);
     }
+    else
+    {
+        return false;
+    }
 }
 
 // Returns whether one specific cup is moving
@@ -287,6 +291,10 @@ bool StateTestSight::isMoving(CRint index) const
     if (index < CUPS_AMOUNT)
     {
         return ((cups[index][ciVelocity] != 0) || (cups[index][ciShowCounter] != 0));
+    }
+    else
+    {
+        return false;
     }
 }
 

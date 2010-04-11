@@ -321,7 +321,7 @@ void StateCredits::renderPandora()
 void StateCredits::unlimitedUpdate()
 {
 //	camSprite.update();
-	if(timer.getScaledTicks() >= 120250/NumberUtility::getSize(CREDITS))
+	if((unsigned int)timer.getScaledTicks() >= 120250/NumberUtility::getSize(CREDITS))
 	{
 		//	Get the latest credit line from the file by increasing currentLine
 		if(currentLine < NumberUtility::getSize(CREDITS)-1)

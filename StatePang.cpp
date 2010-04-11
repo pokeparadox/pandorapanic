@@ -71,7 +71,7 @@ namespace PangMiniGame
     // Animation details, the non filename stuff could be stored in a file...
     struct AnimationDetails
     {
-        char *  Filename;
+        const char *  Filename;
         int     NumFrames;
     };
     AnimationDetails                kImageBackground            = { "images/Pang/background.png", 1 };
@@ -149,7 +149,7 @@ namespace PangMiniGame
 
         bool        Initialise( char const * const pFilename, int maxInstances = 1 );
 
-        bool        Destroy( );
+        void        Destroy( );
 
         bool        Play( );
 
@@ -181,7 +181,7 @@ namespace PangMiniGame
         return true;
     }
 
-    bool Sfx::Destroy( )
+    void Sfx::Destroy( )
     {
         if ( m_ppSound )
         {
