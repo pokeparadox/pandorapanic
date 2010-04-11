@@ -88,7 +88,7 @@ void StatePlander::initStars()
     for(int i = numStars-2; i>=0; --i)
     {
         starPos[i].x = starPos[i+1].x + Random::nextInt() + star.getWidth();
-        if(starPos[i].x > xRes)
+        if((unsigned int)starPos[i].x > xRes)
             starPos[i].x -= xRes;
     }
     // set random Y coords
@@ -97,7 +97,7 @@ void StatePlander::initStars()
     for(int i = numStars-2; i>=0; --i)
     {
         starPos[i].y = starPos[i+1].y + Random::nextInt();
-        if(starPos[i].y > yRes-150)
+        if((unsigned int)starPos[i].y > yRes-150)
             starPos[i].y -= yRes-150;
     }
 
@@ -109,7 +109,7 @@ void StatePlander::initStars()
     for(int i = numBackStars-2; i>=0; --i)
     {
         backStarPos[i].x = backStarPos[i+1].x + Random::nextInt();
-        if(backStarPos[i].x > xRes)
+        if((unsigned int)backStarPos[i].x > xRes)
             backStarPos[i].x -= xRes;
     }
     // set random Y coords
@@ -118,7 +118,7 @@ void StatePlander::initStars()
     for(int i = numBackStars-2; i>=0; --i)
     {
         backStarPos[i].y = backStarPos[i+1].y + Random::nextInt();
-        if(backStarPos[i].y > yRes-150)
+        if((unsigned int)backStarPos[i].y > yRes-150)
             backStarPos[i].y -= yRes-150;
     }
 }

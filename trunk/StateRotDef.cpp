@@ -53,7 +53,7 @@ void StateRotDef::init()
     gameEnd = false;
 
     uchar enemDir = rand()%256;
-    enemyPosition = Vector2df(400 + 360*Lcos(enemDir),240 + 200*Lsin(enemDir));
+    enemyPosition = Vector2df(400 + 359*Lcos(enemDir),240 + 200*Lsin(enemDir));
     Vector2df turretVec = Vector2df(turret.getX() + turret.getWidth()*0.5f,
                                   turret.getY() + turret.getHeight()*0.5f);
     enemyVelocity = (turretVec - enemyPosition);
@@ -71,7 +71,7 @@ void StateRotDef::init()
     enemyVelocity *= (levelNumber * 0.04f);
     enemy.setPosition(enemyPosition.x, enemyPosition.y);
 
-    turretDirection = rand() % (5*360); //256
+    turretDirection = rand() % (5*359);
 
     counter.start();
 }
@@ -90,8 +90,8 @@ void StateRotDef::userInput()
     {
         turretDirection+=turnSpeed;
 
-        if(turretDirection>(360*5))
-            turretDirection = (turretDirection-(360*5));
+        if(turretDirection>(359*5))
+            turretDirection = (turretDirection-(359*5));
 
         if(!rotateSound.isPlaying())
             rotateSound.play();
@@ -101,7 +101,7 @@ void StateRotDef::userInput()
         turretDirection-=turnSpeed;
 
         if(turretDirection<0)
-            turretDirection = ((360*5)+turretDirection);
+            turretDirection = ((359*5)+turretDirection);
 
         if(!rotateSound.isPlaying())
             rotateSound.play();
@@ -117,17 +117,15 @@ void StateRotDef::userInput()
         angle = (turretDirection/5.0) - 90;
 
         if( angle<0)
-             angle = 360 +  angle;
+             angle = 359 + angle;
 
         uchar turrDir = degreeToBrad(angle);
         float shotDirX = -Lcos(turrDir);
         float shotDirY = Lsin(turrDir);
 
         shooting = true;
-//        shotPosition = Vector2df(static_cast<int> (turret.getX() + turret.getWidth()*0.5f + turret.getHeight()*0.5f * shotDirX - shot.getWidth()*0.5f),
-                         //static_cast<int> (turret.getY() + turret.getHeight()*0.5f + turret.getHeight()*0.5f * shotDirY - shot.getHeight()*0.5f));
         shotPosition = Vector2df((turret.getX() + turret.getWidth()*0.5f + turret.getHeight()*0.5f * shotDirX - shot.getWidth()*0.5f),
-                         (turret.getY() + turret.getHeight()*0.5f + turret.getHeight()*0.5f * shotDirY - shot.getHeight()*0.5f));
+                                 (turret.getY() + turret.getHeight()*0.5f + turret.getHeight()*0.5f * shotDirY - shot.getHeight()*0.5f));
         shot.setPosition(shotPosition.x, shotPosition.y);
         shot.setRotation(turretDirection/5.0);
         shotVelocity = Vector2df(-Lcos(turrDir),
@@ -298,13 +296,10 @@ void StateRotDef::update()
 void StateRotDef::RenderDebug( SDL_Surface* screen )
 {
     #define DEBUG_TEXT_X1       10
-    #define DEBUG_TEXT_X2       200
     #define DEBUG_TEXT_Y1       0
-    #define DEBUG_TEXT_Y2       150
-    #define DEBUG_TEXT_DELTAY   10
 
     sprintf( debug_bulletstats, "Turn %f X %.3f Y %.3f Xv %.3f Yv %.3f\n", turretDirection, shotPosition.x, shotPosition.y, shotVelocity.x, shotVelocity.y );
-    debugText.setPosition(DEBUG_TEXT_X1,DEBUG_TEXT_Y2);
+    debugText.setPosition(DEBUG_TEXT_X1,DEBUG_TEXT_Y1);
     debugText.print(screen, debug_bulletstats);
 }
 #endif
