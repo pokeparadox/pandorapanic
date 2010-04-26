@@ -146,6 +146,7 @@ void Rocket::startThrusters(CRbool start)
 
 void Rocket::update()
 {
+    uchar myAngle = LUT::degreeToBrad(angle);
     #ifdef PENJIN_FIXED
         oldPos.x = fixedpoint::fix2int(sprite.getX());
         oldPos.y = fixedpoint::fix2int(sprite.getY());
@@ -193,17 +194,11 @@ void Rocket::update()
         if(fuel<=0.0f)
             landed = true;
     }
-    #ifdef PENJIN_FIXED
-        acceleration.x = thrust * LUT::Lsin(-fixedpoint::fix2int(angle));
-    #else
-        acceleration.x = thrust * LUT::Lsin(-angle);
-    #endif
+
+    acceleration.x = thrust * LUT::Lsin(-myAngle);
+
     if(!(fuel <= 0.0f))
-        #ifdef PENJIN_FIXED
-            acceleration.y += -thrust * LUT::Lcos(fixedpoint::fix2int(angle));
-        #else
-            acceleration.y += -thrust * LUT::Lcos(angle);
-        #endif
+        acceleration.y += -thrust * LUT::Lcos(myAngle);
 
     velocity+=acceleration;
     limitVelocity();
