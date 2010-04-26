@@ -114,7 +114,7 @@ void StateRotDef::userInput()
     {
         shotSound.play();
 
-        angle = (turretDirection/5.0) - 90;
+        angle = (turretDirection*0.2f) - 90;
 
         if( angle<0)
              angle = 359 + angle;
@@ -124,10 +124,10 @@ void StateRotDef::userInput()
         float shotDirY = Lsin(turrDir);
 
         shooting = true;
-        shotPosition = Vector2df((turret.getX() + turret.getWidth()*0.5f + turret.getHeight()*0.5f * shotDirX - shot.getWidth()*0.5f),
+                shotPosition = Vector2df((turret.getX() + turret.getWidth()*0.5f + turret.getHeight()*0.5f * shotDirX - shot.getWidth()*0.5f),
                                  (turret.getY() + turret.getHeight()*0.5f + turret.getHeight()*0.5f * shotDirY - shot.getHeight()*0.5f));
         shot.setPosition(shotPosition.x, shotPosition.y);
-        shot.setRotation(turretDirection/5.0);
+        shot.setRotation(turretDirection*0.2f);
         shotVelocity = Vector2df(-Lcos(turrDir),
                                 Lsin(turrDir));
         shotVelocity *= 10.0f;
@@ -157,7 +157,7 @@ void StateRotDef::render(SDL_Surface *screen)
 
     if(!enemyKilled && !playerKilled) enemy.render(screen);
     turretBase.render(screen);
-    turret.setRotation(turretDirection/5.0);
+    turret.setRotation(turretDirection*0.2f);
     turret.render(screen);
 
     if(shooting && !enemyKilled)
