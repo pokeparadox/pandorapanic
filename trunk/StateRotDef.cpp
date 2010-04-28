@@ -73,6 +73,9 @@ void StateRotDef::init()
 
     turretDirection = rand() % (5*359);
 
+    shotVelocity.x = 0;
+    shotVelocity.y = 0;
+
     counter.start();
 }
 
