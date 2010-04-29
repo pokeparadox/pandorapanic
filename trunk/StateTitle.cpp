@@ -67,7 +67,7 @@ void StateTitle::init()
     emit.setBoundaries(Vector2di(-64,-64),Vector2di(xRes,yRes));
     emit.setMaxVelocity(Vector2df(6,6));
     emit.setLifeTime(6000);
-    emit.shouldFadeColour(true);
+    emit.shouldFadeColour(false);
     emit.setDeviation(0.5f);
 
     back.loadBackground(path+"pp_bg"+ext);
