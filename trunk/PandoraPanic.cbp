@@ -782,9 +782,6 @@
 		<Unit filename="../PenjinBase/IntVector2d.h">
 			<Option virtualFolder="PenjinBase/Physics/Vectors/old/" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyDefines.h">
-			<Option virtualFolder="PenjinBase/Input/" />
-		</Unit>
 		<Unit filename="../PenjinBase/KeyMap.cpp">
 			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
 		</Unit>
@@ -841,9 +838,6 @@
 		</Unit>
 		<Unit filename="../PenjinBase/KeyWord.h">
 			<Option virtualFolder="PenjinBase/" />
-		</Unit>
-		<Unit filename="../PenjinBase/KeyboardDefines.h">
-			<Option virtualFolder="PenjinBase/Input/" />
 		</Unit>
 		<Unit filename="../PenjinBase/LUT.cpp">
 			<Option virtualFolder="PenjinBase/" />

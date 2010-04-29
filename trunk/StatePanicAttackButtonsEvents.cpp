@@ -15,8 +15,8 @@ StatePanicAttackButtonEvents::StatePanicAttackButtonEvents() {
     location[PA_BUTTON_RIGHT] = Vector2di(270, 298);
     location[PA_BUTTON_DOWN] = Vector2di(240, 318);
     location[PA_BUTTON_Y] = Vector2di(600, 285);
-    location[PA_BUTTON_A] = Vector2di(570, 305);
-    location[PA_BUTTON_B] = Vector2di(630, 305);
+    location[PA_BUTTON_B] = Vector2di(570, 305);
+    location[PA_BUTTON_A] = Vector2di(630, 305);
     location[PA_BUTTON_X] = Vector2di(600, 325);
     location[PA_BUTTON_SHOULDERLEFT] = Vector2di(230, 235);
     location[PA_BUTTON_SHOULDERRIGHT] = Vector2di(600, 240);
