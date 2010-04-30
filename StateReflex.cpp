@@ -55,42 +55,44 @@ void StateReflex::userInput()
 
     if (input->isStart())
     {
-
         pauseToggle();
         input->resetKeys();
     }
 
-    // Tests if the input is in the right direction
-    if(input->isLeft() && currDirection==LEFT)
+    if (!getIsPaused())
     {
-        correct=true;
-        leftSound.play();
-        ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        // Tests if the input is in the right direction
+        if(input->isLeft() && currDirection==LEFT)
+        {
+            correct=true;
+            leftSound.play();
+            ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        }
+        else if(input->isRight() && currDirection==RIGHT)
+        {
+            correct=true;
+            rightSound.play();
+            ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        }
+        else if(input->isDown() && currDirection==DOWN)
+        {
+            correct=true;
+            downSound.play();
+            ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        }
+        else if(input->isUp() && currDirection==UP)
+        {
+            correct=true;
+            upSound.play();
+            ACHIEVEMENTS->logEvent("REFLEX_HIT");
+        }
+        else if(input->isLeft() || input->isRight() || input->isDown() || input->isUp())
+        {
+            variables[0].setInt(0);
+            setNextState(STATE_MAIN);
+        }
+        input->resetKeys();
     }
-    else if(input->isRight() && currDirection==RIGHT)
-    {
-        correct=true;
-        rightSound.play();
-        ACHIEVEMENTS->logEvent("REFLEX_HIT");
-    }
-    else if(input->isDown() && currDirection==DOWN)
-    {
-        correct=true;
-        downSound.play();
-        ACHIEVEMENTS->logEvent("REFLEX_HIT");
-    }
-    else if(input->isUp() && currDirection==UP)
-    {
-        correct=true;
-        upSound.play();
-        ACHIEVEMENTS->logEvent("REFLEX_HIT");
-    }
-    else if(input->isLeft() || input->isRight() || input->isDown() || input->isUp())
-    {
-        variables[0].setInt(0);
-        setNextState(STATE_MAIN);
-    }
-    input->resetKeys();
 }
 
 #ifdef PENJIN_SDL

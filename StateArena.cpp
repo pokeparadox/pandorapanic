@@ -222,35 +222,32 @@ void StateArena::pauseScreen(SDL_Surface* screen)
 
 void StateArena::update()
 {
-    if(!isPaused)
+    m_HeroPtr->update();
+
+    m_MonsterListPtr->update();
+
+    EFFECTSYSTEM->update();
+
+    ArenaMonster* monsterhitPtr = m_MonsterListPtr->HitTest(m_HeroPtr->GetHitRegion());
+    if (monsterhitPtr != 0)
     {
-        m_HeroPtr->update();
+        m_HeroPtr->SetDead();
+        m_Music.stop();
+    }
 
-        m_MonsterListPtr->update();
+    if(m_MonsterListPtr->GetMonsterAmount() == 0 || m_HeroPtr->GetDying()) m_EndCounter += 1;
 
-        EFFECTSYSTEM->update();
-
-        ArenaMonster* monsterhitPtr = m_MonsterListPtr->HitTest(m_HeroPtr->GetHitRegion());
-        if (monsterhitPtr != 0)
+    if(m_EndCounter == 64)
+    {
+        if(m_HeroPtr->GetDying())
         {
-            m_HeroPtr->SetDead();
-            m_Music.stop();
+            variables[0].setInt(0);
+            setNextState(STATE_MAIN);
         }
-
-        if(m_MonsterListPtr->GetMonsterAmount() == 0 || m_HeroPtr->GetDying()) m_EndCounter += 1;
-
-        if(m_EndCounter == 64)
+        else if(m_MonsterListPtr->GetMonsterAmount() == 0)
         {
-            if(m_HeroPtr->GetDying())
-            {
-                variables[0].setInt(0);
-                setNextState(STATE_MAIN);
-            }
-            else if(m_MonsterListPtr->GetMonsterAmount() == 0)
-            {
-                variables[0].setInt(1);
-                setNextState(STATE_MAIN);
-            }
+            variables[0].setInt(1);
+            setNextState(STATE_MAIN);
         }
     }
 
