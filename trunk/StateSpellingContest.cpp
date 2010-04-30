@@ -73,7 +73,7 @@ void StateSpellingContest::userInput()
                             pauseToggle();
                 #elif PLATFORM_PANDORA
                     case SDL_KEYDOWN:
-                        if(event.key.keysym.sym == SDLK_LCTRL)
+                        if(event.key.keysym.sym == SDLK_LALT)
                             pauseToggle();
                 #endif
 

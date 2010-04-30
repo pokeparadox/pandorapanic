@@ -64,106 +64,108 @@ void StateDistractedMath::onResume()
 void StateDistractedMath::userInput()
 {
 
-        if (mathstate == 0)
+    if (mathstate == 0)
+    {
+        SDL_Event event;
+        while(SDL_PollEvent(&event))
         {
-            SDL_Event event;
-            while(SDL_PollEvent(&event))
+            switch(event.type)
             {
-                switch(event.type)
-                {
-                    #ifdef PLATFORM_PC
-                        case SDL_QUIT: nullifyState(); break;
-                        case SDL_KEYDOWN:
-                            if(event.key.keysym.sym == SDLK_RETURN)
-                                pauseToggle();
-                    #elif PLATFORM_PANDORA
-                        case SDL_KEYDOWN:
-                            if(event.key.keysym.sym == SDLK_LCTRL)
-                                pauseToggle();
+                #ifdef PLATFORM_PC
+                    case SDL_QUIT: nullifyState(); break;
+                    case SDL_KEYDOWN:
+                        if(event.key.keysym.sym == SDLK_RETURN) {
+                            pauseToggle();
+                            break;
+                        }
+                #elif PLATFORM_PANDORA
+                    case SDL_KEYDOWN:
+                        if(event.key.keysym.sym == SDLK_LALT) {
+                            pauseToggle();
+                            break;
+                        }
+                #endif
+
+                    MathInputUnicode =  (event.key.keysym.sym); // unicode input
+                    #ifdef PENJIN_FIXED
+                        MathInputNumeric = MathInputUnicode.intValue<<16 - 48; // numeric is 48 ascii chars lower :)
+                    #else
+                        MathInputNumeric = MathInputUnicode - 48; // numeric is 48 ascii chars lower :)
                     #endif
-                        MathInputUnicode =  (event.key.keysym.sym); // unicode input
-                        #ifdef PENJIN_FIXED
-                            MathInputNumeric = MathInputUnicode.intValue<<16 - 48; // numeric is 48 ascii chars lower :)
-                        #else
-                            MathInputNumeric = MathInputUnicode - 48; // numeric is 48 ascii chars lower :)
-                        #endif
-                        if (MathInputNumeric == number)  // if entered number matches correct answer
+                    if (MathInputNumeric == number)  // if entered number matches correct answer
+                    {
+                        round = round + 1;
+                        if (level < 25)
                         {
-                            round = round + 1;
-                            if (level < 25)
-                            {
-                                difficulty = 0;
-                                if (round == 6)    //  Adjust the value after round to adjust game difficulty. more rounds more difficult.
-                                    hasWon = true;
-                                if (oper == 0)      // oper is used to switch calculations
-                                    oper = oper + 1;
-                                else
-                                    oper = oper - 1;
-                            }
-                            else if (level < 50)
-                            {
-                                difficulty = 1;
-                                if (round == 7)    //  Adjust the value after round to adjust game difficulty. more rounds more difficult.
-                                    hasWon = true;
-                                if (oper == 0)      // oper is used to switch calculations
-                                    oper = oper + 1;
-                                else
-                                    oper = oper - 1;
-                            }
+                            difficulty = 0;
+                            if (round == 6)    //  Adjust the value after round to adjust game difficulty. more rounds more difficult.
+                                hasWon = true;
+                            if (oper == 0)      // oper is used to switch calculations
+                                oper = oper + 1;
                             else
-                            {
-                                difficulty = 2;
-                                if (round == 8)    //  Adjust the value after round to adjust game difficulty. more rounds more difficult.
-                                    hasWon = true;
-                                if (oper == 0)      // oper is used to switch calculations
-                                    oper = oper + 1;
-                                else
-                                    oper = oper - 1;
-                            }
-                            teller.start();     //restart counter
-
-                            MathInputNumeric = -1;  // reset input
-
-                            number = rand()%10; // generate random again
-                            if (oper == 0)
-                            {
-                                number2 = rand()%(10 + variables[2].getInt());           //
-                                number3 = number2 - number;    // the calculations
-                            }                                  //
-                            if (oper == 1)                     //
-                            {                                  //
-                                number2 = (rand()%(int)((3 + variables[2].getInt())*0.5f)) + 1;           //
-                                number3 = number2 * number;    //
-                            }
-                            rnd = rand()%4;     // background switch
-
-
+                                oper = oper - 1;
                         }
-                        else            // if input is incorrect
+                        else if (level < 50)
                         {
-                            if (MathInputNumeric >= 10 && MathInputUnicode != 13)   // Generally this should include most
-                            {                           // of the pandora's input outside the numbers. not sure
-                                teller.start();         // about the buttons though
+                            difficulty = 1;
+                            if (round == 7)    //  Adjust the value after round to adjust game difficulty. more rounds more difficult.
+                                hasWon = true;
+                            if (oper == 0)      // oper is used to switch calculations
+                                oper = oper + 1;
+                            else
+                                oper = oper - 1;
+                        }
+                        else
+                        {
+                            difficulty = 2;
+                            if (round == 8)    //  Adjust the value after round to adjust game difficulty. more rounds more difficult.
+                                hasWon = true;
+                            if (oper == 0)      // oper is used to switch calculations
+                                oper = oper + 1;
+                            else
+                                oper = oper - 1;
+                        }
+                        teller.start();     //restart counter
 
-                                round = 6;
-                                mathstate = 1;
-                            }
-                            else                        // or wrong number
+                        MathInputNumeric = -1;  // reset input
+
+                        number = rand()%10; // generate random again
+                        if (oper == 0)
+                        {
+                            number2 = rand()%(10 + variables[2].getInt());           //
+                            number3 = number2 - number;    // the calculations
+                        }                                  //
+                        if (oper == 1)                     //
+                        {                                  //
+                            number2 = (rand()%(int)((3 + variables[2].getInt())*0.5f)) + 1;           //
+                            number3 = number2 * number;    //
+                        }
+                        rnd = rand()%4;     // background switch
+
+                    }
+                    else            // if input is incorrect
+                    {
+                        if (MathInputNumeric >= 10 && MathInputUnicode != 13)   // Generally this should include most
+                        {                           // of the pandora's input outside the numbers. not sure
+                            teller.start();         // about the buttons though
+
+                            round = 6;
+                            mathstate = 1;
+                        }
+                        else                        // or wrong number
+                        {
+                            if (MathInputUnicode != 13)
                             {
-                                if (MathInputUnicode != 13)
-                                {
-                                teller.start();
-                                losestate = round;      // keep for the loser  message but round is used in closing
-                                round = 6;
-                                mathstate = 2;
-                                }
+                            teller.start();
+                            losestate = round;      // keep for the loser  message but round is used in closing
+                            round = 6;
+                            mathstate = 2;
                             }
                         }
-                }
+                    }
             }
         }
-
-
+    }
 }
 
 #ifdef PENJIN_SDL
