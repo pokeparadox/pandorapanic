@@ -42,6 +42,8 @@ void StateRotDef::init()
     {
         shotSound.loadSound("sounds/RotDef/FIRE.ogg");
         rotateSound.loadSound("sounds/RotDef/ROTATE.ogg");
+        winSound.loadSound("sounds/RotDef/WIN.ogg");
+        loseSound.loadSound("sounds/RotDef/LOSE.ogg");
     }
     turret.setPosition(400 - turret.getWidth()*0.5f,
                        240 - turret.getHeight()*0.5f);
@@ -109,7 +111,7 @@ void StateRotDef::userInput()
         if(!rotateSound.isPlaying())
             rotateSound.play();
     }
-    else
+    else if (rotateSound.isPlaying())
         rotateSound.stop();
 
 
@@ -240,7 +242,7 @@ void StateRotDef::update()
 {
     if(gameEnd)
     {
-        if(!endSound.isPlaying());
+        if(!winSound.isPlaying() && !loseSound.isPlaying());
         {
             if(enemyKilled) variables[0].setInt(1);
             else variables[0].setInt(0);
@@ -270,8 +272,8 @@ void StateRotDef::update()
         {
             if(!enemyKilled)
             {
-                endSound.loadSound("sounds/RotDef/WIN.ogg");
-                endSound.play();
+                if (!winSound.isPlaying())
+                    winSound.play();
                 explosion.setPosition(enemy.getX() - 84, enemy.getY() - 84);
                 enemyKilled = true;
                 ACHIEVEMENTS->logEvent("ROTDEF_WIN",round(sqrt(pow(turret.getX()-enemy.getX(),2)+pow(turret.getY()-enemy.getY(),2))));
@@ -287,8 +289,8 @@ void StateRotDef::update()
     {
         if(!playerKilled)
         {
-            endSound.loadSound("sounds/RotDef/LOSE.ogg");
-            endSound.play();
+            if (!loseSound.isPlaying())
+                loseSound.play();
             explosion.setPosition(turretBase.getX() - 29, turretBase.getY() - 29);
             playerKilled = true;
         }
@@ -301,7 +303,7 @@ void StateRotDef::RenderDebug( SDL_Surface* screen )
     #define DEBUG_TEXT_X1       10
     #define DEBUG_TEXT_Y1       0
 
-    sprintf( debug_bulletstats, "Turn %f X %.3f Y %.3f Xv %.3f Yv %.3f\n", turretDirection, shotPosition.x, shotPosition.y, shotVelocity.x, shotVelocity.y );
+    sprintf( debug_bulletstats, "Turn %f X %.3f Y %.3f Xv %.3f Yv %.3f %i \n", turretDirection, shotPosition.x, shotPosition.y, shotVelocity.x, shotVelocity.y, rotateSound.isPlaying() );
     debugText.setPosition(DEBUG_TEXT_X1,DEBUG_TEXT_Y1);
     debugText.print(screen, debug_bulletstats);
 }

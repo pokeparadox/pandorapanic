@@ -50,7 +50,8 @@ class StateRotDef : public mgBaseState
         AnimatedSprite explosion;
         Sound rotateSound;
         Sound shotSound;
-        Sound endSound;
+        Sound winSound;
+        Sound loseSound;
         bool shooting;
         bool enemyKilled;
         bool playerKilled;
