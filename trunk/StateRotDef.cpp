@@ -41,7 +41,7 @@ void StateRotDef::init()
     if(variables.size()<SUBSTATE_TRIGGER)
     {
         shotSound.loadSound("sounds/RotDef/FIRE.ogg");
-        rotateSound.loadSound("sounds/RotDef/ROTATE.ogg");
+        //rotateSound.loadSound("sounds/RotDef/ROTATE.ogg");
         winSound.loadSound("sounds/RotDef/WIN.ogg");
         loseSound.loadSound("sounds/RotDef/LOSE.ogg");
     }
@@ -98,8 +98,8 @@ void StateRotDef::userInput()
         if(turretDirection>(359*5))
             turretDirection = (turretDirection-(359*5));
 
-        if(!rotateSound.isPlaying())
-            rotateSound.play();
+        //if(!rotateSound.isPlaying())
+            //rotateSound.play();
     }
     else if(input->isRight())
     {
@@ -108,11 +108,11 @@ void StateRotDef::userInput()
         if(turretDirection<0)
             turretDirection = ((359*5)+turretDirection);
 
-        if(!rotateSound.isPlaying())
-            rotateSound.play();
+        //if(!rotateSound.isPlaying())
+            //rotateSound.play();
     }
-    else if (rotateSound.isPlaying())
-        rotateSound.stop();
+    //else if (rotateSound.isPlaying())
+        //rotateSound.stop();
 
 
     if(input->isA() && !shooting)
@@ -303,7 +303,7 @@ void StateRotDef::RenderDebug( SDL_Surface* screen )
     #define DEBUG_TEXT_X1       10
     #define DEBUG_TEXT_Y1       0
 
-    sprintf( debug_bulletstats, "Turn %f X %.3f Y %.3f Xv %.3f Yv %.3f %i \n", turretDirection, shotPosition.x, shotPosition.y, shotVelocity.x, shotVelocity.y, rotateSound.isPlaying() );
+    sprintf( debug_bulletstats, "Turn %f X %.3f Y %.3f Xv %.3f Yv %.3f \n", turretDirection, shotPosition.x, shotPosition.y, shotVelocity.x, shotVelocity.y );
     debugText.setPosition(DEBUG_TEXT_X1,DEBUG_TEXT_Y1);
     debugText.print(screen, debug_bulletstats);
 }
