@@ -67,6 +67,8 @@ void StateSpaceInvaders::init()
     else
         alienDir = -1;
 
+    alienSpeed = 6.0f + variables[2].getInt() / 10;
+
     shipVel = 0;
 
     counter.start();
@@ -196,7 +198,7 @@ void StateSpaceInvaders::update()
         emit.update();
 
 
-        alien.setX(alien.getX() + alienDir*6);
+        alien.setX(alien.getX() + alienDir*alienSpeed);
         if(alien.getX() <= 0 || alien.getX() >= 736)
         {
             alienDir *= -1;
@@ -233,7 +235,8 @@ void StateSpaceInvaders::update()
             }
         }
 
-        alienDir *= 1.005; //increase speed
+        if (alienSpeed <= 64)
+            alienSpeed *= 1.005f + 0.001f * floor(variables[2].getInt() / 10); //increase speed
 
         if(shipVel < -8)
             shipVel = -8;

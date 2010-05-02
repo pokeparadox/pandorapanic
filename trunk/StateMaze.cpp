@@ -158,8 +158,6 @@ void StateMaze::init()
         j++;
 
 
-
-
     }
     //blobnumber = blobnumber - 1;
     tilemap.close();
@@ -392,8 +390,6 @@ void StateMaze::onResume()
 
             }
 
-
-
         //text.print(screen, blobjump);
         //buttonPrompter.render();
         if (hero.getX() > 96 || hero.getY() > 64){text.render(gamelength - teller.getScaledTicks());}
@@ -586,14 +582,7 @@ void StateMaze::update()
             }
         }
 
-
-
         // various limiters
-
-
-
-
-
         if (hero.getXvel() < -3) {hero.setXvel(hero.getXvel() + 3);}
         if (hero.getXvel() > 3) {hero.setXvel(hero.getXvel() - 3);}
         if (hero.getXvel() <= 3 && hero.getXvel() >= -3){hero.setXvel(0);}
@@ -608,6 +597,7 @@ void StateMaze::update()
         if (hero.getX() >  goal.getX() - 32 && hero.getX()  < goal.getX() + 32
            && hero.getY() > goal.getY() -32 && hero.getY() < goal.getY() + 32)
         {
+            ACHIEVEMENTS->logEvent("MAZE_WIN",teller.getScaledTicks());
             variables[0].setInt(1);
             setNextState(STATE_MAIN);
         }

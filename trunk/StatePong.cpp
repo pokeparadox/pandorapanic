@@ -61,24 +61,24 @@ void StatePong::init()
         case 0 ... 5:
             paddleSpeed     = 10;
             cpuPaddleSpeed  =  7.5f;
-            ballVelocity    =  1.5f;
-            maxBallVelocity =  5.0f;
+            ballVelocity    =  2.0f;
+            maxBallVelocity =  6.0f;
             cpuPaddleZone   = paddleHeight / 2.5f;
             break;
 
         case 6 ... 15:
             paddleSpeed     = 10;
             cpuPaddleSpeed  = 9;
-            ballVelocity    =  2.0f;
-            maxBallVelocity =  6.0f;
+            ballVelocity    =  3.0f;
+            maxBallVelocity =  8.0f;
             cpuPaddleZone   = paddleHeight / 5;
             break;
 
         default:
             paddleSpeed     = 10;
             cpuPaddleSpeed  = 10;
-            ballVelocity    =  3.0f + variables[2].getInt() / 20;
-            maxBallVelocity =  8.0f + variables[2].getInt() / 20;
+            ballVelocity    =  2.5f + variables[2].getInt() / 10;
+            maxBallVelocity =  8.0f + variables[2].getInt() / 10;
             cpuPaddleZone   =  paddleHeight / variables[2].getInt();
             break;
     }

@@ -3,7 +3,6 @@
 
 #include "AchievementSystem.h"
 
-    ACHIEVEMENTS->setOffset(250,50);
     ACHIEVEMENTS->setSpacing(3);
     ACHIEVEMENTS->setPopupPosition(ppBOTTOMCENTER);
     ACHIEVEMENTS->setPopupFadeTime(500);
@@ -88,6 +87,13 @@
     tempB->setDescription("Close ghost pass at high speed in Maze");
     tempB->setIcon("images/Achievements/sneakthrough.png");
     tempB->addEvent("MAZE_SNEAKTHROUGH",1,coEQUAL,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
+
+    tempB = new AchievementBoolean;
+    tempB->setName("A-Maze-ing");
+    tempB->setDescription("Finish Maze in under 10 seconds");
+    tempB->setIcon("images/Achievements/amazing.png");
+    tempB->addEvent("MAZE_WIN",10,coSMALLER,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;

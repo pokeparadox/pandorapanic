@@ -99,6 +99,7 @@ class StateCake : public mgBaseState
                     hitRegion = NULL;
                     hitRegion = new HitRegion;
                     hitRegion->init(position.x + 80, position.y + 128, 32, 32);
+                    speed = Vector2df(0,0);
                 }
                 ~Player()
                 {
@@ -120,62 +121,81 @@ class StateCake : public mgBaseState
                     hitRegion->render();
                 #endif
                 }
-                void update(){oldPos = position;anim[direction].setPosition(position);shadow.setPosition(position.x+8,position.y + anim[direction].getHeight()-18);if(stand){return;}anim[direction].update();}
+                void update()
+                {
+                    if (speed.x < 0)
+                        speed.x -= max(-0.5f,speed.x);
+                    else if (speed.x > 0)
+                        speed.x -= min(0.5f,speed.x);
+
+                    if (speed.y < 0)
+                        speed.y -= max(-0.5f,speed.y);
+                    else if (speed.y > 0)
+                        speed.y -= min(0.5f,speed.y);
+
+                    hitRegion->moveTo(position.x + 8.5f + speed.x,position.y + 64.5f + speed.y);
+                    if(hitRegion->hitTest(&map,0,0))
+                    {
+                        speed = Vector2df(0,0);
+                        hitRegion->moveTo(position.x + 8.5f, position.y + 64.5f);
+                    }
+
+                    position += speed;
+                    anim[direction].setPosition(position);
+                    shadow.setPosition(position.x+8,position.y + anim[direction].getHeight()-18);
+
+                    if (direction == LEFT)
+                        blowSpr.setPosition(position.x-6,position.y +12);
+                    else if (direction == RIGHT)
+                        blowSpr.setPosition(position.x+38,position.y +12);
+                    else if (direction == UP)
+                        blowSpr.setPosition(position.x+16,position.y - 2);
+                    else
+                        blowSpr.setPosition(position.x+16,position.y +24);
+                    blowSpr.setCurrentFrame(direction);
+
+                    if(stand)
+                        return;
+                    anim[direction].update();
+                }
                 Vector2df getPosition()const{return position;}
                 int getX()const{return hitRegion->getX();}
                 int getY()const{return hitRegion->getY();}
                 void left()
                 {
                     direction = LEFT;
-                    position.x -= 3.0f;
-                    hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
-                    if(hitRegion->hitTest(&map,0,0))
-                        position = oldPos;
+                    if (speed.x >= -5)
+                        speed.x -= 1.5;
                     stand = false;
                     blowing = false;
                     canBlow = false;
-                    blowSpr.setPosition(position.x-6,position.y +12);
-                    blowSpr.setCurrentFrame(LEFT);
                 }
                 void right()
                 {
                     direction = RIGHT;
-                    position.x += 3.0f;
-                    hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
-                    Colour c = hitRegion->colourTest(&map);
-                    if(hitRegion->hitTest(&map,0,0))
-                        position = oldPos;
+                    if (speed.x <= 5)
+                        speed.x += 1.5;
                     stand = false;
                     blowing = false;
                     canBlow = false;
-                    blowSpr.setPosition(position.x+38,position.y +12);
-                    blowSpr.setCurrentFrame(RIGHT);
                 }
                 void up()
                 {
                     direction = UP;
-                    position.y -= 3.0f;
-                    hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
-                    if(hitRegion->hitTest(&map,0,0))
-                        position = oldPos;
+                    if (speed.y >= -5)
+                        speed.y -= 1.5;
                     stand = false;
                     blowing = false;
                     canBlow = false;
-                    blowSpr.setPosition(position.x+16,position.y - 2);
-                    blowSpr.setCurrentFrame(1);
                 }
                 void down()
                 {
                     direction = DOWN;
-                    position.y += 3.0f;
-                    hitRegion->moveTo(position.x + 8.5f,position.y + 64.5f);
-                    if(hitRegion->hitTest(&map,0,0))
-                        position = oldPos;
+                    if (speed.y <= 5)
+                        speed.y += 1.5;
                     stand = false;
                     blowing = false;
                     canBlow = false;
-                    blowSpr.setPosition(position.x+16,position.y +24);
-                    blowSpr.setCurrentFrame(0);
                 }
                 void stop(){anim[direction].setCurrentFrame(0);stand = true;canBlow = blowing =false;}
                 void blow()
@@ -200,6 +220,7 @@ class StateCake : public mgBaseState
                 DIRECTION direction;
                 Vector2df position;
                 Vector2df oldPos;
+                Vector2df speed;
                 bool stand;
                 bool blowing;
                 bool canBlow;
