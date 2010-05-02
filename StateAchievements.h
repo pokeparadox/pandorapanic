@@ -11,6 +11,7 @@
 #include "Text.h"
 #include "AnimatedSprite.h"
 #include "StringUtility.h"
+#include "CountDown.h"
 
 class StateAchievements : public BaseState
 {
@@ -31,8 +32,11 @@ class StateAchievements : public BaseState
         Background back;
         SDL_Surface* bgBuffer;
         BackBuffer buff;
-        int offset;
+        float offset;
+        float speed;
         Text text;
         AnimatedSprite buttonSheet;
+        CountDown timer;
+        static void increaseSpeed(void* object);
 };
 #endif	//	STATEACHIEVEMENTS_H

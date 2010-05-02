@@ -44,6 +44,7 @@ class StateSpaceInvaders : public mgBaseState
         Sprite shot;
         bool shooting;
         float alienDir;
+        float alienSpeed;
         float shipVel;
 };
 
