@@ -49,20 +49,20 @@ void StateCake::init()
         {
             for(int i = NUM_CANDLES-1; i>= 0; --i)
             {
-                candles[i].setRelightLimit(((180/(float)level) +0.5f)*1000);
+                candles[i].setRelightLimit(((140/(float)level) +0.5f)*1000);
             }
         }
         else
         {
             for(int i = NUM_CANDLES-1; i>= 0; --i)
             {
-                candles[i].setRelightLimit(((180/15.0f) +0.5f)*1000);
+                candles[i].setRelightLimit(((140/15.0f) +0.5f)*1000);
             }
         }
-        if(level < 35)
-            limit = 60 - level;
+        if(level < 40)
+            limit = (60 - level) *0.5f;
         else
-            limit = 25;
+            limit = 20;
 
         timer.setMode(SECONDS);
         timer.start(limit);
