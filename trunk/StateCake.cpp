@@ -45,24 +45,17 @@ void StateCake::init()
                 candles[i].setRelightLimit(30000);
             }
         }
-        else if(level < 15)
-        {
-            for(int i = NUM_CANDLES-1; i>= 0; --i)
-            {
-                candles[i].setRelightLimit(((140/(float)level) +0.5f)*1000);
-            }
-        }
         else
         {
             for(int i = NUM_CANDLES-1; i>= 0; --i)
             {
-                candles[i].setRelightLimit(((140/15.0f) +0.5f)*1000);
+                candles[i].setRelightLimit(((140/(float)min(level,15)) +0.5f)*1000);
             }
         }
         if(level < 40)
             limit = (60 - level) *0.5f;
         else
-            limit = 20;
+            limit = 10;
 
         timer.setMode(SECONDS);
         timer.start(limit);
