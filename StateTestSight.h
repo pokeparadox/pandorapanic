@@ -45,19 +45,19 @@ class StateTestSight : public mgBaseState
 
         virtual void userInput();
     private:
-        void swapCups(CRint index1, CRint index2);
-        void showCup(CRint index);
+        void swapCups(CRuint index1, CRuint index2);
+        void showCup(CRuint index);
         void moveCups();
-        float getYOffset(CRint index);
-        bool hasFinished(CRint index) const;
-        bool isMoving(CRint index) const;
+        float getYOffset(CRuint index);
+        bool hasFinished(CRuint index) const;
+        bool isMoving(CRuint index) const;
         bool isMoving() const;
 
         enum CUP_IDENT
         {
             ciCurrentPos=0, // the current position (including any current transition)
             ciDestination, // destination (=current position if not moving)
-            ciVelocity, // movement speed
+            ciDifference, // initial position difference when swapping
             ciShowCounter // animation counter for showCup
         };
 
