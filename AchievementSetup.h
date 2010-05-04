@@ -170,7 +170,7 @@
     tempB = new AchievementBoolean;
     tempB->setName("B/W-Frenzy");
     tempB->setDescription("Win TheCountJob %l times in highest level (>30) and colourblind mode");
-    tempB->setIcon("images/Achievements/eagle-eye.png");
+    tempB->setIcon("images/Achievements/bw-frenzy.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(special("CIRCLELEVEL",5,coEQUAL));
     prop->push_back(special("DIFFLEVEL",10,coEQUAL));
