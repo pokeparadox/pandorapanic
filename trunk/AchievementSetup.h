@@ -159,6 +159,16 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Eagle-eye");
+    tempB->setDescription("Spot the correct cup after 50 or more shuffles! (TestYourSight)");
+    tempB->setIcon("images/Achievements/eagle-eye.png");
+    prop = new vector<SpecialProperty>;
+    prop->push_back(special("LEVELNUMBER",49,coGREATER));
+    prop->push_back(special("MINIGAME",24,coEQUAL));
+    tempB->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
+
+    tempB = new AchievementBoolean;
+    tempB->setName("B/W-Frenzy");
     tempB->setDescription("Win TheCountJob %l times in highest level (>30) and colourblind mode");
     tempB->setIcon("images/Achievements/eagle-eye.png");
     prop = new vector<SpecialProperty>;

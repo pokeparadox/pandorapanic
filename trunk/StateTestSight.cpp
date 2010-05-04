@@ -1,4 +1,5 @@
 #include "StateTestSight.h"
+
 StateTestSight::StateTestSight()
 {
     nullify = false;
@@ -17,10 +18,10 @@ void StateTestSight::init()
     {
         cups[I][ciCurrentPos] = I;
         cups[I][ciDestination] = I;
-        cups[I][ciVelocity] = 0;
+        cups[I][ciDifference] = 0;
         cups[I][ciShowCounter] = 0;
     }
-    diffLevel = min(variables[2].getInt(),20); // affects speed of shuffling and number of swaps
+    diffLevel = variables[2].getInt(); // affects speed of shuffling and number of swaps
     phase = gpInit; // phase of the game
     correctCup = rand()%5; // the correct cup - duh
     numShuffles = 0; // nummber of swaps already done
@@ -156,7 +157,6 @@ void StateTestSight::update()
     moveCups();
 
     // show initial correct cup
-    cout << isMoving() << endl;
     if (phase == gpInit)
     {
         showCup(correctCup);
@@ -168,15 +168,19 @@ void StateTestSight::update()
     else if ((phase == gpShuffle) && not isMoving())
     {
         // amount check
-        if (numShuffles == max(diffLevel,5))
+        if (numShuffles == max(diffLevel,5)) // 5 - 20 shuffles
             phase = gpAnswer;
         else
         {
             // get two randomly chosen, different cups
-            int cup1 = rand()%5;
+            int cup1 = rand()%8;
+            // check whether out of bounds -> set to cup with coin under it (higher probability to get swapped)
+            if (cup1 >= 5)
+                cup1 = correctCup;
             int cup2 = rand()%5;
             while (cup1 == cup2)
                 cup2 = rand()%5;
+
             // do the shuffle
             swapCups(cup1,cup2);
 
@@ -213,19 +217,19 @@ void StateTestSight::update()
 /// Private implementation
 
 // Swaps two cup's positions and sets velocity
-void StateTestSight::swapCups(CRint index1, CRint index2)
+void StateTestSight::swapCups(CRuint index1, CRuint index2)
 {
     if (index1 < CUPS_AMOUNT && index2 < CUPS_AMOUNT && index1 != index2)
     {
         cups[index1][ciDestination] = round(cups[index2][ciCurrentPos]);
         cups[index2][ciDestination] = round(cups[index1][ciCurrentPos]);
-        cups[index1][ciVelocity] = round(cups[index2][ciCurrentPos]) - cups[index1][ciCurrentPos];
-        cups[index2][ciVelocity] = round(cups[index1][ciCurrentPos]) - cups[index2][ciCurrentPos];
+        cups[index1][ciDifference] = round(cups[index2][ciCurrentPos] - cups[index1][ciCurrentPos]);
+        cups[index2][ciDifference] = round(cups[index1][ciCurrentPos] - cups[index2][ciCurrentPos]);
     }
 }
 
 // Show what's under a specific cup
-void StateTestSight::showCup(CRint index)
+void StateTestSight::showCup(CRuint index)
 {
     for (int I = CUPS_AMOUNT-1; I >= 0; --I)
         if (cups[I][ciCurrentPos] == index)
@@ -238,12 +242,12 @@ void StateTestSight::moveCups()
     for (int I = CUPS_AMOUNT-1; I >= 0; --I)
     {
         // Check whether velocity is greater than difference left and use that in case
-        cups[I][ciCurrentPos] += min(abs(cups[I][ciVelocity] / CUP_OFFSET * diffLevel), // Normal movement between two spots
+        cups[I][ciCurrentPos] += min((float)(4.0f * sqrt(min(diffLevel,20))) / (float)CUP_OFFSET, // Normal movement between two spots
                                      abs(cups[I][ciCurrentPos]-cups[I][ciDestination])) * // Difference left between two spots
-                                     NumberUtility::sign(cups[I][ciVelocity]); // Direction of movement
+                                     NumberUtility::sign(cups[I][ciDifference]); // Direction of movement
         if (hasFinished(I))
         {
-            cups[I][ciVelocity] = 0;
+            cups[I][ciDifference] = 0;
         }
         if (cups[I][ciShowCounter] > 0)
         {
@@ -256,25 +260,25 @@ void StateTestSight::moveCups()
 }
 
 // Calculates the y offset of a single cup so that cups moved left are moved in front of the other cups and rightwards moving cups in the back
-float StateTestSight::getYOffset(CRint index)
+float StateTestSight::getYOffset(CRuint index)
 {
     const float x = abs(cups[index][ciCurrentPos]-cups[index][ciDestination]);
-    const float vel = abs(cups[index][ciVelocity]);
+    const float vel = abs(cups[index][ciDifference]);
     if (vel != 0.0)
     {
         const float y = pow( 2.0/vel * (x - (vel/2.0) ), 2.0) - 1.0;
-        return NumberUtility::sign(cups[index][ciVelocity]) * y * MAX_Y_OFFSET;
+        return NumberUtility::sign(cups[index][ciDifference]) * y * MAX_Y_OFFSET;
     }
     else
         return 0.0;
 }
 
 // Checks whether a cup has reached its destination
-bool StateTestSight::hasFinished(CRint index) const
+bool StateTestSight::hasFinished(CRuint index) const
 {
     if (index < CUPS_AMOUNT)
     {
-        if (cups[index][ciVelocity] >= 0)
+        if (cups[index][ciDifference] >= 0)
             return (cups[index][ciCurrentPos] >= cups[index][ciDestination]);
         else
             return (cups[index][ciCurrentPos] <= cups[index][ciDestination]);
@@ -286,11 +290,11 @@ bool StateTestSight::hasFinished(CRint index) const
 }
 
 // Returns whether one specific cup is moving
-bool StateTestSight::isMoving(CRint index) const
+bool StateTestSight::isMoving(CRuint index) const
 {
     if (index < CUPS_AMOUNT)
     {
-        return ((cups[index][ciVelocity] != 0) || (cups[index][ciShowCounter] != 0));
+        return ((cups[index][ciDifference] != 0) || (cups[index][ciShowCounter] != 0));
     }
     else
     {
@@ -303,7 +307,7 @@ bool StateTestSight::isMoving() const
 {
     for (int I = CUPS_AMOUNT-1; I >= 0; --I)
     {
-        if ((cups[I][ciVelocity] != 0) || (cups[I][ciShowCounter] != 0))
+        if ((cups[I][ciDifference] != 0) || (cups[I][ciShowCounter] != 0))
         {
             return true;
         }
