@@ -498,6 +498,7 @@ namespace PangMiniGame
         m_UpdateInterval    = updateInterval;
         m_CurrentFrame      = 0;
         m_IsLooping         = looping;
+        m_IsAnimating = false;
         if ( m_NumFrames > 1 )
             m_IsAnimating   = true;
         m_SinceLastUpdate   = 0.f;

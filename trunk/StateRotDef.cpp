@@ -77,7 +77,7 @@ void StateRotDef::init()
 
     shotVelocity.x = 0;
     shotVelocity.y = 0;
-
+    shotPosition = shotVelocity;
     counter.start();
 }
 

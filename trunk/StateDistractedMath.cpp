@@ -45,6 +45,7 @@ void StateDistractedMath::init()
     mathstate = 5;
     oper = 1;
     round = 1;
+    level = variables[2].getInt();
     //tv = SDL_EnableUNICODE(1); //enables unicode and saves the previous state
     inputlimiter.setMode(MILLI_SECONDS);
     inputlimiter.start();
@@ -132,12 +133,12 @@ void StateDistractedMath::userInput()
                         number = rand()%10; // generate random again
                         if (oper == 0)
                         {
-                            number2 = rand()%(10 + variables[2].getInt());           //
+                            number2 = rand()%(10 + level);           //
                             number3 = number2 - number;    // the calculations
                         }                                  //
                         if (oper == 1)                     //
                         {                                  //
-                            number2 = (rand()%(int)((3 + variables[2].getInt())*0.5f)) + 1;           //
+                            number2 = (rand()%(int)((3 + level)*0.5f)) + 1;           //
                             number3 = number2 * number;    //
                         }
                         rnd = rand()%4;     // background switch
