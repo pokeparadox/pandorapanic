@@ -50,7 +50,6 @@ void StateTheCountJob::init()
 
     // The following gets only triggered in a real game
     if(variables.size()<SUBSTATE_TRIGGER) {
-
     /// vars
     counter.setMode(DECI_SECONDS);
     colourBlind = false;

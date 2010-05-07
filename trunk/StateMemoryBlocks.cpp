@@ -4,9 +4,8 @@
 #include <string>
 
 StateMemoryBlocks::StateMemoryBlocks() :
-command(), timer(), counter(), background(), combination(),
-combinationLength(4), blocks(), slot(), cursor(), currentSlot(0),
-keyPressLimiter(false)
+    command(), timer(), counter(), background(), combination(),
+    combinationLength(4), blocks(), slot(), cursor(), currentSlot(0)
 {
     nullify = false;
 
@@ -16,7 +15,7 @@ keyPressLimiter(false)
     pauseText.loadFont("font/bip.ttf", 32);
     pauseText.setColour(WHITE);
     pauseText.setBgColour(BLACK);
-    counter.setMode(SECONDS);
+    counter.setMode(MILLI_SECONDS);
 
     timer.loadFont("font/chromo.ttf",60);
     timer.setRelativity(false);
@@ -24,11 +23,13 @@ keyPressLimiter(false)
 
     int const NUM_BLOCK_IMAGES = 5;
     std::string const BLOCK_IMAGES[] =
-		    { "images/MemoryBlocks/red_block.png",
-		      "images/MemoryBlocks/blue_block.png",
-		      "images/MemoryBlocks/green_block.png",
-		      "images/MemoryBlocks/purple_block.png",
-		      "images/MemoryBlocks/yellow_block.png" };
+    {
+        "images/MemoryBlocks/red_block.png",
+        "images/MemoryBlocks/blue_block.png",
+        "images/MemoryBlocks/green_block.png",
+        "images/MemoryBlocks/purple_block.png",
+        "images/MemoryBlocks/yellow_block.png"
+    };
 
     for( int i = 0; i < NUM_BLOCK_IMAGES; ++i )
     {
@@ -43,6 +44,10 @@ keyPressLimiter(false)
     cursor.setLooping(true);
     cursor.setFrameRate(DECI_SECONDS);
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
+    correct.loadSprite("images/MemoryBlocks/correct.png");
+    wrong.loadSprite("images/MemoryBlocks/wrong.png");
+
+    endStatus = -1;
 }
 
 
@@ -61,14 +66,17 @@ void StateMemoryBlocks::init()
     if( levelNumber < 10 )
     {
         combinationLength = 4;
+        inputTime = 8000;
     }
     else if( levelNumber < 20 )
     {
         combinationLength = 5;
+        inputTime = 9000;
     }
     else
     {
         combinationLength = 6;
+        inputTime = 10000;
     }
 
     combination.clear();
@@ -82,19 +90,19 @@ void StateMemoryBlocks::init()
 
 void StateMemoryBlocks::userInput()
 {
-    if( counter.getScaledTicks() < 3 )
+    if( counter.getScaledTicks() < SHOW_TIME )
     {
         return;
     }
     input->update();
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
-
-    if(input->isLeft())
+#ifdef PLATFORM_PC
+    if(input->isQuit())
+        nullifyState();
+#endif
+    if (counter.getScaledTicks() < SHOW_TIME + inputTime)
     {
-        if( !keyPressLimiter )
+
+        if(input->isLeft())
         {
             if( currentSlot != 0 )
             {
@@ -104,32 +112,25 @@ void StateMemoryBlocks::userInput()
             {
                 currentSlot = combinationLength - 1;
             }
-            keyPressLimiter = true;
+            input->resetKeys();
         }
-    }
 
-    else if(input->isRight())
-    {
-        if( !keyPressLimiter )
+        else if(input->isRight())
         {
             currentSlot = (currentSlot + 1) % combinationLength;
-            keyPressLimiter = true;
-        }
-    }
+            input->resetKeys();
 
-    else if(input->isUp())
-    {
-        if( !keyPressLimiter )
+        }
+
+        else if(input->isUp())
         {
             combination.at(currentSlot).current =
                 (combination.at(currentSlot).current + 1) % blocks.size();
-            keyPressLimiter = true;
-        }
-    }
+            input->resetKeys();
 
-    else if(input->isDown())
-    {
-        if( !keyPressLimiter )
+        }
+
+        else if(input->isDown())
         {
             if( combination.at(currentSlot).current != 0 )
             {
@@ -140,13 +141,14 @@ void StateMemoryBlocks::userInput()
                 combination.at(currentSlot).current = blocks.size() - 1;
             }
 
-            keyPressLimiter = true;
+            input->resetKeys();
         }
-    }
 
-    else
-    {
-        keyPressLimiter = false;
+        else if (input->isA())
+        {
+            counter.setOffset(SHOW_TIME + inputTime - counter.getScaledTicks());
+            input->resetKeys();
+        }
     }
 
     if(input->isStart())
@@ -171,20 +173,14 @@ void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Memorize the symbols and rebuild the code!");
     pauseText.setPosition(50,220);
-    pauseText.print(screen, "Press     or     to navigate through the code.");
-    buttonSheet.setCurrentFrame(14);
-    buttonSheet.setPosition(132,220);
-    buttonSheet.render(screen);
-    buttonSheet.setCurrentFrame(15);
-    buttonSheet.setPosition(224,220);
+    pauseText.print("Use the   s to navigate through the code.");
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(165,220);
     buttonSheet.render(screen);
     pauseText.setPosition(50,260);
-    pauseText.print(screen, "Use     or     to change the symbol!");
-    buttonSheet.setCurrentFrame(16);
-    buttonSheet.setPosition(102,260);
-    buttonSheet.render(screen);
-    buttonSheet.setCurrentFrame(17);
-    buttonSheet.setPosition(198,260);
+    pauseText.print("Press     to confirm your selection!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(140,260);
     buttonSheet.render(screen);
     buttonsOverlay(screen);
 }
@@ -202,20 +198,14 @@ void StateMemoryBlocks::pauseScreen()
     pauseText.setPosition(50,180);
     pauseText.print("Memorize the symbols and rebuild the code!");
     pauseText.setPosition(50,220);
-    pauseText.print("Press     or     to navigate through the code.");
-    buttonSheet.setCurrentFrame(14);
-    buttonSheet.setPosition(135,220);
-    buttonSheet.render();
-    buttonSheet.setCurrentFrame(15);
-    buttonSheet.setPosition(226,220);
+    pauseText.print("Use the   s to navigate through the code.");
+    buttonSheet.setCurrentFrame(16);
+    buttonSheet.setPosition(165,220);
     buttonSheet.render();
     pauseText.setPosition(50,260);
-    pauseText.print("Use     or     to change the symbol!");
-    buttonSheet.setCurrentFrame(16);
-    buttonSheet.setPosition(110,260);
-    buttonSheet.render();
-    buttonSheet.setCurrentFrame(17);
-    buttonSheet.setPosition(200,260);
+    pauseText.print("Press     to confirm your selection!");
+    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setPosition(140,260);
     buttonSheet.render();
 }
 #endif
@@ -241,15 +231,30 @@ void StateMemoryBlocks::render(SDL_Surface *screen)
 
     for( int i = 0; i < (int)combination.size(); ++i )
     {
-        if( counter.getScaledTicks() < 3 )
+        if( counter.getScaledTicks() < SHOW_TIME )
         {
             command.print(screen, "Memorize!");
         }
 
         int xSlot = xStart + i * (slot.getWidth()+gap);
         int ySlot = yCenter - slot.getHeight()*0.5f;
+
+        if (i <= endStatus)
+        {
+            if (combination.at(i).current == combination.at(i).target)
+            {
+                correct.setPosition(xSlot-8,ySlot-18);
+                correct.render(screen);
+            }
+            else
+            {
+                wrong.setPosition(xSlot-8,ySlot-18);
+                wrong.render(screen);
+            }
+        }
+
         slot.renderImage(screen, xSlot, ySlot);
-        if( counter.getScaledTicks() < 3 )
+        if( counter.getScaledTicks() < SHOW_TIME )
         {
             blocks.at(combination.at(i).target)->renderImage(screen, xSlot+12, ySlot+12);
         }
@@ -258,38 +263,53 @@ void StateMemoryBlocks::render(SDL_Surface *screen)
             blocks.at(combination.at(i).current)->renderImage(screen, xSlot+12, ySlot+12);
         }
 
-        if( i == currentSlot )
+        if( i == currentSlot && endStatus < 0)
         {
             cursor.setPosition(xSlot - (cursor.getWidth() - slot.getWidth())*0.5f,
                                ySlot - (cursor.getHeight() - slot.getHeight())*0.5f);
             cursor.render(screen);
         }
     }
-    if( counter.getScaledTicks() >= 3 )
+    if( counter.getScaledTicks() >= SHOW_TIME && counter.getScaledTicks() <= SHOW_TIME + inputTime )
     {
-        timer.print( screen, 11 - counter.getScaledTicks() );
+        timer.print( screen, (int)((SHOW_TIME + inputTime) / 1000) - counter.getScaledTicks(SECONDS) );
     }
 }
 #else
 void StateMemoryBlocks::render()
 {
-   background.render();
+    background.render();
     int yCenter = 480*0.5f;
     int xCenter = 800*0.5f;
     int gap = 20;
     int xStart = xCenter - (combination.size()*(slot.getWidth()+gap) - gap)*0.5f;
 
+    if( counter.getScaledTicks() < SHOW_TIME )
+    {
+        command.print( "Memorize!");
+    }
+
     for( int i = 0; i < (int)combination.size(); ++i )
     {
-        if( counter.getScaledTicks() < 3 )
-        {
-            command.print( "Memorize!");
-        }
-
         int xSlot = xStart + i * (slot.getWidth()+gap);
         int ySlot = yCenter - slot.getHeight()*0.5f;
+
+        if (i <= endStatus)
+        {
+            if (combination.at(i).current == combination.at(i).target)
+            {
+                correct.setPosition(xSlot-8,ySlot-18);
+                correct.render();
+            }
+            else
+            {
+                wrong.setPosition(xSlot-8,ySlot-18);
+                wrong.render();
+            }
+        }
+
         slot.renderImage(xSlot, ySlot);
-        if( counter.getScaledTicks() < 3 )
+        if( counter.getScaledTicks() < SHOW_TIME )
         {
             blocks.at(combination.at(i).target)->renderImage(xSlot+12, ySlot+12);
         }
@@ -298,23 +318,23 @@ void StateMemoryBlocks::render()
             blocks.at(combination.at(i).current)->renderImage( xSlot+12, ySlot+12);
         }
 
-        if( i == currentSlot )
+        if( i == currentSlot && endStatus < 0 )
         {
             cursor.setPosition(xSlot - (cursor.getWidth() - slot.getWidth())*0.5f,
                                ySlot - (cursor.getHeight() - slot.getHeight())*0.5f);
             cursor.render();
         }
     }
-    if( counter.getScaledTicks() >= 3 )
+    if( counter.getScaledTicks() >= SHOW_TIME && counter.getScaledTicks() <= SHOW_TIME + inputTime)
     {
-        timer.print( 11 - counter.getScaledTicks() );
+        timer.print((int)((SHOW_TIME + inputTime) / 1000) - counter.getScaledTicks(SECONDS) );
     }
 }
 #endif
 
 void StateMemoryBlocks::update()
 {
-    bool ready = true;
+    /*bool ready = true;
 
     for( unsigned int i = 0; i < combination.size(); ++i )
     {
@@ -328,12 +348,33 @@ void StateMemoryBlocks::update()
     {
         variables[0].setInt(1);
         setNextState(STATE_MAIN);
-    }
+    }*/
 
-    if(counter.getScaledTicks() > 11)
+    if(counter.getScaledTicks() > SHOW_TIME + inputTime)
     {
-        variables[0].setInt(0);
-        setNextState(STATE_MAIN);
+        /*variables[0].setInt(0);
+        setNextState(STATE_MAIN);*/
+        endStatus = round((counter.getScaledTicks() - SHOW_TIME - inputTime) / 500);
+        if (endStatus > combination.size())
+        {
+            variables[0].setInt(1);
+            int hearts = 1;
+            for( unsigned int i = 0; i < combination.size(); ++i )
+            {
+                if (combination.at(i).current != 3)
+                    hearts = 0;
+                if( combination.at(i).current != combination.at(i).target )
+                {
+                    variables[0].setInt(0);
+                }
+            }
+            vector<SpecialProperty>* prop = new vector<SpecialProperty>;
+            prop->push_back(SpecialProperty("WIN",variables[0].getInt(),coEQUAL));
+            prop->push_back(SpecialProperty("TIME",counter.getOffset(),coEQUAL));
+            prop->push_back(SpecialProperty("HEARTS",hearts,coEQUAL));
+            ACHIEVEMENTS->logEventSpecial("MEMORY_END",prop);
+            setNextState(STATE_MAIN);
+        }
     }
     cursor.update();
 }
