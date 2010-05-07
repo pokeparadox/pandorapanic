@@ -21,6 +21,5 @@ int main(int argc, char** argv)
         game = NULL;
     }
     cout << error.getErrorString(PENJIN_GOODBYE);
-    SDL_Quit();		//	Shut down SDL tidyly
 	return 0;	//	Normal program termination.
 }
