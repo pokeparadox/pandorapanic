@@ -14,6 +14,8 @@
 #include <vector>
 #include <string>
 
+#define SHOW_TIME 3000
+
 class StateMemoryBlocks : public mgBaseState
 {
     public:
@@ -49,11 +51,15 @@ class StateMemoryBlocks : public mgBaseState
         Background background;
         std::vector<BlockSlot> combination;
         unsigned int combinationLength;
+        unsigned int inputTime;
         std::vector<Image*> blocks;
         Image slot;
+        Sprite correct;
+        Sprite wrong;
         AnimatedSprite cursor;
         int currentSlot;
-        bool keyPressLimiter;
+        int endStatus;
+        bool skipToEnd;
 };
 
 #endif // STATESPACEINVADERS_H_INCLUDED

@@ -159,7 +159,7 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Eagle-eye");
-    tempB->setDescription("Spot the correct cup after 50 or more shuffles! (TestYourSight)");
+    tempB->setDescription("Spot the correct cup after 50 or more shuffles!");
     tempB->setIcon("images/Achievements/eagle-eye.png");
     prop = new vector<SpecialProperty>;
     prop->push_back(SpecialProperty("LEVELNUMBER",49,coGREATER));
@@ -219,6 +219,15 @@
     tempB->addEvent("SPACE_WIN",1,coEQUAL,acRESET);
     ACHIEVEMENTS->addAchievement(tempB);
 
+    tempB = new AchievementBoolean;
+    tempB->setName("Mastermind");
+    tempB->setDescription("Enter the correct code with still 5 seconds left");
+    tempB->setIcon("images/Achievements/mastermind.png");
+    prop = new vector<SpecialProperty>;
+    prop->push_back(SpecialProperty("TIME",4999,coGREATER));
+    prop->push_back(SpecialProperty("WIN",1,coEQUAL));
+    tempB->addEventSpecial("MEMORY_END",prop,1,coEQUAL,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
 
     // secret achievements
 
@@ -234,7 +243,7 @@
 
     tempB = new AchievementBoolean;
     tempB->setName("Close call");
-    tempB->setDescription("Land on the pad with no fuel left (Plander)");
+    tempB->setDescription("Land on the pad with no fuel left");
     tempB->setIcon("images/Achievements/close-call.png");
     tempB->setSecret(true);
     tempB->addEvent("PLANDER_FUEL_WIN",0,coEQUAL,acINCREASE);
@@ -254,6 +263,16 @@
     tempB->setIcon("images/Achievements/rocket-science.png");
     tempB->setSecret(true);
     tempB->addEvent("PLANDER_OVERFILL",1,coEQUAL,acINCREASE);
+    ACHIEVEMENTS->addAchievement(tempB);
+
+    tempB = new AchievementBoolean;
+    tempB->setName("Love is in the air");
+    tempB->setDescription("Form a code only consisting of hearts");
+    tempB->setIcon("images/Achievements/love-air.png");
+    tempB->setSecret(true);
+    prop = new vector<SpecialProperty>;
+    prop->push_back(SpecialProperty("HEARTS",1,coEQUAL));
+    tempB->addEventSpecial("MEMORY_END",prop,1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
 
