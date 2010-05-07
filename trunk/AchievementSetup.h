@@ -37,8 +37,8 @@
     tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
     tempR->setIcon("images/Achievements/only-lucky.png");
     prop = new vector<SpecialProperty>;
-    prop->push_back(special("GAMEMODE",2,coSMALLER));
-    tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    prop->push_back(SpecialProperty("GAMEMODE",2,coSMALLER));
+    tempR->addEventSpecial("GAME_WIN",prop,1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
     tempR->setLimit(5);
     ACHIEVEMENTS->addAchievement(tempR);
@@ -48,8 +48,8 @@
     tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
     tempR->setIcon("images/Achievements/getting-better.png");
     prop = new vector<SpecialProperty>;
-    prop->push_back(special("GAMEMODE",2,coSMALLER));
-    tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    prop->push_back(SpecialProperty("GAMEMODE",2,coSMALLER));
+    tempR->addEventSpecial("GAME_WIN",prop,1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
     tempR->setLimit(10);
     ACHIEVEMENTS->addAchievement(tempR);
@@ -59,8 +59,8 @@
     tempR->setDescription("Win %l games in a row in Panic or Ordered gamemode");
     tempR->setIcon("images/Achievements/awesome.png");
     prop = new vector<SpecialProperty>;
-    prop->push_back(special("GAMEMODE",2,coSMALLER));
-    tempR->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    prop->push_back(SpecialProperty("GAMEMODE",2,coSMALLER));
+    tempR->addEventSpecial("GAME_WIN",prop,1,coEQUAL,acINCREASE);
     tempR->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
     tempR->setLimit(20);
     ACHIEVEMENTS->addAchievement(tempR);
@@ -162,9 +162,9 @@
     tempB->setDescription("Spot the correct cup after 50 or more shuffles! (TestYourSight)");
     tempB->setIcon("images/Achievements/eagle-eye.png");
     prop = new vector<SpecialProperty>;
-    prop->push_back(special("LEVELNUMBER",49,coGREATER));
-    prop->push_back(special("MINIGAME",24,coEQUAL));
-    tempB->addEventSpecial("GAME_WIN",*prop,1,coEQUAL,acINCREASE);
+    prop->push_back(SpecialProperty("LEVELNUMBER",49,coGREATER));
+    prop->push_back(SpecialProperty("MINIGAME",24,coEQUAL));
+    tempB->addEventSpecial("GAME_WIN",prop,1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
@@ -172,11 +172,11 @@
     tempB->setDescription("Win TheCountJob %l times in highest level (>30) and colourblind mode");
     tempB->setIcon("images/Achievements/bw-frenzy.png");
     prop = new vector<SpecialProperty>;
-    prop->push_back(special("CIRCLELEVEL",5,coEQUAL));
-    prop->push_back(special("DIFFLEVEL",10,coEQUAL));
-    prop->push_back(special("TIMELEVEL",30,coEQUAL));
-    prop->push_back(special("COLOURBLIND",1,coEQUAL));
-    tempB->addEventSpecial("COUNT_WIN",*prop,1,coEQUAL,acINCREASE);
+    prop->push_back(SpecialProperty("CIRCLELEVEL",5,coEQUAL));
+    prop->push_back(SpecialProperty("DIFFLEVEL",10,coEQUAL));
+    prop->push_back(SpecialProperty("TIMELEVEL",30,coEQUAL));
+    prop->push_back(SpecialProperty("COLOURBLIND",1,coEQUAL));
+    tempB->addEventSpecial("COUNT_WIN",prop,1,coEQUAL,acINCREASE);
     tempB->setLimit(10);
     tempB->addMilestone(5);
     ACHIEVEMENTS->addAchievement(tempB);
@@ -197,9 +197,9 @@
     tempL->setDescription("Snatch the beer in the second chance (level 20 minimum)");
     tempL->setIcon("images/Achievements/second-hand-snatch.png");
     prop = new vector<SpecialProperty>;
-    prop->push_back(special("LEVELNUMBER",19,coGREATER));
-    prop->push_back(special("MINIGAME",20,coEQUAL));
-    tempL->addEventSpecial("GAME_START",*prop,1,coEQUAL,acINCREASE);
+    prop->push_back(SpecialProperty("LEVELNUMBER",19,coGREATER));
+    prop->push_back(SpecialProperty("MINIGAME",20,coEQUAL));
+    tempL->addEventSpecial("GAME_START",prop,1,coEQUAL,acINCREASE);
     tempL->addEvent("SNATCH_SECOND",1,coEQUAL,acINCREASE);
     tempL->addEvent("GAME_WIN",1,coEQUAL,acRESET);
     tempL->addEvent("GAME_FAIL",1,coEQUAL,acRESET);
