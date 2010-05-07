@@ -129,11 +129,11 @@ void StateMain::init()
     if(variables[0].getInt() == 0)//    FAIL
     {
         #ifdef USE_ACHIEVEMENTS
-        vector<SpecialProperty> temp;
-        temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
-        temp.push_back(special("LEVELNUMBER",variables[2].getInt(),0));
-        temp.push_back(special("MINIGAME",variables[3].getInt(),0));
-        temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
+        vector<SpecialProperty>* temp = new vector<SpecialProperty>;
+        temp->push_back(SpecialProperty("GAMEMODE",variables[1].getInt(),0));
+        temp->push_back(SpecialProperty("LEVELNUMBER",variables[2].getInt(),0));
+        temp->push_back(SpecialProperty("MINIGAME",variables[3].getInt(),0));
+        temp->push_back(SpecialProperty("REMAININGLIVES",variables[4].getInt(),0));
         ACHIEVEMENTS->logEventSpecial("GAME_FAIL",temp);
         #endif
         loadLose();
@@ -183,11 +183,11 @@ void StateMain::init()
         if(variables[6].getInt() != 1)
         {
             playWin = true;
-            vector<SpecialProperty> temp;
-            temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
-            temp.push_back(special("LEVELNUMBER",variables[2].getInt(),0));
-            temp.push_back(special("MINIGAME",variables[3].getInt(),0));
-            temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
+            vector<SpecialProperty>* temp = new vector<SpecialProperty>;
+            temp->push_back(SpecialProperty("GAMEMODE",variables[1].getInt(),0));
+            temp->push_back(SpecialProperty("LEVELNUMBER",variables[2].getInt(),0));
+            temp->push_back(SpecialProperty("MINIGAME",variables[3].getInt(),0));
+            temp->push_back(SpecialProperty("REMAININGLIVES",variables[4].getInt(),0));
             ACHIEVEMENTS->logEventSpecial("GAME_WIN",temp);
         }
 
@@ -379,11 +379,11 @@ void StateMain::update()
         input->resetKeys(); //  prevent rogue keys in next minigame
         if (variables[3].getInt() >= 0)
         {
-            vector<SpecialProperty> temp;
-            temp.push_back(special("GAMEMODE",variables[1].getInt(),0));
-            temp.push_back(special("LEVELNUMBER",variables[2].getInt(),0));
-            temp.push_back(special("MINIGAME",variables[3].getInt(),0));
-            temp.push_back(special("REMAININGLIVES",variables[4].getInt(),0));
+            vector<SpecialProperty>* temp = new vector<SpecialProperty>;
+            temp->push_back(SpecialProperty("GAMEMODE",variables[1].getInt(),0));
+            temp->push_back(SpecialProperty("LEVELNUMBER",variables[2].getInt(),0));
+            temp->push_back(SpecialProperty("MINIGAME",variables[3].getInt(),0));
+            temp->push_back(SpecialProperty("REMAININGLIVES",variables[4].getInt(),0));
             ACHIEVEMENTS->logEventSpecial("GAME_START",temp);
         }
         setNextState(variables[3].getInt()+3);
