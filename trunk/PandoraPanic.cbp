@@ -275,6 +275,8 @@
 			<Add directory="../PenjinBase" />
 			<Add directory="./" />
 		</Compiler>
+		<Unit filename="AchievementWinAll.cpp" />
+		<Unit filename="AchievementWinAll.h" />
 		<Unit filename="Arena/ArenaEffect.cpp">
 			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
 		</Unit>
@@ -628,12 +630,6 @@
 		<Unit filename="../PenjinBase/AchievementSystem.h">
 			<Option virtualFolder="PenjinBase/Achievements/" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementUtility.cpp">
-			<Option virtualFolder="PenjinBase/Achievements/" />
-		</Unit>
-		<Unit filename="../PenjinBase/AchievementUtility.h">
-			<Option virtualFolder="PenjinBase/Achievements/" />
-		</Unit>
 		<Unit filename="../PenjinBase/AnimatedParticle.cpp">
 			<Option virtualFolder="PenjinBase/Particle/Particles/" />
 		</Unit>
@@ -732,6 +728,8 @@
 		<Unit filename="../PenjinBase/ErrorHandler.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
+		<Unit filename="../PenjinBase/Event.cpp" />
+		<Unit filename="../PenjinBase/Event.h" />
 		<Unit filename="../PenjinBase/FileLister.cpp" />
 		<Unit filename="../PenjinBase/FileLister.h" />
 		<Unit filename="../PenjinBase/GFX.cpp">

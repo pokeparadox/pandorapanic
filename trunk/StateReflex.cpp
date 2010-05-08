@@ -11,11 +11,6 @@ StateReflex::StateReflex()
     counter.setMode(SECONDS);
     circle.loadSprite("images/Reflex/circle.png");
     arrow.loadSprite("images/Reflex/arrow.png");
-
-    leftSound.loadSound("sounds/Reflex/left.ogg");
-    rightSound.loadSound("sounds/Reflex/right.ogg");
-    downSound.loadSound("sounds/Reflex/down.ogg");
-    upSound.loadSound("sounds/Reflex/up.ogg");
     GFX::setClearColour(BLACK);
 }
 
@@ -39,6 +34,14 @@ void StateReflex::init()
     correct=false;
     circle.setPosition(guide_xOffset,4);
     arrow.setPosition(guide_xOffset,4);
+
+    if(!isSubState())
+    {
+        leftSound.loadSound("sounds/Reflex/left.ogg");
+        rightSound.loadSound("sounds/Reflex/right.ogg");
+        downSound.loadSound("sounds/Reflex/down.ogg");
+        upSound.loadSound("sounds/Reflex/up.ogg");
+    }
 
     counter.start();
     correctStart=counter.getTicks();

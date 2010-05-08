@@ -35,14 +35,10 @@ Sprite &OBBShapes::getSprite(int n, bool guide) {
 }
 
 OBBColumn::~OBBColumn() {
-    /*if (click.isPlaying()) {
-        click.stop();
-    }
-    click.freeAll();*/
-    shapeNode = lastShapeNode = finalMatchNode = tempNode = NULL;
     while (shapeNode != NULL) {
         deleteLeadNode();
     }
+    shapeNode = lastShapeNode = finalMatchNode = tempNode = NULL;
 }
 //OBBColumn::OBBColumn() {}
 void OBBColumn::initColumn(OBBShapes &s, OBBColumnConfig &c, float r, int x) {
