@@ -231,7 +231,7 @@
 
     AchievementWinAll* winAllA = new AchievementWinAll;
     winAllA->setName("OCD");
-    winAllA->setDescription("Win every level at least once!");
+    winAllA->setDescription("Win every minigame at least once!");
     winAllA->setIcon("images/Achievements/win-all.png");
     winAllA->addEvent("GAME_WIN",1,coEQUAL,acINCREASE);
     winAllA->setAmount(24);
