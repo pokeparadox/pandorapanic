@@ -229,6 +229,22 @@
     tempB->addEventSpecial("MEMORY_END",prop,1,coEQUAL,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
+    AchievementWinAll* winAllA = new AchievementWinAll;
+    winAllA->setName("OCD");
+    winAllA->setDescription("Win every level at least once!");
+    winAllA->setIcon("images/Achievements/win-all.png");
+    winAllA->addEvent("GAME_WIN",1,coEQUAL,acINCREASE);
+    winAllA->setAmount(24);
+    ACHIEVEMENTS->addAchievement(winAllA);
+
+    winAllA = new AchievementWinAll;
+    winAllA->setName("Achievement whore");
+    winAllA->setDescription("Unlock every achievement (except this one)!");
+    winAllA->setIcon("images/Achievements/achievement-whore.png");
+    winAllA->addEvent("ACHIEVEMENT_UNLOCK",1,coEQUAL,acINCREASE);
+    winAllA->setAmount(29);
+    ACHIEVEMENTS->addAchievement(winAllA);
+
     // secret achievements
 
     tempL = new AchievementList;
