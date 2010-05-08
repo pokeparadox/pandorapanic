@@ -2,6 +2,7 @@
 #define MYGAME_H
 #include "Engine.h"
 #include "SimpleJoy.h"
+#include "AchievementWinAll.h"
 
 /*
 PROJECT:	Pandora Panic
