@@ -158,7 +158,7 @@ void StateArena::init()
         m_MonsterListPtr->Add(tempmonsterPtr);
     }
 
-    if(variables.size()<SUBSTATE_TRIGGER)
+    if(!isSubState())
     {
         m_Music.loadMusic("music/Arena/Music.ogg");
         m_Music.setLooping(true);

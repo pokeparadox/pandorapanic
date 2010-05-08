@@ -191,6 +191,7 @@ namespace PangMiniGame
                 delete m_ppSound[ i ];
                 m_ppSound[ i ] = NULL;
             }
+            delete [] m_ppSound;
             m_ppSound = NULL;
         }
     }
@@ -1292,8 +1293,10 @@ namespace PangMiniGame
         void            Pause( );
 
         void            Resume( );
+        void            setIsSubState(CRbool b){isSubState = b;}
 
     private:
+        bool            isSubState;
 
         bool            IsPaused( ) const;
 
@@ -1680,13 +1683,15 @@ namespace PangMiniGame
         (*m_ppPlayerCurrent)->SetX( ( m_pBackground->GetWidth( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetWidth( ) * 0.5f );
         (*m_ppPlayerCurrent)->SetY( ( kFLOOR - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f ) - (*m_ppPlayerCurrent)->GetHeight( ) * 0.5f );
 
-        m_Sfx[ kSoundResource_BallSpearHit ].Initialise( "sounds/Pang/hit.ogg", 5 );
-        m_Sfx[ kSoundResource_Shoot ].Initialise( "sounds/Pang/shoot.ogg", 5 );
+        if(!isSubState)
+        {
+            m_Sfx[ kSoundResource_BallSpearHit ].Initialise( "sounds/Pang/hit.ogg", 5 );
+            m_Sfx[ kSoundResource_Shoot ].Initialise( "sounds/Pang/shoot.ogg", 5 );
 
-        m_pMusic = new Music;
-        m_pMusic->loadMusic( "music/Pang/bg.ogg" );
-        m_pMusic->setLooping( true );
-
+            m_pMusic = new Music;
+            m_pMusic->loadMusic( "music/Pang/bg.ogg" );
+            m_pMusic->setLooping( true );
+        }
         m_TimeLastFrame = SDL_GetTicks( );
         m_FrameTime     = m_TimeLastFrame;
 
@@ -2138,6 +2143,7 @@ void StatePang::init( )
     pauseText.setColour(BLACK);
 
     m_pPangGame = new PangMiniGame::PangGame( );
+    m_pPangGame->setIsSubState(isSubState());           //  We need to know if it is a subState to avoid loading sounds for the preview pane
     m_pPangGame->Initialise( );
     m_pPangGame->StartLevel( GetRequestedLevelNumber( ) );
 }

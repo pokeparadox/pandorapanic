@@ -12,9 +12,6 @@ StatePuttPutt::StatePuttPutt()
     counter.setMode(SECONDS);
     hole.loadSprite("images/PuttPutt/Hole.png");
     ball.loadSprite("images/PuttPutt/Ball.png");
-    putt.loadSound("sounds/PuttPutt/Putter.ogg");
-    sunk.loadSound("sounds/PuttPutt/Sunk.ogg");
-    gasp.loadSound("sounds/PuttPutt/Gasp.ogg");
     background.loadBackground("images/PuttPutt/Background.png");
 
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
@@ -78,7 +75,12 @@ void StatePuttPutt::init()
     sweetY = gMeterY + rand() % sweetPos;
 
     ballVel = 0;
-
+    if(!isSubState())
+    {
+        putt.loadSound("sounds/PuttPutt/Putter.ogg");
+        sunk.loadSound("sounds/PuttPutt/Sunk.ogg");
+        gasp.loadSound("sounds/PuttPutt/Gasp.ogg");
+    }
     counter.start();
 }
 

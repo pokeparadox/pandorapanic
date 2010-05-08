@@ -18,7 +18,7 @@ void StateAchievements::clear()
 void StateAchievements::init()
 {
 	#ifdef PENJIN_SDL
-        buff.update();
+        //buff.update();
         SDL_Surface* screen = GFX::getVideoSurface();
         bgBuffer = SDL_CreateRGBSurface(screen->flags,GFX::getXResolution(), GFX::getYResolution(), screen->format->BitsPerPixel, 0, 0, 0, 0);
         Random::setLimits(0,255);
@@ -38,7 +38,7 @@ void StateAchievements::init()
     #endif
 
     offset = 0;
-    speed = 0.1;
+    speed = 0.1f;
     timer.init(100,MILLI_SECONDS,this,&StateAchievements::increaseSpeed);
     timer.setRewind(REWIND);
     ACHIEVEMENTS->setOffset(450,0);
@@ -73,7 +73,7 @@ void StateAchievements::userInput()
     else
     {
         timer.stop();
-        speed = 0.1;
+        speed = 0.1f;
     }
 
     if(input->isB())
@@ -87,10 +87,10 @@ void StateAchievements::userInput()
 #ifdef PENJIN_SDL
     void StateAchievements::render(SDL_Surface *screen)
     {
-        buff.update();
-        buff.setAlpha(128);
+        //buff.update();
+        //buff.setAlpha(128);
         SDL_BlitSurface(bgBuffer,NULL,screen,NULL);
-        buff.render();
+        //buff.render();
         if (offset > 0)
         {
             buttonSheet.setCurrentFrame(16);
@@ -136,5 +136,5 @@ void StateAchievements::increaseSpeed(void* object)
 {
     if (((StateAchievements*) object)->speed >= 1)
         return;
-    ((StateAchievements*) object)->speed *= 1.2;
+    ((StateAchievements*) object)->speed *= 1.2f;
 }
