@@ -28,6 +28,7 @@ void StateAchievements::init()
     text.loadFont("font/foo.ttf",30);
     text.setColour(Colour(WHITE));
     text.setRelativity(true);
+    text.setBoundaries(Vector2di(0,0),Vector2di(screen->w-360,screen->h));
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     back.loadBackground("images/pp_bg.png");
     #ifdef PENJIN_SDL
@@ -76,6 +77,15 @@ void StateAchievements::userInput()
         speed = 0.1f;
     }
 
+    if (input->isX())
+    {
+        if (ACHIEVEMENTS->showingPopups())
+            ACHIEVEMENTS->disablePopups();
+        else
+            ACHIEVEMENTS->enablePopups();
+        input->resetKeys();
+    }
+
     if(input->isB())
     {
         setNextState(STATE_TITLE);
@@ -103,14 +113,23 @@ void StateAchievements::userInput()
             buttonSheet.setPosition(400,440);
             buttonSheet.render(screen);
         }
+        text.setFontSize(30);
+        text.setAlignment(TextClass::LEFT_JUSTIFIED);
+
+        buttonSheet.setCurrentFrame(12);
+        buttonSheet.setPosition(0,400);
+        buttonSheet.render(screen);
+        text.setPosition(50,400);
+        if (ACHIEVEMENTS->showingPopups())
+            text.print(screen,"Hide popups");
+        else
+            text.print(screen,"Show popups");
+
         buttonSheet.setCurrentFrame(11);
         buttonSheet.setPosition(0,440);
         buttonSheet.render(screen);
-        text.setFontSize(30);
         text.setPosition(50,440);
-        text.setAlignment(TextClass::LEFT_JUSTIFIED);
         text.print(screen,"Go Back");
-        text.setBoundaries(Vector2di(0,0),Vector2di(screen->w-360,screen->h));
         text.setPosition(0,100);
         text.setAlignment(TextClass::CENTRED);
         text.print(screen, "Achievements unlocked:\n");

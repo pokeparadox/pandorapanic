@@ -276,7 +276,7 @@ void StateRotDef::update()
                     winSound.play();
                 explosion.setPosition(enemy.getX() - 84, enemy.getY() - 84);
                 enemyKilled = true;
-                ACHIEVEMENTS->logEvent("ROTDEF_WIN",round(sqrt(pow(turret.getX()-enemy.getX(),2)+pow(turret.getY()-enemy.getY(),2))));
+                ACHIEVEMENTS->logEvent("ROTDEF_WIN",round(sqrt(pow(turretBase.getX() + turretBase.getWidth() - enemy.getX(),2)+pow(turretBase.getY() + turretBase.getHeight() - enemy.getY(),2))));
             }
         }
 

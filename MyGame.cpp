@@ -8,7 +8,7 @@ MyGame::MyGame()
 
 MyGame::~MyGame()
 {
-    ACHIEVEMENTS->save("achieve.ach");
+    ACHIEVEMENTS->save();
 }
 
 PENJIN_ERRORS MyGame::init()
