@@ -482,7 +482,7 @@ void StatePanJoust::update()
         {
             hero1.setYVelocity(0);
             hero1.setOnPlatform();
-            if (teller.getScaledTicks() > 2){touchedplatform = true;}
+            touchedplatform = true;
             hero1.setY(platform[i].getY() - 64);
         }
 
