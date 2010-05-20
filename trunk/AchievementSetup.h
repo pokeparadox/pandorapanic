@@ -270,7 +270,7 @@
     tempB->setDescription("In RotatingTurrent shoot the bomb very close to your turret");
     tempB->setIcon("images/Achievements/nick-of-time.png");
     tempB->setSecret(true);
-    tempB->addEvent("ROTDEF_WIN",38,coSMALLER,acINCREASE);
+    tempB->addEvent("ROTDEF_WIN",95,coSMALLER,acINCREASE);
     ACHIEVEMENTS->addAchievement(tempB);
 
     tempB = new AchievementBoolean;
