@@ -80,7 +80,7 @@ const static string CREDITS[]=
     "Mariela - I love youuuuuuuuuuuuuu!",
     "foxblock - for making me laugh",
     "Gruso - writing Manual and Blogging",
-    "Anyone else that hass been missed...",
+    "Anyone else that has been missed...",
     "You also rock!",
     "PS let me know if you're missing.",
     "",
