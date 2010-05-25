@@ -1,5 +1,5 @@
 #include "StateAchievements.h"
-
+#include "TextDoc.h"
 StateAchievements::StateAchievements()
 {
     bgBuffer = NULL;
@@ -7,6 +7,12 @@ StateAchievements::StateAchievements()
 
 StateAchievements::~StateAchievements()
 {
+    TextDoc doc;
+    if (ACHIEVEMENTS->showingPopups())
+        doc.append("ShowPopup = true");
+    else
+        doc.append("ShowPopup = false");
+    doc.save("config.conf");
 	clear();
 }
 
@@ -43,6 +49,20 @@ void StateAchievements::init()
     timer.init(100,MILLI_SECONDS,this,&StateAchievements::increaseSpeed);
     timer.setRewind(REWIND);
     ACHIEVEMENTS->setOffset(450,0);
+    TextDoc doc;
+    doc.load("config.conf");
+    string line;
+    for(uint i = 0; i < doc.size(); ++i)
+    {
+        line = StringUtility::lower(doc.getLine(i));
+        if(line.find("showpopup") != string::npos)
+        {
+            if(line.find("yes") != string::npos || line.find("y") != string::npos || line.find("t") != string::npos || line.find("true") != string::npos )
+                ACHIEVEMENTS->enablePopups();
+            else
+                ACHIEVEMENTS->disablePopups();
+        }
+    }
 }
 
 void StateAchievements::userInput()
