@@ -185,47 +185,17 @@ void StateCredits::updatePandora()
 #ifdef PENJIN_SDL
 void StateCredits::renderPandora(SDL_Surface* screen)
 {
-    for(int i = 8; i >= 0; --i)
+    for(uint z = 0; z<4; ++z)
     {
-        if(pandPrio[i] == 0)
+        for(int i = 8; i >= 0; --i)
         {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(0);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render(screen);
-        }
-    }
-    for(int i = 8; i >= 0; --i)
-    {
-        if(pandPrio[i] == 1)
-        {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(1);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render(screen);
-        }
-    }
-    pand.setPosition(pandPos[4].x, pandPos[4].y);
-    pand.setCurrentFrame(pandPrio[4]);
-    pand.render(screen);
-    for(int i = 8; i >= 0; --i)
-    {
-        if(pandPrio[i] == 2)
-        {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(2);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render(screen);
-        }
-    }
-    for(int i = 8; i >= 0; --i)
-    {
-        if(pandPrio[i] == 3)
-        {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(3);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render(screen);
+            if(pandPrio[i] == z)
+            {
+                pand.setPosition(pandPos[i].x, pandPos[i].y);
+                pand.setCurrentFrame(z);
+                if(i == 1 || i == 3 || i == 4 ||i == 5 ||i == 7)
+                    pand.render(screen);
+            }
         }
     }
 }
@@ -270,52 +240,6 @@ void StateCredits::render()
 //	buff.setAlpha(240);
 	//SDL_FillRect(screen,NULL, NULL);
 	buff.render();
-}
-void StateCredits::renderPandora()
-{
-    for(int i = 8; i >= 0; --i)
-    {
-        if(pandPrio[i] == 0)
-        {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(0);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render();
-        }
-    }
-    for(int i = 8; i >= 0; --i)
-    {
-        if(pandPrio[i] == 1)
-        {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(1);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render();
-        }
-    }
-    pand.setPosition(pandPos[4].x, pandPos[4].y);
-    pand.setCurrentFrame(pandPrio[4]);
-    pand.render();
-    for(int i = 8; i >= 0; --i)
-    {
-        if(pandPrio[i] == 2)
-        {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(2);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render();
-        }
-    }
-    for(int i = 8; i >= 0; --i)
-    {
-        if(pandPrio[i] == 3)
-        {
-            pand.setPosition(pandPos[i].x, pandPos[i].y);
-            pand.setCurrentFrame(3);
-            if(i == 1 || i == 3 ||i == 5 ||i == 7)
-                pand.render();
-        }
-    }
 }
 #endif
 void StateCredits::unlimitedUpdate()
@@ -501,6 +425,16 @@ void StateCredits::unlimitedUpdate()
                 logo.clear();
                 logo.loadSprite(path+"SnatchABeer/beer"+ext);
                 //logo.setTransparentColour(MAGENTA);
+            }
+            else if(CREDITS[currentLine].find("Test Your Sight") != string::npos)
+            {
+                logo.clear();
+                logo.loadSprite(path+"TestYourSight/coin"+ext);
+            }
+            else if(CREDITS[currentLine].find("Pickle - debug") != string::npos)
+            {
+                logo.clear();
+                logo.loadSprite(path+"Fire/pickle"+ext);
             }
             else if(strstr(CREDITS[currentLine].c_str(), "Count"))
             {
