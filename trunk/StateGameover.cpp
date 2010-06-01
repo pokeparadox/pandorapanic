@@ -93,10 +93,18 @@ void StateGameover::userInput()
     else if(input->isDown() || input->isLeftStickDown())
         scoreScreen.charDown();
 
-    if(input->isA())
+    if(input->isA() || input->isKey("KP_ENTER") || input->isKey("RETURN"))
         scoreScreen.charInput();
-    else if(input->isB())
+    else if(input->isB() || input->isKey("BACKSPACE"))
         scoreScreen.charDelete();
+
+    //  Keyboard pass-through
+    string t = input->isKeyLetter();
+    if(t != "NULL")
+    {
+        scoreScreen.charInput(t.at(0));
+        input->resetKeys();
+    }
 
     //	Check to return to main menu
     if((input->isA() || input->isStart() || input->isTouch()) && !scoreScreen.inNameEntryScreen())
