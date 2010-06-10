@@ -71,7 +71,6 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="`sdl-config --cflags`" />
-					<Add option="-fsingle-precision-constant" />
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-D_DEBUG" />
 					<Add option="-D_LINUX" />
@@ -97,6 +96,7 @@
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="`sdl-config --cflags`" />
+					<Add option="-fsingle-precision-constant" />
 					<Add option="-DPLATFORM_PC" />
 					<Add option="-D_LINUX" />
 					<Add option="-DPENJIN_SDL" />
