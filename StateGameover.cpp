@@ -77,6 +77,7 @@ void StateGameover::init()
     #else
         logo.render();
     #endif
+    input->resetKeys();
 }
 
 void StateGameover::userInput()
@@ -93,9 +94,9 @@ void StateGameover::userInput()
     else if(input->isDown() || input->isLeftStickDown())
         scoreScreen.charDown();
 
-    if(input->isA() || input->isKey("KP_ENTER") || input->isKey("RETURN"))
+    if(input->isA())// || input->isKey("KP_ENTER") || input->isKey("RETURN"))
         scoreScreen.charInput();
-    else if(input->isB() || input->isKey("BACKSPACE"))
+    else if(input->isB())// || input->isKey("BACKSPACE"))
         scoreScreen.charDelete();
 
     //  Keyboard pass-through

@@ -98,10 +98,16 @@ void StateGameoverOrdered::userInput()
         scoreScreen.charDown();
 
 
-    if(input->isA() || input->isKey("KP_ENTER") || input->isKey("RETURN"))
+    if(input->isA() )//|| input->isKey("KP_ENTER") || input->isKey("RETURN"))
+    {
         scoreScreen.charInput();
-    else if(input->isB() || input->isKey("BACKSPACE"))
+        //input->resetKeys();
+    }
+    else if(input->isB())// || input->isKey("BACKSPACE"))
+    {
         scoreScreen.charDelete();
+        //input->resetKeys();
+    }
 
     //  Keyboard pass-through
     string t = input->isKeyLetter();
