@@ -39,7 +39,7 @@ void mgBaseState::buttonsOverlay(SDL_Surface* screen)
         buttonSheet.setCurrentFrame(18); // L
         buttonSheet.render(screen);
         buttonSheet.setPosition(exitSprite.getX()-buttonSheet.getWidth(),exitSprite.getY());
-        buttonSheet.setCurrentFrame(12); // X
+        buttonSheet.setCurrentFrame(13); // X
         buttonSheet.render(screen);
         exitSprite.render(screen);
 
@@ -47,7 +47,7 @@ void mgBaseState::buttonsOverlay(SDL_Surface* screen)
         buttonSheet.setCurrentFrame(18); // L
         buttonSheet.render(screen);
         buttonSheet.setPosition(titleSprite.getX()-buttonSheet.getWidth(),titleSprite.getY());
-        buttonSheet.setCurrentFrame(13); // X
+        buttonSheet.setCurrentFrame(12); // X
         buttonSheet.render(screen);
         titleSprite.render(screen);
     }
