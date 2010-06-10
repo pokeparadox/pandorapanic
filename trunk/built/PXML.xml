@@ -2,11 +2,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PXML xmlns="http://openpandora.org/namespaces/PXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PXML_schema.xsd">
 <application id="ppanic101">
-  <title lang="en_US">Pandora Panic!</title>          
+  <title lang="en_US">PandoraPanic!</title>          
   <exec command="PandoraPanic_R"/>
   <icon src="./images/ppicon.png"/> 
-  <description lang="en_US">Pandora Panic! A frantic, frenetic and occasionally mind bending minigame collection created for Pandora by the GP32X community.</description>
-  <description lang="nl_NL"> Pandora Panic! Een panische minigame collectie voor de pandora door leden van het GP32X Forum</description>
+  <description lang="en_US">PandoraPanic! A frantic, frenetic and occasionally mind bending minigame collection created for Pandora by the GP32X community.</description>
+  <description lang="nl_NL"> PandoraPanic! Een panische minigame collectie voor de pandora door leden van het GP32X Forum</description>
   <previewpics>
    <pic src="./preview/PanicPreview1.png"/>
    <pic src="./preview/PanicPreview2.png"/>
@@ -15,10 +15,10 @@
    <pic src="./preview/PanicPreview5.png"/>
    <pic src="./preview/PanicPreview6.png"/>
   </previewpics>
-  <info name="Pandora Panic! Manual" type="txt/html" src="index.html"/>
+  <info name="PandoraPanic! Manual" type="txt/html" src="index.html"/>
   <author  name="Minigames: the GP32X Community, Framework: PokeParadox and Pirate Games" website="http://projectinfinity.org.uk/doku.php?id=homebrew:games:pandorapanic"/><!--Optional email and website, name required-->
  
-  <version major="1" minor="0" release="1" build="1"/><!--This programs version-->
+  <version major="1" minor="0" release="1" build="3"/><!--This programs version-->
   <categories>
     <category name="Game"><!--category like "Games", "Graphics", "Internet" etc-->
     <subcategory name="ArcadeGame"/><!--subcategory, like "Board Games", "Strategy", "First Person Shooters"-->
