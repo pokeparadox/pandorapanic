@@ -25,7 +25,7 @@ void StateTestSight::init()
     phase = gpInit; // phase of the game
     correctCup = rand()%5; // the correct cup - duh
     numShuffles = 0; // nummber of swaps already done
-    selection = 0; // the current selected cup (in answer phase)
+    selection = 2; // the current selected cup (in answer phase)
 
     // graphic
     GFX::setClearColour(WHITE);
