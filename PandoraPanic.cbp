@@ -6,14 +6,14 @@
 		<Option pch_mode="2" />
 		<Option default_target="Lin Release" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="MyGame/;MyGame/States/;PenjinBase/;PenjinBase/Sprite/;PenjinBase/Particle/;PenjinBase/Menu/;PenjinBase/PlatformSpecific/;PenjinBase/PlatformSpecific/GP2X/;PenjinBase/PlatformSpecific/Wii/;MyGame/States/MiniGames/;MyGame/States/MiniGames/StatePunchWrestler/;PenjinBase/PlatformSpecific/Pandora/;PenjinBase/Input/;PenjinBase/Scoring/;MyGame/States/MiniGames/StateRocketEscape/;PenjinBase/Input/KeyMapper/;MyGame/States/MiniGames/StatePanJoust/;PenjinBase/Draw/;PenjinBase/Particle/Collidables/;PenjinBase/Particle/Effects/;PenjinBase/Sound/;PenjinBase/Particle/Particles/;PenjinBase/Menu/MenuItems/;PenjinBase/Draw/Primitives/;PenjinBase/Physics/;MyGame/States/MiniGames/StateSegWay/;PenjinBase/Draw/3D/;PenjinBase/Physics/Vectors/old/;PenjinBase/Physics/Vectors/;PenjinBase/Physics/Vectors/Trenki/;MyGame/States/MiniGames/StateArena/;PenjinBase/Text/;PenjinBase/Achievements/;PenjinBase/Timers/;" />
+		<Option virtualFolders="MyGame\;MyGame\States\;PenjinBase\;PenjinBase\Sprite\;PenjinBase\Particle\;PenjinBase\Menu\;PenjinBase\PlatformSpecific\;PenjinBase\PlatformSpecific\GP2X\;PenjinBase\PlatformSpecific\Wii\;MyGame\States\MiniGames\;MyGame\States\MiniGames\StatePunchWrestler\;PenjinBase\PlatformSpecific\Pandora\;PenjinBase\Input\;PenjinBase\Scoring\;MyGame\States\MiniGames\StateRocketEscape\;PenjinBase\Input\KeyMapper\;MyGame\States\MiniGames\StatePanJoust\;PenjinBase\Draw\;PenjinBase\Particle\Collidables\;PenjinBase\Particle\Effects\;PenjinBase\Sound\;PenjinBase\Particle\Particles\;PenjinBase\Menu\MenuItems\;PenjinBase\Draw\Primitives\;PenjinBase\Physics\;MyGame\States\MiniGames\StateSegWay\;PenjinBase\Draw\3D\;PenjinBase\Physics\Vectors\old\;PenjinBase\Physics\Vectors\;PenjinBase\Physics\Vectors\Trenki\;MyGame\States\MiniGames\StateArena\;PenjinBase\Text\;PenjinBase\Achievements\;PenjinBase\Timers\;" />
 		<Build>
 			<Target title="W32 Debug">
-				<Option output="bin/W32/PandoraPanic_D" prefix_auto="1" extension_auto="1" />
+				<Option output="bin\W32\PandoraPanic_D" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="built" />
-				<Option object_output="obj/W32/Debug/" />
+				<Option object_output="obj\W32\Debug\" />
 				<Option type="1" />
-				<Option compiler="mingw" />
+				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 					<Add option="`sdl-config --cflags`" />
@@ -36,11 +36,11 @@
 				</Linker>
 			</Target>
 			<Target title="W32 Release">
-				<Option output="bin/W32/PandoraPanic_R" prefix_auto="1" extension_auto="1" />
+				<Option output="bin\W32\PandoraPanic_R" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="built" />
-				<Option object_output="obj/W32/Release/" />
+				<Option object_output="obj\W32\Release\" />
 				<Option type="0" />
-				<Option compiler="mingw" />
+				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="`sdl-config --cflags`" />
@@ -63,11 +63,11 @@
 				</Linker>
 			</Target>
 			<Target title="Lin Debug">
-				<Option output="bin/Linux/PandoraPanic_D" prefix_auto="1" extension_auto="0" />
+				<Option output="bin\Linux\PandoraPanic_D" prefix_auto="1" extension_auto="0" />
 				<Option working_dir="built" />
-				<Option object_output="obj/lin/Debug/" />
+				<Option object_output="obj\lin\Debug\" />
 				<Option type="1" />
-				<Option compiler="linux" />
+				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 					<Add option="`sdl-config --cflags`" />
@@ -88,9 +88,9 @@
 				</Linker>
 			</Target>
 			<Target title="Lin Release">
-				<Option output="bin/Linux/PandoraPanic_R" prefix_auto="1" extension_auto="0" />
+				<Option output="bin\Linux\PandoraPanic_R" prefix_auto="1" extension_auto="0" />
 				<Option working_dir="built" />
-				<Option object_output="obj/lin/Release/" />
+				<Option object_output="obj\lin\Release\" />
 				<Option type="0" />
 				<Option compiler="linux" />
 				<Compiler>
@@ -114,9 +114,9 @@
 				</Linker>
 			</Target>
 			<Target title="Pandora Debug">
-				<Option output="bin/Pandora/PandoraPanic_D" prefix_auto="1" extension_auto="0" />
+				<Option output="bin\Pandora\PandoraPanic_D" prefix_auto="1" extension_auto="0" />
 				<Option working_dir="built" />
-				<Option object_output="obj/Pandora/Debug/" />
+				<Option object_output="obj\Pandora\Debug\" />
 				<Option type="1" />
 				<Option compiler="pandora" />
 				<Option use_console_runner="0" />
@@ -150,9 +150,9 @@
 				</Linker>
 			</Target>
 			<Target title="Pandora Release">
-				<Option output="bin/Pandora/PandoraPanic_R" prefix_auto="1" extension_auto="0" />
+				<Option output="bin\Pandora\PandoraPanic_R" prefix_auto="1" extension_auto="0" />
 				<Option working_dir="built" />
-				<Option object_output="obj/Pandora/Release/" />
+				<Option object_output="obj\Pandora\Release\" />
 				<Option type="0" />
 				<Option compiler="pandora" />
 				<Compiler>
@@ -186,9 +186,9 @@
 				</Linker>
 			</Target>
 			<Target title="LinGL Debug">
-				<Option output="bin/Linux/PandoraPanicGL_R" prefix_auto="1" extension_auto="0" />
+				<Option output="bin\Linux\PandoraPanicGL_R" prefix_auto="1" extension_auto="0" />
 				<Option working_dir="built" />
-				<Option object_output="obj/lin/DebugGL/" />
+				<Option object_output="obj\lin\DebugGL\" />
 				<Option type="1" />
 				<Option compiler="linux" />
 				<Compiler>
@@ -209,9 +209,9 @@
 				</Linker>
 			</Target>
 			<Target title="GP2X Debug">
-				<Option output="bin/GP2X/PandoraPanic_D" prefix_auto="1" extension_auto="0" />
+				<Option output="bin\GP2X\PandoraPanic_D" prefix_auto="1" extension_auto="0" />
 				<Option working_dir="built" />
-				<Option object_output="obj/GP2X/Debug/" />
+				<Option object_output="obj\GP2X\Debug\" />
 				<Option type="1" />
 				<Option compiler="gp2x" />
 				<Option use_console_runner="0" />
@@ -239,9 +239,9 @@
 				</Linker>
 			</Target>
 			<Target title="GP2X Release">
-				<Option output="bin/GP2X/PandoraPanic_R" prefix_auto="1" extension_auto="0" />
+				<Option output="bin\GP2X\PandoraPanic_R" prefix_auto="1" extension_auto="0" />
 				<Option working_dir="built" />
-				<Option object_output="obj/GP2X/Release/" />
+				<Option object_output="obj\GP2X\Release\" />
 				<Option type="0" />
 				<Option compiler="gp2x" />
 				<Compiler>
@@ -272,848 +272,879 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-DUSE_ACHIEVEMENTS" />
-			<Add directory="../PenjinBase" />
-			<Add directory="./" />
+			<Add directory="..\PenjinBase" />
+			<Add directory=".\" />
 		</Compiler>
-		<Unit filename="AchievementWinAll.cpp" />
-		<Unit filename="AchievementWinAll.h" />
-		<Unit filename="Arena/ArenaEffect.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="AchievementWinAll.cpp">
+			<Option virtualFolder="MyGame\" />
 		</Unit>
-		<Unit filename="Arena/ArenaEffect.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="AchievementWinAll.h">
+			<Option virtualFolder="MyGame\" />
 		</Unit>
-		<Unit filename="Arena/ArenaEffectSystem.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaEffect.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaEffectSystem.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaEffect.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaEnvironment.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaEffectSystem.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaEnvironment.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaEffectSystem.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaHero.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaEnvironment.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaHero.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaEnvironment.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaMonster.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaHero.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaMonster.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaHero.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaMonsterList.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaMonster.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="Arena/ArenaMonsterList.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateArena/" />
+		<Unit filename="Arena\ArenaMonster.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
 		</Unit>
-		<Unit filename="ButtonPrompter.cpp" />
-		<Unit filename="ButtonPrompter.h" />
+		<Unit filename="Arena\ArenaMonsterList.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
+		</Unit>
+		<Unit filename="Arena\ArenaMonsterList.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateArena\" />
+		</Unit>
+		<Unit filename="ButtonPrompter.cpp">
+			<Option virtualFolder="MyGame\" />
+		</Unit>
+		<Unit filename="ButtonPrompter.h">
+			<Option virtualFolder="MyGame\" />
+		</Unit>
 		<Unit filename="MiniGameStates.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="MiniGames.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="MyGame.cpp">
-			<Option virtualFolder="MyGame/" />
+			<Option virtualFolder="MyGame\" />
 		</Unit>
 		<Unit filename="MyGame.h">
-			<Option virtualFolder="MyGame/" />
+			<Option virtualFolder="MyGame\" />
 		</Unit>
-		<Unit filename="PanJoust/HeroBird.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePanJoust/" />
+		<Unit filename="PanJoust\HeroBird.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePanJoust\" />
 		</Unit>
-		<Unit filename="PanJoust/HeroBird.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePanJoust/" />
+		<Unit filename="PanJoust\HeroBird.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePanJoust\" />
 		</Unit>
-		<Unit filename="RocketEscape/Collectible.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateRocketEscape/" />
+		<Unit filename="RocketEscape\Collectible.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateRocketEscape\" />
 		</Unit>
-		<Unit filename="RocketEscape/Collectible.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateRocketEscape/" />
+		<Unit filename="RocketEscape\Collectible.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateRocketEscape\" />
 		</Unit>
-		<Unit filename="RocketEscape/LandingPad.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateRocketEscape/" />
+		<Unit filename="RocketEscape\LandingPad.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateRocketEscape\" />
 		</Unit>
-		<Unit filename="RocketEscape/LandingPad.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateRocketEscape/" />
+		<Unit filename="RocketEscape\LandingPad.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateRocketEscape\" />
 		</Unit>
-		<Unit filename="RocketEscape/Rocket.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StateRocketEscape/" />
+		<Unit filename="RocketEscape\Rocket.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StateRocketEscape\" />
 		</Unit>
-		<Unit filename="RocketEscape/Rocket.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateRocketEscape/" />
+		<Unit filename="RocketEscape\Rocket.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StateRocketEscape\" />
 		</Unit>
 		<Unit filename="SegWay.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option virtualFolder="MyGame/States/MiniGames/StateSegWay/" />
+			<Option virtualFolder="MyGame\States\MiniGames\StateSegWay\" />
 		</Unit>
 		<Unit filename="SegWay.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StateSegWay/" />
+			<Option virtualFolder="MyGame\States\MiniGames\StateSegWay\" />
 		</Unit>
 		<Unit filename="StateAchievements.cpp">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateAchievements.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateArena.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateArena.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateBadVista.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateBadVista.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateBallDrop.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateBallDrop.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateCake.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateCake.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateCredits.cpp">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateCredits.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
-		<Unit filename="StateDarkTreasure.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="StateDarkTreasure.h" />
 		<Unit filename="StateDistractedMath.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateDistractedMath.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateDoubleNubTrouble.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateDoubleNubTrouble.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateFire.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateFire.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateGameover.cpp">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateGameover.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateGameoverOrdered.cpp">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateGameoverOrdered.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateJumper.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateJumper.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateMain.cpp">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateMain.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateMaze.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateMaze.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateMemoryBlocks.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateMemoryBlocks.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateOneButtonBandit.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateOneButtonBandit.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePanJoust.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePanJoust.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePang.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePang.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePanicAttack.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePanicAttack.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePanicAttackButtonsEvents.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePanicAttackButtonsEvents.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePlander.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePlander.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePong.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePong.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePunchWrestler.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePunchWrestler.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePuttPutt.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StatePuttPutt.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateReflex.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateReflex.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateRotDef.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateRotDef.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateSnatchABeer.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateSnatchABeer.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateSpaceInvaders.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateSpaceInvaders.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateSpellingContest.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateSpellingContest.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
-		<Unit filename="StateTestSight.cpp" />
-		<Unit filename="StateTestSight.h" />
+		<Unit filename="StateTestSight.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\" />
+		</Unit>
+		<Unit filename="StateTestSight.h">
+			<Option virtualFolder="MyGame\States\MiniGames\" />
+		</Unit>
 		<Unit filename="StateTheCountJob.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateTheCountJob.h">
-			<Option virtualFolder="MyGame/States/MiniGames/" />
+			<Option virtualFolder="MyGame\States\MiniGames\" />
 		</Unit>
 		<Unit filename="StateTileEditor.cpp">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateTileEditor.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateTitle.cpp">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="StateTitle.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="_main.cpp">
-			<Option virtualFolder="MyGame/" />
+			<Option virtualFolder="MyGame\" />
 		</Unit>
-		<Unit filename="mgBaseState.cpp" />
-		<Unit filename="mgBaseState.h" />
-		<Unit filename="trabitboy/activeGameSubState.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="mgBaseState.cpp">
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
-		<Unit filename="trabitboy/agroState.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="mgBaseState.h">
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
-		<Unit filename="trabitboy/agroState.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="trabitboy\activeGameSubState.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
 		</Unit>
-		<Unit filename="trabitboy/loseState.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="trabitboy\agroState.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
 		</Unit>
-		<Unit filename="trabitboy/loseState.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="trabitboy\agroState.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
 		</Unit>
-		<Unit filename="trabitboy/punchState.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="trabitboy\loseState.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
 		</Unit>
-		<Unit filename="trabitboy/punchState.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="trabitboy\loseState.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
 		</Unit>
-		<Unit filename="trabitboy/winState.cpp">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="trabitboy\punchState.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
 		</Unit>
-		<Unit filename="trabitboy/winState.h">
-			<Option virtualFolder="MyGame/States/MiniGames/StatePunchWrestler/" />
+		<Unit filename="trabitboy\punchState.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
+		</Unit>
+		<Unit filename="trabitboy\winState.cpp">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
+		</Unit>
+		<Unit filename="trabitboy\winState.h">
+			<Option virtualFolder="MyGame\States\MiniGames\StatePunchWrestler\" />
 		</Unit>
 		<Unit filename="userStates.h">
-			<Option virtualFolder="MyGame/States/" />
+			<Option virtualFolder="MyGame\States\" />
 		</Unit>
 		<Unit filename="version.h">
-			<Option virtualFolder="MyGame/" />
+			<Option virtualFolder="MyGame\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Achievement.cpp">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\Achievement.cpp">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Achievement.h">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\Achievement.h">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementBoolean.cpp">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementBoolean.cpp">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementBoolean.h">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementBoolean.h">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementCount.cpp">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementCount.cpp">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementCount.h">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementCount.h">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementList.cpp" />
-		<Unit filename="../PenjinBase/AchievementList.h" />
-		<Unit filename="../PenjinBase/AchievementReset.cpp">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementList.cpp">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementReset.h">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementList.h">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementSystem.cpp">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementReset.cpp">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AchievementSystem.h">
-			<Option virtualFolder="PenjinBase/Achievements/" />
+		<Unit filename="..\PenjinBase\AchievementReset.h">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimatedParticle.cpp">
-			<Option virtualFolder="PenjinBase/Particle/Particles/" />
+		<Unit filename="..\PenjinBase\AchievementSystem.cpp">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimatedParticle.h">
-			<Option virtualFolder="PenjinBase/Particle/Particles/" />
+		<Unit filename="..\PenjinBase\AchievementSystem.h">
+			<Option virtualFolder="PenjinBase\Achievements\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimatedSprite.cpp">
-			<Option virtualFolder="PenjinBase/Sprite/" />
+		<Unit filename="..\PenjinBase\AnimatedParticle.cpp">
+			<Option virtualFolder="PenjinBase\Particle\Particles\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimatedSprite.h">
-			<Option virtualFolder="PenjinBase/Sprite/" />
+		<Unit filename="..\PenjinBase\AnimatedParticle.h">
+			<Option virtualFolder="PenjinBase\Particle\Particles\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Animation.cpp">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\AnimatedSprite.cpp">
+			<Option virtualFolder="PenjinBase\Sprite\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Animation.h">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\AnimatedSprite.h">
+			<Option virtualFolder="PenjinBase\Sprite\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimationMenuItem.cpp">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\Animation.cpp">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimationMenuItem.h">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\Animation.h">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimationStringMenuItem.cpp">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\AnimationMenuItem.cpp">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/AnimationStringMenuItem.h">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\AnimationMenuItem.h">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/BackBuffer.cpp">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\AnimationStringMenuItem.cpp">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/BackBuffer.h">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\AnimationStringMenuItem.h">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Background.cpp">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\BackBuffer.cpp">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Background.h">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\BackBuffer.h">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/BaseState.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Background.cpp">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/BaseState.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Background.h">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/CollisionMap.cpp">
-			<Option virtualFolder="PenjinBase/Physics/" />
+		<Unit filename="..\PenjinBase\BaseState.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/CollisionMap.h">
-			<Option virtualFolder="PenjinBase/Physics/" />
+		<Unit filename="..\PenjinBase\BaseState.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Colour.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\CollisionMap.cpp">
+			<Option virtualFolder="PenjinBase\Physics\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Colour.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\CollisionMap.h">
+			<Option virtualFolder="PenjinBase\Physics\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Command.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Colour.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Command.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Colour.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/CountDown.cpp">
-			<Option virtualFolder="PenjinBase/Timers/" />
+		<Unit filename="..\PenjinBase\Command.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/CountDown.h">
-			<Option virtualFolder="PenjinBase/Timers/" />
+		<Unit filename="..\PenjinBase\Command.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/DirMenuItem.cpp" />
-		<Unit filename="../PenjinBase/DirMenuItem.h" />
-		<Unit filename="../PenjinBase/DoubleVector.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\CountDown.cpp">
+			<Option virtualFolder="PenjinBase\Timers\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Emitter.cpp">
-			<Option virtualFolder="PenjinBase/Particle/" />
+		<Unit filename="..\PenjinBase\CountDown.h">
+			<Option virtualFolder="PenjinBase\Timers\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Emitter.h">
-			<Option virtualFolder="PenjinBase/Particle/" />
+		<Unit filename="..\PenjinBase\DirMenuItem.cpp">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Encryption.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\DirMenuItem.h">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Encryption.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\DoubleVector.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Engine.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Emitter.cpp">
+			<Option virtualFolder="PenjinBase\Particle\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Engine.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Emitter.h">
+			<Option virtualFolder="PenjinBase\Particle\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ErrorHandler.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Encryption.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Event.cpp" />
-		<Unit filename="../PenjinBase/Event.h" />
-		<Unit filename="../PenjinBase/FileLister.cpp" />
-		<Unit filename="../PenjinBase/FileLister.h" />
-		<Unit filename="../PenjinBase/GFX.cpp">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\Encryption.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/GFX.h">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\Engine.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Glyph.cpp">
-			<Option virtualFolder="PenjinBase/Text/" />
+		<Unit filename="..\PenjinBase\Engine.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Glyph.h">
-			<Option virtualFolder="PenjinBase/Text/" />
+		<Unit filename="..\PenjinBase\ErrorHandler.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/HiScore.cpp">
-			<Option virtualFolder="PenjinBase/Scoring/" />
+		<Unit filename="..\PenjinBase\Event.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/HiScore.h">
-			<Option virtualFolder="PenjinBase/Scoring/" />
+		<Unit filename="..\PenjinBase\Event.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/HitRegion.cpp">
-			<Option virtualFolder="PenjinBase/Physics/" />
+		<Unit filename="..\PenjinBase\FileLister.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/HitRegion.h">
-			<Option virtualFolder="PenjinBase/Physics/" />
+		<Unit filename="..\PenjinBase\FileLister.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Image.cpp">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\GFX.cpp">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Image.h">
-			<Option virtualFolder="PenjinBase/Draw/" />
+		<Unit filename="..\PenjinBase\GFX.h">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ImageMenuItem.cpp">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\Glyph.cpp">
+			<Option virtualFolder="PenjinBase\Text\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ImageMenuItem.h">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\Glyph.h">
+			<Option virtualFolder="PenjinBase\Text\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ImageStringMenuItem.cpp">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\HiScore.cpp">
+			<Option virtualFolder="PenjinBase\Scoring\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ImageStringMenuItem.h">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\HiScore.h">
+			<Option virtualFolder="PenjinBase\Scoring\" />
 		</Unit>
-		<Unit filename="../PenjinBase/IntVector2d.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/old/" />
+		<Unit filename="..\PenjinBase\HitRegion.cpp">
+			<Option virtualFolder="PenjinBase\Physics\" />
 		</Unit>
-		<Unit filename="../PenjinBase/IntVector2d.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/old/" />
+		<Unit filename="..\PenjinBase\HitRegion.h">
+			<Option virtualFolder="PenjinBase\Physics\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMap.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\Image.cpp">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMap.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\Image.h">
+			<Option virtualFolder="PenjinBase\Draw\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapDigitalJoyAxis.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\ImageMenuItem.cpp">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapDigitalJoyAxis.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\ImageMenuItem.h">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapHat.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\ImageStringMenuItem.cpp">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapHat.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\ImageStringMenuItem.h">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapJoyAxis.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\IntVector2d.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\old\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapJoyAxis.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\IntVector2d.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\old\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapJoyButton.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMap.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapJoyButton.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMap.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapMouseAxis.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapDigitalJoyAxis.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapMouseAxis.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapDigitalJoyAxis.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapMouseButton.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapHat.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapMouseButton.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapHat.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapSDLKey.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapJoyAxis.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapSDLKey.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapJoyAxis.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapper.cpp">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapJoyButton.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyMapper.h">
-			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
+		<Unit filename="..\PenjinBase\KeyMapJoyButton.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/KeyWord.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\KeyMapKey.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/LUT.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\KeyMapKey.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/LUT.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\KeyMapMouseAxis.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Line.cpp">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
+		<Unit filename="..\PenjinBase\KeyMapMouseAxis.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Line.h">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
+		<Unit filename="..\PenjinBase\KeyMapMouseButton.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/MMUHack.cpp">
-			<Option virtualFolder="PenjinBase/PlatformSpecific/GP2X/" />
+		<Unit filename="..\PenjinBase\KeyMapMouseButton.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/MMUHack.h">
-			<Option virtualFolder="PenjinBase/PlatformSpecific/GP2X/" />
+		<Unit filename="..\PenjinBase\KeyMapper.cpp">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Menu.cpp">
-			<Option virtualFolder="PenjinBase/Menu/" />
+		<Unit filename="..\PenjinBase\KeyMapper.h">
+			<Option virtualFolder="PenjinBase\Input\KeyMapper\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Menu.h">
-			<Option virtualFolder="PenjinBase/Menu/" />
+		<Unit filename="..\PenjinBase\KeyWord.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/MenuItem.cpp">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\LUT.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/MenuItem.h">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\LUT.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Music.cpp">
-			<Option virtualFolder="PenjinBase/Sound/" />
+		<Unit filename="..\PenjinBase\Line.cpp">
+			<Option virtualFolder="PenjinBase\Draw\Primitives\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Music.h">
-			<Option virtualFolder="PenjinBase/Sound/" />
+		<Unit filename="..\PenjinBase\Line.h">
+			<Option virtualFolder="PenjinBase\Draw\Primitives\" />
 		</Unit>
-		<Unit filename="../PenjinBase/NumberUtility.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\MMUHack.cpp">
+			<Option virtualFolder="PenjinBase\PlatformSpecific\GP2X\" />
 		</Unit>
-		<Unit filename="../PenjinBase/NumberUtility.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\MMUHack.h">
+			<Option virtualFolder="PenjinBase\PlatformSpecific\GP2X\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Parser.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Menu.cpp">
+			<Option virtualFolder="PenjinBase\Menu\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Parser.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Menu.h">
+			<Option virtualFolder="PenjinBase\Menu\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Particle.cpp">
-			<Option virtualFolder="PenjinBase/Particle/Particles/" />
+		<Unit filename="..\PenjinBase\MenuItem.cpp">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Particle.h">
-			<Option virtualFolder="PenjinBase/Particle/Particles/" />
+		<Unit filename="..\PenjinBase\MenuItem.h">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ParticleCollider.cpp">
-			<Option virtualFolder="PenjinBase/Particle/Collidables/" />
+		<Unit filename="..\PenjinBase\Music.cpp">
+			<Option virtualFolder="PenjinBase\Sound\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ParticleCollider.h">
-			<Option virtualFolder="PenjinBase/Particle/Collidables/" />
+		<Unit filename="..\PenjinBase\Music.h">
+			<Option virtualFolder="PenjinBase\Sound\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ParticleKiller.cpp">
-			<Option virtualFolder="PenjinBase/Particle/Collidables/" />
+		<Unit filename="..\PenjinBase\NumberUtility.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ParticleKiller.h">
-			<Option virtualFolder="PenjinBase/Particle/Collidables/" />
+		<Unit filename="..\PenjinBase\NumberUtility.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ParticleMirror.cpp">
-			<Option virtualFolder="PenjinBase/Particle/Collidables/" />
+		<Unit filename="..\PenjinBase\Parser.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ParticleMirror.h">
-			<Option virtualFolder="PenjinBase/Particle/Collidables/" />
+		<Unit filename="..\PenjinBase\Parser.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Penjin.cpp" />
-		<Unit filename="../PenjinBase/Penjin.h" />
-		<Unit filename="../PenjinBase/PenjinErrors.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Particle.cpp">
+			<Option virtualFolder="PenjinBase\Particle\Particles\" />
 		</Unit>
-		<Unit filename="../PenjinBase/PenjinFixedFunc.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Particle.h">
+			<Option virtualFolder="PenjinBase\Particle\Particles\" />
 		</Unit>
-		<Unit filename="../PenjinBase/PenjinFixedFunc.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\ParticleCollider.cpp">
+			<Option virtualFolder="PenjinBase\Particle\Collidables\" />
 		</Unit>
-		<Unit filename="../PenjinBase/PenjinIncludes.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\ParticleCollider.h">
+			<Option virtualFolder="PenjinBase\Particle\Collidables\" />
 		</Unit>
-		<Unit filename="../PenjinBase/PenjinStates.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\ParticleKiller.cpp">
+			<Option virtualFolder="PenjinBase\Particle\Collidables\" />
 		</Unit>
-		<Unit filename="../PenjinBase/PenjinTypes.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\ParticleKiller.h">
+			<Option virtualFolder="PenjinBase\Particle\Collidables\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Pixel.cpp">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
+		<Unit filename="..\PenjinBase\ParticleMirror.cpp">
+			<Option virtualFolder="PenjinBase\Particle\Collidables\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Pixel.h">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
+		<Unit filename="..\PenjinBase\ParticleMirror.h">
+			<Option virtualFolder="PenjinBase\Particle\Collidables\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Random.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Penjin.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Random.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Penjin.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Raycast.cpp">
+		<Unit filename="..\PenjinBase\PenjinErrors.h">
+			<Option virtualFolder="PenjinBase\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\PenjinFixedFunc.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\PenjinFixedFunc.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\PenjinIncludes.h">
+			<Option virtualFolder="PenjinBase\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\PenjinStates.h">
+			<Option virtualFolder="PenjinBase\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\PenjinTypes.h">
+			<Option virtualFolder="PenjinBase\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\Pixel.cpp">
+			<Option virtualFolder="PenjinBase\Draw\Primitives\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\Pixel.h">
+			<Option virtualFolder="PenjinBase\Draw\Primitives\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\Random.cpp">
+			<Option virtualFolder="PenjinBase\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\Random.h">
+			<Option virtualFolder="PenjinBase\" />
+		</Unit>
+		<Unit filename="..\PenjinBase\Raycast.cpp">
 			<Option compile="0" />
 			<Option link="0" />
-			<Option virtualFolder="PenjinBase/" />
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Raycast.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Raycast.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Rectangle.cpp">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
+		<Unit filename="..\PenjinBase\Rectangle.cpp">
+			<Option virtualFolder="PenjinBase\Draw\Primitives\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Rectangle.h">
-			<Option virtualFolder="PenjinBase/Draw/Primitives/" />
+		<Unit filename="..\PenjinBase\Rectangle.h">
+			<Option virtualFolder="PenjinBase\Draw\Primitives\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Score.cpp">
-			<Option virtualFolder="PenjinBase/Scoring/" />
+		<Unit filename="..\PenjinBase\Score.cpp">
+			<Option virtualFolder="PenjinBase\Scoring\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Score.h">
-			<Option virtualFolder="PenjinBase/Scoring/" />
+		<Unit filename="..\PenjinBase\Score.h">
+			<Option virtualFolder="PenjinBase\Scoring\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ScoreScreen.cpp">
-			<Option virtualFolder="PenjinBase/Scoring/" />
+		<Unit filename="..\PenjinBase\ScoreScreen.cpp">
+			<Option virtualFolder="PenjinBase\Scoring\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ScoreScreen.h">
-			<Option virtualFolder="PenjinBase/Scoring/" />
+		<Unit filename="..\PenjinBase\ScoreScreen.h">
+			<Option virtualFolder="PenjinBase\Scoring\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ScreenPartition.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\ScreenPartition.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/ScreenPartition.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\ScreenPartition.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/SimpleJoy.cpp">
-			<Option virtualFolder="PenjinBase/Input/" />
+		<Unit filename="..\PenjinBase\SimpleJoy.cpp">
+			<Option virtualFolder="PenjinBase\Input\" />
 		</Unit>
-		<Unit filename="../PenjinBase/SimpleJoy.h">
-			<Option virtualFolder="PenjinBase/Input/" />
+		<Unit filename="..\PenjinBase\SimpleJoy.h">
+			<Option virtualFolder="PenjinBase\Input\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Sound.cpp">
-			<Option virtualFolder="PenjinBase/Sound/" />
+		<Unit filename="..\PenjinBase\Sound.cpp">
+			<Option virtualFolder="PenjinBase\Sound\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Sound.h">
-			<Option virtualFolder="PenjinBase/Sound/" />
+		<Unit filename="..\PenjinBase\Sound.h">
+			<Option virtualFolder="PenjinBase\Sound\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Sprite.cpp">
-			<Option virtualFolder="PenjinBase/Sprite/" />
+		<Unit filename="..\PenjinBase\Sprite.cpp">
+			<Option virtualFolder="PenjinBase\Sprite\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Sprite.h">
-			<Option virtualFolder="PenjinBase/Sprite/" />
+		<Unit filename="..\PenjinBase\Sprite.h">
+			<Option virtualFolder="PenjinBase\Sprite\" />
 		</Unit>
-		<Unit filename="../PenjinBase/SpriteParticle.cpp">
-			<Option virtualFolder="PenjinBase/Particle/Particles/" />
+		<Unit filename="..\PenjinBase\SpriteParticle.cpp">
+			<Option virtualFolder="PenjinBase\Particle\Particles\" />
 		</Unit>
-		<Unit filename="../PenjinBase/SpriteParticle.h">
-			<Option virtualFolder="PenjinBase/Particle/Particles/" />
+		<Unit filename="..\PenjinBase\SpriteParticle.h">
+			<Option virtualFolder="PenjinBase\Particle\Particles\" />
 		</Unit>
-		<Unit filename="../PenjinBase/StarField.cpp">
-			<Option virtualFolder="PenjinBase/Particle/Effects/" />
+		<Unit filename="..\PenjinBase\StarField.cpp">
+			<Option virtualFolder="PenjinBase\Particle\Effects\" />
 		</Unit>
-		<Unit filename="../PenjinBase/StarField.h">
-			<Option virtualFolder="PenjinBase/Particle/Effects/" />
+		<Unit filename="..\PenjinBase\StarField.h">
+			<Option virtualFolder="PenjinBase\Particle\Effects\" />
 		</Unit>
-		<Unit filename="../PenjinBase/StringMenuItem.cpp">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\StringMenuItem.cpp">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/StringMenuItem.h">
-			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
+		<Unit filename="..\PenjinBase\StringMenuItem.h">
+			<Option virtualFolder="PenjinBase\Menu\MenuItems\" />
 		</Unit>
-		<Unit filename="../PenjinBase/StringUtility.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\StringUtility.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/StringUtility.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\StringUtility.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Text.cpp">
-			<Option virtualFolder="PenjinBase/Text/" />
+		<Unit filename="..\PenjinBase\Text.cpp">
+			<Option virtualFolder="PenjinBase\Text\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Text.h">
-			<Option virtualFolder="PenjinBase/Text/" />
+		<Unit filename="..\PenjinBase\Text.h">
+			<Option virtualFolder="PenjinBase\Text\" />
 		</Unit>
-		<Unit filename="../PenjinBase/TextDoc.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\TextDoc.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/TextDoc.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\TextDoc.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Texture.cpp">
-			<Option virtualFolder="PenjinBase/Draw/3D/" />
+		<Unit filename="..\PenjinBase\Texture.cpp">
+			<Option virtualFolder="PenjinBase\Draw\3D\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Texture.h">
-			<Option virtualFolder="PenjinBase/Draw/3D/" />
+		<Unit filename="..\PenjinBase\Texture.h">
+			<Option virtualFolder="PenjinBase\Draw\3D\" />
 		</Unit>
-		<Unit filename="../PenjinBase/TileMap.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\TileMap.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/TileMap.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\TileMap.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Timer.cpp">
-			<Option virtualFolder="PenjinBase/Timers/" />
+		<Unit filename="..\PenjinBase\Timer.cpp">
+			<Option virtualFolder="PenjinBase\Timers\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Timer.h">
-			<Option virtualFolder="PenjinBase/Timers/" />
+		<Unit filename="..\PenjinBase\Timer.h">
+			<Option virtualFolder="PenjinBase\Timers\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Variable.cpp">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Variable.cpp">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Variable.h">
-			<Option virtualFolder="PenjinBase/" />
+		<Unit filename="..\PenjinBase\Variable.h">
+			<Option virtualFolder="PenjinBase\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector2df.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector2df.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector2df.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector2df.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector2di.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector2di.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector2di.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector2di.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector2dx.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector2dx.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector2dx.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector2dx.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3d.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/old/" />
+		<Unit filename="..\PenjinBase\Vector3d.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\old\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3d.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/old/" />
+		<Unit filename="..\PenjinBase\Vector3d.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\old\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3df.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector3df.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3df.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector3df.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3di.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector3di.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3di.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector3di.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3dx.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector3dx.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/Vector3dx.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/" />
+		<Unit filename="..\PenjinBase\Vector3dx.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\" />
 		</Unit>
-		<Unit filename="../PenjinBase/WiiJoy.cpp">
-			<Option virtualFolder="PenjinBase/PlatformSpecific/Wii/" />
+		<Unit filename="..\PenjinBase\WiiJoy.cpp">
+			<Option virtualFolder="PenjinBase\PlatformSpecific\Wii\" />
 		</Unit>
-		<Unit filename="../PenjinBase/WiiJoy.h">
-			<Option virtualFolder="PenjinBase/PlatformSpecific/Wii/" />
+		<Unit filename="..\PenjinBase\WiiJoy.h">
+			<Option virtualFolder="PenjinBase\PlatformSpecific\Wii\" />
 		</Unit>
-		<Unit filename="../PenjinBase/mmuhack/flush_uppermem_cache.s">
+		<Unit filename="..\PenjinBase\mmuhack\flush_uppermem_cache.s">
 			<Option target="GP2X Debug" />
 			<Option target="GP2X Release" />
 		</Unit>
-		<Unit filename="../PenjinBase/trenki/fixed_class.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/Trenki/" />
+		<Unit filename="..\PenjinBase\trenki\fixed_class.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\Trenki\" />
 		</Unit>
-		<Unit filename="../PenjinBase/trenki/fixed_func.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/Trenki/" />
+		<Unit filename="..\PenjinBase\trenki\fixed_func.cpp">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\Trenki\" />
 		</Unit>
-		<Unit filename="../PenjinBase/trenki/fixed_func.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/Trenki/" />
+		<Unit filename="..\PenjinBase\trenki\fixed_func.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\Trenki\" />
 		</Unit>
-		<Unit filename="../PenjinBase/trenki/vector_math.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/Trenki/" />
+		<Unit filename="..\PenjinBase\trenki\vector_math.h">
+			<Option virtualFolder="PenjinBase\Physics\Vectors\Trenki\" />
 		</Unit>
 		<Extensions>
 			<envvars />
