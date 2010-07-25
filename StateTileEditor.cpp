@@ -1,4 +1,8 @@
 #include "StateTileEditor.h"
+#include "StringUtility.h"
+
+using namespace StringUtility;
+
 StateTileEditor::StateTileEditor()
 {
 

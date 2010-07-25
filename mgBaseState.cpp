@@ -32,7 +32,7 @@ void mgBaseState::buttonsOverlay(SDL_Surface* screen)
         buttonSheet.setPosition(muteSprite.getX()-buttonSheet.getWidth()-2,muteSprite.getY());
         buttonSheet.setCurrentFrame(19); // R
         buttonSheet.render(screen);
-        muteSprite.setCurrentFrame(mixer.getGlobalVolume() == 0);
+        muteSprite.setCurrentFrame(SoundClass::getGlobalVolume() == 0);
         muteSprite.render(screen);
 
         buttonSheet.setPosition(exitSprite.getX()-2*buttonSheet.getWidth(),exitSprite.getY());
@@ -56,16 +56,16 @@ void mgBaseState::buttonsOverlay(SDL_Surface* screen)
 void mgBaseState::muteToggle()
 {
     Music music;
-    if(mixer.getGlobalVolume() != 0)
+    if(SoundClass::getGlobalVolume() != 0)
     {
-        storedVolume = mixer.getGlobalVolume();
-        mixer.setGlobalVolume(0);
+        storedVolume = SoundClass::getGlobalVolume();
+        SoundClass::setGlobalVolume(0);
         music.setVolume(0);
         muteSprite.setCurrentFrame(1);
     }
     else
     {
-        mixer.setGlobalVolume(storedVolume);
+        SoundClass::setGlobalVolume(storedVolume);
         music.setVolume(storedVolume);
         muteSprite.setCurrentFrame(0);
     }

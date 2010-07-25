@@ -20,6 +20,7 @@ ArenaMonsterList::ArenaMonsterList()
     }
 
     m_sndDie.loadSound("sounds/Arena/EnemyDie.ogg");
+    m_sndDie.setSimultaneousPlay(true);
 }
 ArenaMonsterList::~ArenaMonsterList()
 {
