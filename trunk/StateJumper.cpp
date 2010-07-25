@@ -1,4 +1,8 @@
 #include "StateJumper.h"
+#include "StringUtility.h"
+
+using namespace StringUtility;
+
 StateJumper::StateJumper()
 {
 }

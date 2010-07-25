@@ -1,4 +1,8 @@
 #include "StateMaze.h"
+#include "StringUtility.h"
+
+using namespace StringUtility;
+
 StateMaze::StateMaze()
 {
 }
