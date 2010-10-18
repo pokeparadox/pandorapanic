@@ -38,7 +38,6 @@ void StateAchievements::init()
     buttonSheet.loadFrames("images/ButtonPrompter/ButtonsSheet.png",10,2);
     back.loadBackground("images/pp_bg.png");
     #ifdef PENJIN_SDL
-        back.setUseHardware(false);
         back.render(bgBuffer);
     #else
         back.render();

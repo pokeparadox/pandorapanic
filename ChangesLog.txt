@@ -1,3 +1,15 @@
+18 October 2010
+   released version 1.4.2401 of PandoraPanic
+
+     Change log:
+        -Cleaned: .useHardware(true) functions removed - now redundant
+
+18 October 2010
+   released version 1.4.2391 of PandoraPanic
+
+     Change log:
+        -Fixed: A and B buttons in Plander needed switching...
+
 02 December 2009
    released version 1.3.1789 of PandoraPanic
 

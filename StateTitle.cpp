@@ -58,9 +58,7 @@ void StateTitle::init()
     const string ext = ".png";
     emit.loadSprite(path+"pp_star"+ext);
     emit.shouldFadeColour(false);
-    #ifdef PENJIN_SDL
-        emit.setUseHardware(false);
-    #elif PENJIN_GL
+    #ifdef PENJIN_GL
         GFX::init2DRendering(*xRes,*yRes);
     #endif
     emit.setPosition(Vector2di(xRes*0.5f,yRes*0.5f));
@@ -72,7 +70,6 @@ void StateTitle::init()
 
     back.loadBackground(path+"pp_bg"+ext);
     #ifdef PENJIN_SDL
-        back.setUseHardware(false);
         SDL_Surface* t = SDL_GetVideoSurface();
         bgBuffer = SDL_CreateRGBSurface(t->flags,GFX::getXResolution(), GFX::getYResolution(), t->format->BitsPerPixel, 0, 0, 0, 0);
         GFX::clearScreen(bgBuffer);
@@ -140,9 +137,7 @@ void StateTitle::setupMainMenu()
     menu.setSpacing(spacing);
     menu.setHorizontalOffset(110);
     menu.setTextCenteringCorrection(-42);
-    #ifdef PENJIN_SDL
-        menu.setUseHardware(true);
-    #endif
+
     menu.addItem(MENU_IMAGE_STRING_ITEM);
     menu.setIsSelectable(true);
     menu.setMenuItemText("PandoraPanic!");

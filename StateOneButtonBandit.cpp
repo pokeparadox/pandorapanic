@@ -382,7 +382,6 @@ void StateOneButtonBandit::init() {
 
     // Load the background graphic
     background.loadBackground("images/OneButtonBandit/background.png");
-    background.setUseHardware(true);
     shading.loadImageNoKey("images/OneButtonBandit/shading.png");
 
     // Load the sound effects
