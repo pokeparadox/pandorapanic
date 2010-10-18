@@ -54,9 +54,7 @@ void StateMain::loadCommon()
     text.setPosition(15,20);
 
     back.loadBackground("images/pp_bg.png");
-    #ifdef PENJIN_SDL
-        back.setUseHardware(false);
-    #endif
+
     SDL_Surface* t = SDL_GetVideoSurface();
     bgBuffer = SDL_CreateRGBSurface(t->flags,GFX::getXResolution(), GFX::getYResolution(), t->format->BitsPerPixel, 0, 0, 0, 0);
     Random::setLimits(0,255);

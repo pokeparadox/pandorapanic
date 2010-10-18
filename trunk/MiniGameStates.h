@@ -75,6 +75,8 @@ You now just need to add your minigames here and it should work!
         state = new StatePuttPutt;
     else if (next == STATE_TESTSIGHT)
         state = new StateTestSight;
+    else if(next == STATE_HEADER)
+        state = new StateHeader;
 
 /*    else if (next == STATE_BARRELROLL)
         state = new StateBarrelRoll;*/

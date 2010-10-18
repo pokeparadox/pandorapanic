@@ -43,6 +43,7 @@ NOTE: Be sure to #include ALL state headers which correspond to these modes.
 #include "StateCake.h"
 #include "StatePlander.h"
 #include "StateTestSight.h"
+#include "StateHeader.h"
 
 #include "StateTileEditor.h"
 //#include "StateBarrelRoll.h"
@@ -79,6 +80,7 @@ enum STATE_MODES
     STATE_FIRE,
     STATE_CAKE,
     STATE_TESTSIGHT,
+    STATE_HEADER,
     //STATE_DARKTREASURE,
     //STATE_PEEPEESBIGADVENTURE,
 

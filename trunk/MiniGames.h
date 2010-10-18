@@ -4,7 +4,7 @@
 using std::string;
 enum
 {
-    MAX_GAMES = 24,              //  The number of minigames we have
+    MAX_GAMES = 25,              //  The number of minigames we have
     EXTRA_LIFE_STAGES = 10,      //  The number of stages we need to pass for an extra life to be added.
     SUBSTATE_TRIGGER = 9         //  A number that signifies that a state is being loaded within another state.
 };
@@ -35,6 +35,7 @@ enum MINIGAMES_LIST
     GAME_FIRE,
     GAME_CAKE,
     GAME_TESTSIGHT,
+    GAME_HEADER,
     //GAME_DARKTREASURE,
     //GAME_PEEPEESBIGADVENTURE,
     //GAME_BARRELROLL,
@@ -69,6 +70,7 @@ static string MINIGAMES_NAMES[]=
     "Fire",
     "Birthday Cake",
     "Test Your Sight",
+    "Header",
     //"Pee Pee's Big Adventure",
     //"Dark Treasure",
     //"Do A Barrel Roll!",

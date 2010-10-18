@@ -65,9 +65,7 @@ void StateGameoverOrdered::init()
     #endif
 
     back.loadBackground("images/pp_bg.png");
-    #ifdef PENJIN_SDL
-        back.setUseHardware(false);
-    #endif
+
     logo.loadSprite("images/pp_logo_large.png");
     logo.setPosition(Vector2di(GFX::getXResolution()*0.25f,GFX::getYResolution()/3));
     #ifdef PENJIN_SDL

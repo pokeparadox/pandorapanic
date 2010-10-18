@@ -391,9 +391,9 @@ void StatePlander::userInput()
         nullifyState();
 #endif
 
-    if(input->isLeft() || (input->isL() && !input->isR()) || input->isB())
+    if(input->isLeft() || (input->isL() && !input->isR()) || input->isA())
         rocket.rotateLeft();
-    else if(input->isRight() || (input->isR() && !input->isL()) || input->isA())
+    else if(input->isRight() || (input->isR() && !input->isL()) || input->isB())
         rocket.rotateRight();
 
     if(input->isUp() || input->isY() || (input->isL() && input->isR()))

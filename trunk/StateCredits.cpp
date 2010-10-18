@@ -34,9 +34,6 @@ void StateCredits::init()
 	//logo.setAlpha(0);
 	pand.loadFrames(dir+"pandora"+ext,4,1);
     pand.setTransparentColour(Vector2di(0,0));
-    #ifdef PENJIN_SDL
-        pand.setUseHardware(true);
-    #endif
 
     SDL_Rect bounds;
     bounds.x = bounds.y = 0;
