@@ -203,7 +203,7 @@ class StateCake : public mgBaseState
                     blowing = true;
                     if(!canBlow)
                     {
-                        if(hitRegion->colourTest(&map) == Colour(0,0,(uchar)255))
+                        if(hitRegion->colourTest(&map) == Colour(0,0,255))
                         {
                             canBlow = true;
                         }

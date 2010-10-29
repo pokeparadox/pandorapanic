@@ -34,7 +34,7 @@ HeroBird::~HeroBird()
 void HeroBird::wingFlap()
 {
     bird.setCurrentFrame(0);
-    birdright.setCurrentFrame(8);
+    birdright.setCurrentFrame(7);
     changeYVelocity(-38);
     wingflap.play();
 }
