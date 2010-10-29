@@ -215,7 +215,7 @@ void ArenaHero::userInput()
                     m_bmpCurrentPtr = &m_bmpSwordRight;
                 }
 
-                m_bmpCurrentPtr->setCurrentFrame(0);
+                m_bmpCurrentPtr->rewind();
                 input->resetA();
             }
 

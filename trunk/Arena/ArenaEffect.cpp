@@ -51,7 +51,7 @@ void ArenaEffect::init(int x, int y, int type)
     m_Exists = true;
     m_RenderFix = false;
 
-    m_bmpEffect.setCurrentFrame(0);
+    m_bmpEffect.rewind();
 }
 void ArenaEffect::render(SDL_Surface* screen)
 {
