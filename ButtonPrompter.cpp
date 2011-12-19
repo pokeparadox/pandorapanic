@@ -36,7 +36,7 @@ void ButtonPrompter::initDefaults() {
     defaultScreen = NULL;
     defaultX = 400;
     defaultY = 400;
-    defaultButton = BUTTON_A;
+    defaultButton = BUTTON_B;
     }
 
 ButtonPrompter& ButtonPrompter::setImages(string filename, int cols) {

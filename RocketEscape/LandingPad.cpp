@@ -126,5 +126,5 @@ void LandingPad::update()
     rocketCollision();
     for(int i = 1; i>=0; --i)
         lights[i].update();
-    mirror.update();
+    //mirror.update();
 }

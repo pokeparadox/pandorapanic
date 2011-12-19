@@ -152,7 +152,7 @@ void StateTheCountJob::userInput()
         sSelection.play();
         input->resetKeys();
     }
-    if(input->isA())
+    if(input->isB())
     {
         // check win/lose
         if (inputMode)
@@ -207,7 +207,7 @@ void StateTheCountJob::render(SDL_Surface *screen)
         text.setPosition(199,161);
         text.print(screen,"Count the circles!");
         text.setPosition(27,246);
-        text.print(screen,"Press A-key for colourblind mode.");
+        text.print(screen,"Press B-key for colourblind mode.");
     }
     else if (counter.getScaledTicks() < INSTRUCTIONS_TIME+showTime) // render circles
     {
@@ -319,7 +319,7 @@ void StateTheCountJob::render()
         text.setPosition(199,161);
         text.print("Count the circles!");
         text.setPosition(27,246);
-        text.print("Press A-key for colourblind mode.");
+        text.print("Press B-key for colourblind mode.");
     }
     else if (counter.getScaledTicks() < 10+showTime) // render circles
     {

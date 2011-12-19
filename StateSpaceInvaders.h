@@ -32,8 +32,8 @@ class StateSpaceInvaders : public mgBaseState
         virtual ~StateSpaceInvaders();
         virtual void userInput();
 
-        Emitter emit;
-        vector <Emitter> blast;
+        //Emitter emit;
+        //vector <Emitter> blast;
 
         Text text;
         Text command;

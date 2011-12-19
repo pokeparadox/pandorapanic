@@ -189,7 +189,7 @@ void ArenaHero::userInput()
             // Sword swinging
             //-----------------------------------------------------
 
-            if(input->isA())
+            if(input->isB())
             {
                 m_sndSword.play();
                 m_IsSwinging = true;

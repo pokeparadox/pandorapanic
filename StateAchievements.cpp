@@ -96,7 +96,7 @@ void StateAchievements::userInput()
         speed = 0.1f;
     }
 
-    if (input->isX())
+    if (input->isY())
     {
         if (ACHIEVEMENTS->showingPopups())
             ACHIEVEMENTS->disablePopups();
@@ -105,7 +105,7 @@ void StateAchievements::userInput()
         input->resetKeys();
     }
 
-    if(input->isB())
+    if(input->isX())
     {
         setNextState(STATE_TITLE);
         input->resetKeys();
@@ -135,7 +135,7 @@ void StateAchievements::userInput()
         text.setFontSize(30);
         text.setAlignment(TextClass::LEFT_JUSTIFIED);
 
-        buttonSheet.setCurrentFrame(12);
+        buttonSheet.setCurrentFrame(13);
         buttonSheet.setPosition(0,400);
         buttonSheet.render(screen);
         text.setPosition(50,400);
@@ -144,7 +144,7 @@ void StateAchievements::userInput()
         else
             text.print(screen,"Show popups");
 
-        buttonSheet.setCurrentFrame(11);
+        buttonSheet.setCurrentFrame(12);
         buttonSheet.setPosition(0,440);
         buttonSheet.render(screen);
         text.setPosition(50,440);

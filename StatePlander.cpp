@@ -44,7 +44,7 @@ void StatePlander::init()
 
     floor.setPosition(Vector2di(0,GFX::getYResolution()-100));
     floor.setDimensions(Vector2di(GFX::getXResolution(),100));
-    floor.setColour(Colour(128,128,128));
+    //floor.setColour(Colour(128,128,128));
     float width = 60/(float)variables[2].getInt();
     pad.setWidth(NumberUtility::limit((int)width,1,15));
     rocket.setFuel(NumberUtility::limit((width/30.0f)*100,5.0f,100.0f));
@@ -379,7 +379,7 @@ void StatePlander::update()
         variables[0].setInt(0);
         setNextState(STATE_MAIN);
     }
-    floor.update();
+    //floor.update();
     star.update();
 }
 

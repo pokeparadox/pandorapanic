@@ -115,7 +115,7 @@ void StateRotDef::userInput()
         //rotateSound.stop();
 
 
-    if(input->isA() && !shooting)
+    if(input->isB() && !shooting)
     {
         shotSound.play();
 
@@ -201,7 +201,7 @@ void StateRotDef::pauseScreen(SDL_Surface* screen)
     buttonSheet.render(screen);
     pauseText.setPosition(220,100);
     pauseText.print(screen, "Press     to shoot the bomb!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(304,100);
     buttonSheet.render(screen);
     buttonsOverlay(screen);

@@ -214,7 +214,7 @@ void StateArena::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Kill all the monsters but don't get hit!");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press     to swing your sword!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(134,220);
     buttonSheet.render(screen);
     buttonsOverlay(screen);

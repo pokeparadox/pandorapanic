@@ -157,7 +157,7 @@ void Fire::unlimitedUpdate()
 	{
         cannon.shooting = false;
         // Shoot water
-        if (input->isA() || input->isLeftClick())
+        if (input->isB() || input->isLeftClick())
         {
             cannon.shooting = true;
             ShootWater();
@@ -254,13 +254,13 @@ void Fire::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(PAUSE_X,PAUSE_Y+PAUSE_DELTA_Y*1);
     pauseText.print(screen, "Controls:");
     pauseText.setPosition(PAUSE_X+PAUSE_DELTA_X,PAUSE_Y+PAUSE_DELTA_Y*2);
-    pauseText.print(screen, "Left/Right Arrows or Dpad rotate cannon");
+    pauseText.print(screen, "Left/Right on Dpad to rotate cannon");
     pauseText.setPosition(PAUSE_X+PAUSE_DELTA_X,PAUSE_Y+PAUSE_DELTA_Y*3);
-    pauseText.print(screen, "Up/Down Arrows or Dpad change cannon power");
+    pauseText.print(screen, "Up/Down on Dpad change cannon power");
     pauseText.setPosition(PAUSE_X+PAUSE_DELTA_X,PAUSE_Y+PAUSE_DELTA_Y*4);
-    pauseText.print(screen, "Z key or A button shoot water");
+    pauseText.print(screen, "B Button to shoot water");
     pauseText.setPosition(PAUSE_X+PAUSE_DELTA_X*8,PAUSE_Y+PAUSE_DELTA_Y*6);
-    pauseText.print(screen, "Press Enter/Start to continue");
+    pauseText.print(screen, "Press Start to continue");
     buttonsOverlay(screen);
 }
 

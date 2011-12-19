@@ -9,8 +9,8 @@ Rocket::Rocket()
     startPos.x = startPos.y = 0;
     acceleration = velocity = Vector2df(0,0);
     /// Setup particles
-    leftThruster.resize(3);
-    rightThruster.resize(3);
+    //leftThruster.resize(3);
+    //rightThruster.resize(3);
     int t = 0;
     const int INVISIBLE = 1;
     const int MAX_ONE = 500;
@@ -20,7 +20,7 @@ Rocket::Rocket()
     Vector2di b;
     b.x = 800;
     b.y = 480;
-    leftThruster[t].setMax(MAX_ONE);
+    /*leftThruster[t].setMax(MAX_ONE);
     leftThruster[t].setInvisible(MAX_ONE-INVISIBLE);
     leftThruster[t].setColour(YELLOW);
     leftThruster[t].setMaxVelocity(Vector2df(MAX_VEL_DN/3.0f,MAX_VEL_DN));
@@ -87,7 +87,7 @@ Rocket::Rocket()
     rightThruster[t].setBoundaries(Vector2di(0,0),b);
     rightThruster[t].advanceUpdate(1);
 
-    startThrusters(false);
+    startThrusters(false);*/
 
     /// Setup Ship Sprite
     sprite.loadSprite("images/RocketEscape/rocket.png");
@@ -116,8 +116,8 @@ void Rocket::rotateZero()
     {
         for(int i = leftThruster.size()-1;i>=0; --i)
         {
-            leftThruster[i].render(screen);
-            rightThruster[i].render(screen);
+            //leftThruster[i].render(screen);
+            //rightThruster[i].render(screen);
         }
         sprite.setRotation(angle);
         sprite.render(screen);
@@ -277,9 +277,9 @@ bool Rocket::checkCollectible()
 void Rocket::setBounds(SDL_Rect bounds)
 {
     this->bounds = bounds;
-    for(int i = 2; i >=0; --i)
+    /*for(int i = 2; i >=0; --i)
     {
         leftThruster[i].setBoundaries(bounds);
         rightThruster[i].setBoundaries(bounds);
-    }
+    }*/
 }

@@ -177,8 +177,8 @@ void StateSnatchABeer::userInput()
             nullifyState();
     #endif
 
-    // A-Key is pressed
-    if(input->isA() && started) {
+    // B-Key is pressed
+    if(input->isB() && started) {
         if (status == MISSCLOSE) {
             if (secondChance) {
                 ACHIEVEMENTS->logEvent("SNATCH_SECOND");
@@ -236,7 +236,7 @@ void StateSnatchABeer::pauseScreen(SDL_Surface* screen)
         pauseSymbol(screen);
     pauseText.setPosition(50,180);
     pauseText.print(screen, "Press     at the right time to get the beer!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(134,180);
     buttonSheet.render(screen);
     pauseText.setPosition(50,220);
@@ -264,7 +264,7 @@ void StateSnatchABeer::pauseScreen()
     pauseSymbol();
     pauseText.setPosition(50,180);
     pauseText.print("Press     at the right time to get the beer!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(130,180);
     buttonSheet.render();
     pauseText.setPosition(50,220);

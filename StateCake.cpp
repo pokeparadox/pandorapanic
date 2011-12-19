@@ -135,7 +135,7 @@ void StateCake::userInput()
         pauseToggle();
         input->resetKeys();
     }
-    if(input->isA())
+    if(input->isB())
     {
         mariela.blow();
     }
@@ -164,7 +164,7 @@ void StateCake::pauseScreen(SDL_Surface* screen)
     buttonSheet.setCurrentFrame(15);
     buttonSheet.setPosition(140,180);
     buttonSheet.render(screen);
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(120,220);
     buttonSheet.render(screen);
     buttonsOverlay(screen);

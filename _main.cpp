@@ -7,11 +7,15 @@ int main(int argc, char** argv)
 
 	//	Setup game engine
 	game = new MyGame;
-
+    PenjinErrors::PENJIN_ERRORS e;
 	cout << error.getErrorString(game->argHandler(argc,argv));
-	cout << error.getErrorString(game->penjinInit());
+	e = game->penjinInit();
+	cout << error.getErrorString(e);
 
-	while(game->stateLoop());	//	Perform main loop until shutdown
+    if(e == PENJIN_OK)
+        while(game->stateLoop());	//	Perform main loop until shutdown
+
+
 	cout << error.getErrorString(PENJIN_SHUTDOWN);
 
 	//	Tidy up

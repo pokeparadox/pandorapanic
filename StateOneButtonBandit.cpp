@@ -424,11 +424,11 @@ void StateOneButtonBandit::userInput() {
     // Only check for user input when the game has become playable
     if (currentState == 3) {
         if (waitForButtonLift) {
-            if (!input->isA()) {
+            if (!input->isB()) {
                 waitForButtonLift = false;
             }
         }
-        else if (input->isA()) {
+        else if (input->isB()) {
             waitForButtonLift = true;
             // Set the left column to stop mode
             // Advance to the next column

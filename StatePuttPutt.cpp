@@ -93,7 +93,7 @@ void StatePuttPutt::userInput()
             nullifyState();
     #endif
 
-    if(input->isA() && !putting)
+    if(input->isB() && !putting)
     {
         //putt.play();
         putting = true;
@@ -212,7 +212,7 @@ void StatePuttPutt::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Stop the power meter within the green bar!");
     pauseText.setPosition(20,220);
     pauseText.print(screen, "Press     to make the putt!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(104,220);
     buttonSheet.render(screen);
     buttonsOverlay(screen);

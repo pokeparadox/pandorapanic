@@ -51,6 +51,7 @@ void StateCredits::init()
 	text.setPosition(0,bounds.h*0.5f);
 	text.setColour(Colour(WHITE));
 
+/*
     emit.resize(3);
     emit[0].setMax(800);
     emit[0].setInvisible(750);
@@ -83,7 +84,7 @@ void StateCredits::init()
 	emit[2].shouldFadeColour(true);
 	emit[2].setDeviation(2.5f);
 	emit[2].setGravity(Vector2df(0.0f,0.001f));
-	emit[2].setBoundaries(bounds);
+	emit[2].setBoundaries(bounds);*/
 
 	input->setDeadZone(Vector2di(4000,4000));
 	input->setScaler(0.000001f);
@@ -99,7 +100,7 @@ void StateCredits::userInput()
             nullifyState();
     #endif
 	//	Skip current Credits item
-	if(input->isA() && currentLine < NumberUtility::getSize(CREDITS)-1)
+	if((input->isB() || input->isX()) && currentLine < NumberUtility::getSize(CREDITS)-1)
 	{
 		++currentLine;
 		input->resetKeys();
@@ -200,9 +201,9 @@ void StateCredits::renderPandora(SDL_Surface* screen)
 void StateCredits::render(SDL_Surface *screen)
 {
 	//  Render all particles
-    for(int e = emit.size()-1; e >= 0; --e)
+    /*for(int e = emit.size()-1; e >= 0; --e)
         emit[e].render(screen);
-
+*/
 	string tempString = CREDITS[currentLine];
 
 	if(strstr(tempString.c_str(),"[VERSION]"))
@@ -483,7 +484,7 @@ void StateCredits::update()
 {
     updatePandora();
         //  Update all particles
-    for(int e = emit.size()-1; e >= 0; --e)
+    /*for(int e = emit.size()-1; e >= 0; --e)
     {
         emit[e].update();
         emit[e].setColour(Colour(Random::nextInt(),Random::nextInt(),Random::nextInt()));
@@ -497,5 +498,5 @@ void StateCredits::update()
             emit[2].setPosition(Vector2df(Random::nextInt(50,750),Random::nextInt(50,430)));
             emit[2].start();
         }
-    }
+    }*/
 }

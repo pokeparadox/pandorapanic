@@ -109,7 +109,7 @@ void StatePanJoust::userInput()
         pauseToggle();
         input->resetKeys();
     }
-    if(input->isA() && youdead == 0)
+    if(input->isB() && youdead == 0)
     {
         if (inputlimiter.getScaledTicks() > 40)
         {
@@ -168,7 +168,7 @@ void StatePanJoust::pauseScreen(SDL_Surface* screen)
     text.print(screen, "Fly! And land on the other birds to kill them!");
     text.setPosition(50,220);
     text.print(screen, "Press     repeatedly to stay in the air!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(136,220);
     buttonSheet.render(screen);
     buttonsOverlay(screen);
@@ -182,7 +182,7 @@ void StatePanJoust::pauseScreen()
     text.print("Fly! And land on the other birds to kill them!");
     text.setPosition(50,220);
     text.print("Press     repeatedly to stay in the air!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(130,220);
     buttonSheet.render();
 }
