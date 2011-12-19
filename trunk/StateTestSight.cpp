@@ -64,7 +64,7 @@ void StateTestSight::userInput()
         }
 
         // select a cup
-        if(input->isA())
+        if(input->isB())
         {
             phase = gpConclusion;
             showCup(selection);
@@ -127,7 +127,7 @@ void StateTestSight::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Follow the path of the cup hiding the coin!");
     pauseText.setPosition(50,260);
     pauseText.print(screen, "Press    to select your destiny!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(134,260);
     buttonSheet.render(screen);
 }

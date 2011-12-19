@@ -389,14 +389,14 @@ void StateTitle::getReady()
 void StateTitle::userInput()
 {
     input->update();
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
+
+    if(input->isQuit())
+        nullifyState();
+
     if(splashDone)
     {
         menu.setMouseSelection(input->getTouch());
-        if(input->isTouch() || input->isA() || input->isStart())
+        if(input->isTouch() || input->isB() || input->isStart())
         {
             choice = menu.getSelection();
             input->resetKeys();
@@ -440,7 +440,7 @@ void StateTitle::userInput()
     }
     else
     {
-        if(input->isTouch() || input->isA() || input->isStart())
+        if(input->isTouch() || input->isB() || input->isStart())
         {
             splashDone = true;
             input->resetKeys();

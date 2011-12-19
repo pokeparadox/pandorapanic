@@ -76,7 +76,6 @@
 					<Add option="-D_LINUX" />
 					<Add option="-DPENJIN_SDL" />
 					<Add option="-DUSE_ACHIEVEMENTS" />
-					<Add option="-DPENJIN_CACHE_ROTATIONS" />
 				</Compiler>
 				<Linker>
 					<Add option="`sdl-config --libs`" />
@@ -110,7 +109,6 @@
 					<Add option="-lSDL_image" />
 					<Add option="-lSDL_mixer" />
 					<Add option="-lSDL_gfx" />
-					<Add option="--disable-checking" />
 				</Linker>
 			</Target>
 			<Target title="Pandora Debug">
@@ -164,6 +162,7 @@
 					<Add option="-fno-inline" />
 					<Add option="-DPLATFORM_PANDORA" />
 					<Add option="-DPENJIN_SDL" />
+					<Add option="-DPENJIN_SDL_INPUT" />
 					<Add directory="$(#PANDORA_SDK.include)" />
 				</Compiler>
 				<Linker>
@@ -270,7 +269,6 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wall" />
 			<Add option="-DUSE_ACHIEVEMENTS" />
 			<Add directory="../PenjinBase" />
 			<Add directory="./" />
@@ -700,6 +698,8 @@
 		<Unit filename="../PenjinBase/CollisionMap.h">
 			<Option virtualFolder="PenjinBase/Physics/" />
 		</Unit>
+		<Unit filename="../PenjinBase/CollisionRegion.cpp" />
+		<Unit filename="../PenjinBase/CollisionRegion.h" />
 		<Unit filename="../PenjinBase/Colour.cpp">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
@@ -801,12 +801,6 @@
 		</Unit>
 		<Unit filename="../PenjinBase/ImageStringMenuItem.h">
 			<Option virtualFolder="PenjinBase/Menu/MenuItems/" />
-		</Unit>
-		<Unit filename="../PenjinBase/IntVector2d.cpp">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/old/" />
-		</Unit>
-		<Unit filename="../PenjinBase/IntVector2d.h">
-			<Option virtualFolder="PenjinBase/Physics/Vectors/old/" />
 		</Unit>
 		<Unit filename="../PenjinBase/KeyMap.cpp">
 			<Option virtualFolder="PenjinBase/Input/KeyMapper/" />
@@ -1005,6 +999,8 @@
 		<Unit filename="../PenjinBase/ScreenPartition.h">
 			<Option virtualFolder="PenjinBase/" />
 		</Unit>
+		<Unit filename="../PenjinBase/SimpleDirection.cpp" />
+		<Unit filename="../PenjinBase/SimpleDirection.h" />
 		<Unit filename="../PenjinBase/SimpleJoy.cpp">
 			<Option virtualFolder="PenjinBase/Input/" />
 		</Unit>
@@ -1064,12 +1060,6 @@
 		</Unit>
 		<Unit filename="../PenjinBase/Texture.h">
 			<Option virtualFolder="PenjinBase/Draw/3D/" />
-		</Unit>
-		<Unit filename="../PenjinBase/TileMap.cpp">
-			<Option virtualFolder="PenjinBase/" />
-		</Unit>
-		<Unit filename="../PenjinBase/TileMap.h">
-			<Option virtualFolder="PenjinBase/" />
 		</Unit>
 		<Unit filename="../PenjinBase/Timer.cpp">
 			<Option virtualFolder="PenjinBase/Timers/" />
@@ -1156,6 +1146,7 @@
 				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="400" />
 				<Settings autoincrement="1" date_declarations="1" do_auto_increment="1" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
 				<Changes_Log show_changes_editor="1" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="" />
 			</AutoVersioning>
 		</Extensions>
 	</Project>

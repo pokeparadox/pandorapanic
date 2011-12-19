@@ -117,7 +117,7 @@ namespace PangMiniGame
         // Right.
         m_IsRightDown = (uint)joy->isRight();
         // Up.
-        if(joy->isUp() || joy->isA())
+        if(joy->isUp() || joy->isB())
         {
             if(m_IsUpDown == 0)
                 m_IsUpDown = 1;
@@ -248,7 +248,7 @@ namespace PangMiniGame
     SurfaceResourceManager::RefCountedSurface::RefCountedSurface( ) : pSurface( NULL ), RefCount( 0 ), AlphaMultiplier( 1.f ), Scale( 1.f )
     {
     }
-    bool SurfaceResourceManager::RefCountedSurface::operator == ( const RefCountedSurface::RefCountedSurface & rhs )
+    bool SurfaceResourceManager::RefCountedSurface::operator == ( const RefCountedSurface & rhs )
     {
         if ( rhs.pSurface )
         {
@@ -2166,7 +2166,7 @@ void StatePang::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Burst those balls, but don't let them hit you!");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press     or     to shoot your spear!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(134,220);
     buttonSheet.render(screen);
     buttonSheet.setCurrentFrame(16);
@@ -2185,7 +2185,7 @@ void StatePang::pauseScreen()
     pauseText.print("Burst those balls, but don't let them hit you!");
     pauseText.setPosition(50,220);
     pauseText.print("Press     or     to shoot your spear!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(136,220);
     buttonSheet.render();
     buttonSheet.setCurrentFrame(16);
@@ -2239,10 +2239,10 @@ void StatePang::pauseInput()
 {
     input->update();
     m_pPangGame->Update( input );
-    #ifdef PLATFORM_PC
-        if(input->isQuit())
-            nullifyState();
-    #endif
+
+    if(input->isQuit())
+        nullifyState();
+
     if(input->isL() && input->isX())
         quit();
     else if(input->isL() && input->isY())

@@ -98,11 +98,11 @@ void StatePong::userInput()
 {
 
     input->update();
-    #ifdef PLATFORM_PC
+
         if(input->isQuit()) {
             nullifyState();
         }
-    #endif
+
 
     if (input->isStart())
     {

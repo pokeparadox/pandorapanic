@@ -1,0 +1,53 @@
+<PXML xmlns="http://openpandora.org/namespaces/PXML">
+<package id="ppanic101">
+<version major="1" minor="0" release="1" build="4"/>
+<author name="PokeParadox" email="pokeparadox@gmail.com" website="http://www.pirategames.co.uk"/>
+<titles>
+<title lang="en_US">PandoraPanic!</title>
+</titles>
+<descriptions>
+<description lang="en_US">PandoraPanic! A frantic, frenetic and occasionally mind bending minigame collection created for Pandora by the GP32X community. It is also the first original homebrew for the Pandora!</description>
+<description lang="nl_NL"> PandoraPanic! Een panische minigame collectie voor de pandora door leden van het GP32X Forum</description>
+</descriptions>
+<icon src="./images/ppicon.png"/>
+</package>
+<application id="PandoraPanic">
+<exec command="PandoraPanic.sh"/>
+<version major="1" minor="0" release="1" build="4"/>
+<author name="Pirate Games, OpenPandora and GP32X community" website="http://projectinfinity.org.uk/doku.php?id=homebrew:games:pandorapanic"/>
+<titles>
+<title lang="en_US">PandoraPanic!</title>
+</titles>
+<title lang="en_US">PandoraPanic!</title>
+<!--
+Extra block for compatibility with OS versions before HF6
+-->
+<descriptions>
+<description lang="en_US">PandoraPanic! A frantic, frenetic and occasionally mind bending minigame collection created for Pandora by the GP32X community. It is also the first original homebrew for the Pandora!</description>
+<description lang="nl_NL"> PandoraPanic! Een panische minigame collectie voor de pandora door leden van het GP32X Forum</description>
+</descriptions>
+<description lang="en_US">PandoraPanic! A frantic, frenetic and occasionally mind bending minigame collection created for Pandora by the GP32X community. It is also the first original homebrew for the Pandora!</description>
+<description lang="nl_NL"> PandoraPanic! Een panische minigame collectie voor de pandora door leden van het GP32X Forum</description>
+<!--
+Extra block for compatibility with OS versions before HF6
+-->
+<icon src="./images/ppicon.png"/>
+<licenses>
+<license name="GPLv3" url="http://www.gnu.org/licenses/gpl.html" sourcecodeurl="http://code.google.com/p/pandorapanic/"/>
+</licenses>
+<previewpics>
+   <pic src="./preview/PanicPreview1.png"/>
+   <pic src="./preview/PanicPreview2.png"/>
+   <pic src="./preview/PanicPreview3.png"/>
+   <pic src="./preview/PanicPreview4.png"/>
+   <pic src="./preview/PanicPreview5.png"/>
+   <pic src="./preview/PanicPreview6.png"/>
+</previewpics>
+<info name="PandoraPanic! Manual" type="text/html" src="index.html"/>
+<categories>
+<category name="Game">
+<subcategory name="ArcadeGame"/>
+</category>
+</categories>
+</application>
+</PXML>

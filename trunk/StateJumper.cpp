@@ -46,7 +46,7 @@ void StateJumper::init()
     robotright.setTransparentColour(MAGENTA);
     robotright.setFrameRate(DECI_SECONDS);
 
-    buttonPrompter.display(ButtonPrompter::BUTTON_A, 200, 300);
+    buttonPrompter.display(ButtonPrompter::BUTTON_B, 200, 300);
 
 
     jumpcount = 0;
@@ -187,7 +187,7 @@ void StateJumper::userInput()
         }
     if (inputlimiter.getScaledTicks() > 30)
     {
-        if (input->isA() && hero.ontile > 0 && hero.getYvel() == 0)
+        if (input->isB() && hero.ontile > 0 && hero.getYvel() == 0)
         {
             jumpcount = jumpcount + 1;
             hero.setYvel(- 180);

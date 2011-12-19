@@ -329,7 +329,7 @@ void StateMain::userInput()
             genPreview(selection);
             input->resetKeys();
         }
-        if(input->isA() || input->isStart() || input->isTouch())
+        if(input->isB() || input->isStart() || input->isTouch())
         {
             if(helpMode)
             {
@@ -343,7 +343,7 @@ void StateMain::userInput()
                 gotoNext = true;
             }
         }
-        else if (input->isB())
+        else if (input->isX())
         {
             if(helpMode)
             {
@@ -403,7 +403,7 @@ void StateMain::render(SDL_Surface* screen)
         prompt.renderImage(17,downArrow.x, downArrow.y);
         prompt.renderImage(14,leftArrow.x, leftArrow.y);
         prompt.renderImage(15,rightArrow.x, rightArrow.y);
-        prompt.renderImage(11,bButton.x, bButton.y);
+        prompt.renderImage(12,bButton.x, bButton.y);//Xbutton
         text.setPosition(bButton.x + 50,bButton.y);
         text.print(screen,"Go Back");
         prompt.renderImage(13,yButton.x, yButton.y);

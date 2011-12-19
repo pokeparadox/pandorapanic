@@ -88,7 +88,7 @@ void StateTileEditor::userInput()
 
         // set tile placement and other attributes
 
-        if (input->isA())
+        if (input->isB())
         {
             del = 0;
             if (temptiletype == -1)

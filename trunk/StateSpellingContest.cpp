@@ -82,7 +82,9 @@ void StateSpellingContest::userInput()
                     ||(event.key.keysym.sym > 96 && event.key.keysym.sym < 123))
                     && status == 1)
                     {
-                        if(word[correctChars] == (char)StringUtility::lower(event.key.keysym.sym))
+                        string ts;
+                        ts.push_back((char)event.key.keysym.sym);
+                        if(word[correctChars] == StringUtility::lower(ts).at(0))
                         {
                             correctChars++;
                         }

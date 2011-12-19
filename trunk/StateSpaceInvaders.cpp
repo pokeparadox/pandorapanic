@@ -29,7 +29,7 @@ void StateSpaceInvaders::init()
     bounds.x = bounds.y = 0;
     bounds.w = 800;
     bounds.h = 480;
-    emit.setBoundaries(bounds);
+    /*emit.setBoundaries(bounds);
     emit.setMax(100);
     emit.setColour(Colour(YELLOW));
     emit.setDeviation(1.6f);
@@ -56,7 +56,7 @@ void StateSpaceInvaders::init()
     //blast.setUpdatePeriod(1);
     blast[1].setLifeTime(10);
     blast[1].setGravity(Vector2df(0.0f,0.05f));
-    blast[1].setFadeValue(-0.01f);
+    blast[1].setFadeValue(-0.01f);*/
     shooting = false;
 
     alien.setPosition(rand()%736,0);
@@ -96,7 +96,7 @@ void StateSpaceInvaders::userInput()
         //Input.resetKeys();
     }
 
-    if(input->isA() && !shooting)
+    if(input->isB() && !shooting)
     {
         shooting = true;
         shot.setPosition(ship.getX()+28,400);
@@ -115,15 +115,16 @@ void StateSpaceInvaders::render(SDL_Surface *screen)
 	background.render(screen);
 
 
-    if(shipVel >0.01f || shipVel < -0.01f)
+/*    if(shipVel >0.01f || shipVel < -0.01f)
         emit.render(screen);
+ */
     alien.render(screen);
     ship.render(screen);
 
     if(shooting)
     {
-        for(int i = 1; i >= 0; --i)
-            blast[i].render(screen);
+        /*for(int i = 1; i >= 0; --i)
+            blast[i].render(screen);*/
         shot.render(screen);
     }
     text.setPosition(0,0);
@@ -142,7 +143,7 @@ void StateSpaceInvaders::pauseScreen(SDL_Surface* screen)
     pauseText.setPosition(50,180);
     pauseText.setColour(WHITE);
     pauseText.print(screen, "Shoot the alien! press    to shoot.");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(375,180);
     buttonSheet.render(screen);
     buttonsOverlay(screen);
@@ -193,9 +194,9 @@ void StateSpaceInvaders::onResume()
 
 void StateSpaceInvaders::update()
 {
-        emit.setAcceleration(Vector2df(-shipVel*0.5f,0));
+       /* emit.setAcceleration(Vector2df(-shipVel*0.5f,0));
         emit.setPosition(Vector2di(ship.getX()+32,ship.getY()+32));
-        emit.update();
+        emit.update();*/
 
 
         alien.setX(alien.getX() + alienDir*alienSpeed);
@@ -213,11 +214,12 @@ void StateSpaceInvaders::update()
 
         if(shooting)
         {
+            /*
             for(int i = 1; i >= 0; --i)
             {
                 blast[i].setPosition(Vector2di(shot.getX()+4,shot.getY()+16));
                 blast[i].update();
-            }
+            }*/
             shot.setY(shot.getY()-16);
             if(shot.getX()-8 >= alien.getX() && shot.getX() <= alien.getX()+64
             && shot.getY()-16 >= alien.getY() && shot.getY() <= alien.getY()+64)

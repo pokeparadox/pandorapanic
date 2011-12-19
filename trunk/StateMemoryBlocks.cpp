@@ -144,7 +144,7 @@ void StateMemoryBlocks::userInput()
             input->resetKeys();
         }
 
-        else if (input->isA())
+        else if (input->isB())
         {
             counter.setOffset(SHOW_TIME + inputTime - counter.getScaledTicks());
             input->resetKeys();
@@ -179,7 +179,7 @@ void StateMemoryBlocks::pauseScreen(SDL_Surface* screen)
     buttonSheet.render(screen);
     pauseText.setPosition(50,260);
     pauseText.print("Press     to confirm your selection!");
-    buttonSheet.setCurrentFrame(10);
+    buttonSheet.setCurrentFrame(11);
     buttonSheet.setPosition(140,260);
     buttonSheet.render(screen);
     buttonsOverlay(screen);

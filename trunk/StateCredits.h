@@ -122,7 +122,7 @@ class StateCredits : public BaseState
 		Timer timer;
 		uint currentLine;
 
-		vector <Emitter> emit;
+		//vector <Emitter> emit;
 		Sprite logo;
 		BackBuffer buff;
 		AnimatedSprite pand;

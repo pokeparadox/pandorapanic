@@ -92,9 +92,9 @@ void StateGameover::userInput()
     else if(input->isDown() || input->isLeftStickDown())
         scoreScreen.charDown();
 
-    if(input->isA())// || input->isKey("KP_ENTER") || input->isKey("RETURN"))
+    if(input->isB())// || input->isKey("KP_ENTER") || input->isKey("RETURN"))
         scoreScreen.charInput();
-    else if(input->isB())// || input->isKey("BACKSPACE"))
+    else if(input->isX())// || input->isKey("BACKSPACE"))
         scoreScreen.charDelete();
 
     //  Keyboard pass-through
@@ -106,7 +106,7 @@ void StateGameover::userInput()
     }
 
     //	Check to return to main menu
-    if((input->isA() || input->isStart() || input->isTouch()) && !scoreScreen.inNameEntryScreen())
+    if((input->isB() || input->isX() || input->isStart() || input->isTouch()) && !scoreScreen.inNameEntryScreen())
     {
         //variables.resize(2);
         variables[2].setInt(0);
@@ -127,10 +127,10 @@ void StateGameover::userInput()
         {
             //  up and down arrows
             prompt.renderImage(16,360,350);prompt.renderImage(17,360,440);
-            // a button
-            prompt.renderImage(10,50,400);text.setPosition(100,400);text.print("Enter");
-            //  b button
-            prompt.renderImage(11,50,440);text.setPosition(100,440);text.print("Delete");
+            // b button
+            prompt.renderImage(11,50,400);text.setPosition(100,400);text.print("Enter");
+            //  X button
+            prompt.renderImage(12,50,440);text.setPosition(100,440);text.print("Delete");
         }
         else
             prompt.render();

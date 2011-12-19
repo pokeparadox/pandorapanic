@@ -86,7 +86,7 @@ void StateBadVista::init()
   numBounces = 0;
   arm.setPosition((int)ARM_INIT_X, (int)ARM_INIT_Y);
   logo.setPosition((int)LOGO_INIT_X, (int)LOGO_INIT_Y);
-  buttonPrompter.display(ButtonPrompter::BUTTON_A, LOGO_INIT_X - 10, LOGO_INIT_Y - 28);
+  buttonPrompter.display(ButtonPrompter::BUTTON_B, LOGO_INIT_X - 10, LOGO_INIT_Y - 28);
   if(variables.size()<SUBSTATE_TRIGGER)
   {
           backsound.loadMusic("music/BadVista/pp.bv.windows.single.ogg");
@@ -108,7 +108,7 @@ void StateBadVista::userInput()
       nullifyState();
   #endif
 
-  if(input->isA() && bvState < BV_PITCHED) {
+  if(input->isB() && bvState < BV_PITCHED) {
     bvState = BV_WINDUP;
     armAngle += armIncrement;
     if (armAngle >= ARM_ANGLE_MAX || armAngle <= 1) {
@@ -121,7 +121,7 @@ void StateBadVista::userInput()
     logo.setPosition((int)ARM_INIT_X, (int)ARM_INIT_Y + armAngle);
   }
 
-  if (bvState == BV_WINDUP && !input->isA()) {
+  if (bvState == BV_WINDUP && !input->isB()) {
     bvState = BV_PITCHED;
 
     logoX = LOGO_INIT_X;
@@ -133,7 +133,7 @@ void StateBadVista::userInput()
   }
 
   if(bvState > BV_PITCHED) {
-    if(input->isA())
+    if(input->isB())
       setNextState(STATE_MAIN);
   }
 
@@ -363,7 +363,7 @@ void StateBadVista::pauseScreen(SDL_Surface* screen)
     pauseText.print(screen, "Put Vista where it belongs!");
     pauseText.setPosition(50,220);
     pauseText.print(screen, "Press and hold     to throw!");
-    buttonPrompter.renderImage(10,268,220);
+    buttonPrompter.renderImage(11,268,220);
     buttonsOverlay(screen);
 }
 #else
@@ -387,6 +387,6 @@ void StateBadVista::pauseScreen()
     pauseText.print("Put Vista where it belongs!");
     pauseText.setPosition(50,220);
     pauseText.print("Press and hold     to throw!");
-    buttonPrompter.renderImage(10,260,220);
+    buttonPrompter.renderImage(11,260,220);
 }
 #endif
